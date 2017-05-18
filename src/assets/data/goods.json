@@ -1,101 +1,70 @@
 {
-    "status": 1,
-    "data": [
-        {
-            "id": "1",
-            "user_id": "1",
-            "goods_sn": "A00123",
-            "goods_thumb": "../assets/images/goods1.jpg",
-            "sell_price": "119",
-            "market_price": "119",
-            "add_time": "1489979470",
-            "is_pass": "0",
-            "goods_name": "墨玉 日常妆容化妆套刷",
-            "username": "111"
-        },
-        {
-            "id": "2",
-            "user_id": "1",
-            "goods_sn": "A00124",
-            "goods_thumb": "../assets/images/goods2.jpg",
-            "sell_price": "16",
-            "market_price": "16",
-            "add_time": "1489821069",
-            "is_pass": "1",
-            "goods_name": "综合果蔬脆 100克",
-            "username": "111"
-        },
-        {
-            "id": "3",
-            "user_id": "1",
-            "goods_sn": "A00123",
-            "goods_thumb": "../assets/images/goods3.jpg",
-            "sell_price": "389",
-            "market_price": "389",
-            "add_time": "1489979470",
-            "is_pass": "1",
-            "goods_name": "100年传世珐琅锅 全家系列",
-            "username": "111"
-        },
-        {
-            "id": "4",
-            "user_id": "1",
-            "goods_sn": "A00124",
-            "goods_thumb": "../assets/images/goods4.jpg",
-            "sell_price": "86",
-            "market_price": "86",
-            "add_time": "1489821069",
-            "is_pass": "1",
-            "goods_name": "色胶布刺绣折伞",
-            "username": "111"
-        },
-        {
-            "id": "5",
-            "user_id": "1",
-            "goods_sn": "A00123",
-            "goods_thumb": "../assets/images/goods5.jpg",
-            "sell_price": "1024",
-            "market_price": "360.00",
-            "add_time": "1489979470",
-            "is_pass": "2",
-            "goods_name": "安睡慢回弹记忆绵床垫",
-            "username": "111"
-        },
-        {
-            "id": "6",
-            "user_id": "1",
-            "goods_sn": "A00124",
-            "goods_thumb": "../assets/images/goods6.jpg",
-            "sell_price": "120",
-            "market_price": "270.00",
-            "add_time": "1489821069",
-            "is_pass": "1",
-            "goods_name": "男式基础圆领长袖T恤",
-            "username": "111"
-        },
-        {
-            "id": "7",
-            "user_id": "1",
-            "goods_sn": "A00123",
-            "goods_thumb": "../assets/images/goods7.jpg",
-            "sell_price": "99",
-            "market_price": "360.00",
-            "add_time": "1489979470",
-            "is_pass": "2",
-            "goods_name": "优雅女士宽檐毛毡帽",
-            "username": "111"
-        },
-        {
-            "id": "8",
-            "user_id": "1",
-            "goods_sn": "A00124",
-            "goods_thumb": "../assets/images/goods8.jpg",
-            "sell_price": "86",
-            "market_price": "270.00",
-            "add_time": "1489821069",
-            "is_pass": "1",
-            "goods_name": "冻干水果礼盒 185克",
-            "username": "111"
-        }
-    ]
+	"data": [
+		{
+			"goods_name": "iphone7",
+			"goods_thumb": "http:\/\/my.shop.7cai.tv\/uploads\/business1\/image\/201704\/1492081252272242.jpg",
+			"sell_price": "388",
+			"market_price": "388.00",
+			"keys": "iPhone7Plus 苹果 手机",
+			"id": "1"
+		}, {
+			"goods_name": "Nike 耐克官方 NIKE ROSHE ONE 男子运动休闲鞋 ",
+			"goods_thumb": "http:\/\/my.shop.7cai.tv\/uploads\/business4\/image\/201704\/1493197672841109.png",
+			"sell_price": "688",
+			"market_price": "688.00",
+			"keys": "Nike 跑鞋",
+			"id": "16"
+		}, {
+			"goods_name": "只有商家优惠卷1",
+			"goods_thumb": "http:\/\/my.shop.7cai.tv\/uploads\/business1\/image\/201704\/1492137153970913.jpg",
+			"sell_price": "388",
+			"market_price": "388.00",
+			"keys": "Hisense 海信平板液晶电视机",
+			"id": "3"
+		}, {
+			"goods_name": "只有平台优惠卷2",
+			"goods_thumb": "http:\/\/my.shop.7cai.tv\/uploads\/business1\/image\/201704\/1492082034516601.jpg",
+			"sell_price": "1",
+			"market_price": "1.00",
+			"keys": "连帽 套头 男卫衣",
+			"id": "2"
+		}, {
+			"goods_name": "只有商家优惠卷2",
+			"goods_thumb": "http:\/\/my.shop.7cai.tv\/uploads\/business1\/image\/201704\/1492137738506192.jpg",
+			"sell_price": "388",
+			"market_price": "388.00",
+			"keys": "4K 超高清 曲面 LED液晶曲屏电视机",
+			"id": "4"
+		}, {
+			"goods_name": "平台与商家优惠卷都有",
+			"goods_thumb": "http:\/\/my.shop.7cai.tv\/uploads\/business1\/image\/201704\/1492139170276277.jpg",
+			"sell_price": "1",
+			"market_price": "1.00",
+			"keys": " 4G Xiaomi\/小米MIX全面屏智能手机",
+			"id": "5"
+		}, {
+			"goods_name": "没有属性的商品",
+			"goods_thumb": "http:\/\/my.shop.7cai.tv\/uploads\/business4\/image\/201704\/1493110591983874.jpg",
+			"sell_price": "388",
+			"market_price": "388.00",
+			"keys": "短袖",
+			"id": "7"
+		}, {
+			"goods_name": "第七公社 棒球服开衫卫衣男生韩版宽松外套春秋季蜡笔小新情侣装",
+			"goods_thumb": "http:\/\/my.shop.7cai.tv\/uploads\/business4\/image\/201704\/1493111955727541.jpg",
+			"sell_price": "1",
+			"market_price": "388.00",
+			"keys": "棒球服",
+			"id": "8"
+		}, {
+			"goods_name": "2017新款春季春装短款修身薄款韩版青年休闲棒球服男士夹克衫外套",
+			"goods_thumb": "http:\/\/my.shop.7cai.tv\/uploads\/business4\/image\/201704\/1493113175167694.jpg",
+			"sell_price": "1",
+			"market_price": "388.00",
+			"keys": "男士夹克衫",
+			"id": "15"
+		}
+	],
+	"res": 1,
+	"msg": "成功"
 }
