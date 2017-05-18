@@ -733,6 +733,29 @@ var shopCoupon = new Vue({
 	}
 });
 
+
+//分享
+var allShare = new Vue({
+	el: '.popup-share',
+	data: {
+		
+	},
+	mounted: function() {
+		var _this = this;
+		$(document).on('click', '.open-share', function() {
+			$.popup('#popup-share');
+			//初始化加载数据
+//			_this.showShare();
+		});
+	},
+	methods: {
+		showShare: function() {
+//			$('#allShare').share({sites: ['qzone', 'qq', 'weibo','wechat']});
+//			socialShare('#allShare', {sites: ['qzone', 'qq', 'weibo','wechat']});
+		}
+	}
+});
+
 $(".fixed-wrap").on('click', ".buttons-tab", function(e) {
 	var $buttonsTab = $(".buttons-tab").offset().top;
 	var $nativeTop = $(".native-scroll").offset().top;
