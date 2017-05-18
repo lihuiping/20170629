@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('../fonts/icomoon.eot?s3dj5c');
-  src:  url('../fonts/icomoon.eot?s3dj5c#iefix') format('embedded-opentype'),
-    url('../fonts/icomoon.ttf?s3dj5c') format('truetype'),
-    url('../fonts/icomoon.woff?s3dj5c') format('woff'),
-    url('../fonts/icomoon.svg?s3dj5c#icomoon') format('svg');
+  src:  url('../fonts/icomoon.eot?tzudf8');
+  src:  url('../fonts/icomoon.eot?tzudf8#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?tzudf8') format('truetype'),
+    url('../fonts/icomoon.woff?tzudf8') format('woff'),
+    url('../fonts/icomoon.svg?tzudf8#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -18,29 +18,54 @@
   font-variant: normal;
   text-transform: none;
   line-height: 1;
-display: inline-block;
+  display: inline-block;
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-zhaopiantuku:before {
-  content: "\e670";
+.icon-pingtaifenxiang .path1:before {
+  content: "\e912";
+  color: rgb(206, 206, 206);
 }
-.icon-xiangji:before {
-  content: "\e671";
+.icon-pingtaifenxiang .path2:before {
+  content: "\e913";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
 }
-.icon-daishouhuo:before {
-  content: "\e665";
+.icon-pingtaifenxiang .path3:before {
+  content: "\e914";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
 }
-.icon-shouhuochenggong:before {
-  content: "\e666";
+.icon-pingtaifenxiang .path4:before {
+  content: "\e915";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
 }
-.icon-dengdaifahuo:before {
-  content: "\e673";
+.icon-qq:before {
+  content: "\e90f";
 }
-.icon-dengdaifukuan:before {
-  content: "\e674";
+.icon-copylink:before {
+  content: "\e910";
+}
+.icon-pengyouquan:before {
+  content: "\e911";
+}
+.icon-weibo:before {
+  content: "\e916";
+}
+.icon-wechat:before {
+  content: "\e917";
+}
+.icon-down3:before {
+  content: "\e900";
+}
+.icon-up3:before {
+  content: "\e901";
+}
+.icon-dengpao:before {
+  content: "\e902";
 }
 .icon-cart:before {
   content: "\e600";
@@ -303,6 +328,12 @@ display: inline-block;
 .icon-camerafill:before {
   content: "\e664";
 }
+.icon-daishouhuo:before {
+  content: "\e665";
+}
+.icon-shouhuochenggong:before {
+  content: "\e666";
+}
 .icon-yijianfankui1:before {
   content: "\e667";
 }
@@ -330,8 +361,20 @@ display: inline-block;
 .icon-shangchengxiaoxi:before {
   content: "\e66f";
 }
+.icon-zhaopiantuku:before {
+  content: "\e670";
+}
+.icon-xiangji:before {
+  content: "\e671";
+}
 .icon-right2:before {
   content: "\e672";
+}
+.icon-dengdaifahuo:before {
+  content: "\e673";
+}
+.icon-dengdaifukuan:before {
+  content: "\e674";
 }
 .icon-left2:before {
   content: "\e675";
@@ -363,6 +406,9 @@ display: inline-block;
 .icon-daohang:before {
   content: "\e67e";
 }
+.icon-jixubofang:before {
+  content: "\e67f";
+}
 .icon-chongxinbofang:before {
   content: "\e680";
 }
@@ -380,9 +426,6 @@ display: inline-block;
 }
 .icon-jiaofeihuiyuanbianji1:before {
   content: "\e685";
-}
-.icon-jixubofang:before {
-  content: "\e67f";
 }
 .icon-weixuanze:before {
   content: "\e686";
@@ -541,39 +584,38 @@ display: inline-block;
   content: "\e736";
 }
 .icon-mall:before {
-  content: "\e900";
-}
-.icon-mall-active:before {
-  content: "\e901";
-}
-.icon-video:before {
-  content: "\e902";
-}
-.icon-video-active:before {
   content: "\e903";
 }
-.icon-user:before {
+.icon-mall-active:before {
   content: "\e904";
 }
-.icon-user-active:before {
+.icon-video:before {
   content: "\e905";
 }
-.icon-find:before {
+.icon-video-active:before {
   content: "\e906";
 }
-.icon-find-active:before {
+.icon-user:before {
   content: "\e907";
 }
-.icon-ticket:before {
+.icon-user-active:before {
   content: "\e908";
 }
-.icon-bianji:before {
+.icon-find:before {
   content: "\e909";
 }
-.icon-bianji1:before {
+.icon-find-active:before {
   content: "\e90a";
 }
-.icon-ticket-active:before {
+.icon-ticket:before {
+  content: "\e90b";
+}
+.icon-bianji:before {
   content: "\e90c";
 }
-
+.icon-bianji1:before {
+  content: "\e90d";
+}
+.icon-ticket-active:before {
+  content: "\e90e";
+}
