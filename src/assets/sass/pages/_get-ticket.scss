@@ -1,0 +1,98 @@
+
+.getTicket {
+
+    top: 11rem;
+    height: auto;
+    bottom: 0;
+    //包裹div
+    .ticket-title {
+        //标题
+        font-size: 0.75rem;
+        background-color: #FFFFFF;
+        text-align: center;
+        width: 100%;
+        height: 3.05rem\n;
+        line-height: 3.05rem;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 10;
+    }
+    .list-block {
+        //列表内容
+        margin: 3.05rem 0 0;
+        padding: 0;
+        height: 75%;
+        overflow: auto;
+        .list-box {
+            border-top-color: #FFFFFF;
+            border-bottom-color: #FFFFFF;
+            padding-bottom: 1rem;
+            .item-content {
+                margin: 0 0.8rem 0 0.7rem;
+                padding: 0;
+                border: 0;
+                .item-inner {
+                    padding: 0.5rem 0.05rem 0.65rem 0.1rem;
+                    .item-title {
+                        .price {
+                            color: #FF8C24;
+                            line-height: 1.6rem;
+                            .rmb {
+                                font-size: 0.7rem;
+                            }
+                            .rmbNum {
+                                font-size: 0.8rem;
+                            }
+                            .qcai {
+                                color: #EC4619;
+                                font-size: 0.55rem;
+                            }
+                            .qcaiNum {
+                                color: #EC4619;
+                                font-size: 0.8rem;
+                            }
+                        }
+                        .mesg {
+                            line-height: 1.25rem;
+                            font-size: 0.65rem;
+                            color: #212121;
+                        }
+                        .effectTime {
+                            line-height: 0.7rem;
+                            font-size: 0.6rem;
+                            color: #212121;
+                            .words {
+                                color: #909090;
+                            }
+                        }
+                    }
+                    .item-after {
+                        width: 3.05rem;
+                        height: 1.55rem;
+                        border: 0.05rem #EC4619 solid;
+                        border-radius: 0.25rem;
+                        line-height: 1.4rem;
+                        text-align: center;
+                        color: #EC4619;
+                        font-size: 0.75rem;
+                        margin: 0;
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+    .closeButton {
+        width: 100%;
+        background-color: #FF8C24;
+        height: 2.25rem;
+        color: #FFFFFF;
+        line-height: 2.25rem;
+        text-align: center;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        top: auto;
+    }
+}

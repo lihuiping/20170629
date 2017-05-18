@@ -1,0 +1,101 @@
+{
+    "status": 1, 
+    "data": [
+        {
+            "id": "1", 
+            "user_id": "1", 
+            "goods_sn": "A00123", 
+            "goods_thumb": "uploads/cate/1484125473701.jpg", 
+            "sell_price": "180.00", 
+            "market_price": "360.00", 
+            "add_time": "1489979470", 
+            "is_pass": "0", 
+            "goods_name": "帽子", 
+            "username": "你好"
+        }, 
+        {
+            "id": "2", 
+            "user_id": "1", 
+            "goods_sn": "A00124", 
+            "goods_thumb": "uploads/cate/1484125473701.jpg", 
+            "sell_price": "120.00", 
+            "market_price": "270.00", 
+            "add_time": "1489821069", 
+            "is_pass": "1", 
+            "goods_name": "运动鞋", 
+            "username": "你好"
+        }, 
+        {
+            "id": "3", 
+            "user_id": "1", 
+            "goods_sn": "A00123", 
+            "goods_thumb": "uploads/cate/1484125473701.jpg", 
+            "sell_price": "180.00", 
+            "market_price": "360.00", 
+            "add_time": "1489979470", 
+            "is_pass": "1", 
+            "goods_name": "帽子", 
+            "username": "你好"
+        }, 
+        {
+            "id": "4", 
+            "user_id": "1", 
+            "goods_sn": "A00124", 
+            "goods_thumb": "uploads/cate/1484125473701.jpg", 
+            "sell_price": "120.00", 
+            "market_price": "270.00", 
+            "add_time": "1489821069", 
+            "is_pass": "1", 
+            "goods_name": "运动鞋", 
+            "username": "你好"
+        }, 
+        {
+            "id": "5", 
+            "user_id": "1", 
+            "goods_sn": "A00123", 
+            "goods_thumb": "uploads/cate/1484125473701.jpg", 
+            "sell_price": "180.00", 
+            "market_price": "360.00", 
+            "add_time": "1489979470", 
+            "is_pass": "2", 
+            "goods_name": "帽子", 
+            "username": "你好"
+        }, 
+        {
+            "id": "6", 
+            "user_id": "1", 
+            "goods_sn": "A00124", 
+            "goods_thumb": "uploads/cate/1484125473701.jpg", 
+            "sell_price": "120.00", 
+            "market_price": "270.00", 
+            "add_time": "1489821069", 
+            "is_pass": "1", 
+            "goods_name": "运动鞋", 
+            "username": "你好"
+        }, 
+        {
+            "id": "7", 
+            "user_id": "1", 
+            "goods_sn": "A00123", 
+            "goods_thumb": "uploads/cate/1484125473701.jpg", 
+            "sell_price": "180.00", 
+            "market_price": "360.00", 
+            "add_time": "1489979470", 
+            "is_pass": "2", 
+            "goods_name": "帽子", 
+            "username": "你好"
+        }, 
+        {
+            "id": "8", 
+            "user_id": "1", 
+            "goods_sn": "A00124", 
+            "goods_thumb": "uploads/cate/1484125473701.jpg", 
+            "sell_price": "120.00", 
+            "market_price": "270.00", 
+            "add_time": "1489821069", 
+            "is_pass": "1", 
+            "goods_name": "运动鞋", 
+            "username": "你好"
+        }
+    ]
+}

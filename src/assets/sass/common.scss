@@ -1,0 +1,35 @@
+﻿@charset "UTF-8";
+@import "base/reset";//reset样式文件
+@import "helpers/functions";//公共代码块
+@import "base/variable";//公共变量
+@import "media/media";//媒体查询
+@import "pages/paragraph"; //段落文字  
+@import "sprites/icons";//图标文件
+@import "icon-font/font";//字体图标样式
+@import "module/top";//顶部页面
+@import "module/form";//表单相关
+@import "pages/banner";//轮播图样式
+@import "pages/index";//首页
+@import "pages/login";//登录页面
+@import "pages/list-item";//列表类样式
+@import "pages/button";//按钮类样式
+@import "pages/table";//表格样式
+@import "pages/nav-bar";//底部导航样式
+@import "pages/user-center";//用户中心
+@import "pages/goods";//商品
+@import "pages/order";//订单
+@import "pages/confirm-order";//收货地址页面
+@import "pages/search";//搜索
+@import "pages/footer";//底部栏目相关
+@import "pages/goods-detail";//商品详情
+@import "pages/shopping-cart";//购物车
+@import "pages/l-base";//李慧萍公共部分
+@import "pages/get-ticket";//领券
+@import "pages/deliver-method";//配送地址
+@import "pages/my-address";//我的地址
+@import "pages/myOrder-table";//我的订单table
+@import "pages/order-details";//订单详情
+@import "pages/deliverDetail";//订单物流详情
+@import "pages/moneyBack";//申请退款 
+@import "pages/addComment";//发表评论
+//---------------------------------如加入新的样式文件，请写明注释-----------------------------//

@@ -1,0 +1,91 @@
+@charset "UTF-8";
+
+//根据dpr设置不同字体大小
+@mixin font-dpr($font-size) {
+    font-size: $font-size;
+    [data-dpr="2"] & {
+        font-size: $font-size * 2;
+    }
+    [data-dpr="3"] & {
+        font-size: $font-size * 3;
+    }
+}
+
+//超出两行隐藏
+%two-line {
+    display: -webkit-box;
+    display: box;
+    overflow: hidden;
+    // font-size: inherit;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    box-orient: vertical;
+    text-align: justify;
+}
+//超出一行隐藏
+%text-overflow {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+//清除浮动
+%clearfix{
+    // 清除浮动
+    &:after {
+        display: table;
+        clear: both;
+        content: '';
+    } 
+}
+
+.clearfix{
+    @extend %clearfix;
+}
+
+
+//修改input的placehoder的样式
+@mixin placehoder () {
+    &::-webkit-input-placeholder {
+        /* WebKit browsers */
+        @content;
+    }
+    &:-moz-placeholder {
+        /* Mozilla Firefox 4 to 18 */
+        @content;
+    }
+    &::-moz-placeholder {
+        /* Mozilla Firefox 19+ */
+        @content;
+    }
+    &:-ms-input-placeholder {
+        /* Internet Explorer 10+ */
+        @content;
+    }
+}
+
+.fn{
+    @at-root{
+        #{&}-tac{
+            text-align: center;
+        }
+        #{&}-pic{
+            display: block;
+            margin: 0.5rem auto;
+            width: 4.5rem;
+            height: 4.5rem;
+        }
+        #{&}-tyga{
+            font-size: 0.8rem;
+        }
+    }
+}
+.loading-img{
+    position: fixed;
+    top: calc(50% - 1.5rem / 2);
+    left: calc(50% - 1.5rem / 2);
+    z-index: 3000;
+    width: 1.5rem;
+    height: 1.5rem;
+}

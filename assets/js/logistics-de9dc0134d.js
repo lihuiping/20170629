@@ -1,0 +1,1 @@
+function getLogistics(e,n){var o={"content-type":"application/x-www-form-urlencoded"},i=new URLSearchParams;i.append("goods_id",e),i.append("goods_number",n),axios.post("http://v.zy7c.com/index.php?r=shipping&m=index",i,{headers:o}).then(function(e){1==res?$.closeModal(".popup-services"):layer.open({content:"网络错误,请重试",skin:"msg",time:2})})}getLogistics(1,2);

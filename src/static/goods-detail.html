@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    @@include('../tpl/header.tpl',{ "title":"商品详情页" })
+    <link rel="stylesheet" href="assets/css/swiper.min.css"/>
+</head>
+
+<body>
+<div id="goods-datail">
+    <div class="page page-current">
+        <div class="content native-scroll">
+            <div class="tabTop">
+
+                <!--商品详情页轮播图 start-->
+                <div class="swiper-container" id="goodsDetailBanner">
+                    <div class="swiper-wrapper" id="banner">
+                        <div class="swiper-slide" v-for="img in datail.imglist" v-cloak>
+                            <a href="#"><img :src="img.img">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+                <!--商品详情页轮播图 end-->
+
+                <!--商品名/七彩币 start-->
+                <div class="goodsInfo" id="detail">
+
+                    <div v-cloak>
+                        <div class="info-box">
+                            <div class="item-title-row">
+                                <div class="item-title">{{datail.goods_name}}</div>
+                            </div>
+                            <div class="item-subtitle">七彩币<em>{{datail.sell_price}}</em><span class="rmb">￥</span><span
+                                    class="rmbNumb">{{datail.market_price}}</span></div>
+                        </div>
+                    </div>
+                </div>
+                <!--商品名七彩币 end-->
+
+                <!--商品优惠券 start-->
+                <div class="list-block detail-style">
+                    <ul class="listStylesBox">
+                        <li class="listStyles">
+                            <a href="javascript:;" class="item-content  open-popup open-rule" data-popup=".popup-about"
+                               @click="showGoodRule()">
+                                <div class="item-title">选择样式</div>
+                                <!--金色&nbsp;&nbsp;S码-->
+                                <div class="item-size gd-size"></div>
+                                <i class="icon icon-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="list-block detail-coupons">
+                    <ul class="listStylesBox">
+                        <li class="listStyles bottomLine">
+                            <a href="javascript:;" class="item-content  open-popup open-shopticket"
+                               data-popup=".popup-shopticket">
+                                <div class="item-title">商店优惠券</div>
+                                <!--<span class="rmb">￥</span><span class="rmbNumb">136.00</span>-->
+                                <div class="item-num"></div>
+                                <i class="icon icon-right"></i>
+                            </a>
+                        </li>
+                        <li class="listStyles">
+                            <a href="javascript:;" class="item-content  open-popup open-stageticket"
+                               data-popup=".popup-stageticket">
+                                <div class="item-title">平台优惠券</div>
+                                <!--七彩币<em>136</em>-->
+                                <div class="item-nump"></div>
+                                <i class="icon icon-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!--商品优惠券 end-->
+
+                <!--商家模块 start-->
+                <div id="shop-info">
+                    <div class="card detail-users">
+                        <div class="list-block media-list">
+                            <ul class="userInfo" :shop_id="shop.id" v-cloak>
+                                <li>
+                                    <a href="javascript:;" class="item-content users-content">
+                                        <div class="item-media">
+                                            <img :src="shop.business_picture" width="60">
+                                        </div>
+                                        <div class="detail-tro">
+                                            <div class="item-title-row">
+                                                <div class="item-title">{{shop.business_name}}</div>
+                                            </div>
+                                            <div class="detail-inc">{{shop.business_describe}}</div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!--商家模块 end-->
+                <!--购买细节 start-->
+                <div class="detail-notice">
+                    <ul v-cloak>
+                        <li>
+                            <div class="noticeList ">
+                                <div class="item-title">
+                                    <div class="noticeTitle">
+                                        购买须知：
+                                    </div>
+                                    <div class="cont">{{shop.business_notes}}</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="noticeList listOne">
+                                <div class="item-title">
+                                    <div class="noticeTitle">
+                                        配送范围：
+                                    </div>
+                                    <div class="cont">{{shop.business_scope}}</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="noticeList listOne">
+                                <div class="item-title">
+                                    <div class="noticeTitle">
+                                        其他说明：
+                                    </div>
+                                    <div class="cont">{{shop.business_others}}</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="noticeList listOne">
+                                <div class="item-title">
+                                    <div class="noticeTitle">
+                                        联系方式：
+                                    </div>
+                                    <div class="cont">{{shop.business_tel}}</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="noticeList listOne">
+                                <div class="item-title">
+                                    <div class="noticeTitle">
+                                        商家客服：
+                                    </div>
+                                    <div class="cont"><span>{{shop.customer_mobile}}</span><span class="detail-tel">{{shop.customer_tel}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!--购买细节 end-->
+            </div>
+
+            <!--图文详情，商品参数，商品评价tab  start-->
+            <div class="fixed-wrap">
+                <div class="buttons-tab goodsDetail-tab fixed-tab">
+                    <a href="#picDetail" class="tab-link  button active">
+                        <div class="tabLine">
+                            <span>图文详情</span>
+                        </div>
+                    </a>
+                    <a href="#goodsData" class="tab-link button">
+                        <div class="tabLine">
+                            <span>商品参数</span>
+                        </div>
+                    </a>
+                    <a href="#goodsAppraise" class="tab-link button">
+                        <div class="tabLine">
+                            <span>商品评价</span>
+                        </div>
+                    </a>
+                </div>
+                <div id="tabs-container" class="content-block detail-tab swiper-container">
+                    <div class="tabs swiper-wrapper">
+                        <!--图文详情页-->
+                        <div id="picDetail" class="tab  swiper-slide">
+                            <div class="content-block" v-html="datail.content">
+                            </div>
+                        </div>
+                        <!--商品参数页-->
+                        <div id="goodsData" class="tab swiper-slide">
+                            <div class="detail-box">
+                                <ul v-cloak>
+
+                                    <li v-for="data in datail.goods_para">
+                                        <div class="noticeList listOne">
+                                            <div class="item-title">
+                                                <div class="noticeTitle">
+                                                    {{data.name}}
+                                                </div>
+                                                <div class="cont">{{data.value}}</div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--商品评价页 start-->
+                        <div id="goodsAppraise" class="tab swiper-slide">
+                            <div class="content-block">
+                                <div class="card appraiseCard" v-for="cment in Comment" v-cloak>
+                                    <div class="card-header">
+                                        <div class="userHeadBox">
+                                            <img :src="cment.user_photo"/>
+                                            <span class="userName">{{cment.user_name}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="card-content-inner">
+                                            <span class="time">{{cment.add_time}}</span>&nbsp;&nbsp;
+                                            <div v-for="cm in cment.goods_spec">
+                                                <span class="size">{{cm.name}}：</span>&nbsp;&nbsp;<span class="sizeNum">{{cm.value}}</span>&nbsp;&nbsp;
+                                                <!--<span class="color">颜色：</span>&nbsp;&nbsp;<span class="colorNum"></span>-->
+                                            </div>
+                                            <ul class="photoBox-wrap">
+                                                <li v-for="img in cment.picture" class="photoBox">
+                                                    <img :src="img"/>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer ">
+                                        <div class="appraiseCont">
+                                            {{cment.content}}
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--商品评价页 end-->
+                    </div>
+                </div>
+                <!--图文详情，商品参数，商品评价tab  end-->
+            </div>
+        </div>
+        <!--conyent结束-->
+
+    </div>
+
+    <!--商品详情页底部购买兑换 start-->
+    <div class="bar bar-tab detail-nav">
+        <a href="javascript:;" class="detail-navitem">
+            <i class="icon icon-dianpu"></i>
+            <p>进店</p>
+        </a>
+        <a href="javascript:;" class="detail-col" @click="clickKeep(keepId)">
+            <i class="icon icon-shoucang"></i>
+            <p>收藏</p>
+        </a>
+        <a href="javascript:;" class="detail-buy" @click="addShoping(1)">
+            <span>加入购物车</span>
+        </a>
+        <a href="javascript:;" class=" detail-change" @click="addShoping(0)">
+					<span>
+						立即兑换
+					</span>
+        </a>
+    </div>
+    <!--商品详情页底部购买兑换 end-->
+
+</div>
+<!--page结束-->
+<!--商店优惠券弹窗开始-->
+<div class="getTicket popup popup-shopticket">
+    <!--标题-->
+    <div class="ticket-title">{{shopCouponList.shopName}}</div>
+    <!--领券列表-->
+    <!--<div class="gd-noData">没有添加领劵,请去添加领劵!</div>-->
+    <div class="list-block">
+        <ul class="list-box gd-box">
+            <li class="item-content" v-for="shopItem in shopCouponList.data" v-cloak>
+                <div class="item-inner">
+                    <div class="item-title">
+                        <div class="price">
+                            <!--<span class="rmb">￥</span>-->
+                            <span class="rmbNum">{{shopItem.price | couponsMoney(shopItem.status)}}</span>
+                        </div>
+                        <div class="mesg">
+                            {{shopItem.title}}
+                        </div>
+                        <div class="effectTime">
+                            <span class="words">有效期至：</span>
+                            <span>{{shopItem.time}}</span>
+                        </div>
+                    </div>
+                    <div class="item-after" v-bind:id="shopItem.id" @click="receiveCoupons(shopItem.id)">
+                        {{shopItem.is_get | receiveStatus(shopItem.is_get)}}
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!--关闭按钮-->
+    <div class="closeButton close-popup">关闭</div>
+</div>
+<!--商店优惠券弹窗结束-->
+
+<!--平台优惠券弹窗开始-->
+<div class="getTicket popup popup-stageticket">
+    <!--标题-->
+    <div class="ticket-title">平台优惠券</div>
+    <!--领券列表-->
+    <div class="list-block">
+        <ul class="list-box">
+            <li class="item-content" v-for="item in platformCouponList.data" v-cloak>
+                <div class="item-inner">
+                    <div class="item-title">
+                        <div class="price">
+                            <!--<span class="qcai">七彩币</span>&nbsp;-->
+                            <span class="qcaiNum">{{item.price | couponsMoney(item.status)}}</span>
+                        </div>
+                        <div class="mesg">
+                            {{item.title}}
+                        </div>
+                        <div class="effectTime">
+                            <span class="words">有效期至：</span>
+                            <span>{{item.time}}</span>
+                        </div>
+                    </div>
+                    <div class="item-after" v-bind:id="item.id" @click="receiveCoupons(item.id)">{{item.is_get |
+                        receiveStatus1(item.is_get)}}
+                    </div>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+    <!--关闭按钮-->
+    <div class="closeButton close-popup">关闭</div>
+</div>
+<!--平台优惠券弹窗结束-->
+
+<!--尺寸弹窗开始-->
+<div class="popup popup-about" id="popup-rule">
+    <div class="coupon rule-coupon">
+    	 <div class="close-popup">
+        <i class="icon icon-guanbi" @click="finishClose()"></i>
+    	</div>
+        <div class="c-con" v-cloak>
+            <img :src="imgSrc">
+            <div class="rule-price">
+                <!-- |formatMoney(quantity) | formatQcb(quantity)-->
+                <span class="r-qicai c-ec4619">七彩币<em>{{parameterRule.sell_price}}</em></span>
+                <span class="r-rmb">￥<em>{{parameterRule.money}}</em></span>
+            </div>
+            <p class="r-kc">库存: <span>{{parameterRule.goods_number}}件</span></p>
+            <p class="r-rule">已选: <span class="ruleClass" v-for="item in parameterRule.attr"><b :class="item.attr_id"
+                                                                                                attrId=""
+                                                                                                :data-val="item.attr_name"></b></span><span>{{quantity}}个</span>
+            </p>
+        </div>
+        <div class="c-overflow" v-cloak>
+            <div class="c-mean" v-for="(item,index) in parameterRule.attr">
+                <p>{{item.attr_name}}</p>
+                <ul>
+                    <li v-for="sineRule in item.valuelist" :data_ID="sineRule.id" :data-pro="sineRule.attr_value_id"
+                        :data-pub="item.attr_id"
+                        @click="selectRule(sineRule.value,index,sineRule.attr_value_id,item.attr_id,sineRule.attribute_img,sineRule.id)">
+                        {{sineRule.value}}
+                    </li>
+                </ul>
+            </div>
+            <div class="c-mean c-number">
+                数量
+                <div class="input-number">
+                    <span @click="changeNum(parameterRule,-1)" :class="{disabled:quantity==1}"><i
+                            class="icon icon-jian"></i></span>
+                    <input type="text" value="1" min="0" max="10" disabled v-model="quantity"/>
+                    <span @click="changeNum(parameterRule,1)"
+                          :class="{disabled:quantity==parameterRule.goods_number}"><i class="icon icon-jia"></i></span>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+    <div class="gd-footer">
+        <input type='hidden' id='goods_id'><input type='hidden' value='1' id='goods_number'>
+        <span class="gd-shopCart" @click="selectFinish()">加入购物车</span>
+        <span class="gd-convert" @click="selectConvert()">立即兑换</span>
+    </div>
+</div>
+<!--尺寸弹窗结束-->
+<!--<script src="assets/js/localStorage.js"></script>-->
+<script type="text/javascript" src="lib/sui/js/sm.js"></script>
+<script src="lib/swiper/js/swiper.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="assets/js/fx.js"></script>
+<script src="assets/js/goods-detail.js" type="text/javascript" charset="utf-8"></script>
+</body>
+
+</html>

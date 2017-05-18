@@ -1,0 +1,264 @@
+/*
+Icon classes can be used entirely standalone. They are named after their original file names.
+
+Example usage in HTML:
+
+`display: block` sprite:
+<div class="icon-home"></div>
+
+To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
+
+// CSS
+.icon {
+  display: inline-block;
+}
+
+// HTML
+<i class="icon icon-home"></i>
+*/
+//.icons-address {
+//background-image: url(../images/sprite.png);
+//background-position: 0px -1087px;
+//width: 12px;
+//height: 16px;
+//}
+//.icons-arrow-b-input {
+//background-image: url(../images/sprite.png);
+//background-position: 0px -239px;
+//width: 19px;
+//height: 12px;
+//}
+//.icons-arrow-b {
+//background-image: url(../images/sprite.png);
+//background-position: 0px 0px;
+//width: 9px;
+//height: 7px;
+//}
+//.icons-arrow-r {
+//background-image: url(../images/sprite.png);
+//background-position: 0px -115px;
+//width: 14px;
+//height: 12px;
+//}
+//.icons-cancel {
+//background-image: url(../images/sprite.png);
+//background-position: 0px -823px;
+//width: 16px;
+//height: 16px;
+//}
+//.icons-cart {
+//background-image: url(../images/sprite.png);
+//background-position: 0px -955px;
+//width: 18px;
+//height: 16px;
+//}
+//.icons-ck {
+//background-image: url(../images/sprite.png);
+//background-position: 0px -496px;
+//width: 16px;
+//height: 15px;
+//}
+//.icons-code {
+//background-image: url(../images/sprite.png);
+//background-position: 0px -1848px;
+//width: 21px;
+//height: 21px;
+//}
+//.icons-date {
+//background-image: url(../images/sprite.png);
+//background-position: 0px -2061px;
+//width: 26px;
+//height: 26px;
+//}
+//.icons-del {
+//background-image: url(../images/sprite.png);
+//background-position: 0px -1495px;
+//width: 19px;
+//height: 19px;
+//}
+//.icons-goods {
+//background-image: url(../images/sprite.png);
+//background-position: 0px -1021px;
+//width: 16px;
+//height: 16px;
+//}
+//.icons-item {
+//background-image: url(../images/sprite.png);
+//background-position: 0px -57px;
+//width: 6px;
+//height: 8px;
+//}
+//.icons-list-icon {
+//background-image: url(../images/sprite.png);
+//background-position: 0px -2137px;
+//width: 30px;
+//height: 30px;
+//}
+//.icons-list-icons {
+//background-image: url(../images/sprite.png);
+//background-position: 0px -177px;
+//width: 12px;
+//height: 12px;
+//}
+//.icons-logo-more {
+//background-image: url(../images/sprite.png);
+//background-position: 0px -3130px;
+//width: 103px;
+//height: 101px;
+//}
+//.icons-order {
+//background-image: url(../images/sprite.png);
+//background-position: 0px -2463px;
+//width: 73px;
+//height: 73px;
+//}
+//.icons-person {
+//background-image: url(../images/sprite.png);
+//background-position: 0px -1357px;
+//width: 19px;
+//height: 19px;
+//}
+//.icons-phone {
+//background-image: url(../images/sprite.png);
+//background-position: 0px -1706px;
+//width: 21px;
+//height: 21px;
+//}
+//.icons-pwd {
+//background-image: url(../images/sprite.png);
+//background-position: 0px -1777px;
+//width: 21px;
+//height: 21px;
+//}
+//.icons-safety {
+//background-image: url(../images/sprite.png);
+//background-position: 0px -2340px;
+//width: 73px;
+//height: 73px;
+//}
+//.icons-shop {
+//background-image: url(../images/sprite.png);
+//background-position: 0px -691px;
+//width: 16px;
+//height: 16px;
+//}
+//.icons-size {
+//background-image: url(../images/sprite.png);
+//background-position: 0px -1219px;
+//width: 19px;
+//height: 19px;
+//}
+//.icons-star-gold {
+//background-image: url(../images/sprite.png);
+//background-position: 0px -2994px;
+//width: 93px;
+//height: 86px;
+//}
+//.icons-star-super {
+//background-image: url(../images/sprite.png);
+//background-position: 0px -2858px;
+//width: 93px;
+//height: 86px;
+//}
+//.icons-star1 {
+//background-image: url(../images/sprite.png);
+//background-position: 0px -2722px;
+//width: 93px;
+//height: 86px;
+//}
+//.icons-star2 {
+//background-image: url(../images/sprite.png);
+//background-position: 0px -2586px;
+//width: 93px;
+//height: 86px;
+//}
+//.icons-tableware {
+//background-image: url(../images/sprite.png);
+//background-position: 0px -1288px;
+//width: 19px;
+//height: 19px;
+//}
+//.icons-tel {
+//background-image: url(../images/sprite.png);
+//background-position: 0px -626px;
+//width: 11px;
+//height: 15px;
+//}
+//.icons-time-line {
+//background-image: url(../images/sprite.png);
+//background-position: 0px -1426px;
+//width: 19px;
+//height: 19px;
+//}
+//.icons-time {
+//background-image: url(../images/sprite.png);
+//background-position: 0px -561px;
+//width: 15px;
+//height: 15px;
+//}
+//.icons-user-center {
+//background-image: url(../images/sprite.png);
+//background-position: 0px -2217px;
+//width: 73px;
+//height: 73px;
+//}
+//.icons-user {
+//background-image: url(../images/sprite.png);
+//background-position: 0px -889px;
+//width: 16px;
+//height: 16px;
+//}
+//.icons-v2 {
+//background-image: url(../images/sprite.png);
+//background-position: 0px -431px;
+//width: 23px;
+//height: 15px;
+//}
+//.icons-v3 {
+//background-image: url(../images/sprite.png);
+//background-position: 0px -301px;
+//width: 23px;
+//height: 15px;
+//}
+//.icons-v4 {
+//background-image: url(../images/sprite.png);
+//background-position: 0px -366px;
+//width: 23px;
+//height: 15px;
+//}
+//.icons-vip1 {
+//background-image: url(../images/sprite.png);
+//background-position: 0px -1919px;
+//width: 119px;
+//height: 21px;
+//}
+//.icons-vip2 {
+//background-image: url(../images/sprite.png);
+//background-position: 0px -1635px;
+//width: 119px;
+//height: 21px;
+//}
+//.icons-vip3 {
+//background-image: url(../images/sprite.png);
+//background-position: 0px -1564px;
+//width: 119px;
+//height: 21px;
+//}
+//.icons-vip4 {
+//background-image: url(../images/sprite.png);
+//background-position: 0px -1990px;
+//width: 119px;
+//height: 21px;
+//}
+//.icons-weibo {
+//background-image: url(../images/sprite.png);
+//background-position: 0px -757px;
+//width: 16px;
+//height: 16px;
+//}
+//.icons-wx {
+//background-image: url(../images/sprite.png);
+//background-position: 0px -1153px;
+//width: 16px;
+//height: 16px;
+//}

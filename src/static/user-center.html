@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    @@include('../tpl/header.tpl',{ "title":"首页" })
+    <link rel="stylesheet" href="assets/css/swiper.min.css"/>
+</head>
+
+<body>
+@@include('../tpl/footer.tpl')
+<div class="page-group">
+    <div class="page">
+        <!--从这里开始写代码-->
+        <!-- @@include('../tpl/topmenu.tpl') -->
+        <div class="content">
+            <p>test</p>
+        </div>
+    </div>
+</div>
+<script src="lib/swiper/js/swiper.min.js"></script>
+<script src="assets/js/index.js"></script>
+<script>
+    $(document).on("pageInit", '#page-1489658733994', function (e, pageId, $page) {
+        $.router.loadPage({
+            url: "/detail",
+            noAnimation: true,
+            replace: true
+        });
+    });
+</script>
+</body>
+
+</html>

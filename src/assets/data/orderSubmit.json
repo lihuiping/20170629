@@ -1,0 +1,361 @@
+{
+	"res": 1,
+	"msg": "OK",
+	"data": {
+		"able": [
+			{
+				"shopid": "11",
+				"shop_name": "德运食品旗舰店",
+				"cartlist": {
+					"price": 1822,
+					"num": 31,
+					"list": [
+						 {
+							"id": "19",
+							"goods_id": "1",
+							"add_time": "1490842381",
+							"price": 365,
+							"number": "1",
+							"attr": "1,2",
+							"shopid": "11",
+							"goods_name": "澳洲进口学生冲饮牛奶粉澳洲进口德运全脂高钙青少年成人牛奶冲饮粉1kg新鲜",
+							"market_price": "360",
+							"shop_name": "德运食品旗舰店",
+							"goods_thumb": "../assets/images/goods2.jpg",
+							"goods_sn": "A00123",
+							"status": "0",
+							"sell_price": "1",
+							"attr_list": [
+								{
+									"add_price": "3.00",
+									"attribute_img": "uploads\/lunbo\/1490167971245.jpg",
+									"attr_name": "尺寸",
+									"value": "30寸"
+								}, {
+									"add_price": "2.00",
+									"attribute_img": null,
+									"attr_name": "材质",
+									"value": "铁质"
+								}
+							],
+							"all_attr": [
+								{
+									"attr_name": "尺寸",
+									"attr_id": "1",
+									"valuelist": [
+										{
+											"attr_value_id": "1",
+											"value": "30寸",
+											"id": "1",
+											"attribute_img": "uploads\/lunbo\/1490167971245.jpg",
+											"add_price": "3.00",
+											"select": 0
+										}, {
+											"attr_value_id": "2",
+											"value": "33寸",
+											"id": "6",
+											"attribute_img": null,
+											"add_price": "0.00",
+											"select": 0
+										}
+									]
+								}, {
+									"attr_name": "材质",
+									"attr_id": "11",
+									"valuelist": [
+										{
+											"attr_value_id": "4",
+											"value": "铁质",
+											"id": "2",
+											"attribute_img": null,
+											"add_price": "2.00",
+											"select": 0
+										}
+									]
+								}, {
+									"attr_name": "颜色",
+									"attr_id": "17",
+									"valuelist": [
+										{
+											"attr_value_id": "8",
+											"value": "黑色",
+											"id": "3",
+											"attribute_img": "uploads\/lunbo\/1490167971245.jpg",
+											"add_price": "2.00",
+											"select": 0
+										}, {
+											"attr_value_id": "9",
+											"value": "蓝色",
+											"id": "7",
+											"attribute_img": "uploads\/lunbo\/1490167971245.jpg",
+											"add_price": "6.00",
+											"select": 0
+										}
+									]
+								}
+							],
+							"attrstr": "尺寸:30寸 材质:铁质 "
+						}, {
+							"id": "14",
+							"goods_id": "1",
+							"add_time": "1490836859",
+							"price": 365,
+							"number": "1",
+							"attr": "1,2",
+							"shopid": "11",
+							"goods_name": "澳洲进口学生冲饮牛奶粉澳洲进口德运全脂高钙青少年成人牛奶冲饮粉1kg新鲜",
+							"market_price": "360",
+							"shop_name": "德运食品旗舰店",
+							"goods_thumb": "../assets/images/goods3.jpg",
+							"goods_sn": "A00123",
+							"status": "0",
+							"sell_price": "1",
+							"attr_list": [
+								{
+									"add_price": "3.00",
+									"attribute_img": "uploads\/lunbo\/1490167971245.jpg",
+									"attr_name": "尺寸",
+									"value": "30寸"
+								}, {
+									"add_price": "2.00",
+									"attribute_img": null,
+									"attr_name": "材质",
+									"value": "铁质"
+								}
+							],
+							"all_attr": [
+								{
+									"attr_name": "尺寸",
+									"attr_id": "1",
+									"valuelist": [
+										{
+											"attr_value_id": "1",
+											"value": "30寸",
+											"id": "1",
+											"attribute_img": "uploads\/lunbo\/1490167971245.jpg",
+											"add_price": "3.00",
+											"select": 0
+										}, {
+											"attr_value_id": "2",
+											"value": "33寸",
+											"id": "6",
+											"attribute_img": null,
+											"add_price": "0.00",
+											"select": 0
+										}
+									]
+								}, {
+									"attr_name": "材质",
+									"attr_id": "11",
+									"valuelist": [
+										{
+											"attr_value_id": "4",
+											"value": "铁质",
+											"id": "2",
+											"attribute_img": null,
+											"add_price": "2.00",
+											"select": 0
+										}
+									]
+								}, {
+									"attr_name": "颜色",
+									"attr_id": "17",
+									"valuelist": [
+										{
+											"attr_value_id": "8",
+											"value": "黑色",
+											"id": "3",
+											"attribute_img": "uploads\/lunbo\/1490167971245.jpg",
+											"add_price": "2.00",
+											"select": 0
+										}, {
+											"attr_value_id": "9",
+											"value": "蓝色",
+											"id": "7",
+											"attribute_img": "uploads\/lunbo\/1490167971245.jpg",
+											"add_price": "6.00",
+											"select": 0
+										}
+									]
+								}
+							],
+							"attrstr": "尺寸:30寸 材质:铁质 "
+						}
+					]
+				}
+			}, {
+				"shopid": "13",
+				"shop_name": "英国皇家邮政海外旗舰店",
+				"cartlist": {
+					"price": 1140455,
+					"num": 59,
+					"list": [
+						{
+							"id": "25",
+							"goods_id": "3",
+							"add_time": "1490943245",
+							"price": 20,
+							"number": "1",
+							"attr": "9,12",
+							"shopid": "13",
+							"goods_name": "玛丽莲梦露银钢笔HERO\/英雄钢笔正品359学生用练字书法正姿铱金钢笔",
+							"market_price": "20000",
+							"shop_name": "英国皇家邮政海外旗舰店",
+							"goods_thumb": "../assets/images/goods4.jpg",
+							"goods_sn": "A00123",
+							"status": "0",
+							"sell_price": "1",
+							"attr_list": [
+								{
+									"add_price": "5.00",
+									"attribute_img": "uploads\/lunbo\/1490167971245.jpg",
+									"attr_name": "尺寸",
+									"value": "30寸"
+								}, {
+									"add_price": "3.00",
+									"attribute_img": "uploads\/lunbo\/1490167971245.jpg",
+									"attr_name": "材质",
+									"value": "铝合金"
+								}
+							],
+							"all_attr": [
+								{
+									"attr_name": "尺寸",
+									"attr_id": "1",
+									"valuelist": [
+										{
+											"attr_value_id": "1",
+											"value": "30寸",
+											"id": "9",
+											"attribute_img": "uploads\/lunbo\/1490167971245.jpg",
+											"add_price": "5.00",
+											"select": 0
+										}, {
+											"attr_value_id": "2",
+											"value": "33寸",
+											"id": "10",
+											"attribute_img": "uploads\/lunbo\/1490167971245.jpg",
+											"add_price": "3.00",
+											"select": 0
+										}
+									]
+								}, {
+									"attr_name": "材质",
+									"attr_id": "11",
+									"valuelist": [
+										{
+											"attr_value_id": "4",
+											"value": "铁质",
+											"id": "11",
+											"attribute_img": "uploads\/lunbo\/1490167971245.jpg",
+											"add_price": "2.00",
+											"select": 0
+										}, {
+											"attr_value_id": "5",
+											"value": "铝合金",
+											"id": "12",
+											"attribute_img": "uploads\/lunbo\/1490167971245.jpg",
+											"add_price": "3.00",
+											"select": 0
+										}
+									]
+								}
+							],
+							"attrstr": "尺寸:30寸 材质:铝合金 "
+						}, {
+							"id": "24",
+							"goods_id": "3",
+							"add_time": "1490854148",
+							"price": 50,
+							"number": "1",
+							"attr": "9,11",
+							"shopid": "13",
+							"goods_name": "玛丽莲梦露银钢笔HERO\/英雄钢笔正品359学生用练字书法正姿铱金钢笔",
+							"market_price": "20000",
+							"shop_name": "英国皇家邮政海外旗舰店",
+							"goods_thumb": "../assets/images/goods5.jpg",
+							"goods_sn": "A00123",
+							"status": "0",
+							"sell_price": "1",
+							"attr_list": [
+								{
+									"add_price": "5.00",
+									"attribute_img": "uploads\/lunbo\/1490167971245.jpg",
+									"attr_name": "尺寸",
+									"value": "30寸"
+								}, {
+									"add_price": "2.00",
+									"attribute_img": "uploads\/lunbo\/1490167971245.jpg",
+									"attr_name": "材质",
+									"value": "铁质"
+								}
+							],
+							"all_attr": [
+								{
+									"attr_name": "尺寸",
+									"attr_id": "1",
+									"valuelist": [
+										{
+											"attr_value_id": "1",
+											"value": "30寸",
+											"id": "9",
+											"attribute_img": "uploads\/lunbo\/1490167971245.jpg",
+											"add_price": "5.00",
+											"select": 0
+										}, {
+											"attr_value_id": "2",
+											"value": "33寸",
+											"id": "10",
+											"attribute_img": "uploads\/lunbo\/1490167971245.jpg",
+											"add_price": "3.00",
+											"select": 0
+										}
+									]
+								}, {
+									"attr_name": "材质",
+									"attr_id": "11",
+									"valuelist": [
+										{
+											"attr_value_id": "4",
+											"value": "铁质",
+											"id": "11",
+											"attribute_img": "uploads\/lunbo\/1490167971245.jpg",
+											"add_price": "2.00",
+											"select": 0
+										}, {
+											"attr_value_id": "5",
+											"value": "铝合金",
+											"id": "12",
+											"attribute_img": "uploads\/lunbo\/1490167971245.jpg",
+											"add_price": "3.00",
+											"select": 0
+										}
+									]
+								}
+							],
+							"attrstr": "尺寸:30寸 材质:铁质 "
+						}
+					]
+				}
+			}
+		],
+		"disabled": [
+			{
+				"id": "22",
+				"goods_id": "2",
+				"add_time": "1490853763",
+				"price": "81.00",
+				"number": "1",
+				"attr": "4,8",
+				"shopid": "12",
+				"goods_name": "抗风自动雨伞男士雨伞天堂伞33323E银胶纯色晴雨伞双人伞三折叠太阳伞 ",
+				"market_price": "80",
+				"shop_name": "天堂伞业旗舰店",
+				"goods_thumb": "../assets/images/goods1.jpg",
+				"goods_sn": "A00124",
+				"status": "1",
+				"sell_price": "1"
+			}
+		]
+	}
+}

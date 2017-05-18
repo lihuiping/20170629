@@ -1,0 +1,31 @@
+@charset "UTF-8";
+$bdc: #eee;
+$pub-bd: 1px solid $bdc;
+$pink: #e53d7d;
+
+%text-ellipsis {
+    // 文本一行隐藏
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.text-overflow {
+    @extend %text-ellipsis;
+}
+
+%pd-lr {
+    padding: 0 0.133333rem;
+}
+
+@mixin multi-row($line) {
+    //设置文本多行超出隐藏
+    display: -webkit-box;
+    display: box;
+    overflow: hidden;
+    // font-size: inherit;
+    -webkit-line-clamp: $line;
+    line-clamp: $line;
+    -webkit-box-orient: vertical;
+    box-orient: vertical;
+    text-align: justify;
+}

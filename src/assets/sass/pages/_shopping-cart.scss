@@ -1,0 +1,38 @@
+@charset "UTF-8";
+.card-shopping-cart{
+    box-shadow: none;
+}
+.card-header{
+    @extend %clearfix;
+}
+.padding-btn{
+    padding-bottom: 2.25rem;
+}
+label.label-checkbox input[type=checkbox]:checked+.item-media i.icon-form-checkbox, label.label-checkbox input[type=radio]:checked+.item-media i.icon-form-checkbox {
+    background-color: #ff8c24;
+    border: none;
+}
+.rule-price{
+    font-style: normal;
+    .r-qicai{
+        font-size: 0.55rem;//11px
+        em{
+            font-size: 0.8rem;
+            margin-left: 0.1rem;
+        }
+    }
+    .r-rmb{
+        font-size: 0.7rem;
+        color: #ff8c24;
+        em{
+            font-size: 0.8rem;
+        }
+    }
+}
+
+.rule-coupon{
+    b{
+//      float: left;
+        font-weight: normal;
+    }
+}

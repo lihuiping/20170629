@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    @@include('../tpl/header.tpl',{ "title":"发表评论" })
+</head>
+
+<body>
+<div class="page page-current">
+    <div class="content">
+        <form id="comment" enctype="multipart/form-data" name="fileForm">
+            <!--商品信息 start-->
+            <div class="appraiseGoods">
+                <div class="goodsBox">
+                    <img :src="goods.goods_image"/>
+                </div>
+                <div class="goodsDetail">
+                    <div class="goodsName">{{goods.goods_name}}</div>
+                    <div class="goodsIntroduce">{{goods.goods_description}}</div>
+                    <div class="goodsSize" v-html="goods.goods_spec"></div>
+                </div>
+            </div>
+            <!--商品信息 end-->
+            <!--输入评价区域 start-->
+            <div class="commentBox">
+                <textarea class="comment" name="content" placeholder="商品满意么？来分享您的使用感受！"></textarea>
+            </div>
+            <!--输入评价区域 end-->
+            <!--上传照片区域 start-->
+            <div class="upPhotoBox">
+                <div class="upPhoto-title">
+                    上传照片
+                </div>
+                <div class="upPhoto-box">
+                    <ul>
+                        <li class="imgBox" v-for="(item,index) in imgSrc">
+                            <img :src="item"/>
+                            <div class="delete">
+                                <i @click="remove(index)" class="icon icon-roundclosefill"></i>
+                            </div>
+                        </li>
+                    </ul>
+                    <label v-if="imgSrc.length < 3">
+                        <div class="photoFrame">
+                            <i class="icon icon-xiangji"></i>
+                        </div>
+                        <input v-show="false" accept="image/*" type="file" @change="changeImg"/>
+                    </label>
+                    <div class="maxNum">
+                        {{imgNum}}
+                    </div>
+                    <input type="hidden" name="imgsrc[0]" id="1" :value="imgSrc[0]"/>
+                    <input v-if="imgSrc.length > 1" type="hidden" name="imgsrc[1]" id="2" :value="imgSrc[1]"/>
+                    <input v-if="imgSrc.length > 2" type="hidden" name="imgsrc[2]" id="3" :value="imgSrc[2]"/>
+                    <input type="hidden" name="goods_id" id="goods_id" :value="goods.goods_id"/>
+                    <input type="hidden" name="order_goods" id="order_goods" :value="goods.id"/>
+                    <input type="hidden" name="token" id="token"/>
+                </div>
+            </div>
+            <!--上传照片区域 end-->
+
+            <!--发表按钮 start-->
+            <div id="commentBtn" class="commentBtn" @click="sub">
+                发表
+            </div>
+            <!--发表按钮 end-->
+        </form>
+    </div>
+</div>
+<script src="assets/js/addComment.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/jquery.form.js" type="text/javascript" charset="utf-8"></script>
+</body>
+
+</html>

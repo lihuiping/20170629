@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    @@include('../tpl/header.tpl',{ "title":"申请退款" })
+</head>
+
+<body>
+<div class="page page-current">
+    <div class="content backMoney">
+        <form id="moneyBack" enctype="multipart/form-data" name="fileForm">
+            <div class="mbTop"></div>
+            <!--退款原因 start-->
+            <div class="mbTitle">退款原因<span>*</span></div>
+
+            <div class="mbList list-block media-list">
+                <ul>
+                    <li>
+                        <label class="mbLabel label-checkbox item-content">
+                            <input type="radio" name="refund_reason" value="1">
+                            <div class="mbMedia item-media"><i class="icon icon-form-checkbox"></i></div>
+                            <div class="mbInner item-inner">
+                                不喜欢\不想要
+                            </div>
+                        </label>
+                    </li>
+                    <li>
+                        <label class="mbLabel label-checkbox item-content">
+                            <input type="radio" name="refund_reason" value="2">
+                            <div class="mbMedia item-media"><i class="icon icon-form-checkbox"></i></div>
+                            <div class="mbInner item-inner">
+                                未按约定时间发货
+                            </div>
+                        </label>
+                    </li>
+                    <li>
+                        <label class="mbLabel label-checkbox item-content">
+                            <input type="radio" name="refund_reason" value="3">
+                            <div class="mbMedia item-media"><i class="icon icon-form-checkbox"></i></div>
+                            <div class="mbInner item-inner">
+                                快递物流一直没有发货
+                            </div>
+                        </label>
+                    </li>
+                    <li v-if="status == 30">
+                        <label class="mbLabel label-checkbox item-content">
+                            <input type="radio" name="refund_reason" value="4">
+                            <div class="mbMedia item-media"><i class="icon icon-form-checkbox"></i></div>
+                            <div class="mbInner item-inner">
+                                商品质量有问题
+                            </div>
+                        </label>
+                    </li>
+                    <li v-if="status == 30">
+                        <label class="mbLabel label-checkbox item-content">
+                            <input type="radio" name="refund_reason" value="5">
+                            <div class="mbMedia item-media"><i class="icon icon-form-checkbox"></i></div>
+                            <div class="mbInner item-inner">
+                                商品与描述不符
+                            </div>
+                        </label>
+                    </li>
+                    <li v-if="status == 30">
+                        <label class="mbLabel label-checkbox item-content">
+                            <input type="radio" name="refund_reason" value="6">
+                            <div class="mbMedia item-media"><i class="icon icon-form-checkbox"></i></div>
+                            <div class="mbInner item-inner">
+                                卖家发错货
+                            </div>
+                        </label>
+                    </li>
+                    <li v-if="status == 30">
+                        <label class="mbLabel label-checkbox item-content">
+                            <input type="radio" name="refund_reason" value="7">
+                            <div class="mbMedia item-media"><i class="icon icon-form-checkbox"></i></div>
+                            <div class="mbInner item-inner">
+                                包装\商品破损\污渍
+                            </div>
+                        </label>
+                    </li>
+                </ul>
+            </div>
+            <!--退款原因 end-->
+
+            <!--退款类型 start-->
+            <div class="Type" v-if="status == 30">
+                <div class="mbTitle">退款类型<span>*</span></div>
+
+                <div class="mbList list-block media-list">
+                    <ul>
+                        <li>
+                            <label class="mbLabel label-checkbox item-content">
+                                <input type="radio" name="refund_type" value="1">
+                                <div class="mbMedia item-media"><i class="icon icon-form-checkbox"></i></div>
+                                <div class="mbInner item-inner">
+                                    我要退款，不退货
+
+                                </div>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="mbLabel label-checkbox item-content">
+                                <input type="radio" name="refund_type" value="2">
+                                <div class="mbMedia item-media"><i class="icon icon-form-checkbox"></i></div>
+                                <div class="mbInner item-inner">
+                                    我要退货
+
+                                </div>
+                            </label>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+            <!--退款类型 end-->
+
+            <!--退款金额 start-->
+            <div class="mbTitle">退款金额<span>*</span></div>
+            <div class="backMoney-box">
+                <input name="refund_amount" class="backMoney" placeholder="请输入退款金额"></input>
+            </div>
+
+            <!--退款金额 end-->
+
+            <!--退款说明 start-->
+            <div class="mbTitle">退款说明</div>
+            <div class="backExplain-box">
+                <textarea name="refund_explain" class="backExplain" placeholder="请输入退款说明"></textarea>
+            </div>
+
+            <!--退款说明 end-->
+
+            <!--上传照片 start-->
+            <div class="mbTitle">上传照片</div>
+            <div class="uploadPhoto-box">
+                <div class="uploadPhoto">
+                    <ul>
+                        <li class="imgBox" v-for="(item,index) in imgSrc">
+                            <img :src="item"/>
+                            <div class="delete">
+                                <i @click="remove(index)" class="icon icon-roundclosefill"></i>
+                            </div>
+                        </li>
+                    </ul>
+                    <label for="upload" v-if="imgSrc.length < 3">
+                        <div class="photos">
+                            <i class="icon icon-xiangji"></i>
+                        </div>
+                        <input v-show="false" type="file" accept="image/*" id="upload" @change="changeImg"/>
+                    </label>
+                    <div class="mostNum">
+                        {{imgNum}}
+                    </div>
+                    <input type="hidden" name="imgsrc[0]" id="1" :value="imgSrc[0]"/>
+                    <input v-if="imgSrc.length > 1" type="hidden" name="imgsrc[1]" id="2" :value="imgSrc[1]"/>
+                    <input v-if="imgSrc.length > 2" type="hidden" name="imgsrc[2]" id="3" :value="imgSrc[2]"/>
+                    <input type="hidden" name="order_goods" id="order_goods"/>
+                </div>
+            </div>
+            <!--上传照片 end-->
+
+            <!--退款按钮 start-->
+            <button type="button" id="backMoney-btn" class="backMoney-btn" @click='sub'>
+                退款
+            </button>
+            <!--退款按钮 end-->
+        </form>
+    </div>
+</div>
+<script src="assets/js/moneyBack.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/jquery.form.js" type="text/javascript" charset="utf-8"></script>
+</body>
+
+</html>

@@ -1,0 +1,200 @@
+/*Lking--搜索页面样式*/
+@charset "UTF-8";
+
+/*搜索框样式*/
+.search-fm {
+    height: 2.5rem;
+    padding: 0.5rem;
+    width: 100%;
+    position: relative;
+    background-color: white;
+    border-bottom: 1px solid #d9d9d9;
+    /*搜索图标*/
+    #searchIcon {
+        color: #ba927e;
+        position: absolute;
+        top: 1rem;
+        left: 1.1rem;
+        z-index: 999;
+    }
+    /*搜索框样式*/
+    input {
+        display: inline-block;
+        width: 88%;
+        height: 1.5rem;
+        line-height: 1.5rem;
+        border-radius: 0.75rem;
+        border: 1px solid #BA927E;
+        background: white;
+        text-indent: 1.9rem;
+        font-size: 0.75rem;
+        position: relative;
+        color: #828282;
+        -webkit-appearance: none;
+    }
+    input::-webkit-input-placeholder {
+        color: #828282;
+        font-size: 0.75rem;
+    }
+    input:-moz-placeholder {
+        color: #828282;
+        font-size: 0.75rem;
+    }
+
+    /*搜索框删除按钮*/
+    #searchDel {
+        position: absolute;
+        color: #d9d9d9;
+        top: 0.85rem;
+        font-size: 0.9rem;
+        left: 78%;
+        display: none;
+    }
+    /*搜索框取消按钮*/
+    #search-cancel {
+        position: absolute;
+        top: 0.8rem;
+        right: 0.5rem;
+        font-size: 0.75rem;
+        color: #828282;
+    }
+}
+/*没有找到商品 */
+.search-none {
+    width: 100%;
+    text-align: center;
+    position: static;
+    height: 100%;
+    display: none;
+    background-color: #f5f5f5;
+    img {
+        width: 4.6rem;
+        height: 4.6rem;
+        font-size: 5rem;
+        opacity: 0.2;
+        margin-top: 7.4rem;
+    }
+    p {
+        font-size: 0.8rem;
+        margin-top: 1rem;
+        color: #a1a1a1;
+    }
+}
+/* 暂无搜索历史 */
+.search-anys {
+    @extend .search-none;
+}
+
+/*输入显示下拉菜单*/
+.search-list {
+    padding: 0 0.5rem;
+    background-color: white;
+    a {
+        display: block;
+        overflow: hidden;
+        line-height: 1.95rem;
+           word-wrap:break-word; 
+           word-break:normal;
+        &:first-child {
+            border-top: 0;
+        }
+        border-top: 1px solid #d9d9d9;
+        font-size: 0.75rem;
+        width: 100%;
+    }
+}
+/* 最近搜索 */
+.search-record {
+    background: #fff;
+    width: 100%;
+    @extend %clearfix;
+    
+    .recordnav {
+        @extend .search-list;
+        
+    }
+    h5 {
+        display: inline-block;
+        font-weight: normal;
+        float: left;
+        color: #383838;
+        font-size: 0.75rem;
+        text-align: center;
+        line-height: 1.95rem;
+        margin-top: 0.25rem;
+    }
+    .clear-record {
+        display: inline-block;
+        float: right;
+        color: #ff8c24;
+        text-align: center;
+        line-height: 1.95rem;
+        font-size: 0.65rem;
+        margin-top: 0.25rem;
+    }
+    /* 搜索输入下拉列表  */
+    ul {
+        clear: both;
+        font-size: 0.7rem;
+        padding: 0 0.5rem;
+        a {
+            display: block;
+            font-size: 0.75rem;
+            border-top: 1px solid #d9d9d9;
+            line-height: 1.95rem;
+            color: #383838;
+            overflow: hidden;
+        }
+    }
+}
+
+/*弹出询问框样式*/
+
+.layui-m-anim-scale {
+    &.searchAera {
+        width: 72%!important;
+        height: 4.25rem;
+        border-radius: 0.5rem 0.5rem 0 0;
+        font-size: 0.8rem;
+    }
+}
+.layui-m-layercont {
+    &.searchConfirm {
+        height: 4.25rem;
+        padding: 0;
+        line-height: 4.25rem;
+        text-align: center;
+    }
+}
+%pub {
+    font-size: 0.8rem;
+}
+.layui-m-layerbtn {
+    &.searchTop {
+        height: 2.4rem;
+        line-height: 2.4rem;
+        border-top: 1px solid #d2d2d2;
+        //  border-radius: .5rem .5rem;
+        background-color: #fff;
+        border-radius: 0 0 .5rem .5rem;
+    }
+
+    .searchCancel {
+        border-right: 1px solid #d2d2d2;
+        color: #7b7b7b;
+        @extend %pub;
+    }
+
+    span[yes]{
+        &.ok {
+
+       
+            @extend %pub;
+            color: #ec4619;
+        
+    }
+    }
+    
+    
+
+}
