@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		@@include('../tpl/header.tpl',{ "title":"帮助" })
+	</head>
+
+	<body>
+		<div class="page goodPage page-current">
+
+			<div class="content" id="help">
+				<!--折叠床效果-->
+				<div class="help accordion">
+					<div class="help-main list-block ">
+						<ul>
+							<li class="help-list item-content item-link">
+								<div class="item-inner help-item">
+									<div class="item-title">1.怎样查询订单是否取消成功？</div>
+									<span class="item-after"><i class="icon icon-down3"></i></span>
+								</div>
+
+							</li>
+						</ul>
+					</div>
+					<div class="card help-detail">
+						<div class="card-content">
+							<div class="card-content-inner help-inner">登录微信客户端,点击“发现”---“购物”---“个人中心”,在“我的订单”中,点击“查看全部订单”,进入“我的订单”,点击进您想取消的订单,进入订单详情页,点击“申请取消订单”按钮即可。如货物已经打包发货，订单可能会取消失败，如取消失败建议您直接拒收商品。部分特殊商品不能拒收，具体请以页面商品介绍信息为准。</div>
+						</div>
+					</div>
+					
+					<div class="help-main list-block ">
+						<ul>
+							<li class="help-list item-content item-link">
+								<div class="item-inner help-item">
+									<div class="item-title">2.怎样查询订单是否取消成功？</div>
+									<span class="item-after"><i class="icon icon-down3"></i></span>
+								</div>
+
+							</li>
+						</ul>
+					</div>
+					<div class="card help-detail">
+						<div class="card-content">
+							<div class="card-content-inner help-inner">登录微信客户端,点击“发现”---“购物”---“个人中心”,在“我的订单”中,点击“查看全部订单”,进入“我的订单”,点击进您想取消的订单,进入订单详情页,点击“申请取消订单”按钮即可。如货物已经打包发货，订单可能会取消失败，如取消失败建议您直接拒收商品。部分特殊商品不能拒收，具体请以页面商品介绍信息为准。</div>
+						</div>
+					</div>
+				</div>
+
+					
+			</div>
+		</div>
+	</body>
+	<script type=text/javascript>
+			$('div.help-main').click(function(index) {
+				if($(this).find(".icon").hasClass("icon-down3")){
+					$(this).next("div.help-detail").slideToggle(300).slideDown(300);
+					$(this).find(".icon").addClass("icon-up3").removeClass("icon-down3");
+				}else{
+					$(this).next("div.help-detail").slideToggle(300).slideUp(300);
+					$(this).find(".icon").addClass("icon-down3").removeClass("icon-up3");
+				}
+			});
+			
+			/*$(function() {
+				//菜单隐藏展开
+				var tabs_i = 0;
+				$('.help-main').click(function() {
+					var _self = $(this);
+					var j = $('.help-main').index(_self);
+					if(tabs_i == j) return false;
+					tabs_i = j;
+					$('.help-main .icon').each(function(e) {
+						if(e == tabs_i) {
+							$('.icon', _self).removeClass('.icon-down3').addClass('.icon-up3');
+						} else {
+							$(this).removeClass('.icon-up3').addClass('.icon-down3');
+						}
+					});
+					$('.help-detail').slideUp().eq(tabs_i).slideDown();
+				});
+			})*/
+	</script>
+
+</html>
