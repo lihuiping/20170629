@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    @@include('../tpl/header.tpl',{ "title":"购物车" })
+</head>
+
+<body>
+<!--page容器-->
+<div class="page-group">
+    <div class="page page-current">
+        <!--标签页-->
+        <header class="bar bar-nav">
+            <button class="button button-link button-nav pull-left">
+                <span class="icon icon-left"></span>
+            </button>
+            <!--<h1 class="title">确认订单</h1>-->
+        </header>
+        <!--内容页面-->
+        <div class="content padding-btn" id="shopping">
+
+            <div class="list-block media-list ccart-list" v-for="(item,index) in shopList" v-cloak :key="item.shopid">
+                <div class="ccart-title">
+                    <div class="item-content">
+                        <label class="label-checkbox ">
+                            <input type="checkbox" name="checkbox" :value="item.shopid" class="shop-all-checked"
+                                   @click="shopCheck(item,index)">
+                            <div class="item-media ccart_checkbox"><i class="icon icon-form-checkbox"></i></div>
+                        </label>
+                        <div class="item-inner">
+                            <div class="item-title-row">
+                                <div class="item-title">
+                                    <a href="#">{{item.shop_name}}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <ul class="ccart-content">
+                    <li v-for="(goods,index) in item.cartlist.list" class="list-li swipeout" :key="goods.id">
+                        <div class="ccart-con swipeout-content" data-hand="list">
+                            <div class="item-content">
+                                <label class="label-checkbox ">
+                                    <input type="checkbox" name="checkbox" v-model="checked" :value="goods.id"
+                                           :data-shopid="goods.shopid" class="count-price" status="0"
+                                           @click="currClick(goods,index)">
+                                    <div class="item-media ccart_checkbox"><i class="icon icon-form-checkbox"></i></div>
+                                </label>
+                                <div class="item-media">
+                                    <a href="#"><img :src="goods.goods_thumb"></a>
+                                </div>
+                                <div class="item-inner">
+                                    <div class="item-title-row">
+                                        <div class="item-title">
+                                            <a href="#">{{goods.goods_name}}</a>
+                                        </div>
+                                    </div>
+                                    <div class="item-subtitle">{{goods.goods_name}}</div>
+                                    <div class="item-text" :data-attrId="goods.id">规格: {{goods.attrstr}}<i
+                                            class="icon icon-down"></i></div>
+                                    <div class="ccart-price">
+                                        七彩币<span>{{goods.sell_price | formatQcb(goods.number)}}</span><em>{{goods.price
+                                        | formatMoney(goods.number)}}</em></div>
+                                    <div class="ccart-num">
+                                        <button type="button" @click="delGoods(item)">删除</button>
+                                        兑换数量
+                                        <div class="input-number"><span @click="changeMoney(goods,-1)"
+                                                                        :class="{disabled:goods.number == 1}"><i
+                                                class="icon icon-jian"></i></span>
+                                            <input type="text" v-model="goods.number" disabled class="input-num">
+                                            <span @click="changeMoney(goods,1)"
+                                                  :class="{disabled:goods.number == goods.kucun}"><i
+                                                    class="icon icon-jia"></i></span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ccart-zeng" v-if="donation">
+                                <span>赠品</span>
+                                <p class="ccart-gift">啥也没有</p>
+                            </div>
+
+                        </div>
+                        <div class="ccart-delete swipeout-actions-right " @click="delGoods(item)">
+                            <a href="#">删除</a>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+            <!--购物车列表底部开始-->
+            <div class="ccart-jiesuan" style="position: fixed;bottom: 0;">
+                <label class="label-checkbox " for="check_all">
+                    <input type="checkbox" name="checkbox" id="check_all" v-model="checkAll">
+                    <div class="ccart_checkbox item-media"><i class="icon icon-form-checkbox"></i><span>全选</span></div>
+                </label>
+                <span class="jiesuan-con"> 合计: <span class="c-ec4619"><span id="count_qcb">{{totalQc}}</span>七彩币</span> <span
+                        class="c-ff8c24">￥{{totalMoney}}<span id="count_price"></span></span>
+						</span>
+                <a href="javascript:;" id="sub_shopping">结算(<span id="ck_lenght">{{checkedCount}}</span>)</a>
+
+            </div>
+            <!--购物车列表底部结束-->
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<script type="text/javascript" src="lib/light7/js/light7-swipeout.js" async="async"></script>
+<script type="text/javascript" src="assets/js/new-file.js"></script>
+</body>
+
+</html>

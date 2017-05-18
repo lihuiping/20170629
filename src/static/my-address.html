@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    @@include('../tpl/header.tpl',{ "title":"我的地址" })
+</head>
+<body>
+<div class="page page-current">
+    <div class="content  address-page">
+        <!--地址列表外壳-->
+        <div class="myAddress">
+            <!--地址列表开始-->
+
+            <div class="card-wrap" id="address-list" v-cloak>
+
+                <div class="card" v-for="item in data.data" v-cloak>
+                    <div class="card-content">
+                        <div class="card-content-inner" v-bind:for="item.id">
+                            <div class="buyer">
+                                <div class="buyerName" v-cloak>
+                                    {{item.name}}
+                                </div>
+                                <div class="buyerNum" v-cloak>
+                                    {{item.phone}}
+                                </div>
+                            </div>
+                            <div class="cont" v-cloak>
+                                {{item.area}}&nbsp;&nbsp;{{item.detail}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <label class="label-checkbox">
+                            <input type="radio" name="radio" value="1" v-model="item.isdef" :id="item.id">
+                            <div class="item-media ccart_checkbox"><i
+                                    class="icon icon-form-checkbox"></i><span>设为默认</span></div>
+                        </label>
+                        <div class="edit">
+                            <!--<a href="http://v.7cai.tv/templets/gerenzhongxin/personMessage/editaddress.html">
+                           <i class=" icon icon-bianji1"></i><span>编辑</span></a>-->
+                            <i class="icon icon-shanchu"></i><span class="del—address" :id="item.id">删除</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="wj_image" id="ad-address" style="display: none;">
+                <img src="http://v.7cai.tv/images/Addaddress.jpg">
+            </div>
+            <div class="add-addr"><a href="http://v.7cai.tv/templets/gerenzhongxin/personMessage/AddAddress.html">
+                <i class="icon icon-tianjiadizhi"></i><span>新增地址</span>
+            </a>
+            </div>
+        </div>
+        <!--地址列表外壳结束-->
+    </div>
+</div>
+<script src="assets/js/address.js"></script>
+<script type="text/javaScript">
+    var obj;
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
+    }
+    //axios处理数据转换格式  公用
+    function transformRequest(data) {
+        var ret = '';
+        for (var it in data) {
+            ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+        }
+        ;
+        return ret;
+    };
+    var token = token();
+
+    var attrList = getQueryString('attr');
+    var header = {'content-type': 'application/x-www-form-urlencoded'};
+    var url = baseUrl() + 'member.php?r=address&m=index';
+    axios.post(url, transformRequest({token: token}), {headers: header, async: false,})
+        .then(function (response) {
+
+            //需数据处理的调用
+            if (response.data.res == 1) {
+                //response.data
+                var addList = new Vue({
+                    el: "#address-list",
+                    data: response,
+
+                });
+            } else {
+                //弹出提示
+                $(".wj_image").show();
+            }
+
+
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+
+    $(".myAddress").on("click", "input[name='radio']", function (e) {
+
+        var id = $(e.currentTarget).attr('id');
+        setDefaultAddress(id);
+
+
+    });
+
+    $(".myAddress").on("click", ".del—address", function (e) {
+        var id = $(e.currentTarget).attr('id');
+        $(e.currentTarget).parent().parent().parent().remove();
+        delAddress(id);
+    });
+
+    $(".myAddress").on("click", ".card-content-inner", function (e) {
+        var id = $(e.currentTarget).attr("for");
+        window.location.href = "confirmOrder.html?attr=" + attrList + "&id=" + id;
+    })
+
+</script>
+</body>
+
+</html>

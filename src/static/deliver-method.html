@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    @@include('../tpl/header.tpl',{ "title":"配送方式弹窗" })
+    <link rel="stylesheet" href="assets/css/swiper.min.css"/>
+
+</head>
+
+<body>
+
+<div class="page page-current">
+    <div class="content">
+        <div class="content-block">
+            <p>
+                <a href="#" class="open-popup open-method" data-popup=".popup-method">打开配送方式</a>
+            </p>
+
+        </div>
+
+    </div>
+</div>
+<!-- 配送开始 -->
+<div class="popup popup-method">
+
+
+    <div class="method ">
+        <!--标题-->
+        <div class="ticket-title">配送方式</div>
+        <!--领券列表-->
+        <div class="list-block">
+            <ul class="list-box">
+                <li class="item-content">
+                    <div class="item-inner">
+                        <div class="item-title">
+                            <span class="method">快递</span>
+                            <span class="money">免费包邮</span>
+                        </div>
+                        <div class="item-after">
+                            <i class="icon icon-xuanze"></i>
+                        </div>
+                    </div>
+                </li>
+                <li class="item-content">
+                    <div class="item-inner">
+                        <div class="item-title">
+                            <span class="method">邮政EMS</span>
+                            <span class="money">10元</span>
+                        </div>
+                        <div class="item-after">
+                            <i class="icon icon-weixuanze"></i>
+                        </div>
+                    </div>
+                </li>
+                <li class="item-content">
+                    <div class="item-inner">
+                        <div class="item-title">
+                            <span class="method">顺丰快递</span>
+                            <span class="money">18元</span>
+                        </div>
+                        <div class="item-after">
+                            <i class="icon icon-weixuanze"></i>
+                        </div>
+                    </div>
+                </li>
+                <li class="item-content">
+                    <div class="item-inner">
+                        <div class="item-title">
+                            <span class="method">天天快递</span>
+                            <span class="money">免费包邮</span>
+                        </div>
+                        <div class="item-after">
+                            <i class="icon icon-weixuanze"></i>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <!--关闭按钮-->
+            <div class="closeButton close-popup">
+                关闭
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<!--配送结束-->
+
+</body>
+</html>

@@ -1,0 +1,155 @@
+@charset "UTF-8";
+//ban图片
+.od-ban {
+    width: 100%;
+    img {
+        width: 100%;
+    }
+    .od-banTit {
+        position: relative;
+        color: #FFFFFF;
+        font-size: 0.8rem;
+        span {
+            position: absolute;
+            top: 1rem;
+            left: 1.25rem;
+        }
+        p {
+            position: absolute;
+            top: 2.5rem;
+            left: 1.25rem;
+            font-size: 0.6rem;
+            width: 10rem;
+            @extend %two-line;
+        }
+    }
+    .od-titP {
+        span {
+            position: absolute;
+            top: 2rem;
+            left: 1.25rem;
+        }
+    }
+}
+//收货地址css
+.od-block {
+    border-bottom: solid 0.05rem #D9D9D9;
+    .od-inner {
+        padding-right: 0.5rem;
+        .od-left {
+            width: 100%;
+        }
+    }
+    .od-addr {
+        display: flex;
+        i {
+            margin-top: 0.25rem;
+        }
+    }
+    .od-phone {
+        float: right;
+        margin-left: 0;
+    }
+    .od-gift {
+        color: #535353;
+        font-size: 0.7rem;
+        @extend %two-line;
+    }
+}
+
+.od-box {
+    .od-title {
+        width: 100%;
+        .od-tit {
+            display: flex;
+            width: 45%;
+            span {
+                @extend %text-overflow;
+            }
+        }
+    }
+    .od-item-tit {
+        margin: 0;
+        padding: 0 0.5rem;
+        background: #FFFFFF;
+    }
+    .od-icon {
+        //      margin-left: 0.5rem;
+        padding-top: 0.8rem;
+    }
+}
+.list-block.ccart-list .ccart-content .od-status{
+    height: 2rem;
+}
+.list-block {
+    &.ccart-list {
+        .od-cont {
+            li {
+                border-top: solid 0.2rem #f5f5f5;
+                border-bottom: none;
+            }
+            li:first-child {
+                border-top: none;
+            }
+            .od-content {
+                margin-right: 0.5rem;
+                border-bottom: solid 0.05rem #D9D9D9;
+                .item-inner {
+                    padding-right: 0;
+                }
+                .od-price {
+                    .btn-odSty {
+                        font-size: 0.55rem;
+                        margin-top: 0.2rem;
+                    }
+                }
+                .od-txtNum {
+                    margin-left: 1.05rem;
+                    font-size: 0.5rem;
+                    span {
+                        font-size: 0.75rem;
+                    }
+                }
+                .od-price {
+                    strong {
+                        font-weight: normal;
+                    }
+                    span {
+                        margin-left: 0;
+                    }
+                    .od-sta{
+                        display: inline-flex;
+                        float: right;
+                        margin-right: 0;
+                    }
+                }
+            }
+            
+        }
+    }
+}
+.od-list {
+    width: 100%;
+    display: flex;
+    background: #FFFFFF;
+    padding: 0 0 0.675rem 0.5rem;
+    color: #909090;
+    font-size: 0.55rem;
+    li {
+        margin-top: 0.75rem;
+    }
+}
+
+.btn-cancelhui {
+    color: #535353;
+    border-color: #535353;
+}
+
+.btn-orderOrange {
+    color: #ff8c24;
+    font-size: 0.65rem;
+}
+.od-addSty{
+    margin-left: 0.5rem;
+    border-top: solid 0.05rem #D9D9D9;
+}

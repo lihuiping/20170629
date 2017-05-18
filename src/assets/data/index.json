@@ -1,0 +1,50 @@
+{
+	"status": 1,
+	"data": [
+		{
+			"id": "1",
+			"title": "测试轮播图",
+			"url": "#",
+			"img": "../assets/images/banner1.jpg",
+			"sort": "2",
+			"type": "2",
+			"shopid": "0",
+			"add_time": "12345678",
+			"update_time": "1490168090",
+			"status": "0"
+		}, {
+			"id": "2",
+			"title": "测试轮播图",
+			"url": "#",
+			"img": "../assets/images/banner2.png",
+			"sort": "3",
+			"type": "2",
+			"shopid": "0",
+			"add_time": "12345678",
+			"update_time": "1490164934",
+			"status": "1"
+		}, {
+			"id": "3",
+			"title": "sfs",
+			"url": "#",
+			"img": "../assets/images/banner3.png",
+			"sort": null,
+			"type": "1",
+			"shopid": "0",
+			"add_time": "1490161735",
+			"update_time": "1490167977",
+			"status": "1"
+		}, {
+			"id": "4",
+			"title": "测试轮播",
+			"url": "#",
+			"img": "../assets/images/banner4.png",
+			"sort": null,
+			"type": "2",
+			"shopid": "0",
+			"add_time": "1490161890",
+			"update_time": null,
+			"status": "1"
+		}
+	]
+}

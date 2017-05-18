@@ -1,0 +1,87 @@
+/*Lking物流页面*/
+
+//物流信息
+.deliver-info{
+	margin-bottom: 0.5rem;
+	border: none !important;
+	.deliver-goods{
+		@extend %text-overflow;
+		color: #212121 !important;
+	}
+}
+.express-detail{
+	padding-top: 0.5rem !important;
+}
+.deliver-list{
+       padding-right:0.5rem;
+    }
+.deliver-content{
+	border:0 !important;}
+.deliver-norm{
+	color: #909090 !important;
+	border:0 !important;
+	padding-left: 0 !important;
+	margin-top: 0 !important;
+}
+
+.deliver-num{
+	font-size:0.5rem !important;
+	color:#212121;
+	margin-left: 1rem !important;
+	.deliverNum{
+		font-size: 0.75rem !important;
+		color:#212121 !important;
+		margin-left:0.25rem !important ;
+	}
+}
+.deliver-price{
+	margin: 0 0 0.5rem 0 !important;
+	strong{
+    	font-weight: normal;
+	}
+	span{
+		margin-left: 0.2rem;
+	}
+}
+.deliver-gd{
+//     @extend %two-line !important;
+   overflow:hidden !important; 
+    text-overflow:ellipsis !important;
+    display:-webkit-box !important; 
+    box-orient:vertical !important;
+    line-clamp:2 !important; 
+}
+.deliver-state{
+	position: absolute;
+	right: 0;
+	font-size: 0.55rem !important;
+	color: #ffa766;
+    margin-top: 0.2rem;
+	white-space: nowrap;
+}
+//快递订单
+.deliver-mes{
+	margin: 0.5rem 0;
+}
+
+.deliver-details{
+	padding-right:0.5rem !important;
+}
+.deliver-item{
+       padding-left: 0.5rem !important; 
+    }
+.deliver-order{
+	justify-content: flex-start !important;
+	font-size: 0.7rem;
+	color: #535353;
+	.deliver-ordernum{
+//      letter-spacing: 0.1rem;	
+	    font-size: 0.75rem;
+        color:#212121;	
+	}
+	.deliver-exp{
+		font-size: 0.75rem;
+		color:#212121;
+		margin-left: 0.1rem;
+	}
+}

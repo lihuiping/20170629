@@ -1,0 +1,1 @@
+$(function(){$(".ifLogin").each(function(){$(this).click(function(){void 0!=Cache.get("token")&&null!=Cache.get("token")||$(this).attr("href","http://v.7cai.tv/templets/gerenzhongxin/login/login.html")})})});

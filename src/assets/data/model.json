@@ -1,0 +1,9 @@
+{
+	"message": "",
+	"responseid": "1",
+	"status":"1",
+	"gods": [{"id": "1","img": "../assets/images/good1.jpg","title": "功夫熊猫毛绒公仔","price": "199","status":"0"},
+	{"id": "2","img": "../assets/images/good1.jpg","title": "魔兽世界POLO衫魔兽世界POLO衫POLO衫","price": "29","status":"1"},
+	{"id": "3","img": "../assets/images/good1.jpg","title": "功夫熊猫存钱罐","price": "30","status":"0"}
+	]
+}

@@ -1,0 +1,65 @@
+.myOrder-tab {
+    height: 2.5rem;
+    font-size: 0.75rem;
+    border-bottom: 0;
+    .tabButton {
+        height: 100%;
+        bottom: 0;
+        font-size: 0.75rem;
+        color: #212121;
+        line-height: 2.5rem;
+    }
+    .active {
+        color: #EC4619;
+        span {
+            color: #EC4619;
+            display: inline-block;
+            border-bottom: 0.1rem #EC4619 solid;
+            height: 100%;
+        }
+    }
+}
+
+//#orderTable{
+//  .tabs{
+//      .tab{
+//          display: block;
+//      }
+//  }
+//}
+.myOrder {
+    .tabs .item-media {
+        position: relative;
+    }
+    .ccart-list {
+        .ccart-title {
+            .item-title-row {
+                a {
+                    position: relative;
+                    .icon-right {
+                        position: absolute;
+                        top: 0.8rem;
+                        right: -0.8rem;
+                    }
+                }
+                .item-title {
+                    width: 10rem;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                }
+            }
+        }
+        .ccart-content .ccart-con .item-content {
+            border-bottom: 1px solid #d9d9d9;
+            margin-right: 0.5rem;
+        }
+    }
+    .tuikaun {
+        position: absolute;
+    bottom: 0.62rem;
+    right: 0.5rem;
+    color: #ff8c24;
+    font-size: 11px;
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "data": {
+        "shopName": "三星官方旗舰店",
+        "shopCoupons": [
+            {
+            	"id":1,
+                "couponAmount": 18.00,
+                "currency": 1,
+                "usageRules": "订单满99七彩币使用",
+                "startDate": "2017.04.01",
+                "endDate": "2017.04.30",
+                "receiveStatus":0
+            },
+            {
+            	"id":2,
+                "couponAmount": 20.00,
+                "currency": 2,
+                "usageRules": "订单满￥300元使用",
+                "startDate": "2017.04.02",
+                "endDate": "2017.05.30",
+                "receiveStatus":1
+            }
+        ]
+    },
+    "message": "请求成功",
+    "res": 1
+}
