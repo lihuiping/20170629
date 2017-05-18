@@ -1,1 +1,0 @@
-$(".bar-tab").on("click",".tab-item",function(a){var i=$(this),s=$(this).siblings(".tab-item"),t=i.data("class");$(this).find(".icon").prop("className","icon "+t+"-active"),$.each(s,function(a,i){var s=$(this).data("class");$(this).find(".icon").removeClass().addClass("icon "+s)})});

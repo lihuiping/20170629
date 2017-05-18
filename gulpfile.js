@@ -355,7 +355,7 @@ gulp.task('compileHtml', function() {
 
 //替换有版本号的文件
 gulp.task('rev', ['relsass', 'fileinclude'], function() {
-	gulp.src([destUrl+'rev/**/*.json', config.dest.htmlfile, config.dest.css]) //- 读取 rev-manifest.json 文件以及需要进行替换的文件
+	gulp.src([destUrl + 'rev/**/*.json', config.dest.htmlfile, config.dest.css]) //- 读取 rev-manifest.json 文件以及需要进行替换的文件
 		.pipe(revCollector()) //- 执行文件内替换
 		.pipe(gulp.dest(destUrl)); //- 替换后的文件输出的目录
 });
