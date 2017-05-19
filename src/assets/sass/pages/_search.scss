@@ -3,11 +3,11 @@
 
 /*搜索框样式*/
 .search-fm {
-    height: 2.6rem;
     padding: 0.5rem;
     width: 100%;
     position: relative;
     background-color: #fe7b0b;
+    background-image: $ln-bg;
     border-bottom: 1px solid #d9d9d9;
     /*搜索图标*/
     #searchIcon {
@@ -25,7 +25,9 @@
         line-height: 1.5rem;
         border-radius: 0.75rem;
         border: 1px solid #fff;
-        background-color: #fe7b0b;
+//      background-color: #fe7b0b;
+//      background-image: $ln-bg;
+        background-color: transparent;
         text-indent: 1.9rem;
         font-size: 0.75rem;
         position: relative;
@@ -92,7 +94,7 @@
     a {
         display: block;
         overflow: hidden;
-        line-height: 1.95rem;
+        line-height: 2.3rem;
            word-wrap:break-word; 
            word-break:normal;
         &:first-child {
@@ -127,7 +129,7 @@
     	display: inline-block;
         float: right;
     }
-    .clear-record {
+    .clear-records {
         display: inline-block;
         float: right;
         color: #ff8c24;
@@ -135,7 +137,9 @@
         line-height: 1.95rem;
         font-size: 0.65rem;
         margin-top: 0.25rem;
+        height: 1.95;
     }
+    
     /* 搜索输入下拉列表  */
     ul {
         clear: both;
@@ -145,7 +149,7 @@
             display: block;
             font-size: 0.75rem;
             border-top: 1px solid #d9d9d9;
-            line-height: 1.95rem;
+            line-height: 2.3rem;
             color: #383838;
             overflow: hidden;
         }
