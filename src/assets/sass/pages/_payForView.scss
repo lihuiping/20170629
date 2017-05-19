@@ -1,17 +1,19 @@
 //头部
 .header{
-    height: 2.5rem;
+    height: 3.6rem;
     color: #FFFFFF;
-    background: -webkit-linear-gradient(top,#FF6600 10%,#FF9219 90%);
+    background-image: $ln-bg;
     .title{
         height: 2.5rem;
         color: #FFFFFF;
         font-size: 0.9rem;
         line-height: 2.5rem;
+        top: 1.1rem;
     }
     .icon{
         margin-top: 0.15rem;
         color: #FFFFFF;
+        top: 1.1rem;
     }
 }
 //电影信息
