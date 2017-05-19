@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		@@include('../tpl/header.tpl',{ "title":"中益七彩" })
+		<style type="text/css">
+			.content-bottom {
+				padding-bottom: 0;
+			}
+			
+			img {
+				height: 8rem;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="page page-current" id="zhizunduxiang">
+			<div class="content" id="zzdx_list">
+				<div class="zzdx sy-content" v-for="item in list">		
+					<a :href="getTitleHref(item.id)" class="external">
+						<img :src="item.cover" alt=""></a>
+					<div class="content-bottom">
+						<h4>{{item.name}}</h4>
+						<p>{{item.title}}</p>
+					</div>
+				</div>
+						</div>
+		</div>
+  <script>
+ 
+var conf = 1;
+  	var zzdx_list=['./assets/data/goods.json', baseUrl()+'index.php/Api/Zhizun/get_more/p/1'];  //至尊独享列表
+  	/*至尊独享列表*/
+var zzdx_list = new Vue({
+	el: "#zzdx_list",
+	data: {
+		list: [],
+		loadingFlag:true,
+	},
+	mounted: function() {
+		//初始化加载数据
+		var _this = this;
+		_this.showGoods();
+	},
+	methods: {
+		showGoods: function() {
+			var _this = this;
+			axios.get(zzdx_list[conf]).then(function(res) {
+				var data = res.data;
+				if(data.res == 1) {
+					_this.list = data.data;
+					_this.loadingFlag = false;
+				} else {
+					$.toast("商品数据错误");
+				}
+			});
+		},
+	    getTitleHref: function(val) {
+			return 'goods-detail.html?id=' + val
+		},
+	}
+});
+  </script>
+	</body>
+
+</html>
