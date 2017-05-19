@@ -135,6 +135,7 @@ $("#searchInput").bind('keyup', function() {
 		$("#searchInput").val("");
 		$(".search-list").empty();
 		$(".search-none").hide();
+		$('.search-anys').hide();
 		$(".search-record").show();
 	})
 
