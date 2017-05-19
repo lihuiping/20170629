@@ -9,10 +9,9 @@
 		<div class="page-group">
 			<div class="page page-current" id="router" style="margin-top: 1.2rem;">
 				<!--头部logo和搜索框 start-->
-				
 				<div class="movie-shouye-head movieindex" style="top:1.2rem">
 					<div class="shouyelogo">
-						<img src="assets/images/l-logo.png" alt="" />
+						<img src="assets/images/dibulogo.png" alt="" />
 						<a href="" class="external shouye-a4" id="shouye-ss">
 							<div class="shouye-sousuo">
 								<i class="iconfont icon-sousuo"></i> 全网搜
@@ -22,11 +21,7 @@
 							<div class="shouye-active">
 								<i class="iconfont icon-jingxuan"></i>
 								<span>精选</span>
-							</div>
-							<div>
-								<i class="iconfont icon-yanchanghui"></i>
-								<span>演唱会</span>
-							</div>
+							</div>							
 						</div>
 						<span>
 <a class="external shouye-a4" href="/plus/list.php?tid=9" id="ss-tubiao"><i class="iconfont icon-sousuo"></i></a>
@@ -36,7 +31,7 @@
 				</div>
 				<div class="content pdbt">
 					<!-- banner 添加-->
-					<div class="swiper-container" id="index-banner">
+					<div class="swiper-container movie-banner" id="index-banner">
 						
 						<div class="swiper-wrapper">
 							
@@ -49,16 +44,22 @@
 						<div class="swiper-pagination"></div>
 					</div>
 					<!--至尊独享start-->
-					<div class="sy-content ">
+					<div class="sy-content" id="zzdx_movie"  >
+						  <!--<img src="assets/images/loading.gif" v-if="loadingFlag" class="loading-img"/>-->
+					  <div  v-for="(item, index) in goodslist"  v-if="index < 2" v-cloak>
 						<div class="content-top">
 							<span><i class="iconfont icon-huangguan"></i>至尊独享 </span>
-							<a class="external" href="http://v.7cai.tv/a/zhizunduxiang.html"><span> 查看更多<i class="iconfont icon-yingdaicon10"></i></span></a>
+							<a class="external" href="zhizunduxiang.html"><span> 查看更多<i class="iconfont icon-yingdaicon10"></i></span></a>
 						</div>
-						<a href="/plus/view.php?aid=169" class="external"><img src="assets/images/s_01.jpg" alt=""></a>
+						<a href="/plus/view.php?aid=169" class="external">
+							<img  :src="item.cover" alt="">
+						</a>
 						<div class="content-bottom" style="padding-bottom: .2rem;">
-							<h4>一回合</h4>
-							<p>疯狂的石头·功夫版</p>
+							<h4>{{item.name}}</h4>
+							<p>{{item.title}}</p>
 						</div>
+						</div>
+					
 					</div>
 					<!--至尊独享end-->
 					<!-- 列表 -->
@@ -67,19 +68,19 @@
 							<i class="shouye-i"></i>
 							<span>热映大片</span><span></span>
 						</div>
-						<div class="content-body" id="reying-list">
-							<div class="item" v-for="(item, index) in goodslist.data" :id="index" v-if="index < 6"  v-cloak>
-								<a :href="getTitleHref(item.id)" :data-id="item.goodsId" class="external">
-									<img  :src="item.goods_thumb" alt=""></a>
+						<div class="content-body" id="hot-list">
+							<div class="item" v-for="(item, index) in goodslist.list" :id="index" v-if="index < 6"  v-cloak>
+								<a :href="getTitleHref(item.id)" :data-id="item.id" class="external">
+									<img  class="lazy"  :data-src="item.cover" src="assets/images/sp-jiazai.jpg" alt=""></a>
 								<div class="content-bottom">
-									<h4>从你的全世界路过</h4>
-									<p>主演:邓超/白百何</p>
+									<h4>{{item.name}}</h4>
+									<p>{{item.title}}</p>
 								</div>
 							</div>
 							
 						</div>
 						<div class="lookmore2">
-							<a class="external color-gengduo" href="http://v.7cai.tv/plus/list.php?tid=8"> 查看更多 <i class="iconfont icon-yingdaicon10"></i></a>
+							<a class="external color-gengduo" href="movie-list.html"> 查看更多 <i class="iconfont icon-yingdaicon10"></i></a>
 						</div>
 					</div>
 					<div class="sy-content">
@@ -87,160 +88,62 @@
 							<i class="shouye-i"></i>
 							<span>院线热映</span><span></span>
 						</div>
-						<div class="content-body">
-							<div class="item">
-								<a href="/plus/view.php?aid=129" class="external"><img src="assets/images/l_01.png" alt=""></a>
+						<div class="content-body" id="yx-list">
+							<div class="item" v-for="(item, index) in goodslist.list" :id="index" v-if="index < 6"  v-cloak>
+								<a :href="getTitleHref(item.id)" :data-id="item.id" class="external">
+									<img  class="lazy"  :data-src="item.cover" src="assets/images/sp-jiazai.jpg" alt=""></a>
 								<div class="content-bottom">
-									<h4>唐人街探案</h4>
-									<p>主演:王宝强/刘昊然</p>
+									<h4>{{item.name}}</h4>
+									<p>{{item.name}}</p>
 								</div>
 							</div>
-							<div class="item">
-								<a href="/plus/view.php?aid=74" class="external"><img src="assets/images/l_01.png" alt=""></a>
-								<div class="content-bottom">
-									<h4>危城</h4>
-									<p>主演:刘青云</p>
-								</div>
-							</div>
-							<div class="item">
-								<a href="/plus/view.php?aid=80" class="external"><img src="assets/images/l_01.png" alt=""></a>
-								<div class="content-bottom">
-									<h4>终结者:创世纪</h4>
-									<p>主演:阿诺·施瓦辛格</p>
-								</div>
-							</div>
-							<div class="item">
-								<a href="/plus/view.php?aid=153" class="external"><img src="assets/images/l_01.png" alt=""></a>
-								<div class="content-bottom">
-									<h4>机械师2:复活</h4>
-									<p>主演:杰森·斯坦森</p>
-								</div>
-							</div>
-							<div class="item">
-								<a href="/plus/view.php?aid=157" class="external"><img src="assets/images/l_01.png" alt=""></a>
-								<div class="content-bottom">
-									<h4>寒战2</h4>
-									<p>主演:郭富城</p>
-								</div>
-							</div>
-							<div class="item">
-								<a href="/plus/view.php?aid=158" class="external"><img src="assets/images/l_01.png" alt=""></a>
-								<div class="content-bottom">
-									<h4>反贪风暴2</h4>
-									<p>主演:古天乐</p>
-								</div>
-							</div>
+						
 						</div>
 						<div class="lookmore2">
-							<a class="external color-gengduo" href="http://v.7cai.tv/plus/list.php?tid=8"> 查看更多 <i class="iconfont icon-yingdaicon10"></i></a>
+							<a class="external color-gengduo" href="movie-list.html"> 查看更多 <i class="iconfont icon-yingdaicon10"></i></a>
 						</div>
 					</div>
-					<div class="sy-content">
+							<div class="sy-content">
 						<div class="content-top">
 							<i class="shouye-i"></i>
 							<span>网络电影</span><span></span>
 						</div>
-						<div class="content-body">
-							<div class="item">
-								<a href="/plus/view.php?aid=160" class="external"><img src="assets/images/l_01.png" alt=""></a>
+						<div class="content-body" id="wl_movie">
+							<div class="item" v-for="(item, index) in goodslist.list" :id="index" v-if="index < 6"  v-cloak>
+								<a :href="getTitleHref(item.id)" :data-id="item.id" class="external">
+									<img  class="lazy"  :data-src="item.cover" src="assets/images/sp-jiazai.jpg" alt=""></a>
 								<div class="content-bottom">
-									<h4>荷尔蒙大冒险</h4>
-									<p>主演:陈立谦/王淇</p>
+									<h4>{{item.name}}</h4>
+									<p>{{item.name}}</p>
 								</div>
 							</div>
-							<div class="item">
-								<a href="/plus/view.php?aid=131" class="external"><img src="assets/images/l_01.png" alt=""></a>
-								<div class="content-bottom">
-									<h4>老妈操碎心</h4>
-									<p>主演:萝丝·拜恩</p>
-								</div>
-							</div>
-							<div class="item">
-								<a href="/plus/view.php?aid=66" class="external"><img src="assets/images/l_01.png" alt=""></a>
-								<div class="content-bottom">
-									<h4>末日之战</h4>
-									<p>导演:马克·福斯特</p>
-								</div>
-							</div>
-							<div class="item">
-								<a href="/plus/view.php?aid=159" class="external"><img src="assets/images/l_01.png" alt=""></a>
-								<div class="content-bottom">
-									<h4>西游记之大圣归来</h4>
-									<p>主演:张磊</p>
-								</div>
-							</div>
-							<div class="item">
-								<a href="/plus/view.php?aid=161" class="external"><img src="assets/images/l_01.png" alt=""></a>
-								<div class="content-bottom">
-									<h4>七月与安生</h4>
-									<p>主演:周冬雨</p>
-								</div>
-							</div>
-							<div class="item">
-								<a href="/plus/view.php?aid=167" class="external"><img src="assets/images/l_01.png" alt=""></a>
-								<div class="content-bottom">
-									<h4>鲨滩</h4>
-									<p>主演:布莱克·莱弗利</p>
-								</div>
-							</div>
+						
 						</div>
 						<div class="lookmore2">
-							<a class="external color-gengduo" href="http://v.7cai.tv/plus/list.php?tid=8"> 查看更多 <i class="iconfont icon-yingdaicon10"></i></a>
+							<a class="external color-gengduo" href="movie-list.html"> 查看更多 <i class="iconfont icon-yingdaicon10"></i></a>
 						</div>
 					</div>
-					<div class="sy-content">
+							<div class="sy-content">
 						<div class="content-top">
 							<i class="shouye-i"></i>
 							<span>经典影院</span><span></span>
 						</div>
-						<div class="content-body">
-							<div class="item">
-								<a href="/plus/view.php?aid=64" class="external"><img src="assets/images/l_01.png" alt=""></a>
+						<div class="content-body" id="jd_movie">
+							<div class="item" v-for="(item, index) in goodslist.list" :id="index" v-if="index < 6"  v-cloak>
+								<a :href="getTitleHref(item.id)" :data-id="item.id" class="external">
+									<img  class="lazy"  :data-src="item.cover" src="assets/images/sp-jiazai.jpg" alt=""></a>
 								<div class="content-bottom">
-									<h4><strong>三人行</strong></h4>
-									<p>主演:赵薇/钟汉良</p>
+									<h4>{{item.name}}</h4>
+									<p>{{item.name}}</p>
 								</div>
 							</div>
-							<div class="item">
-								<a href="/plus/view.php?aid=100" class="external"><img src="assets/images/l_01.png" alt=""></a>
-								<div class="content-bottom">
-									<h4><strong>蝙蝠侠3</strong></h4>
-									<p>主演:克里斯蒂安</p>
-								</div>
-							</div>
-							<div class="item">
-								<a href="/plus/view.php?aid=67" class="external"><img src="assets/images/l_01.png" alt=""></a>
-								<div class="content-bottom">
-									<h4><strong>碟中谍5</strong></h4>
-									<p>主演:汤姆·克鲁斯</p>
-								</div>
-							</div>
-							<div class="item">
-								<a href="/plus/view.php?aid=69" class="external"><img src="assets/images/l_01.png" alt=""></a>
-								<div class="content-bottom">
-									<h4><strong>智取威虎山</strong></h4>
-									<p>主演:张涵予</p>
-								</div>
-							</div>
-							<div class="item">
-								<a href="/plus/view.php?aid=97" class="external"><img src="assets/images/l_01.png" alt=""></a>
-								<div class="content-bottom">
-									<h4><strong>神偷奶爸2</strong></h4>
-									<p>主演:史蒂夫·卡瑞尔</p>
-								</div>
-							</div>
-							<div class="item">
-								<a href="/plus/view.php?aid=134" class="external"><img src="assets/images/l_01.png" alt=""></a>
-								<div class="content-bottom">
-									<h4><strong>海底总动员2</strong></h4>
-									<p>主演:艾伦·德杰尼勒斯</p>
-								</div>
-							</div>
+						
 						</div>
 						<div class="lookmore2">
-							<a class="external color-gengduo" href="http://v.7cai.tv/plus/list.php?tid=8"> 查看更多 <i class="iconfont icon-yingdaicon10"></i></a>
+							<a class="external color-gengduo" href="movie-list.html"> 查看更多 <i class="iconfont icon-yingdaicon10"></i></a>
 						</div>
 					</div>
+					
 					<div class="buttom-logo">
 						<img src="assets/images/dibulogo.png" alt="" />
 					</div>
