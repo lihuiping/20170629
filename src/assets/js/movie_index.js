@@ -1,8 +1,32 @@
 
-var conf = 0;
+var conf = 1;
 var bann = ['../../assets/data/index.json', 'http://v.zy7c.com/index.php?r=lunbo']; //banner
-var goodsdata = ['./assets/data/goods.json', baseUrl()]; //商品列表
+var hotdata = ['./assets/data/goods.json', baseUrl()+'index.php/Api/Movie/lists?type=1']; //热映大片
+var yuxian_ry=['./assets/data/goods.json', baseUrl()+'index.php/Api/Movie/lists?type=2']; //院线热映
+var wl_movie=['./assets/data/goods.json', baseUrl()+'index.php/Api/Movie/lists?type=3'];  //网络电影
+var jd_movie=['./assets/data/goods.json', baseUrl()+'index.php/Api/Movie/lists?type=4'];  //经典影院
+var zzdx_movie=['./assets/data/goods.json', baseUrl()+'index.php/Api/Zhizun/get_one'];  //至尊独享
 
+/*懒加载*/
+function imgload() {
+				$("img.lazy").scrollLoading({
+					attr: "data-src",
+					callback: function() {
+						var $this = $(this);
+						$this.removeClass("lazy").removeAttr("data-src");
+						var src = $this.attr("src");
+						if(src.toLowerCase().indexOf("uploadfile") >= 0 || src.toLowerCase().indexOf("myupload") >= 0 || src.toLowerCase().indexOf("http") == -1) {}
+					}
+				});
+			}
+			window.setTimeout(function() { imgload(); }, 0);
+			var timer = null;
+			$(".content").on("scroll", function() {
+				if(timer) { clearTimeout(timer); }
+				timer = setTimeout(function() { imgload(); }, 0);
+			});
+			$(".content").trigger("scroll");
+			
 // banner图
 $.ajax({       
 	type: "GET",
@@ -25,10 +49,9 @@ $.ajax({       
 		});     
 	} 
 });
-
-/*电影列表渲染*/
+/*热线大片*/
 var goods = new Vue({
-	el: "#reying-list",
+	el: "#hot-list",
 	data: {
 		goodslist: [],
 		loadingFlag:true,
@@ -41,10 +64,10 @@ var goods = new Vue({
 	methods: {
 		showGoods: function() {
 			var _this = this;
-			axios.get(goodsdata[conf]).then(function(ress) {
-				var data = ress.data;
+			axios.get(hotdata[conf]).then(function(res) {
+				var data = res.data;
 				if(data.res == 1) {
-					_this.goodslist = data;
+					_this.goodslist = data.data;
 					_this.loadingFlag = false;
 				} else {
 					$.toast("商品数据错误");
@@ -54,7 +77,122 @@ var goods = new Vue({
 		getTitleHref: function(val) {
 			return 'goods-detail.html?id=' + val
 		},
-
-
+	}
+});
+/*院线热映*/
+var yx_ry = new Vue({
+	el: "#yx-list",
+	data: {
+		goodslist: [],
+		loadingFlag:true,
+	},
+	mounted: function() {
+		//初始化加载数据
+		var _this = this;
+		_this.showGoods();
+	},
+	methods: {
+		showGoods: function() {
+			var _this = this;
+			axios.get(yuxian_ry[conf]).then(function(res) {
+				var data = res.data;
+				if(data.res == 1) {
+					_this.goodslist = data.data;
+					_this.loadingFlag = false;
+				} else {
+					$.toast("商品数据错误");
+				}
+			});
+		},
+		getTitleHref: function(val) {
+			return 'goods-detail.html?id=' + val
+		},
+	}
+});
+/*网络电影*/
+var wl_movie = new Vue({
+	el: "#wl_movie",
+	data: {
+		goodslist: [],
+		loadingFlag:true,
+	},
+	mounted: function() {
+		//初始化加载数据
+		var _this = this;
+		_this.showGoods();
+	},
+	methods: {
+		showGoods: function() {
+			var _this = this;
+			axios.get(yuxian_ry[conf]).then(function(res) {
+				var data = res.data;
+				if(data.res == 1) {
+					_this.goodslist = data.data;
+					_this.loadingFlag = false;
+				} else {
+					$.toast("商品数据错误");
+				}
+			});
+		},
+		getTitleHref: function(val) {
+			return 'goods-detail.html?id=' + val
+		},
+	}
+});
+/*经典影院*/
+var jd_movie = new Vue({
+	el: "#jd_movie",
+	data: {
+		goodslist: [],
+		loadingFlag:true,
+	},
+	mounted: function() {
+		//初始化加载数据
+		var _this = this;
+		_this.showGoods();
+	},
+	methods: {
+		showGoods: function() {
+			var _this = this;
+			axios.get(jd_movie[conf]).then(function(res) {
+				var data = res.data;
+				if(data.res == 1) {
+					_this.goodslist = data.data;
+					_this.loadingFlag = false;
+				} else {
+					$.toast("商品数据错误");
+				}
+			});
+		},
+		getTitleHref: function(val) {
+			return 'goods-detail.html?id=' + val
+		},
+	}
+});/*至尊独享*/
+/*首页至尊独享*/
+var zzdx_movie = new Vue({
+	el: "#zzdx_movie",
+	data: {
+		goodslist: [],
+		loadingFlag:true,
+	},
+	mounted: function() {
+		//初始化加载数据
+		var _this = this;
+		_this.showGoods();
+	},
+	methods: {
+		showGoods: function() {
+			var _this = this;
+			axios.get(zzdx_movie[conf]).then(function(res) {
+				var data = res.data;
+				if(data.res == 1) {
+					_this.goodslist = data.data;
+					_this.loadingFlag = false;
+				} else {
+					$.toast("商品数据错误");
+				}
+			});
+		}
 	}
 });
