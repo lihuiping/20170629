@@ -3,6 +3,8 @@ $bdc: #eee;
 $pub-bd: 1px solid $bdc;
 $pink: #e53d7d;
 
+$ln-bg:linear-gradient(to top,#fe8e18,#f6530b);
+
 %text-ellipsis {
     // 文本一行隐藏
     overflow: hidden;
