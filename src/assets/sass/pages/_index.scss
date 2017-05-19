@@ -19,11 +19,12 @@
     left: 0;
     z-index: 8888;
     height: 2.5rem;
-    background-color: #fff;
+//  background-color: #fff;
+    background-image: $ln-bg;
     padding: 0 0.5rem;
     .shouyelogo {
         height: 2.5rem;
-        background-color: #ffffff;
+        background-image: $ln-bg;
         padding-top: 0.5rem;
         width: 100%;
         img {
@@ -43,12 +44,12 @@
             height: 1.5rem;
             line-height: 1.5rem;
             border-radius: 0.75rem;
-            border: 1px solid #BA927E;
-            background: #fff;
+            border: 1px solid #fff;
+//          background: #fff;
             
 //          margin-top: 0.2rem;
             text-align: center;
-            color: #BA927E;
+            color: #fff;
             font-size: 0.7rem;
             position: relative;
             span {
