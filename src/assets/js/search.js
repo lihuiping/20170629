@@ -291,7 +291,7 @@ $('.search-list a').live('click', function() {
 });
 
 //点击清除
-$('.clear-record').on('click', function() {
+$('.clear-records').on('click', function() {
 	layer.open({
 		content: '确定删除全部历史纪录？',
 		btn: ['确定', '取消'],
