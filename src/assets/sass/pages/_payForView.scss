@@ -1,12 +1,12 @@
 //头部
-.wslHeader{
+.wsl-header{
     background-image: $ln-bg;
-    .titleBox{
+    .title-box{
         height: 2.5rem;
         color: #FFFFFF;
         font-size: 0.9rem;
         position: relative;
-        .wTitle{
+        .w-title{
             width: 100%;
             font-size: 0.85rem;           
             position: absolute;
@@ -14,11 +14,17 @@
             top: 0.6rem;
         }
         .icon-left{
-        position: absolute;
-        color: #FFFFFF;
-        left: 0.5rem;
-        top: 0.8rem;
-    }
+            position: absolute;
+            color: #FFFFFF;
+            left: 0.5rem;
+            top: 0.8rem;
+        }
+        .icon-right{
+            position: absolute;
+            color: #FFFFFF;
+            right: 0.5rem;
+            top: 0.8rem;
+        }
     }
     
 }
