@@ -11,46 +11,47 @@
     }
 }
 
+.bar {
+    &.ad-bar {
+        background: #f6530b;
+        background-image: $ln-bg;
+        color: #fff;
+        height: auto;
+        padding: 0.1rem 0.5rem;
+        a {
+            color: #fff;
+        }
+        h1 {
+            color: #fff;
+        }
+    }
+}
+
 //首页头部logo和搜索框
 .shouye-head {
-        position: fixed;
-     top: 0; 
+    width: 100%;
+    position: fixed;
+    top: 0;
     left: 0;
-    width: 100%;
-    z-index: 999;
-    width: 100%;
-    background-image: $ln-bg;
-    padding: 0 0.5rem;
+    z-index: 8888;
+    background: #f6530b;
     .shouyelogo {
-        height: 2.5rem;
-        // background-image: $ln-bg;
+        padding: 0.5rem;
+        background-image: $ln-bg;
         padding-top: 0.5rem;
         width: 100%;
-        position: relative;
         img {
-            position: absolute;
+            float: left;
             height: 1.25rem;
             width: 4rem;
-            bottom: 0.6rem;
-            //       left: 0.5rem;
+            margin-top: 0.2rem;
         }
-        span{
-            float: right;
-    display: inline-block;
-    line-height: 1.5rem;
         .external {
-            margin-left: 0.5rem;
-            font-weight: 600;
-            display: inherit;
-            i {
-                font-size: 1rem;
-                color: #fff;
-            }
-        }
+            display: block;
+            margin-left: 5rem;
         }
         .shouye-sousuo {
-                display: inline-block;
-            width: 75%;
+            width: 100%;
             height: 1.5rem;
             line-height: 1.5rem;
             border-radius: 0.75rem;
@@ -59,9 +60,10 @@
             color: #fff;
             font-size: 0.7rem;
             position: relative;
-            i {
+            span {
                 position: absolute;
                 left: 1rem;
+                transform: scaleX(1);
                 line-height: 1.5rem;
             }
         }
@@ -105,6 +107,7 @@
 .pdbt {
     padding-bottom: 2.5rem;
 }
+
 .footer-hint {
     text-align: center;
     font-size: 0.7rem;
