@@ -4,18 +4,20 @@
 	<head>
 		@@include('../tpl/header.tpl',{ "title":"商品详情页" })
 		<link rel="stylesheet" href="assets/css/swiper.min.css" />
-		<link rel="stylesheet" href="lib/share/css/share.min.css" />
+		<!--<link rel="stylesheet" href="lib/share/css/share.min.css" />-->
 	</head>
 
 	<body>
 		<div id="goods-datail">
 			<div class="page page-current">
-				<header class="bar bar-nav header pubBottom">
-					<a class="icon icon-left pull-left"></a>
-					<a class="icon icon-fenxiang pull-right open-popup open-share" data-popup=".popup-share"></a>
-					<h1 class="title">商品详情页</h1>
-				</header>
-				<div class="content native-scroll pubContent">
+				<div class="content native-scroll">
+					<header class="bar-nav wsl-header">
+						<div class="title-box">
+							<a class="icon icon-left" href="javascript:history.go(-1)"></a>
+							<a class="icon icon-right icon-fenxiang open-popup open-share" data-popup=".popup-share"></a>
+							<div class="w-title">商品详情</div>
+						</div>
+					</header>
 					<div class="tabTop">
 						<!--商品详情页轮播图 start-->
 						<div class="swiper-container" id="goodsDetailBanner">
@@ -250,6 +252,10 @@
 
 			<!--商品详情页底部购买兑换 start-->
 			<div class="bar bar-tab detail-nav">
+				<!--<a href="javascript:;" class="detail-navitem">
+					<i class="icon icon-dianpu"></i>
+					<p>帮助</p>
+				</a>-->
 				<a href="javascript:;" class="detail-navitem">
 					<i class="icon icon-dianpu"></i>
 					<p>进店</p>
@@ -390,35 +396,42 @@
 
 		<!--分享弹窗-->
 		<div class="getTicketShare popup popup-share" id="popup-share">
-			<div id="allShare"></div>
-			<!--<div class="social-share" data-initialized="true" @click="showShare()">
-				<a href="#" class="share-icon social-share-icon">
-					<i class="icon icon-pengyouquan"></i>
+			
+			<div class="allShare">
+				<a href="#" class="share-icon">
+					<img src="assets/images/pengyou.png" />
+					<span>朋友圈</span>
 				</a>
-				<a href="#" class="share-icon social-share-icont">
-					<i class="icon icon-wechat"></i>
+				<a href="#" class="share-icon">
+					<img src="assets/images/wechati.png" />
+					<span>微信</span>
 				</a>
-				<a href="#" class="share-icon social-share-icon">
-					<i class="icon icon-qq"></i>
+				<a href="#" class="share-icon">
+					<img src="assets/images/QQ.png" />
+					<span>QQ</span>
 				</a>
-				<a href="#" class="share-icon social-share-icon">
-					<i class="icon icon-weibo"></i>
+				<a href="#" class="share-icon">
+					<img src="assets/images/weibo.png" />
+					<span>微博</span>
 				</a>
-				<a href="#" class="share-icon social-share-icon">
-					<i class="icon icon-copylink"></i>
+				<a href="#" class="share-icon">
+					<img src="assets/images/fuzhi.png" />
+					<span>复制链接</span>
 				</a>
-				<a href="#" class="share-icon social-share-icon">
-					<span class="icon icon-pingtaifenxiang"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></span>
+				<a href="#" class="share-icon">
+					<img src="assets/images/qitapingtai.png" />
+					<span>其他平台</span>
 				</a>
-			</div>-->
-			<span class="closeShare">取消</span>
+			</div>
+			<span class="close-popup closeShare">取消</span>
 		</div>
 		<!--分享弹窗结束-->
 
 		<!--<script src="assets/js/localStorage.js"></script>-->
 		<script type="text/javascript" src="lib/sui/js/sm.js"></script>
 		<script src="lib/swiper/js/swiper.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="lib/share/js/jquery.share.min.js" type="text/javascript" charset="utf-8"></script>
+		<!--<script src="lib/share/js/jquery.share.min.js" type="text/javascript" charset="utf-8"></script>-->
+		<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
 		<script src="assets/js/fx.js"></script>
 		<script src="assets/js/goods-detail.js" type="text/javascript" charset="utf-8"></script>
 	</body>
