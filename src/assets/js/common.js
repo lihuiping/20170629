@@ -132,3 +132,10 @@ $(function() {
 		Cache.set('token', tokEn);
 	};
 });
+
+
+apiready = function(){
+	$api.fixStatusBar($api.dom('.shouye-head'));
+	$api.fixStatusBar($api.dom('.movie-souye-head'));
+	$api.fixStatusBar($api.dom('.bar-nav'));
+};
