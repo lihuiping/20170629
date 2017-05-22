@@ -3,7 +3,7 @@
 
 	<head>
 		@@include('../tpl/header.tpl',{ "title":"播放记录" })
-		<script type="text/javascript" src="../../assets/js/jiaohu.js" charset="utf-8"></script>
+		<!--<script type="text/javascript" src="../../assets/lib/hprose.js" charset="utf-8"></script>-->
 		<style>
 			body @media screen and (max-width:320px) {
 				html {
@@ -26,16 +26,16 @@
 				height: 100%;
 			}
 			
-			.pr_li_left {}
+			/*.pr_li_left {}*/
 			
-			#bfjl-qs div:nth-child(1) {
+			/*.Lqnorecord div:nth-child(1) {
 				margin-top: 2.8rem;
 			}
 			
-			#bfjl-qs div:nth-child(2) {
+			.Lqnorecord div:nth-child(2){
 				font-size: 0.75rem;
-				margin-top: -0.6rem;
-			}
+				margin-top: -0.6rem!important;
+			}*/
 			
 			#bfjl-qs {
 				display: none;
@@ -191,12 +191,6 @@
 
 	<body>
 		<div class="page wj_page page-current page-inited" id="getpwd" style="display: none;">
-			<header class=" bar-nav wslHeader">
-				<div class="titleBox">
-					<a class="icon icon-left" href="#" onclick="javascript:history.go(-1)"></a>
-					<div class="wTitle">帮助</div>
-				</div>
-			</header>
 			<div class="content pr_content">
 				<ul>
 				</ul>
@@ -206,11 +200,18 @@
 			</div>
 		</div>
 		<div class="page bg-f5 page-current page-inited" id="bfjl-qs" style="display: block;">
-			<div class="content">
-				<div class="iconfont icon-zanwubofangjilu1" id="bfjlc-page"><i></i></div>
+			<header class=" bar-nav wsl-header">
+				<div class="title-box">
+					<a class="icon icon-left" href="javascript:history.go(-1);"></a>
+					<div class="w-title">播放记录</div>
+				</div>
+			</header>
+			<div class="content Lqnorecord">
+				<div class="icon icon-zanwubofangjilu-quesheng" id="bfjlc-page"><i></i></div>
 				<div>您暂无视频播放记录</div>
 			</div>
 		</div>
+		<script type="text/javascript" src="../../assets/js/jiaohu.js" charset="utf-8"></script>
 		<script type="text/javascript">
 			$("#edit-jilu").on("click", function() {
 				window.location.href = "./bfbj.html";
@@ -237,5 +238,4 @@
 		</script>
 	</body>
 	</body>
-
 </html>
