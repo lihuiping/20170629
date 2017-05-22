@@ -8,16 +8,8 @@ html,body,.swiper-wrapper img{}
 .bar-tab .tab-item.active, .bar-tab .tab-item:active {color:#ed4518;}
 .bar-tab .tab-item {color:#505050;}
 .movie-shouye-head{position: fixed;top:0;z-index:999;width: 100%;}
-.movieindex{background: linear-gradient( #fe8f19, #fe7105); background: -webkit-linear-gradient(#fe8f19, #fe7105);padding-top: 1rem;}
-.movieindex .shouyelogo {height:2.3rem; position: relative; 
-padding:.2rem .5rem;width: 100%;}
-.movieindex .shouyelogo span a:nth-child(2){margin-left:.5rem;font-weight:600;}
-.movieindex .shouyelogo span i{font-size:1rem;color:#fff}
-.movieindex .shouye-a4 {color:#383838;}
-.movieindex .shouyelogo img {height:1.3rem;position: absolute;bottom: .6rem;left: .5rem;}
-.movieindex .shouyelogo span {float:right;display:inline-block;height:2rem;line-height:2rem;}
-.movieindex .shouyelogo span i:nth-child(2) {margin:0 .5rem;}
-.movieindex .shouye-tc{height: 3.8rem;}
+.movieindex .shouyelogo .shouye-sousuo{display: inline-block;width: 62%;}
+.shouye-tc{height: 3.8rem;}
 .swiper-container {padding-bottom:0;overflow: hidden;}
 .swiper-container .fu-margin {position:absolute;bottom:.2rem;}
 .swiper-pagination-bullet {background-color:#FFF;opacity:1;transform:scale(0.6);}
@@ -44,8 +36,6 @@ padding:.2rem .5rem;width: 100%;}
 .buttom-logo img {height:1.7rem;display:block;margin:0 auto;}
 #shouye-ss{margin-left: 4.5rem;}
 #ss-tubiao{display: none;}
-.movieindex .shouye-sousuo{display: inline-block;width: 62%;height: 1.5rem;line-height:1.5rem;border-radius:.75rem;border: 1px solid #fff;margin-left:.5rem;margin-top: .2rem;text-align: center;color:#e4bf9c;font-size: .7rem;position: relative;}
-.movieindex .shouye-sousuo i{position: absolute;left: .9rem;top: 0.35rem;color: #fff;}
 .shouye-fenye{background: #f5f5f5;height: 1.9rem;padding-left: 3.5rem;padding-right: 3rem;}
 #fenge-down{margin-top: -.35rem;}
 #fenge-down div{height: 1.7rem;line-height: 1.7rem;margin-top: .15rem;}
@@ -64,7 +54,6 @@ padding:.2rem .5rem;width: 100%;}
 .color-gengduo {color:#b6907c;}
 .color-gengduo:active {color:#b6907c;}
 @media screen and (max-width: 320px) {.shouye-sousuo{width: 55%;}}
-#index-banner.movie-banner {margin-top: 0;}
 /*shangcheng*/
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,p {border:0;outline:0;margin:0;padding:0;}
 * {font-family:微软雅黑;margin:0;padding:0;}

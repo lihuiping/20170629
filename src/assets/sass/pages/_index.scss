@@ -13,49 +13,55 @@
 
 //首页头部logo和搜索框
 .shouye-head {
-    width: 100%;
-    position: fixed;
-    top: 0;
+        position: fixed;
+     top: 0; 
     left: 0;
-    z-index: 8888;
-    height: 2.5rem;
-//  background-color: #fff;
+    width: 100%;
+    z-index: 999;
+    width: 100%;
     background-image: $ln-bg;
     padding: 0 0.5rem;
     .shouyelogo {
         height: 2.5rem;
-        background-image: $ln-bg;
+        // background-image: $ln-bg;
         padding-top: 0.5rem;
         width: 100%;
+        position: relative;
         img {
             position: absolute;
             height: 1.25rem;
             width: 4rem;
-            top: 0.6rem;
-            left: 0.5rem;
+            bottom: 0.6rem;
+            //       left: 0.5rem;
         }
-        .external{
-            display: block;
-            margin-left: 5rem;
+        span{
+            float: right;
+    display: inline-block;
+    line-height: 1.5rem;
+        .external {
+            margin-left: 0.5rem;
+            font-weight: 600;
+            display: inherit;
+            i {
+                font-size: 1rem;
+                color: #fff;
+            }
+        }
         }
         .shouye-sousuo {
-//          display: block;
-            width: 100%;
+                display: inline-block;
+            width: 75%;
             height: 1.5rem;
             line-height: 1.5rem;
             border-radius: 0.75rem;
             border: 1px solid #fff;
-//          background: #fff;
-            
-//          margin-top: 0.2rem;
             text-align: center;
             color: #fff;
             font-size: 0.7rem;
             position: relative;
-            span {
+            i {
                 position: absolute;
                 left: 1rem;
-                transform: scaleX(1);
                 line-height: 1.5rem;
             }
         }
@@ -71,11 +77,11 @@
     &.bg-color {
         background-color: #fff;
     }
-    .tab-list {    
+    .tab-list {
         display: table-cell;
         vertical-align: middle;
         text-align: center;
-        .tab-label{
+        .tab-label {
             display: block;
         }
         .collect {
@@ -96,19 +102,19 @@
     }
 }
 
-.pdbt{
+.pdbt {
     padding-bottom: 2.5rem;
 }
-.footer-hint{
+.footer-hint {
     text-align: center;
     font-size: 0.7rem;
     line-height: 3.15rem;
-    color:#b0b0b0;
+    color: #b0b0b0;
     background-color: #f5f5f5;
 }
 
-.icon{
-    &.video{
-        padding-left: 0rem;
+.icon {
+    &.video {
+        padding-left: 0;
     }
 }
