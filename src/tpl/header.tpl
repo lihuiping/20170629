@@ -18,8 +18,8 @@
 	}
 	//公用url
 	function baseUrl() {
-		//return 'http://my.shop.7cai.tv/';
-		return 'http://www.movie.com/';	
+		return 'http://my.shop.7cai.tv/';
+	//	return 'http://www.movie.com/';	
 	}
 </script>
 <script type="text/javascript" src="assets/js/imgload.js"></script>
