@@ -72,7 +72,8 @@ var goods = new Vue({
 			});
 		},
 		getTitleHref: function(val) {
-			return 'goods-detail.html?id=' + val
+//  		return 'goods-detail.html?id=' + val
+			return 'movie-content.html'
 		},
 	}
 });
@@ -102,7 +103,8 @@ var yx_ry = new Vue({
 			});
 		},
 		getTitleHref: function(val) {
-			return 'goods-detail.html?id=' + val
+			//return 'goods-detail.html?id=' + val
+			return 'movie-content.html'
 		},
 	}
 });
@@ -132,7 +134,8 @@ var wl_movie = new Vue({
 			});
 		},
 		getTitleHref: function(val) {
-			return 'goods-detail.html?id=' + val
+			//return 'goods-detail.html?id=' + val
+			return 'movie-content.html'
 		},
 	}
 });
@@ -162,7 +165,8 @@ var jd_movie = new Vue({
 			});
 		},
 		getTitleHref: function(val) {
-			return 'goods-detail.html?id=' + val
+		//	return 'goods-detail.html?id=' + val
+		return 'movie-content.html'
 		},
 	}
 }); /*至尊独享*/
