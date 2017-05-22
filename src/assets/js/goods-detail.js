@@ -744,15 +744,9 @@ var allShare = new Vue({
 		var _this = this;
 		$(document).on('click', '.open-share', function() {
 			$.popup('#popup-share');
-			//初始化加载数据
-//			_this.showShare();
 		});
 	},
 	methods: {
-		showShare: function() {
-//			$('#allShare').share({sites: ['qzone', 'qq', 'weibo','wechat']});
-//			socialShare('#allShare', {sites: ['qzone', 'qq', 'weibo','wechat']});
-		}
 	}
 });
 
