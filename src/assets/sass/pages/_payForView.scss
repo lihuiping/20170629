@@ -1,18 +1,26 @@
 //头部
-.header{
-    height: 2.5rem;
-//  color: #FFFFFF;
+.wslHeader{
     background-image: $ln-bg;
-    .title{
+    .titleBox{
         height: 2.5rem;
         color: #FFFFFF;
         font-size: 0.9rem;
-        line-height: 2.5rem;
-    }
-    .icon{
-        margin-top: 0.15rem;
+        position: relative;
+        .wTitle{
+            width: 100%;
+            font-size: 0.85rem;           
+            position: absolute;
+            text-align: center;
+            top: 0.6rem;
+        }
+        .icon-left{
+        position: absolute;
         color: #FFFFFF;
+        left: 0.5rem;
+        top: 0.8rem;
     }
+    }
+    
 }
 //电影信息
 .filmInfo{
