@@ -40,6 +40,15 @@
         background-image: $ln-bg;
         padding-top: 0.5rem;
         width: 100%;
+        .r_header {
+            position: absolute;
+            right: 0.5rem;
+            bottom: 0.55rem;
+            i {
+                font-size: 1rem;
+                color: #fff;
+            }
+        }
         img {
             float: left;
             height: 1.25rem;
@@ -60,11 +69,10 @@
             color: #fff;
             font-size: 0.7rem;
             position: relative;
-            span {
-                position: absolute;
-                left: 1rem;
-                transform: scaleX(1);
-                line-height: 1.5rem;
+            i {
+                   position: absolute;
+    left: .9rem;
+    top: .4rem;
             }
         }
     }
