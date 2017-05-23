@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		@@include('../tpl/header.tpl',{ "title":"播放记录" })
+		
+		<style>
+			body {
+				background: #fff;
+			}
+			
+			.prse_bgchange {
+				background: #f5f5f5;
+				color: #383838;
+			}
+			
+			.prde_bgchange {
+				background: #ff8c24;
+				color: #383838;
+			}
+			
+			.bj-img {
+				width: 100%;
+				height: 100%;
+			}
+			
+			.pr_wj_content1 {
+				margin-bottom: 2.3rem;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="page wj_page page-current page-inited" id="getpwd">
+			<header class=" bar-nav wsl-header">
+				<div class="title-box">
+					<a class="icon icon-left" href="javascript:history.go(-1);"></a>
+					<div class="w-title">播放记录</div>
+				</div>
+			</header>
+			<div class="content">
+				<div class="pr_wj_content1">
+					<ul>
+						<li>
+							<div class="pr_left">
+								<div class="my-select" videoid="149"><input type="radio"><i class="icon icon-fankui" style="top:-3px;"></i></div>
+							</div>
+							<div class="pr_right">
+								<div class="pr_right_box_left"><img class="bj-img" src="../../assets/images/banner1.png"></div>
+								<div class="pr_right_box_right">
+									<p class="pr_right_box_right_top">从你的全世界路过</p>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="pr_select_delete">
+					<div class="pr_select_delete-select" id="pr_selectAll">全选</div>
+					<div class="pr_select_delete-delete " id="pr_delete">删除(<span class="delete_num">0</span>)</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="lib/hprose.js" charset="utf-8"></script>
+		<script type="text/javascript" src="assets/js/jiaohu.js" charset="utf-8"></script>
+		<script type="text/javascript" src="lib/light7/js/i18n/cn.min.js" ></script>
+		<script>
+			var token = Cache.get("flag") || "";
+			var client1 = hprose.Client.create("http://test.7cai.tv/index.php/api/api/video?t=" + token, ["getRecordLists", "delRecord"]);
+			$.showIndicator();
+			client1.getRecordLists(function(result) {
+				$.hideIndicator();
+				var result = $.parseJSON(result);
+				if(result.res == 1) {
+					if(result.data.length > 0) {
+						result.data.forEach(function(data) {
+							$(".pr_wj_content1 ul").append("<li><div class='pr_left'><div class='my-select' videoid=" + data.videoid + "><input type='radio' /><i class='icon icon-fankui' style='top:-3px;'></i></div></div><div class='pr_right'><div class='pr_right_box_left'><img class='bj-img' src='" + data.videoimg + "'/></div><div class='pr_right_box_right'><p class='pr_right_box_right_top'>" + data.videoname + "</p></div></div></li>")
+						})
+						var na = parseInt($(".delete_num").text());
+						var idarr = [];
+						var nb = $('.pr_wj_content1 ul li').length;
+						$(document).on('click', '.my-select', function() {
+							$(this).toggleClass("bg-myse");
+							$(this).attr("checked", !$(this).attr("checked"));
+							if($(this).attr("checked")) {
+								idarr.push($(this).attr("videoid"));
+								$('.delete_num').text(na += 1);
+							} else {
+								idarr.splice($.inArray($(this).attr("videoid"), idarr), 1);
+								$('.delete_num').text(na -= 1);
+							}
+							console.log(idarr);
+						});
+						$(document).on('click', '#pr_selectAll', function() {
+							nb = $('.pr_wj_content1 ul li').length;
+							if($("#pr_selectAll").text() == "全选") {
+								$(".my-select").each(function(dom) {
+									idarr.push($(".my-select")[dom].getAttribute("videoid"));
+								});
+								$("#pr_selectAll").html('取消全选');
+								$("#pr_delete").addClass('prde_bgchange');
+								$(".my-select").addClass("bg-myse");
+								$(".my-select").attr("checked", !$(this).attr("checked"));
+								$("#pr_selectAll").removeClass("prse_bgchange");
+								$("#pr_selectAll").removeClass("prde_bgchange");
+								$('.delete_num').text(nb);
+								na = nb;
+							} else {
+								idarr = [];
+								$("#pr_selectAll").html('全选');
+								$("#pr_delete").removeClass('prde_bgchange');
+								$(".my-select").removeClass("bg-myse");
+								$(".my-select").attr("checked", false);
+								$("#pr_selectAll").addClass("prse_bgchange");
+								$('.delete_num').text(0);
+								na = 0;
+							}
+							$("#pr_selectAll").toggleClass("prse_bgchange");
+						});
+						$(document).on('click', '#pr_delete', function() {
+							nb = $('.pr_wj_content1 ul li').length;
+							console.log(idarr);
+							if(idarr.length > 0) {
+								$.confirm('此操作将删除播放记录，该操作不可恢复是否继续？', function() {
+									$.showIndicator();
+									client1.delRecord({
+										"id": idarr
+									}, function(result) {
+										$.hideIndicator();
+										var result = $.parseJSON(result);
+										if(result.res == 1) {
+											var jilu = Cache.get("bfjl");
+											for(var i = 0; i < idarr.length; i++) {
+												jilu.splice($.inArray(idarr[i], jilu), 1);
+											};
+											Cache.set("bfjl", jilu);
+											$.toast("删除成功！");
+											$(".bg-myse").parent().parent().remove();
+											idarr = [];
+											$("#pr_selectAll").html('全选');
+											$("#pr_delete").addClass('prse_bgchange');
+											$("#pr_delete").removeClass('prde_bgchange');
+											$("#pr_selectAll").addClass('prde_bgchange');
+											na = nc = 0;
+											$(".delete_num").text(nc);
+											$('.my-select').attr("checked", false);
+										} else {
+											$.toast(res.msg);
+										}
+									})
+								});
+							} else {
+								$.toast("请选择要删除的记录!");
+							}
+						});
+					}
+				} else {
+					$.toast(result.msg);
+				}
+			})
+		</script>
+	</body>
+	</body>
+</html>
