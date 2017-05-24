@@ -209,8 +209,8 @@ var isLogin = function() {
 //提示未登录跳转
 var noLogin = function() {
 	setTimeout(function() {
-		window.location.href = "/templets/gerenzhongxin/login/login.html";
-	}, 1500)
+		window.location.href = "./login.html";
+	}, 1500);
 }
 
 //是否VIP
@@ -305,121 +305,13 @@ function myNav() {
 
 myNav();
 
-//登录按钮
-$(document).on("pageInit", "#login", function() {
-	//注册跳转
-	$("#user-re").on("click", function() {
-		window.location.href = "mobileRegist.html"
-	})
-	//找回密码跳转
-	$("#forget-ps").on("click", function() {
-		window.location.href = "backpsword.html"
-	})
-	//登录点击
-	$("#lg-denglu").on('click', function() {
-		var mobile = $("#lg-mobile").val();
-		var passwd = $("#lg-psword").val();
-		if(mobile && passwd && /^1(3|5|7|8)\d{9}$/.test(mobile) && /^(.){6,20}$/.test(passwd)) {
-			$.showIndicator();
-			client.invoke("login", [{
-				"mobile": mobile,
-				"passwd": passwd
-			}], function(result) {
-				$.hideIndicator();
-				var result = $.parseJSON(result);
-				if(result.res == 1) {
-					$.toast("欢迎," + mobile);
-					Cache.set("flag", result.data.sig);
-					Cache.set("whole_mobile", mobile);
-					Cache.set("passwd", passwd);
-					setTimeout(function() {
-						window.location.href = "/";
-					}, 1500);
-				} else {
-					$.toast(result.msg);
-				}
-			})
-		} else {
-			$.toast("请填写正确的账户密码！");
-		}
-	});
-});
-//注册页面  
-//1-2
-$(document).on("pageInit", "#mobileRegist", function() {
-	var act = getUrlVars()["act"];
-	console.log(act);
-	if(Cache.get("tuijianma")) {
-		$("#mr-tuijian").val(Cache.get("tuijianma"));
-		$("#tuijianren").css("display", "none");
-		var tuijian = 1;
-	}
-
-	$("#mr-wc").on("click", function() {
-		var data = [];
-		var mobile = $("#mr-mobile").val();
-		var psword = $("#mr-psword").val() ? $("#mr-psword").val() : "123456";
-		if(/^1(3|5|7|8)\d{9}$/.test(mobile) && /^(.){6,20}$/.test(psword)) {
-			if(act) {
-				Cache.set("act", act);
-				data = [{
-					"mobile": mobile,
-					"passwd": psword,
-					"act": act
-				}];
-			} else {
-				if(tuijian) {
-					data = [{
-						"mobile": mobile,
-						"passwd": psword,
-						"topuser": $("#mr-tuijian").val()
-					}];
-				} else {
-					data = [{
-						"mobile": mobile,
-						"passwd": psword,
-						"tjmobile": $("#mr-tuijian").val()
-					}];
-				}
-			}
-
-			client.invoke("register", data, function(result) {
-				var result = $.parseJSON(result);
-				if(result.res == 1) {
-					client.invoke("login", [{
-						"mobile": mobile,
-						"passwd": psword
-					}], function(result) {
-						var result = $.parseJSON(result);
-						if(result.res == 1) {
-							$.toast("欢迎," + mobile);
-							Cache.set("flag", result.data.sig);
-							Cache.set("whole_mobile", mobile);
-							Cache.set("passwd", psword);
-							setTimeout(function() {
-								window.location.href = "../huiyuan/kaiHuiyuan.html";
-							}, 1500);
-						} else {
-							$.toast(result.msg);
-						}
-					});
-				} else {
-					$.toast(result.msg);
-				}
-			});
-		} else {
-			$.toast("手机号或密码格式不正确!");
-		}
-	});
-});
-
 //发送验证码
 function myCode() {
 	var i = 60; // 倒计时时间
 	function time(t) {
 		if(i == 0) {
 			t.removeClass('bg-gray');
-			t.html('再次发送');
+			t.html('重新发送');
 			i = 60; // 与声明的倒计时时间相同
 			t.bind('click'); // 时间结束后，再次绑定click事件
 		} else {
@@ -434,7 +326,6 @@ function myCode() {
 		}
 	}
 	$(document).on('click', '.yanzhengma', function(e) { // 绑定事件给document元素绑定on事件，然后找要点击的class
-
 		var mobile = $("#bk-mobile").val();
 		if(/^1(3|5|7|8)\d{9}$/.test(mobile)) {
 			if($(e.target).hasClass('bg-gray')) {
@@ -458,38 +349,10 @@ function myCode() {
 	})
 }
 
-//密码找回
-$(document).on("pageInit", "#backpsword", function(e, id, page) {
-	myCode();
 
-	$("#bk-commit").on("click", function() {
-		var mobile = $("#bk-mobile").val();
-		var code = $("#bk-code").val();
-		var passwd = $("#bk-newps").val();
-		if(/^1(3|5|7|8)\d{9}$/.test(mobile) && code && passwd) {
-			client.invoke("findPwd", [{
-				"mobile": mobile,
-				"code": code,
-				"passwd": passwd
-			}], function(result) {
-				var result = $.parseJSON(result);
-				if(result.res == 1) {
-					$.toast("密码找回成功");
-					setTimeout(function() {
-						window.location.href = "login.html";
-					}, 1500);
-				} else {
-					$.toast("验证码不正确，请重新输入");
-				}
-			})
-		} else {
-			$.toast("请输入正确的资料");
-		}
-	})
-});
 
 //设置
-//$(document).on("pageInit", "#shezhi", function(e, id, page) {
+$(document).on("pageInit", "#shezhi", function(e, id, page) {
 	$("#tuichudenglu").on("click", function() {
 		$.confirm('您确定要退出登录吗？',
 			function() {
@@ -505,17 +368,16 @@ $(document).on("pageInit", "#backpsword", function(e, id, page) {
 						Cache.clear("uniquemark");
 						Cache.clear("tuijianma");
 						setTimeout(function() {
-							window.location.href = "/";//退出后跳转到的页面
+							window.location.href = "/";
 						}, 1500)
 					} else {
 						$.toast(result.msg);
 					}
 				})
-			},
-			function() {}
+			}
 		)
 	});
-//});
+});
 
 //获取分享码
 var getUrlVars = function() {
@@ -1106,43 +968,6 @@ $(document).on("pageInit", "#modifysecpwd", function(e, id, page) {
 	});
 });
 
-//  反馈信息
-$(document).on("pageInit", "#yijianfankui", function(e, id, page) {
-	$("#tjfk").on("click", function() {
-		if(!$("#fk-fklx").val()) {
-			$.toast("请选择反馈类型！");
-		} else if(!$(".yijian-text").val()) {
-			$.toast("请输入反馈内容！");
-		} else {
-			client.invoke("getFKTypeLists", function(result) {
-				var result = $.parseJSON(result);
-			});
-			var fklx = {
-				"内容问题": 1,
-				"播放问题": 2,
-				"卡顿问题": 3,
-				"会员问题": 4,
-				"账号问题": 5,
-				"闪退、页面加载问题": 6,
-				"产品意见": 7
-			}
-			client.invoke("addFkMsg", [{
-				"type": fklx[$("#fk-fklx").val()],
-				"content": $(".yijian-text").val(),
-				"contact": $(".liuyan-input").val()
-			}], function(result) {
-				var result = $.parseJSON(result);
-				if(result.res == 1) {
-					$.toast("已收到您的反馈！");
-					setTimeout(function() {
-						window.location.href = "/templets/gerenzhongxin/personmessage.html";
-					}, 1500);
-				}
-			});
-		}
-
-	});
-});
 
 //修改用户名
 $(document).on("pageInit", "#changename", function(e, id, page) {
@@ -1646,10 +1471,6 @@ function test() {
 		window.location.href = "./AddAddress.html"
 	})
 
-	//条款跳转
-	$(".tiaokuan-tiaozhuan").on("click", function() {
-		window.location.href = "./agreement.html";
-	})
 
 	//选择框
 	$(".label-switch").on("click", function() {
@@ -1682,17 +1503,7 @@ function test() {
 		$(this).toggleClass("icon-down");
 		$(this).parent().siblings().toggleClass("danhang");
 	})
-	//反馈问题选择
-	$("#fk-fklx").picker({
-		toolbarTemplate: '<header class="bar bar-nav border-no">\
-		  <button class="button button-link pull-left no-border"><span class="color-gray"></span></button>\
-		  <button class="button button-link pull-right close-picker color-f60"><span class="color-f60">确定</span></button>\
-		  </header>',
-		cols: [{
-			textAlign: 'center',
-			values: ['内容问题', '播放问题', '卡顿问题', '会员问题', '账号问题', '闪退、页面加载问题', '产品意见']
-		}]
-	});
+	
 	//退款原因选择
 	$("#tuikuanyuanyin").picker({
 		toolbarTemplate: '<header class="bar bar-nav border-no">\
