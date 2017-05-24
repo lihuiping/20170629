@@ -86,7 +86,7 @@ var client = sclient();
 // 开通会员    1-1
 //$(document).on("pageInit", "#kaiHuiyuan", function(e, id, page) {
 	$.showIndicator();
-
+//
 	client.invoke("getUserInfo", function(result) {
 		$.hideIndicator();
 		var result = $.parseJSON(result);
@@ -108,137 +108,92 @@ var client = sclient();
 				isVIP = result.data.isVip;
 				if(isVIP == 1) {
 					// 已经是会员。		
-					$(".user-box").append('<span id="huiyuanlogo">会员服务协议 <i class="iconfont icon-yingdaicon10"></i> &nbsp;</span>');
+//					$(".user-box").append('<span id="huiyuanlogo">会员服务协议 <i class="iconfont icon-yingdaicon10"></i> &nbsp;</span>');
 					$(".VIP").css("display", "none");
 				}
 			} else {
-				$(".user-box").append('<span id="huiyuanlogo">会员服务协议 <i class="iconfont icon-yingdaicon10"></i> &nbsp;</span>');
-				$(".VIP").css("display", "none");
+//				$(".user-box").append('<span id="huiyuanlogo">会员服务协议 <i class="iconfont icon-yingdaicon10"></i> &nbsp;</span>');
+				$(".VIP").css("display", "block");
 			}
-			$("#huiyuanlogo").on("click", function() {
-				window.location.href = "./agreement.html";
-			})
+//			$("#huiyuanlogo").on("click", function() {
+//				window.location.href = "./agreement.html";
+//			})
 		} else {
-			$.toast(result.msg);
+			$.toast(result.msg+000);
 		}
 
 	});
-	if(isWenxin) {
-		var openid = Cache.get("openid") || null;
-		if(!openid) {
-			var code = getUrlVars()["code"] || null;
-			if(code) {
-				$.showIndicator();
-				client.invoke("getOpenId", [{
-					"code": code
-				}], function(result) {
-					$.hideIndicator();
-					var result = $.parseJSON(result);
-					if(result.res == 1) {
-						openid = result.data.openid;
-						Cache.set("openid", result.data.openid);
-					} else {
-						$.toast(result.msg);
-					}
-				})
-			} else {
-				window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx880f0e36a4befaf8&redirect_uri=" + encodeURIComponent("http://v.7cai.tv/templets/gerenzhongxin/huiyuan/kaiHuiyuan.html") + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect";
-			}
-		}
-	}
+//	if(isWenxin) {
+//		var openid = Cache.get("openid") || null;
+//		if(!openid) {
+//			var code = getUrlVars()["code"] || null;
+//			if(code) {
+//				$.showIndicator();
+//				client.invoke("getOpenId", [{
+//					"code": code
+//				}], function(result) {
+//					$.hideIndicator();
+//					var result = $.parseJSON(result);
+//					if(result.res == 1) {
+//						openid = result.data.openid;
+//						Cache.set("openid", result.data.openid);
+//					} else {
+//						$.toast(result.msg);
+//					}
+//				})
+//			} else {
+//				window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx880f0e36a4befaf8&redirect_uri=" + encodeURIComponent("http://v.7cai.tv/templets/gerenzhongxin/huiyuan/kaiHuiyuan.html") + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect";
+//			}
+//		}
+//	}
 
 	//支付
 	$("#kt-kaitong").on("click", function() {
-		function Pay(style) {
-			if(style == 'wx_pay_pub') {
-				$.showIndicator();
-				client.invoke("getPayOrderInfo", [{
-					"amount": 500,
-					"type": style,
-					"subject": "超级会员VIP"
-				}], function(result) {
-					$.hideIndicator();
-					var result = $.parseJSON(result);
-					if(result.res == 1) {
-						if(result.data.isPay == 1) { //可以支付状态
-							FUQIANLA.init({
-								'appId': 'VWT0GaNzbX3Dqesop5zrOg', //应用ID号
-								'merchId': 'm1610030006', //商户号
-								'orderId': result.data.orderId, //订单号，此处为模拟订单号。具体以接入为准
-								'channel': style, //开通的通道简称
-								'amount': '500', //支付金额
-								'subject': '超级VIP会员', //商品标题
-								'notifyUrl': result.data.notifyUrl, //异步支付结果通知地址
-								'extra': {
-									'openid': openid,
-									'cb': function() {
-										window.location.href = "http://v.7cai.tv/templets/gerenzhongxin/huiyuan/tz.html";
-										//											$.toast("恭喜您，成功加入VIP会员！")
-										//											 setTimeout(function(){
-										//											 	var token = Cache.get("flag") || "";
-										//											 	var client2 = hprose.Client.create("http://192.168.1.241:82/api/api/voucher?t="+token,["isCapable"]);
-										//													client2.isCapable({"actid":Cache.get("act").parseInt()},function(result){
-										//														var result = $.parseJSON(result);
-										//														if(result.res == 1){
-										//															window.location.href = "./lqkj.html";
-										//														}else{
-										//															window.location.href = "/";
-										//														}
-										//													})
-										//												
-										//											},1000);
-									}
-								}
-							});
-						} else {
-							$.toast(result.msg);
-						}
-					}
-				});
-
-			}
-			if(style == "ali_pay_wap") {
-				$.showIndicator();
-				client.invoke("getPayOrderInfo", [{
-					"amount": 500,
-					"type": style,
-					"subject": "超级会员VIP"
-				}], function(result) {
-					$.hideIndicator();
-					var result = $.parseJSON(result);
-					if(result.res == 1) {
+//		function Pay(style) {
+			
+//			if(style == "ali_pay_wap") {
+//				$.showIndicator();
+//				client.invoke("getPayOrderInfo", [{
+//					"amount": 500,
+//					"type": style,
+//					"subject": "超级会员VIP"
+//				}], function(result) {
+//					$.hideIndicator();
+//					var result = $.parseJSON(result);
+//					if(result.res == 1) {
 						FUQIANLA.init({
 							'appId': 'VWT0GaNzbX3Dqesop5zrOg', //应用ID号
 							'merchId': 'm1610030006', //商户号
-							'orderId': result.data.orderId, //订单号，此处为模拟订单号。具体以接入为准
+							'orderId': Date.now(), //订单号，此处为模拟订单号。具体以接入为准
 							'channel': 'ali_pay_wap', //开通的通道简称
 							'amount': '500', //支付金额
-							'subject': result.data.subject, //商品标题
-							'notifyUrl': result.data.notifyUrl, //异步支付结果通知地址					   
+							'subject': '终身会员', //商品标题
+							'notifyUrl': 'http://my.shop.7cai.tv/pay.php', //异步支付结果通知地址	
+								'extra': {
+											'return_url': 'http://shop.7cai.tv/src/html',
+										}
 						});
-					} else {
-						$.toast(result.msg)
-					}
-				});
+					
+//					} else {
+//						$.toast(result.msg + 00)
+//					}
+//				});
+//
+//			}
 
-			}
-
-		}
-		if(isWenxin) {
-			Pay('wx_pay_pub');
-		} else {
-			Pay("ali_pay_wap");
-		}
+//		}
 	})
+//});
 	//条款跳转
 	$(".tiaokuan-tiaozhuan").on("click", function() {
 		window.location.href = "./agreement.html";
-	})
+	});
 	//文本展开
 	$(".tk-open").on("click", function() {
-		$(this).toggleClass("icon-up");
+		$(this).toggleClass("icon-up2");
 		$(this).toggleClass("icon-down");
 		$(this).parent().siblings().toggleClass("danhang");
 	})
 
-//});
+
+
