@@ -44,5 +44,11 @@ $("#fk-fklx").picker({
 		values: ['内容问题', '播放问题', '卡顿问题', '会员问题', '账号问题', '闪退、页面加载问题', '产品意见']
 	}]
 });
-//$("#fk-fklx").picker('cssClass',['popup-overlay','modal-overlay-visible']);
+
+$("#fk-fklx").on('click',function(){
+	$(".modal-bg").show(); 	
+	$(".modal-bg,.close-picker").on('click',function(){
+		$(".modal-bg").hide();
+	})
+});
 $.init();
