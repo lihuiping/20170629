@@ -33,3 +33,70 @@
     margin-top: 1.3rem!important;
 }
 
+.dyp-up {
+    border-bottom: 1px solid #d9d9d9;
+    display: flex;
+    padding: .5rem;
+}
+
+.dyp-img {
+    width: 4.8rem;
+    height: 6.7rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.dyp-right {
+    width: 11.5rem;
+    margin-left: .4rem;
+//  margin-top: -.65rem;
+}
+
+.dyp-right p {
+    line-height: .3rem;
+    font-size: .65rem;
+}
+
+.dyp-right p:nth-child(1) span {
+    display: inline-block;
+    width: 1rem;
+    height: .7rem;
+    line-height: .7rem;
+    text-align: center;
+    background-color: #ff8c24;
+    color: #FFF;
+    font-size: .6rem;
+    border-radius: .1rem;
+}
+
+.wd-yingyuan {
+    font-size: .65rem;
+}
+
+.wd-yingyuan span {
+    color: gray;
+    display: block;
+    margin-left: 2.1rem;
+    margin-top: -.95rem;
+}
+
+.dyp-right p:nth-child(6) span {
+    font-size: .85rem;
+    color: #ec4619;
+}
+
+.mybutton-2 {
+    width: 3rem;
+    height: 1.5rem;
+    background-color: #ff8c24;
+    color: #FFF;
+    float: right;
+    margin-top: .4rem;
+    margin-right: .6rem;
+    border: none;
+}
+.fenge {
+    height: .5rem;
+    background: #f5f5f5;
+    margin: 0 auto;
+}
