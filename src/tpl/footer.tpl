@@ -17,7 +17,7 @@
       <span class="icon icon-find"></span>
       <span class="tab-label">发现</span>
     </a>
-    <a class="tab-item"  href="#" id="me" data-class="icon-user">
+    <a class="tab-item"  href="user-center.html" id="me" data-class="icon-user">
       <span class="icon icon-user"></span>
       <span class="tab-label">我的</span>
     </a>
