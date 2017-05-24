@@ -1,0 +1,51 @@
+@charset "UTF-8";
+.cardvol-cont {
+    .buttons-tab .button.active {
+        color: #EC4619;
+        border-color: #ec4619;
+    }
+    .buttons-tab {
+        height: 2.3rem;
+        line-height: 2.3rem;
+    }
+    .buttons-tab .button {
+        height: 2.3rem;
+    }
+    .iconfont {
+        font-size: 4.5rem;
+        color: #d9d9d9;
+    }
+    .box {
+        text-align: center;
+        margin-top: 5.6rem;
+        background: #f5f5f5;
+    }
+    .box {
+        p {
+            margin-top: 0.5rem;
+            font-size: 0.75rem;
+            color: #979797;
+        }
+    }
+    .ych_kaquan {
+        width: 100%;
+        height: 5rem;
+    }
+    .ych_kaquan {
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .wsy_kaquan {
+        p {
+            margin: 0;
+            margin-top: -1.3rem;
+            margin-bottom: 0.4rem;
+            font-size: 0.5rem;
+        }
+    }
+    .wsy_kaquan {
+        display: none;
+    }
+}
