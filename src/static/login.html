@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		@@include('../tpl/header.tpl',{ "title":"七彩梦视频" })
+	</head>
+
+	<body>
+		<div class="page page-current page-inited" id="login">
+			<div class="content">
+				<div class="logo">
+					<img src="assets/images/shouye-logo.png" />
+				</div>
+				<div class="page-login">
+					<div class="list-block inset text-center">
+						<ul>
+							<li>
+								<div class="item-content z-content-1">
+									<div class="item-media"><i class="icon icon-shurushoujihao"></i></div>
+									<div class="item-inner" id="login-inner">
+										<div class="item-input">
+											<input name="mobile" id="lg-mobile" placeholder="手机号" type="text">
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="item-content z-content-1 no-bordertop">
+									<div class="item-media"><i class="icon icon-shurumima"></i></div>
+									<div class="item-inner">
+										<div class="item-input">
+											<input name="password" id="lg-psword" placeholder="密码" type="password">
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul>
+						<div class="lg-error" id="lg-lger"></div>
+					</div>
+					<div class="content-block l-login">
+						<div class="newbutton" id="lg-denglu">登录</div>
+						<div class="content-padded">
+							<span class="pull-left userre" id="user-re">用户注册</span>
+							<span class="pull-right userpa" id="forget-ps">忘记密码</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="lib/hprose.js"></script>
+		<script type="text/javascript" src="assets/js/other.js" charset="utf-8"></script>
+		<script type="text/javascript" src="assets/js/login.js" charset="utf-8"></script>
+	</body>
+</html>
