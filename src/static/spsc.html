@@ -27,7 +27,6 @@
 			}
 			
 			.pr_li_left {}
-			
 			/*#bfjl-qs div:nth-child(1) {
 				margin-top: 2.8rem;
 			}
@@ -190,17 +189,33 @@
 	</head>
 
 	<body>
-		<div class="page wj_page page-current page-inited" id="getpwd" style="display: none;">
+		<div class="page wj_page page-current page-inited" id="getpwd" style="display: block;">
+			<header class=" bar-nav wsl-header">
+				<div class="title-box">
+					<a class="icon icon-left" href="javascript:history.go(-1);"></a>
+					<div class="w-title">视频收藏</div>
+				</div>
+			</header>
 			<div class="content pr_content">
 				<ul>
-					
+					<li>
+						<div class='pr_li_left'><img class='bf-img' src='" + data.videoimg + "' /></div>
+						<div class='pr_li_right'>
+							<p class='pr_li_right_top'>asdasdasd</p>
+						</div>
+						<a class='external' href='http://v.7cai.tv/plus/view.php?aid=" + data.videoid + "'>
+							<div class='pr_li_play'><i class='icon icon-jixubofang'></i>
+								<p style='color:#ccc;'>重新播放</p>
+							</div>
+						</a>
+					</li>
 				</ul>
 			</div>
 			<div class="pr_edit" id="edit-jilu">
 				编辑
 			</div>
 		</div>
-		<div class="page bg-f5 page-current page-inited" id="bfjl-qs" style="display: block;">
+		<div class="page bg-f5 page-current page-inited" id="bfjl-qs" style="display: none;">
 			<header class=" bar-nav wsl-header">
 				<div class="title-box">
 					<a class="icon icon-left" href="javascript:history.go(-1);"></a>
@@ -213,7 +228,7 @@
 			</div>
 		</div>
 		<script type="text/javascript" src="assets/js/jiaohu.js" charset="utf-8"></script>
-		<script type="text/javascript" src="lib/light7/js/i18n/cn.min.js" ></script>
+		<script type="text/javascript" src="lib/light7/js/i18n/cn.min.js"></script>
 		<script type="text/javascript">
 			$("#edit-jilu").on("click", function() {
 				window.location.href = "./scbj.html";
@@ -227,7 +242,7 @@
 				if(result.res == 1) {
 					if(result.data.length > 0) {
 						result.data.forEach(function(data) {
-							$(".pr_content ul").append("<li><div class='pr_li_left'><img class='bf-img' src='" + data.videoimg + "'/></div><div class='pr_li_right'><p class='pr_li_right_top'>" + data.videoname + "</p></div><a class='external' href='http://v.7cai.tv/plus/view.php?aid=" + data.videoid + "'><div class='pr_li_play'><i class='iconfont icon-jixubofang'></i><p style='color:#ccc;'>重新播放</p></div></a></li>")
+							$(".pr_content ul").append("<li><div class='pr_li_left'><img class='bf-img' src='" + data.videoimg + "'/></div><div class='pr_li_right'><p class='pr_li_right_top'>" + data.videoname + "</p></div><a class='external' href='http://v.7cai.tv/plus/view.php?aid=" + data.videoid + "'><div class='pr_li_play'><i class='icon icon-jixubofang'></i><p style='color:#ccc;'>重新播放</p></div></a></li>")
 						})
 					} else {
 						$("#getpwd").fadeOut();
