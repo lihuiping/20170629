@@ -1449,10 +1449,6 @@ myNav();
 //部分交互，跳转
 function test() {
 
-	//在线电影卷
-	$("#zxyhj-page").on("click", function() {
-		window.location.href = "zxyhj.html"
-	})
 	//门店卡卷
 	$("#mendianyouhuiquan").on("click", function() {
 		window.location.href = "zxyhj.html"
