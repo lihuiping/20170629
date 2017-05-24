@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html class="pixel-ratio-1">
+	<head>
+		@@include('../tpl/header.tpl',{ "title":"在线观影优惠券" })
+	</head>
+
+	<body>
+		<div class="page page-current" id="zxyhj">
+			<div class="content cardvol-cont">
+				<!--标签页-->
+				<header class="bar-nav wsl-header">
+					<div class="title-box">
+						<a class="icon icon-left" href="javascript:history.go(-1)"></a>
+						<div class="w-title">在线观影优惠券</div>
+					</div>
+				</header>
+				
+				<div class="buttons-tab">
+					<a href="#zx-tab1" class="tab-link active button">未使用</a>
+					<a href="#zx-tab2" class="tab-link button">已使用</a>
+					<a href="#zx-tab3" class="tab-link button">已过期</a>
+				</div>
+				<div class="content-block">
+					<div class="tabs">
+						<div id="zx-tab1" class="tab active">
+							<div class="wsy_kaquan" style="display: none;">
+								<p>演唱会门票上不能领取，请耐心等待兑换时间~</p>
+								<div class="ych_kaquan">
+									<img src="assets/images/dhj-n.png">
+								</div>
+							</div>
+							<div class="content-block" style="display: block;">
+								<div class="box">
+									<i class="iconfont icon-wodekaquan-quesheng"></i>
+									<p>您还没有可用的卡券~</p>
+								</div>
+							</div>
+						</div>
+						<div id="zx-tab2" class="tab">
+							<div class="content-block">
+								<div class="box">
+									<i class="iconfont icon-wodekaquan-quesheng"></i>
+									<p>您还没有已使用的卡券~</p>
+								</div>
+							</div>
+						</div>
+						<div id="zx-tab3" class="tab">
+							<div class="content-block">
+								<div class="box">
+									<i class="iconfont icon-wodekaquan-quesheng"></i>
+									<p>您还没有已过期的卡券~</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="lib/hprose.js" charset="utf-8"></script>
+		<!--<script src="/cn.js"></script>-->
+	</body>
+</html>
