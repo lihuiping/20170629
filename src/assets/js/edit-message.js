@@ -599,7 +599,7 @@ $(document).on("pageInit", "#tuijianYouli", function(e, id, page) {
 
 	//好友页
 	$("#haoyou-page").on("click", function() {
-		window.location.href = "./yqHaoyou.html"
+		window.location.href = "myshare.html"
 	})
 
 	//二维码生成
