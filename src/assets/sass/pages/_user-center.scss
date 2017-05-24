@@ -1,1 +1,572 @@
-@charset "UTF-8";
+
+.userhead {
+    height: 4rem;
+    line-height: 4rem;
+}
+.userhead div {
+    float: left;
+    line-height: 0;
+    margin-top: 0.5rem;
+    margin-left: 0.9rem;
+}
+.userhead div p {
+    line-height: 0.25rem;
+    margin: 0.8rem 0;
+}
+.userhead div p:nth-child(1) {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+.userhead div p:nth-child(2) {
+    font-size: 0.75rem;
+    color: rgb(255, 140, 0);
+}
+.userhead span {
+    float: right;
+    margin-right: 0.85rem;
+}
+#personmessage {
+    background-color: rgb(245, 245, 245);
+}
+#p-touxiang {
+    border-radius: 50%;
+}
+#touxiang2 {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+}
+.p-white {
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+}
+.myorange {
+    color: rgb(236, 70, 25);
+}
+.marginleft-01 {
+    margin-left: -0.2rem;
+}
+li {
+    list-style: outside none none;
+}
+.fenge-2 {
+    height: 0.5rem;
+    width: 100%;
+}
+.list-module {
+    padding-left: 0;
+    background-color: transparent;
+}
+.p-white {
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+}
+.person-mid li {
+    font-size: 0.75rem !important;
+}
+.hybg-down-num span:nth-child(1) {
+    font-size: 0.8rem;
+}
+.hybg-down-num span:nth-child(2) {
+    display: inline-block;
+    color: rgb(236, 70, 25);
+    margin-left: 0.8rem;
+    font-size: 0.8rem;
+}
+.page {
+    background-color: rgb(245, 245, 245);
+}
+.list-module i {
+    font-size: 0.8rem;
+}
+.list-module {
+    position: relative;
+    background: rgb(255, 255, 255) none repeat scroll 0 0;
+    height: 2.2rem;
+    line-height: 2.2rem;
+    padding-left: 1rem;
+    border-bottom: 1px solid rgb(233, 233, 233);
+}
+.list-module span {
+    margin-right: 0.6rem;
+}
+.weight {
+    font-weight: 600;
+    color: gray;
+}
+.icon-size {
+    display: inline-block;
+}
+.person-mid {
+    font-size: 0.85rem;
+}
+.right-icon {
+    position: absolute;
+    right: 0.25rem;
+}
+#p-biaoqian {
+    position: absolute;
+    color: rgb(255, 102, 0);
+    width: 1.9rem;
+    height: 0.8rem;
+    right: 2.3rem;
+    top: 33%;
+    font-size: 0.6rem;
+    line-height: 0.7rem;
+    border-radius: 0.5rem;
+    border: 1px solid rgb(255, 102, 0);
+    text-align: center;
+}
+.icon-kaitonghuiyuan {
+    color: rgb(236, 70, 25);
+    font-size: 1rem !important;
+}
+.preloader-white::after,
+.preloader::after {
+    background-image: url("jiazai2.gif");
+}
+.border-bottom {
+    border-bottom: 1px solid #e2e2e2;
+}
+
+#edme li div {
+    height: 2.2rem;
+    line-height: 2.2rem;
+    font-size: 0.8rem;
+}
+#edme #me-touxiang div {
+    height: 4.5rem;
+    line-height: 4.5rem;
+}
+#my-touxiang {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.message-right {
+    position: absolute;
+    top: 0.85rem;
+    right: 1rem;
+}
+.message-right p {
+    margin-top: -.8rem;
+}
+#brdate,
+#megenger {
+    margin-top: -.9rem;
+    text-align: right;
+}
+#brdate {
+    font-size: 0.8rem;
+    margin-top: -.85rem;
+}
+#modifymessage {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+/*李慧萍 编辑资料*/
+.editmessage.page {
+    background: #fff;
+}
+/*李慧萍 修改用户名*/
+.main-90 {
+    height: 2.2rem;
+    line-height: 2.2rem;
+    width: 90%;
+    margin: 0 auto;
+}
+.page.hm-changNmae {
+    background: #fff;
+}
+#name-guanbi {
+    float: right;
+    color: #b0afaf;
+}
+.namerol {
+    width: 90%;
+    color: gray;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    font-size: 0.75rem;
+    margin: 0 auto;
+}
+
+/*修改手机号*/
+#fasong {
+    display: inline-block;
+    position: absolute;
+    height: 3rem;
+    width: 5rem;
+    right: 0.5rem;
+    top: 0;
+    line-height: 0;
+    padding-left: 5px;
+    margin-right: -0.5rem;
+}
+#fasong p a {
+    margin-top: 0.1rem;
+    color: #fff;
+    height: 2rem;
+    line-height: 2rem;
+    font-size: 0.75rem;
+}
+#momo-re {
+    position: relative;
+}
+.inhert-li {
+    width: 92%;
+    border-bottom: 1px solid #d9d9d9;
+    height: 2.2rem;
+    line-height: 2.2rem;
+    margin: 0 auto;
+}
+.yanzhengma {
+    background: #ff8c24;
+    border: none;
+    margin-top: 0.1rem;
+    color: #fff;
+}
+#modifymobile {
+    margin-top: 2rem;
+}
+.page.modifynumber {
+    background: #fff;
+}
+.modifynumber .list-block {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+/*李慧萍 推荐有礼*/
+.red-bag {
+    width: 17rem;
+    height: 5rem;
+    background-image: url("../images/redbag1.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: 0.5rem auto;
+    width: 92%;
+    margin: 5px auto 0;
+}
+.tuijianyouli.page {
+    background: #fff;
+    p {
+        margin: 1rem 0;
+    }
+    .tj-yaoqing {
+        width: 80%;
+        font-size: 0.7rem;
+        color: gray;
+        text-align: center;
+        line-height: 0.4rem;
+        margin: 0 auto;
+    }
+    .tj-erwei {
+        width: 5.8rem;
+        height: 6rem;
+        margin: 1rem auto 1.5rem;
+        div {
+            width: 5.5rem;
+            height: 5.5rem;
+            border: 1px solid #000;
+            img {
+                width: 90%;
+                height: 90%;
+                margin: 5% auto;
+            }
+        }
+        p {
+            font-size: 0.5rem;
+            color: gray;
+            margin-top: 5px;
+        }
+    }
+    .tj-fenxiang {
+        width: 76%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin: 1rem auto;
+        li {
+            width: 3rem;
+            height: 4rem;
+            img {
+                display: block;
+                width: 2.7rem;
+                height: 2.7rem;
+                margin: 0 auto;
+            }
+            span {
+                display: block;
+                font-size: 0.7rem;
+                text-align: center;
+            }
+        }
+    }
+    .tj-foot {
+        border-top: 2px solid #f5f5f5;
+        height: 3.5rem;
+        text-align: center;
+        width: 100%;
+        line-height: 0.5rem;
+        padding-top: 0.2rem;
+        p:nth-child(1) {
+            font-size: 0.75rem;
+            color: #c9aa9c;
+        }
+        p:nth-child(2) {
+            font-size: 0.5rem;
+            color: gray;
+        }
+    }
+
+}
+
+/*李慧萍  我的分享*/
+.myshare.page {
+    background: #fff;
+    .bar-nav~.content {
+        top: 2.3rem;
+    }
+    .list-block li {
+        border-bottom: 1px solid #d9d9d9;
+        .item-media img {
+            width: 3rem;
+            border-radius: 100%;
+        }
+        .item-inner {
+            border-bottom: 0;
+            .item-title {
+                font-size: 0.8rem;
+                margin-top: 0.3rem;
+            }
+            .item-subtitle {
+                font-size: 0.7rem;
+                color: #909090;
+                margin-top: 0.2rem;
+            }
+        }
+        .item-after.vip {
+            color: #ec4619;
+        }
+        .item-after.zhuce {
+            color: #ba927e;
+        }
+    }
+
+}
+
+/*李慧萍 生日的样式*/
+.datepage {
+    display: none;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+/*#datePlugin{height:100%;position: relative;}*/
+#datescroll div {
+    float: left;
+    margin-left: 10%;
+    padding-right: 22px;
+}
+#datescroll_datetime div {
+    float: left;
+    margin-left: 10%;
+    padding-right: 22px;
+}
+#yearwrapper {
+    position: absolute;
+    left: 0;
+    top: 4rem;
+    bottom: 60px;
+    width: 80%;
+    height: 10rem;
+}
+#monthwrapper {
+    position: absolute;
+    left: 26%;
+    top: 4rem;
+    bottom: 60px;
+    width: 80%;
+    height: 10rem;
+}
+#daywrapper {
+    position: absolute;
+    left: 50%;
+    top: 4rem;
+    bottom: 60px;
+    width: 80%;
+    height: 10rem;
+}
+#yearwrapper ul li {
+    color: #898989;
+    font-size: 0.85rem;
+}
+#monthwrapper ul li {
+    color: #898989;
+    font-size: 0.85rem;
+}
+#daywrapper ul li {
+    color: #898989;
+    font-size: 0.85rem;
+}
+#markyear {
+    position: relative;
+    margin-left: 76px;
+    top: -2px;
+}
+#markmonth {
+    position: relative;
+    margin-left: 40px;
+    top: -2px;
+}
+#markday {
+    position: relative;
+    margin-left: 42px;
+    top: -2px;
+}
+#markhour {
+    position: relative;
+    margin-left: 62px;
+    top: -2px;
+}
+#markminut {
+    position: relative;
+    margin-left: 58px;
+    top: -2px;
+}
+#marksecond {
+    position: relative;
+    margin-left: 68px;
+    top: -2px;
+}
+#dateheader {
+    width: 100%;
+    height: 50px;
+    background: #79C12F;
+    text-align: center;
+    color: #fff;
+    line-height: 50px;
+    font-size: 20px;
+}
+#setcancle ul {
+    text-align: center;
+    line-height: 30px;
+    margin: 1px auto;
+    font-size: 20px;
+}
+#setcancle ul li {
+    border-radius: 3px;
+    float: left;
+    width: 40%;
+    height: 30px;
+    list-style-type: none;
+    font-family: 'microsoft yahei';
+    font-size: 16px;
+}
+#dateconfirm {
+    position: absolute;
+    /*background:#79C12F;*/
+    right: 20px;
+    color: #ff8c24;
+}
+#datecancle {
+    position: absolute;
+    /*background:  #dcdddd;*/
+    left: 20px;
+    /*width: 40%;  color:#666;*/
+}
+#dateshadow {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: #000;
+    filter:alpha(Opacity=50);
+    -moz-opacity: 0.5;
+    opacity: 0.5;
+}
+#datePage {
+    font-size: 22px;
+    position: absolute;
+    margin-right: auto;
+    vertical-align: middle;
+    margin-left: auto;
+    bottom:0;
+    height: 12rem;
+    background: #FFFFFF;
+    z-index: 9999999;
+}
+#datetitle {
+    width: 100%;
+    height: 2rem;
+    background: #f5f5f5;
+    text-align: center;
+    /*color: #fff*/
+    line-height: 2rem;
+    font-size: 20px;
+    font-family: 'microsoft yahei';
+}
+#datetitle span {
+    font-weight: normal;
+}
+#datemark {
+    font-size: 18px;
+    /*left:5%;*/
+    width: 100%;
+    height: 2rem;
+    position: absolute;
+    top: 6rem;
+    /*background:#eee;*/
+    border: 1px solid #eee;
+}
+#timemark {
+    font-size: 18px;
+    left: 5%;
+    width: 90%;
+    height: 20px;
+    position: absolute;
+    top: 242px;
+    background: #eee;
+    border: 1px solid #eee;
+}
+#datescroll {
+    background: #F8F8F8;
+    /*width:94%; margin:10px 3%;border: 1px solid #E0E0E0;border-radius: 4px;height: 120px;text-align: center;*/
+    line-height: 40px;
+}
+#datescroll_datetime {
+    display: none;
+    background: #F8F8F8;
+    width: 94%;
+    margin: 10px 3%;
+    border: 1px solid #E0E0E0;
+    border-radius: 4px;
+    height: 120px;
+    text-align: center;
+    line-height: 40px;
+}
+#daywrapper ul,
+#monthwrapper ul,
+#yearwrapper ul {
+    width: 40%;
+     text-align: center;
+}
+#Hourwrapper ul,
+#Minutewrapper ul,
+#Secondwrapper ul {
+    width: 40%;
+   
+}
+#dateFooter {
+    width: 100%;
+    background: #fff;
+    height: 50px;
+    bottom: 0;
+    position: absolute;
+}
