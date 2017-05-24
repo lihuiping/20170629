@@ -33,17 +33,16 @@ $("#tjfk").on("click", function() {
 	}
 
 });
-
 //反馈问题选择
 $("#fk-fklx").picker({
 	toolbarTemplate: '<header class="bar bar-nav border-no">\
-		  <button class="button button-link pull-left no-border close-picker"><span class="color-gray">取消</span></button>\
-		  <button class="button button-link pull-right close-picker color-f60"><span class="color-f60">确定</span></button>\
-		  </header>',
+			  <button class="button button-link pull-left no-border close-picker"><span class="color-gray">取消</span></button>\
+			  <button class="button button-link pull-right close-picker color-f60"><span class="color-f60">确定</span></button>\
+			  </header>',
 	cols: [{
 		textAlign: 'center',
 		values: ['内容问题', '播放问题', '卡顿问题', '会员问题', '账号问题', '闪退、页面加载问题', '产品意见']
 	}]
 });
-
+//$("#fk-fklx").picker('cssClass',['popup-overlay','modal-overlay-visible']);
 $.init();
