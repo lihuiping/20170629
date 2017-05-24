@@ -1,0 +1,43 @@
+@charset "UTF-8";
+.main_uu p {
+    font-size: .6rem;
+    color: #000;
+    text-indent: 2em;
+    margin: 0;
+}
+
+.content-size .main_uu p:nth-child(1) {
+    text-indent: 3em;
+}
+
+.color_hh {
+    height: 1.8rem;
+    line-height: 2.5rem;
+    font-size: .6rem;
+    color: #000;
+    font-weight: 700;
+    margin: 0 0;
+}
+
+.span_span {
+    font-size: .6rem;
+    color: #000;
+    display: inline-block;
+}
+
+.content_size {
+    width: 94%;
+    margin: 0 auto;
+    margin-top: 1.5rem;
+}
+
+.head_title {
+    width: 100%;
+    height: 2rem;
+    border-bottom: solid 0.05rem #dddddd;
+}
+
+.head_title h1 {
+    font-size: 1rem;
+    text-align: center;
+}
