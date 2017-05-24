@@ -1,0 +1,26 @@
+@charset "UTF-8";
+.list-default {
+    position: relative;
+}
+
+.list-default span {
+    position: absolute;
+    right: 0;
+    top: 0.8rem;
+    z-index: -100;
+}
+
+.marginleft-1 {
+    position: absolute;
+    top: .7rem;
+    right: 0;
+    z-index: 999;
+    background-color: transparent;
+}
+//.fb-fklx{
+//  width: 65%;
+//  height: 100%;
+//  position: absolute;
+//  top: 0;
+//  right: 0;
+//}
