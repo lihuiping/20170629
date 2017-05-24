@@ -13,7 +13,7 @@
       <span class="icon icon-ticket"></span>
       <span class="tab-label">购票</span>
     </a>
-    <a class="tab-item " href="#" data-class="icon-find">
+    <a class="tab-item " href="discover.html" data-class="icon-find">
       <span class="icon icon-find"></span>
       <span class="tab-label">发现</span>
     </a>
