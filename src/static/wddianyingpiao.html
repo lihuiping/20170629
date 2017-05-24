@@ -163,13 +163,13 @@
 
 	<body>
 		<div class="page scroll" id="wddianyingpiao">
-			<header class=" bar-nav wsl-header">
-				<div class="title-box">
-					<a class="icon icon-left" href="javascript:history.go(-1);"></a>
-					<div class="w-title">我的电影票</div>
-				</div>
-			</header>
 			<div class="content">
+				<header class=" bar-nav wsl-header">
+					<div class="title-box">
+						<a class="icon icon-left" href="javascript:history.go(-1);"></a>
+						<div class="w-title">我的电影票</div>
+					</div>
+				</header>
 				<div class="buttons-tab">
 					<a href="#wd-tab1" class="tabTicketButton tab-link button active">待使用</a>
 					<a href="#wd-tab2" class="tabTicketButton tab-link button">待付款</a>
@@ -185,18 +185,18 @@
 						</div>
 						<div id="dyp-data">
 							<div class="dyp-module">
-								<div class="dyp-up">
+								<!--<div class="dyp-up">
 									<div class="dyp-img" style="background-image: url(assets/images/banner1.png);"></div>
 									<div class="dyp-right">
-										<p>多少素愛<span>恐怖片</span></p>
-										<p>订单号 : <span>132131</span></p>
-										<div class="wd-yingyuan">影院 : <span>橫店影院</span></div>
-										<p>场次 : <span>23</span></p>
-										<p>张数 : <span>1张</span></p>
-										<p>总价 : <span>¥ 56</span></p>
+										<p>从你的世界经过<span>恐怖片</span></p>
+										<p class="lqdp">订单号 : <span>132131</span></p>
+										<div class="wd-yingyuan">影&nbsp;&nbsp;&nbsp;院 : <span>橫店影院</span></div>
+										<p>场&nbsp;&nbsp;&nbsp;次 : <span>23</span></p>
+										<p>张&nbsp;&nbsp;&nbsp;数 : <span>1张</span></p>
+										<p>总&nbsp;&nbsp;&nbsp;价 : <span>¥ 56</span></p>
 									</div>
 								</div>
-								<div class="fenge"></div>
+								<div class="fenge"></div>-->
 							</div>
 						</div>
 					</div>
@@ -228,8 +228,8 @@
 		<script type="text/javascript" src="lib/light7/js/i18n/cn.min.js" charset="utf-8"></script>
 		<script type="text/javascript" src="assets/js/other.js" charset="utf-8"></script>
 		<script type="text/javascript">
-			$("#quesheng1").hide();
-						$("#dyp-data").show();
+//			$("#quesheng1").hide();
+//			$("#dyp-data").show();
 			$.showIndicator();
 			var client3 = hprose.Client.create("http://test.7cai.tv/index.php/api/api/ticket?t=" + Cache.get("flag"), ['getOrderLists']);
 			client3.getOrderLists({
@@ -243,7 +243,7 @@
 						$("#quesheng1").hide();
 						$("#dyp-data").show();
 						for(var i = 0; i < result.data.length; i++) {
-							$("#dyp-data").append('<div class="dyp-module"><div class="dyp-up"><div class="dyp-img" style="background-image: url(' + result.data[i].poster_image + ');"></div><div class="dyp-right"><p>' + result.data[i].movie_name + '<span>' + result.data[i].show_type + '</span></p><p>订单号 : <span>' + result.data[i].order_id + '</span></p><div class="wd-yingyuan">影院 : <span>' + result.data[i].cinema_name + ' (' + result.data[i].cinemaAddr + ')</span></div><p>场次 : <span>' + result.data[i].expired_time + '</span></p><p>张数 : <span>' + result.data[i].ticketCount + '张</span></p><p>总价 : <span>¥ ' + result.data[i].totalPrice + '</span></p></div></div><div class="fenge"></div></div>')
+							$("#dyp-data").append('<div class="dyp-module"><div class="dyp-up"><div class="dyp-img" style="background-image: url(' + result.data[i].poster_image + ');"></div><div class="dyp-right"><p>' + result.data[i].movie_name + '<span>' + result.data[i].show_type + '</span></p><p>订单号 : <span>' + result.data[i].order_id + '</span></p><div class="wd-yingyuan">影&nbsp;&nbsp;&nbsp;院 : <span>' + result.data[i].cinema_name + ' (' + result.data[i].cinemaAddr + ')</span></div><p>场&nbsp;&nbsp;&nbsp;次 : <span>' + result.data[i].expired_time + '</span></p><p>张&nbsp;&nbsp;&nbsp;数 : <span>' + result.data[i].ticketCount + '张</span></p><p>总&nbsp;&nbsp;&nbsp;价 : <span>¥ ' + result.data[i].totalPrice + '</span></p></div></div><div class="fenge"></div></div>')
 						}
 					} else {
 						$("#quesheng1").show();
@@ -253,5 +253,4 @@
 			})
 		</script>
 	</body>
-
 </html>
