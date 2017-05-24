@@ -1,4 +1,10 @@
-
+/*lihuiping 个人中心*/
+.personmessage {
+    .icon-right{
+        font-size: 0.6rem;
+    }
+}
+/**/
 .userhead {
     height: 4rem;
     line-height: 4rem;
@@ -147,10 +153,19 @@ li {
     position: absolute;
     top: 0.85rem;
     right: 1rem;
-}
-.message-right p {
+    p {
     margin-top: -.8rem;
 }
+    span{
+        position: absolute;
+    top: -.85rem;
+    right: -0.8rem;
+    i.icon-right{
+        font-size: 0.6rem;
+    }
+    }
+}
+ 
 #brdate,
 #megenger {
     margin-top: -.9rem;
