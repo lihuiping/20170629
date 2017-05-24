@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		@@include('../tpl/header.tpl',{ "title":"编辑资料" })
+	</head>
+
+	<body>
+		<div class="page page-current hm-changNmae" id="changename">
+			@@include('../tpl/bar-nav.tpl',{ "title":"编辑资料" })
+			<div class="content">
+				<div class=" editad no-margin">
+					<div class="border-bottom main-90">
+						<input type="text" name="cname" id="cname" />
+						<span id="name-guanbi"><i class="iconfont icon-shanchuzifu"></i></span>
+					</div>
+					<p class="namerol">请使用汉字、字母或数字，6-20个字符</p>
+					<div id="chname" class="newbutton">
+						完成
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

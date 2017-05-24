@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		@@include('../tpl/header.tpl',{ "title":"编辑资料" })
+	</head>
+
+	<body>
+		<div class="page page-current editmessage" id="editmessage">
+				@@include('../tpl/bar-nav.tpl',{ "title":"编辑资料" })
+			<div class="content">
+				<div class="list-block inset text-center registbody no-margin-bottom" id="edme">
+					<ul>
+						<li id="me-touxiang" class="mytouch">
+							<div class="border-bottom box-90" id="changetx">
+								<div class="item-media">头像
+									<div class="message-right" style="padding-right: .55rem;">
+										<div style="width: 3rem;height: 3rem;border-radius: 50%;" id="mytouxiang-div"><img id="my-touxiang" src="assets/images/tx-120.png"></div>
+										<span><i class="iconfont icon-yingdaicon10" id=""></i></span>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li class="mytouch">
+							<div class="border-bottom box-90" id="c-username">
+								<div class="item-media">用户名
+									<div class="message-right">
+										<p id="mename">13526779920</p>
+										<span><i class="iconfont icon-yingdaicon10"></i></span>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li class="mytouch">
+							<div class="border-bottom box-90">
+								<div class="item-media">性别
+									<div class="message-right">
+										<input type="text" id="megenger" class="font-80" onfocus="this.blur();">
+										<span><i class="iconfont icon-yingdaicon10"></i></span>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li class="mytouch">
+							<div class="box-90">
+								<div class="item-media">生日
+									<div class="message-right">
+										<input type="text" id="brdate" class="kbtn" placeholder="请选择">
+										<span><i class="iconfont icon-yingdaicon10"></i></span>
+									</div>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="fenge"></div>
+				<div class="list-block inset text-center registbody no-margin-bottom" id="edme">
+					<ul>
+						<li class="mytouch">
+							<div class="border-bottom box-90" id="changemobile">
+								<div class="item-media">绑定手机号
+									<div class="message-right">
+										<p class="color-gray" id="mobilephone">135****9920</p>
+										<span><i class="iconfont icon-yingdaicon10"></i></span>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li class="mytouch">
+							<div class="box-90" id="smrz">
+								<div class="item-media">实名认证
+									<div class="message-right">
+										<p class="color-gray" id="isAuth">未认证</p>
+										<span><i class="iconfont icon-yingdaicon10"></i></span>
+									</div>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="fenge"></div>
+				<div class="list-block inset text-center registbody no-margin-bottom" id="edme">
+					<ul>
+						<li class="mytouch">
+							<div class="border-bottom box-90" id="c-myaddress">
+								<div class="item-media">我的地址
+									<div class="message-right">
+										<span><i class="iconfont icon-yingdaicon10"></i></span>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li class="mytouch">
+							<div class="border-bottom box-90" id="c-secpsword">
+								<div class="item-media">修改安全密码
+									<span id="anquanmima" style="position: absolute;color: gray;right:1.75rem;top: 0;">去设置</span>
+									<div class="message-right">
+										<span><i class="iconfont icon-yingdaicon10"></i></span>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li class="mytouch">
+							<div class="border-bottom box-90" id="c-lgpsword">
+								<div class="item-media">修改登录密码
+									<div class="message-right">
+										<span><i class="iconfont icon-yingdaicon10"></i></span>
+									</div>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="newbutton" id="modifymessage">完成 </div>
+				<div id="datePlugin"></div>
+			</div>
+			<div id="uploadifive-file_upload" class="uploadifive-button myUpload" style="overflow: hidden; position: relative; text-align: center;">
+				<div id="file_upload" style="display: none;"></div><input type="file" style="opacity: 0; position: absolute; right: -3px; top: -3px; z-index: 999;"></div>
+			<div id="uploadifive-file_upload-queue" class="uploadifive-queue"></div>
+		</div>
+     <script type="text/javascript" src="assets/js/edit-message.js"></script>
+	</body>
+
+</html>
