@@ -1,38 +1,38 @@
 
 //发现页面
 //$(document).on("pageInit", "#faxian", function(e, id, page) {
-	var link1 = document.getElementById("my-found").childNodes[1].children[0].children;
-	var link2 = document.getElementById("my-found").childNodes[1].children[1].children;
-	var link3 = document.getElementById("my-found").childNodes[1].children[2].children;
+//	var link1 = document.getElementById("my-found").childNodes[1].children[0].children;
+//	var link2 = document.getElementById("my-found").childNodes[1].children[1].children;
+//	var link3 = document.getElementById("my-found").childNodes[1].children[2].children;
 	
 //	console.log(link1);
-	link1[0].onclick = function() {
-		window.location.href = "http://dynamic.m.tuniu.com/m2015/flight/index";
-	}
-	link1[1].onclick = function() {
-		window.location.href = "http://dynamic.m.tuniu.com/train";
-	}
-	link1[2].onclick = function() {
-		window.location.href = "http://alifuwu.hezuo.changtu.com/";
-	}
-	link2[0].onclick = function() {
-		window.location.href = "http://m.tuniu.com/m2015/mpChannel/index";
-	}
-	link2[1].onclick = function() {
-		window.location.href = "http://m.tuniu.com/hotel";
-	}
-	link2[2].onclick = function() {
-		window.location.href = "http://weather.html5.qq.com/";
-	}
-	link3[0].onclick = function() {
-		window.location.href = "http://webmetro.itouchchina.com/citylist.php";
-	}
-	link3[1].onclick = function() {
-		window.location.href = "http://taxi.map.baidu.com/";
-	}
-	link3[2].onclick = function() {
-		window.location.href = "moviePhoto.html";
-	}
+//	link1[0].onclick = function() {
+//		window.location.href = "http://dynamic.m.tuniu.com/m2015/flight/index";
+//	}
+//	link1[1].onclick = function() {
+//		window.location.href = "http://dynamic.m.tuniu.com/train";
+//	}
+//	link1[2].onclick = function() {
+//		window.location.href = "http://alifuwu.hezuo.changtu.com/";
+//	}
+//	link2[0].onclick = function() {
+//		window.location.href = "http://m.tuniu.com/m2015/mpChannel/index";
+//	}
+//	link2[1].onclick = function() {
+//		window.location.href = "http://m.tuniu.com/hotel";
+//	}
+//	link2[2].onclick = function() {
+//		window.location.href = "http://weather.html5.qq.com/";
+//	}
+//	link3[0].onclick = function() {
+//		window.location.href = "http://webmetro.itouchchina.com/citylist.php";
+//	}
+//	link3[1].onclick = function() {
+//		window.location.href = "http://taxi.map.baidu.com/";
+//	}
+//	link3[2].onclick = function() {
+//		window.location.href = "moviePhoto.html";
+//	}
 //})
 
 $(".mytouch").on("touchstart", function() {
