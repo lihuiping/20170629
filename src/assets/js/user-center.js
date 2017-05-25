@@ -49,7 +49,7 @@ $(function(){
 	});
 	//我的订单
 	$("#dingdan-page").on("click",function(){
-			window.location.href="/templets/gerenzhongxin/wodedingdan/wodedingdan.html"
+			window.location.href="myOrder-table.html"
 	});
 
 });

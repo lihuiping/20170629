@@ -131,6 +131,30 @@ $(function() {
 	if(tokEn != undefined) {
 		Cache.set('token', tokEn);
 	};
+	
+	$(".bar-tab").on('click', ".tab-item", function(event) {
+    var th = $(this);
+    var ss = $(this).siblings('.tab-item');
+    var dtClass = th.data('class');
+    $(this).find(".icon").prop('className', 'icon ' + dtClass + '-active');
+    $.each(ss, function(index, val) {
+        var pard = $(this).data('class');
+        $(this).find('.icon').removeClass().addClass('icon ' + pard);
+
+    });
+});
+
+});
+$(".bar-tab").on('click', ".tab-item", function(event) {
+    var th = $(this);
+    var ss = $(this).siblings('.tab-item');
+    var dtClass = th.data('class');
+    $(this).find(".icon").prop('className', 'icon ' + dtClass + '-active');
+    $.each(ss, function(index, val) {
+        var pard = $(this).data('class');
+        $(this).find('.icon').removeClass().addClass('icon ' + pard);
+
+    });
 });
 
 
@@ -138,4 +162,5 @@ apiready = function(){
 	$api.fixStatusBar($api.dom('.shouye-head'));
 	$api.fixStatusBar($api.dom('.movie-souye-head'));
 	$api.fixStatusBar($api.dom('.bar-nav'));
+	$api.fixStatusBar($api.dom('.ad-bar'));
 };
