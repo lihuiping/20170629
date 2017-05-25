@@ -6,7 +6,7 @@ $(function(){
 	})
 	//会员特权
 	$("#huiyuan-page").on("click",function(){
-			window.location.href="/templets/gerenzhongxin/huiyuan/khuiyuan.html"
+			window.location.href="become-member.html"
 	})
 	
 	//推荐页跳转
@@ -16,12 +16,12 @@ $(function(){
 	
 	//卡卷页
 	$("#kajuan-page").on("click",function(){
-			window.location.href="/templets/gerenzhongxin/wodekajuan/wodekajuan.html"
+			window.location.href="my-cardvolume.html"
 	})
 	
 	//播放记录
 	$("#bfjl-page").on("click",function(){
-			window.location.href="/templets/gerenzhongxin/bofangJilu/bfjl.html"
+			window.location.href="PlayRecord.html"
 	})
 	//信息中心
 	$("#xxzx-page").on("click",function(){
@@ -29,11 +29,11 @@ $(function(){
 	})
 	//我的电影票
 	$("#wddyp-page").on("click",function(){
-			window.location.href="/templets/gerenzhongxin/wodedianyingpiao/wddianyingpiao.html"
+			window.location.href="wddianyingpiao.html"
 	})
 	//意见反馈
 	$("#yjfk-page").on("click",function(){
-			window.location.href="/templets/gerenzhongxin/yijianfankui/yijianfankui.html"
+			window.location.href="feedback.html"
 	})
 	//设置
 	$("#shezhi-page").on("click",function(){
@@ -41,11 +41,11 @@ $(function(){
 	})
 	//视频收藏
 	$("#spsc-page").on("click",function(){
-			window.location.href="/templets/gerenzhongxin/shipinshoucang/spsc.html"
+			window.location.href="spsc.html"
 	})
-	//我的积分
+	//我的七彩币
 	$("#wdjf-page").on("click",function(){
-			window.location.href="/templets/gerenzhongxin/wodejifen/MyPoints.html"
+			window.location.href="my-colorfulcoin.html"
 	});
 	//我的订单
 	$("#dingdan-page").on("click",function(){
