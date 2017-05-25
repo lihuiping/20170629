@@ -1,0 +1,217 @@
+@charset "UTF-8";
+.butTic-page {
+    .dysuo {
+        width: 100%;
+        margin-left: 0;
+        overflow: hidden;
+        font-size: .8rem;
+        color: #a4a4a4;
+        position: relative;
+        background-color: #FFF;
+        padding: 1rem .5rem 1rem 0;
+        z-index: 9999;
+        .dysu_left {
+            color: #383838;
+            display: block;
+            height: 1.5rem;
+            line-height: 1.5rem;
+            margin-left: .5rem;
+            float: left;
+            margin-right: .5rem;
+        }
+        .dysu_right {
+            input {
+                width: 78%;
+                float: right;
+                color: #383838;
+                outline: none;
+                border-radius: .2rem;
+                font-size: .8rem;
+                border: 1px solid #caad9c;
+                border-style: solid;
+                padding: .2rem .2rem .2rem 1.8rem;
+            }
+        }
+        .iconfont {
+            color: #caad9c;
+            font-size: .8rem;
+            position: absolute;
+            margin-top: .2rem;
+            padding: .2rem .4rem .2rem .6rem;
+        }
+        .gp_openAddress{
+            padding: .2rem 0;
+        }
+    }
+    .gp_box_title {
+        width: 100%;
+        height: 2.5rem;
+        border-bottom: 1px solid #ccc;
+        overflow: hidden;
+        position: relative;
+        z-index: 9999;
+        background: #fff;
+        div {
+            width: 3.75rem;
+            height: 100%;
+            text-align: center;
+            line-height: 2.5rem;
+            float: left;
+            margin-left: 3.2rem;
+        }
+        .gp_box_title_right_on {
+            border-bottom: 1px solid red;
+            color: red;
+        }
+        .gp_box_title_right {
+            color: #383838;
+            margin-left: 5.1rem;
+        }
+    }
+    .infinite-scroll {
+        margin-bottom: 2.5rem;
+        .list-block {
+            margin: 0 0;
+        }
+    }
+    .infinite-scroll_1,
+    .infinite-scroll_2 {
+        bottom: 0!important;
+    }
+    .gp_box_list {
+        margin-top: 6rem;
+        margin: 0;
+        li {
+            border-bottom: 1px solid #ccc;
+        }
+        .wj_list {
+            font-family: "Microsoft YaHei";
+            font-size: .85rem;
+            -webkit-transform-origin-x: 0;
+            -webkit-transform: scale(0.90);
+            border: none;
+            width: 106%;
+            margin-top: -.2rem;
+        }
+        .wj_item-inner {
+            width: 100%;
+            border-bottom: 1px solid #ccc;
+            margin: 0;
+            padding: .3rem 0 .6rem;
+        }
+    }
+    .list-container {
+        margin-top: 6rem!important;
+    }
+    .OrderDetail {
+        margin-left: .5rem;
+        margin-top: .4rem;
+        overflow: hidden;
+        padding-bottom: .5rem;
+        border: none;
+        .OrderDetailLeft {
+            img {
+                float: left;
+                width: 3.75rem;
+                height: 5.2rem;
+            }
+        }
+    }
+    .gp_OrderDetailLeft p {
+        font-size: .75px;
+        color: #232326;
+        margin-top: .25rem;
+    }
+    .gp_OrderDetailLeft p:first-child span {
+        background: #ff8c24;
+        color: #fff;
+    }
+    .gp_OrderDetailRight p.bt-first{
+        margin-top: 1.5rem!important;
+    }
+    .gp_OrderDetailRight p:nth-child(2){
+        margin-top: 1.2rem;
+    }
+    .OrderDetailLeft_des {
+        float: left;
+        width: 56%;
+        overflow: hidden;
+        font-size: .6rem;
+        color: #909090;
+    }
+    .OrderDetailLeft_des p {
+        font-size: .7rem;
+        margin-left: .5rem;
+        color: #232326;
+    }
+    .gp_citypicker {
+        iframe {
+            width: 100%;
+            height: 30rem;
+            scrolling: auto;
+        }
+        ul {
+            li {
+                width: 25%;
+                height: 1.8rem;
+                line-height: 1.8rem;
+                text-align: center;
+                float: left;
+                list-style: none;
+                color: #909090;
+                border-right: 1px solid #ccc;
+                border-bottom: 1px solid #ccc;
+                font-size: .65rem;
+            }
+        }
+        .city_area_content {
+            background: #fff;
+            margin-top: 3.6rem;
+        }
+        .city_area_title {
+            width: 100%;
+            height: 2rem;
+            text-align: center;
+            line-height: 2rem;
+            border-bottom: 1px solid #ccc;
+            overflow: hidden;
+            background: #fff;
+        }
+    }
+    .city_area_hot_list ul li {
+        background: #fff;
+        color: #FF0000;
+    }
+    .city_area_hot .city_area_title {
+        width: 100%;
+        height: 2rem;
+        text-align: center;
+        line-height: 2rem;
+        border-bottom: 1px solid #ccc;
+        overflow: hidden;
+        background: #fff;
+    }
+    .city_area_title span {
+        font-size: .85rem;
+        float: left;
+    }
+    .city_area_title span:nth-child(1) {
+        margin-left: 8rem;
+    }
+    .city_area_title span:nth-child(2) {
+        float: right;
+    }
+    .city_area_selectd {
+        width: 100%;
+        height: 2rem;
+        line-height: 2rem;
+        border-bottom: 1px solid #ccc;
+        overflow: hidden;
+        background: #fff;
+    }
+    .city_area_selectd span:nth-child(1) {
+        margin-left: .5rem;
+        color: red;
+    }
+}
+.preloader-white:after,.preloader:after {background-image:url(../images/jiazai2.gif);}
