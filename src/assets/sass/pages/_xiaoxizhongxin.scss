@@ -26,6 +26,10 @@
 .pinlunzan{
 	color: #ec4619;
 }
+.icon-shangchengxiaoxi,
+.icon-pinglunzan1 {
+    color: #EC4619;
+}
 
 //.yq-li div:nth-child(2) {
 //  margin-top: -.5rem;
@@ -41,19 +45,19 @@
     background: #f5f5f5!important;
 }
 
-#bfjl-qs div:nth-child(1) {
-    color: #ddd;
-    font-size: 4.7rem;
-    text-align: center;
-    margin-top: 5rem;
-}
-
-#bfjl-qs div:nth-child(2) {
-    color: #979797;
-    font-size: .8rem;
-    text-align: center;
-    margin-top: -.5rem;
-}
+//#bfjl-qs div:nth-child(1) {
+//  color: #ddd;
+//  font-size: 4.7rem;
+//  text-align: center;
+//  margin-top: 5rem;
+//}
+//
+//#bfjl-qs div:nth-child(2) {
+//  color: #979797;
+//  font-size: .8rem;
+//  text-align: center;
+//  margin-top: -.5rem;
+//}
 
 #wodekajuan li {
     background: #FFF;
@@ -95,7 +99,7 @@
 .message-95 {
     width: 95%;
     border-bottom: 1px solid #f5f5f5;
-    padding-top: .6rem;
+    padding-top: 1rem;
     padding-bottom: .3rem;
     display: flex;
     padding-right: .5rem;
@@ -111,14 +115,15 @@
 }
 
 .message-text {
-    margin-top: -.7rem;
+//  margin-top: .4rem;
     margin-left: .9rem;
 }
 
 .message-text p:nth-child(2) {
     font-size: .5rem;
     color: gray;
-    margin-top: -.4rem;
+    margin-top: .4rem;
+    margin-bottom: .4rem;
 }
 
 .icon-guanyingxiaoxi1 {
@@ -127,7 +132,58 @@
 .padding-1 {
     padding-left: .3rem;
 }
-
+.message-95 .fontsize-1 {
+    font-size: .8rem;
+}
 .no-paddingtop {
-    padding-top: 0;
+//  padding-top: 0;
+}
+#aa {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    border-radius: 0;
+    margin-left: 0;
+}
+
+.time-text {
+    font-size: .65rem;
+    color: gray;
+    margin-top: .3rem;
+}
+
+.no-flex {
+    display: block;
+}
+
+.pinglun-foot {
+	margin-top: .5rem;
+    margin-bottom: .4rem;
+    display: flex;
+    padding-left: .3rem;
+    padding-right: .4rem;
+    height: 2.7rem;
+}
+.pinglun-foot img{
+	width: 4.5rem;
+}
+.pinglun-foot p {
+    margin-left: .5rem;
+    margin-top: .1rem;
+}
+.message-95.fontsize-07 {
+    font-size: .75rem;
+}
+.margintop-01 {
+    margin-top: .3rem;
+}
+.lqnoxiaoxi{
+	color: #ff8c24;
+}
+.lqguanyin{
+	color: #57aaff;
+}
+.lqshangcheng{
+	color: #ec4619;
 }
