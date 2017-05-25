@@ -126,41 +126,46 @@ if(isWenxin && tokens != '') {
 	}
 }
 $(function() {
-		//var tokEn = getUrlVars()["token"];
-		var tokEn = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhZG1pbiI6ZmFsc2UsImNsYWltcyI6bnVsbCwidWlkIjoiODM4IiwidiI6MSwiaWF0IjoxNDkzMDAzMjg3fQ.PpqXb_oSU8EJVLAlwdzUBXsI67a2qAp7h5VuGf5Ly68';
+	//var tokEn = getUrlVars()["token"];
+	var tokEn = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhZG1pbiI6ZmFsc2UsImNsYWltcyI6bnVsbCwidWlkIjoiODM4IiwidiI6MSwiaWF0IjoxNDkzMDAzMjg3fQ.PpqXb_oSU8EJVLAlwdzUBXsI67a2qAp7h5VuGf5Ly68';
 	if(tokEn != undefined) {
 		Cache.set('token', tokEn);
 	};
-	
-	$(".bar-tab").on('click', ".tab-item", function(event) {
-    var th = $(this);
-    var ss = $(this).siblings('.tab-item');
-    var dtClass = th.data('class');
-    $(this).find(".icon").prop('className', 'icon ' + dtClass + '-active');
-    $.each(ss, function(index, val) {
-        var pard = $(this).data('class');
-        $(this).find('.icon').removeClass().addClass('icon ' + pard);
 
-    });
-});
+	$(".bar-tab").on('click', ".tab-item", function(event) {
+		var th = $(this);
+		var ss = $(this).siblings('.tab-item');
+		var dtClass = th.data('class');
+		$(this).find(".icon").prop('className', 'icon ' + dtClass + '-active');
+		$.each(ss, function(index, val) {
+			var pard = $(this).data('class');
+			$(this).find('.icon').removeClass().addClass('icon ' + pard);
+
+		});
+	});
 
 });
 $(".bar-tab").on('click', ".tab-item", function(event) {
-    var th = $(this);
-    var ss = $(this).siblings('.tab-item');
-    var dtClass = th.data('class');
-    $(this).find(".icon").prop('className', 'icon ' + dtClass + '-active');
-    $.each(ss, function(index, val) {
-        var pard = $(this).data('class');
-        $(this).find('.icon').removeClass().addClass('icon ' + pard);
+	var th = $(this);
+	var ss = $(this).siblings('.tab-item');
+	var dtClass = th.data('class');
+	$(this).find(".icon").prop('className', 'icon ' + dtClass + '-active');
+	$.each(ss, function(index, val) {
+		var pard = $(this).data('class');
+		$(this).find('.icon').removeClass().addClass('icon ' + pard);
 
-    });
+	});
 });
 
-
-apiready = function(){
+apiready = function() {
 	$api.fixStatusBar($api.dom('.shouye-head'));
 	$api.fixStatusBar($api.dom('.movie-souye-head'));
 	$api.fixStatusBar($api.dom('.bar-nav'));
 	$api.fixStatusBar($api.dom('.ad-bar'));
+	var offset = $api.offset($api.dom('.ad-bar'));
+	var left = offset.l;
+	var top = offset.t;
+	alert(top);
+	console.log(left);
 };
+
