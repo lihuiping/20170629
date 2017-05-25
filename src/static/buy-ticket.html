@@ -1,0 +1,1356 @@
+<!DOCTYPE html>
+<html class="pixel-ratio-1">
+
+	<head>
+		@@include('../tpl/header.tpl',{ "title":"购票" })
+	</head>
+
+	<body>
+		<div class="page scroll page-current page-inited butTic-page" id="goupiao">
+			<div class="">
+			<!--标签页-->
+			<header class="bar-nav wsl-header">
+				<div class="title-box">
+					<a class="icon icon-left" href="javascript:history.go(-1)"></a>
+					<div class="w-title">购票</div>
+				</div>
+			</header>
+			<div class="ip-scroll content">
+				<div class="dysuo dy-sousuo gp_dy_sousuo">
+					<div class="dysu_left">
+						<span class="gp_changeaddress">郑州</span><span class="iconfont icon-down gp_openAddress"></span>
+					</div>
+					<div class="dysu_right">
+						<i class="iconfont icon-sousuo" id="lb-sousuo"></i>
+						<input placeholder="搜索" id="goupiao-input" type="text">
+					</div>
+				</div>
+				<div class="gp_box_title gp_box_title_fix">
+					<div class="gp_box_title_left gp_box_title_right_on">正在上映</div>
+					<div class="gp_box_title_right">即将上映</div>
+				</div>
+				<div class="gp_box gp_box_fix">
+					<div class="content infinite-scroll infinite-scroll_2" data-distance="100">
+						<div class="gp_box_list gp_box_list_fix gp_box_list1 list-block" style="display: none;">
+							<ul class="list-container">
+								<li>
+									<div class="OrderDetail gp_OrderDetail">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="7131"><img src="assets/images/201704261105072505.jpg">
+											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
+												<p>加勒比海盗5：死无对<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
+												<p style="font-size:0.65rem;">无垠瀚海多凶险，誓取神兵...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>乔阿吉姆·罗恩尼 / 艾斯彭·山德伯格</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>约翰尼·德普 / 卡雅·斯考达里</span></p>
+											</div>
+										</div>
+										<div class="OrderDetailRight gp_OrderDetailRight">
+											<p style="font-size:0.7rem;"><span>1023</span>想看</p>
+											<p index="7131" class="bt-first">预售</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="OrderDetail gp_OrderDetail">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="1000116"><img src="assets/images/201705221145578599.jpg">
+											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
+												<p>诡异酒楼<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
+												<p style="font-size:0.65rem;">负债累累陷两难，离奇事件...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>蒋国权</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>欧阳鑫紫 / 赵东昊 / 李璐兵</span></p>
+											</div>
+										</div>
+										<div class="OrderDetailRight gp_OrderDetailRight">
+											<p style="font-size:0.7rem;"><span>1023</span>想看</p>
+											<p index="1000116">预售</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="OrderDetail gp_OrderDetail">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="1000100"><img src="assets/images/201704281357108130.jpg">
+											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
+												<p>颠覆<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
+												<p style="font-size:0.65rem;">人间悲喜纷来袭，从头再来...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>张旭洲</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>张新岳 / 李建龙 / 刘振明 </span></p>
+											</div>
+										</div>
+										<div class="OrderDetailRight gp_OrderDetailRight">
+											<p style="font-size:0.7rem;"><span>1023</span>想看</p>
+											<p index="1000100">预售</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="OrderDetail gp_OrderDetail">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="228597"><img src="assets/images/201704261930387192.jpg">
+											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
+												<p>黑白照相馆<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
+												<p style="font-size:0.65rem;">远离俗世入净土，誓保桃源...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>李柯</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>范逸臣 / 车永莉 / 龚格尔 </span></p>
+											</div>
+										</div>
+										<div class="OrderDetailRight gp_OrderDetailRight">
+											<p style="font-size:0.7rem;"><span>1023</span>想看</p>
+											<p index="228597">预售</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="OrderDetail gp_OrderDetail">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="6919"><img src="assets/images/201705221516199380.jpg">
+											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
+												<p>夏天19岁的肖像<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
+												<p style="font-size:0.65rem;">少年痴情恋红颜，青春无忌...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>张荣吉</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>黄子韬 / 杨采钰 / 杜天皓 </span></p>
+											</div>
+										</div>
+										<div class="OrderDetailRight gp_OrderDetailRight">
+											<p style="font-size:0.7rem;"><span>1023</span>想看</p>
+											<p index="6919">预售</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="OrderDetail gp_OrderDetail">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="229109"><img src="assets/images/201704201103469712.jpg">
+											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
+												<p>“吃吃”的爱<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
+												<p style="font-size:0.65rem;">康永导演脑洞大，志玲S一...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>蔡康永</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>徐熙娣 / 林志玲 / 金世佳 </span></p>
+											</div>
+										</div>
+										<div class="OrderDetailRight gp_OrderDetailRight">
+											<p style="font-size:0.7rem;"><span>1023</span>想看</p>
+											<p index="229109">预售</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="OrderDetail gp_OrderDetail">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="6036"><img src="assets/images/201704100955345817.jpg">
+											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
+												<p>临时演员<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
+												<p style="font-size:0.65rem;">逢场作戏不如意，人生如戏...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>钱江汉 / 黄志伟</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>郑恺 / 热依扎 / 郭晓东 /</span></p>
+											</div>
+										</div>
+										<div class="OrderDetailRight gp_OrderDetailRight">
+											<p style="font-size:0.7rem;"><span>1023</span>想看</p>
+											<p index="6036">预售</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="OrderDetail gp_OrderDetail">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="234894"><img src="assets/images/201705091907290942.jpg">
+											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
+												<p>荡寇风云<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
+												<p style="font-size:0.65rem;">特种部队戚家军，拔剑光寒...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>陈嘉上</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>赵文卓 / 洪金宝 / 万茜 /</span></p>
+											</div>
+										</div>
+										<div class="OrderDetailRight gp_OrderDetailRight">
+											<p style="font-size:0.7rem;"><span>1023</span>想看</p>
+											<p index="234894">预售</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="OrderDetail gp_OrderDetail">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="1000082"><img src="assets/images/201704261645248286.jpg">
+											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
+												<p>三只小猪2<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
+												<p style="font-size:0.65rem;">功夫怪狼很嚣张，阿潘阿达...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>刘炜</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>洪海天 / 李晔 / 王燕华 /</span></p>
+											</div>
+										</div>
+										<div class="OrderDetailRight gp_OrderDetailRight">
+											<p style="font-size:0.7rem;"><span>1023</span>想看</p>
+											<p index="1000082">预售</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="OrderDetail gp_OrderDetail">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="228413"><img src="assets/images/201705161507468911.jpg">
+											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
+												<p>银河守卫队<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
+												<p style="font-size:0.65rem;">为阻邪恶外星人，开展银河...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>杰瑞卡·克莱兰 / 凯文·芒罗</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>保罗·吉亚玛提 / 约翰·古德曼</span></p>
+											</div>
+										</div>
+										<div class="OrderDetailRight gp_OrderDetailRight">
+											<p style="font-size:0.7rem;"><span>1023</span>想看</p>
+											<p index="228413">预售</p>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<div class="infinite-scroll-preloader">
+								<div class="preloader"></div>
+							</div>
+						</div>
+					</div>
+					<div class="content infinite-scroll infinite-scroll_1" data-distance="100">
+						<div class="gp_box_list gp_box_list_fix gp_box_list2 list-block">
+							<ul class="list-container">
+								<li>
+									<div class="OrderDetail gp_OrderDetail">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="7131"><img src="assets/images/201704261105072505.jpg">
+											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
+												<p>加勒比海盗5：死无对<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
+												<p style="font-size:0.65rem;">无垠瀚海多凶险，誓取神兵...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>乔阿吉姆·罗恩尼 / 艾斯彭·山德伯格</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>约翰尼·德普 / 卡雅·斯考达里</span></p>
+											</div>
+										</div>
+										<div class="OrderDetailRight gp_OrderDetailRight2">
+											<p>0</p>
+											<p class="gphref_button" index="7131">购票</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="OrderDetail gp_OrderDetail">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="242932"><img src="assets/images/201705051229441880.jpg">
+											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
+												<p>摔跤吧！爸爸<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
+												<p style="font-size:0.65rem;">慈父虎爸秒切换，携女共圆...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>尼特什·提瓦瑞</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>阿米尔·汗 / 萨卡诗·泰瓦 /</span></p>
+											</div>
+										</div>
+										<div class="OrderDetailRight gp_OrderDetailRight2">
+											<p>9.8</p>
+											<p class="gphref_button" index="242932">购票</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="OrderDetail gp_OrderDetail">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="241651"><img src="assets/images/201704232316118442.jpg">
+											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
+												<p>异星觉醒<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
+												<p style="font-size:0.65rem;">火星样本显生命，却不知其...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>丹尼尔·伊斯皮诺萨</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>杰克·吉伦哈尔 / 瑞安·雷诺兹</span></p>
+											</div>
+										</div>
+										<div class="OrderDetailRight gp_OrderDetailRight2">
+											<p>7.3</p>
+											<p class="gphref_button" index="241651">购票</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="OrderDetail gp_OrderDetail">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="226008"><img src="assets/images/201704011628530356.jpg">
+											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
+												<p>银河护卫队2<b style="bakground:#fff;color:#fff;">测</b><span>3D</span></p>
+												<p style="font-size:0.65rem;">卖萌打趣宇宙漂，树人可要...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>詹姆斯·古恩</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>克里斯·帕拉特 / 佐伊·索尔达</span></p>
+											</div>
+										</div>
+										<div class="OrderDetailRight gp_OrderDetailRight2">
+											<p>8.8</p>
+											<p class="gphref_button" index="226008">购票</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="OrderDetail gp_OrderDetail">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="222038"><img src="assets/images/201705191032209536.jpg">
+											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
+												<p>当怪物来敲门<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
+												<p style="font-size:0.65rem;">内心深处的秘密，恶魔来与...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>胡安·安东尼奥·巴亚纳</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>刘易斯·麦克杜格尔 / 菲丽希缇</span></p>
+											</div>
+										</div>
+										<div class="OrderDetailRight gp_OrderDetailRight2">
+											<p>6.8</p>
+											<p class="gphref_button" index="222038">购票</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="OrderDetail gp_OrderDetail">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="1681"><img src="assets/images/201704280950253916.jpg">
+											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
+												<p>守护者：世纪战元<b style="bakground:#fff;color:#fff;">测</b><span>3D</span></p>
+												<p style="font-size:0.65rem;">超级英雄隐于市，危难来袭...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>萨里·奥德赛耶</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>塞巴斯蒂安·斯萨克 /  艾琳娜</span></p>
+											</div>
+										</div>
+										<div class="OrderDetailRight gp_OrderDetailRight2">
+											<p>6.5</p>
+											<p class="gphref_button" index="1681">购票</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="OrderDetail gp_OrderDetail">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="239649"><img src="assets/images/201705080940343755.jpg">
+											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
+												<p>抢红<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
+												<p style="font-size:0.65rem;">糙老爷们儿Top3，醉后...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>黎明</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>张涵予 / 杜鹃 / 黎明 / </span></p>
+											</div>
+										</div>
+										<div class="OrderDetailRight gp_OrderDetailRight2">
+											<p>6.2</p>
+											<p class="gphref_button" index="239649">购票</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="OrderDetail gp_OrderDetail">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="234149"><img src="assets/images/201703100152477789.jpg">
+											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
+												<p>速度与激情8<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
+												<p style="font-size:0.65rem;">硬汉豪车再纵横，依旧燃爆...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>F·加里·格雷</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>范·迪塞尔 / 杰森·斯坦森 /</span></p>
+											</div>
+										</div>
+										<div class="OrderDetailRight gp_OrderDetailRight2">
+											<p>9.2</p>
+											<p class="gphref_button" index="234149">购票</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="OrderDetail gp_OrderDetail">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="234894"><img src="assets/images/201705091907290942.jpg">
+											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
+												<p>荡寇风云<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
+												<p style="font-size:0.65rem;">特种部队戚家军，拔剑光寒...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>陈嘉上</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>赵文卓 / 洪金宝 / 万茜 /</span></p>
+											</div>
+										</div>
+										<div class="OrderDetailRight gp_OrderDetailRight2">
+											<p>0</p>
+											<p class="gphref_button" index="234894">购票</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="OrderDetail gp_OrderDetail">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="8142"><img src="assets/images/201705091110378911.jpg">
+											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
+												<p>美容针<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
+												<p style="font-size:0.65rem;">相识于网游世界，展开命运...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>黄美娜</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>闫妮 / 杜天皓 / 宋伊人</span></p>
+											</div>
+										</div>
+										<div class="OrderDetailRight gp_OrderDetailRight2">
+											<p>7.6</p>
+											<p class="gphref_button" index="8142">购票</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="OrderDetail gp_OrderDetail">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="226639"><img src="assets/images/201704211254103286.jpg">
+											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
+												<p>亚瑟王：斗兽争霸<b style="bakground:#fff;color:#fff;">测</b><span>3D</span></p>
+												<p style="font-size:0.65rem;">圣剑再现惹纷争，改写预言...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>盖·里奇</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>查理·汉纳姆 / 艾瑞克·巴纳 </span></p>
+											</div>
+										</div>
+										<div class="OrderDetailRight gp_OrderDetailRight2">
+											<p>7.7</p>
+											<p class="gphref_button" index="226639">购票</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="OrderDetail gp_OrderDetail">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="232353"><img src="assets/images/201705081006325942.jpg">
+											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
+												<p>不期而遇<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
+												<p style="font-size:0.65rem;">冤家路窄异国遇，打闹中渐...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>陈卓</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>张雨绮 / 张亮 / 王少雍 /</span></p>
+											</div>
+										</div>
+										<div class="OrderDetailRight gp_OrderDetailRight2">
+											<p>6.9</p>
+											<p class="gphref_button" index="232353">购票</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="OrderDetail gp_OrderDetail">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="246948"><img src="assets/images/201705181741484849.jpg">
+											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
+												<p>哆啦A梦：大雄的南极<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
+												<p style="font-size:0.65rem;">盛夏酷热挡不住，前往南极...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>高桥敦史</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>水田山葵 / 大原惠美 / 嘉数</span></p>
+											</div>
+										</div>
+										<div class="OrderDetailRight gp_OrderDetailRight2">
+											<p>0</p>
+											<p class="gphref_button" index="246948">购票</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="OrderDetail gp_OrderDetail">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="6036"><img src="assets/images/201704100955345817.jpg">
+											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
+												<p>临时演员<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
+												<p style="font-size:0.65rem;">逢场作戏不如意，人生如戏...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>钱江汉 / 黄志伟</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>郑恺 / 热依扎 / 郭晓东 /</span></p>
+											</div>
+										</div>
+										<div class="OrderDetailRight gp_OrderDetailRight2">
+											<p>0</p>
+											<p class="gphref_button" index="6036">购票</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="OrderDetail gp_OrderDetail">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="8153"><img src="assets/images/201704131708003829.jpg">
+											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
+												<p>小情书<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
+												<p style="font-size:0.65rem;">大胆一场勇表白，掀起校园...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>乔梁</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>赵顺然 / 朱颜曼滋 / 韩昊轩</span></p>
+											</div>
+										</div>
+										<div class="OrderDetailRight gp_OrderDetailRight2">
+											<p>7.9</p>
+											<p class="gphref_button" index="8153">购票</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="OrderDetail gp_OrderDetail">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="6970"><img src="assets/images/201704131029309684.jpg">
+											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
+												<p>记忆大师<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
+												<p style="font-size:0.65rem;">不堪往事易存取，浑然不知...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>陈正道</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>黄渤 / 徐静蕾 / 段奕宏 /</span></p>
+											</div>
+										</div>
+										<div class="OrderDetailRight gp_OrderDetailRight2">
+											<p>8.3</p>
+											<p class="gphref_button" index="6970">购票</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="OrderDetail gp_OrderDetail">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="229109"><img src="assets/images/201704201103469712.jpg">
+											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
+												<p>“吃吃”的爱<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
+												<p style="font-size:0.65rem;">康永导演脑洞大，志玲S一...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>蔡康永</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>徐熙娣 / 林志玲 / 金世佳 </span></p>
+											</div>
+										</div>
+										<div class="OrderDetailRight gp_OrderDetailRight2">
+											<p>0</p>
+											<p class="gphref_button" index="229109">购票</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="OrderDetail gp_OrderDetail">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="246444"><img src="assets/images/201704211111015317.jpg">
+											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
+												<p>喜欢·你<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
+												<p style="font-size:0.65rem;">素未谋面生仰慕，现实相遇...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>许宏宇</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>金城武 / 周冬雨 / 孙艺洲 </span></p>
+											</div>
+										</div>
+										<div class="OrderDetailRight gp_OrderDetailRight2">
+											<p>8.7</p>
+											<p class="gphref_button" index="246444">购票</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="OrderDetail gp_OrderDetail">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="242603"><img src="assets/images/201704111015118591.jpg">
+											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
+												<p>拆弹·专家<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
+												<p style="font-size:0.65rem;">孤胆与死神博弈，徒手拆千...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>邱礼涛</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>刘德华 / 姜武 / 宋佳</span></p>
+											</div>
+										</div>
+										<div class="OrderDetailRight gp_OrderDetailRight2">
+											<p>9</p>
+											<p class="gphref_button" index="242603">购票</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="OrderDetail gp_OrderDetail">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="6919"><img src="assets/images/201705221516199380.jpg">
+											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
+												<p>夏天19岁的肖像<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
+												<p style="font-size:0.65rem;">少年痴情恋红颜，青春无忌...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>张荣吉</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>黄子韬 / 杨采钰 / 杜天皓 </span></p>
+											</div>
+										</div>
+										<div class="OrderDetailRight gp_OrderDetailRight2">
+											<p>0</p>
+											<p class="gphref_button" index="6919">购票</p>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<div class="infinite-scroll-preloader">
+								<div class="preloader"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="gp_citypicker gp_citypicker_fix" style="display:none;">
+					<div class="content city_area_content">
+						<div class="city_area_title">
+							<span>更换城市</span><span class="iconfont icon-guanbi1 cta_close"></span>
+						</div>
+						<div class="city_area_selectd">
+							<span>郑州</span>
+							<span>当前定位城市</span>
+						</div>
+						<div class="city_area_hot">
+							<p class="city_area_hot_title">热门</p>
+							<div class="city_area_hot_list">
+								<ul>
+									<li index="10">北京</li>
+									<li index="82">上海</li>
+									<li index="210">广州</li>
+									<li index="221">深圳</li>
+									<li index="267">成都</li>
+									<li index="83">南京</li>
+									<li index="96">杭州</li>
+									<li index="179">武汉</li>
+									<li index="266">重庆</li>
+									<li index="320">西安</li>
+									<li index="52">大连</li>
+									<li index="144">济南</li>
+								</ul>
+							</div>
+						</div>
+						<div class="city_area_hot">
+							<p class="city_area_hot_title">A</p>
+							<div class="city_area_hot_listA">
+								<ul>
+									<li index="38">阿拉善</li>
+									<li index="53">鞍山</li>
+									<li index="123">安庆</li>
+									<li index="174">安阳</li>
+									<li index="279">阿坝</li>
+									<li index="296">安顺</li>
+									<li index="318">阿里</li>
+									<li index="329">安康</li>
+									<li index="364">阿克苏地区</li>
+									<li index="370">阿勒泰地区</li>
+									<li index="399">澳门</li>
+									<li index="1158">安国</li>
+									<li index="1342">阿尔山</li>
+									<li index="1625">安达</li>
+									<li index="2334">安丘</li>
+									<li index="2609">安陆</li>
+									<li index="3293">安宁</li>
+									<li index="3777">阿克苏</li>
+									<li index="3786">阿图什</li>
+									<li index="3827">阿勒泰</li>
+								</ul>
+							</div>
+						</div>
+						<div class="city_area_hot">
+							<p class="city_area_hot_title">B</p>
+							<div class="city_area_hot_listA">
+								<ul>
+									<li index="10">北京</li>
+									<li index="19">保定</li>
+									<li index="35">包头</li>
+									<li index="44">巴彦淖尔</li>
+									<li index="55">本溪</li>
+									<li index="66">白山</li>
+									<li index="68">白城</li>
+									<li index="114">亳州</li>
+									<li index="118">蚌埠</li>
+									<li index="151">滨州</li>
+									<li index="232">百色</li>
+									<li index="240">北海</li>
+									<li index="276">巴中</li>
+									<li index="292">毕节</li>
+									<li index="308">保山</li>
+									<li index="323">宝鸡</li>
+									<li index="338">白银</li>
+									<li index="362">博尔塔拉</li>
+									<li index="363">巴音郭楞</li>
+									<li index="1063">霸州</li>
+									<li index="1200">泊头</li>
+									<li index="1460">北票</li>
+									<li index="1510">北镇</li>
+									<li index="1616">北安</li>
+									<li index="2965">北流</li>
+									<li index="3224">毕节</li>
+									<li index="3765">博乐</li>
+									<li index="3973">白沙黎族自治县</li>
+									<li index="3977">保亭黎族苗族自治县</li>
+								</ul>
+							</div>
+						</div>
+						<div class="city_area_hot">
+							<p class="city_area_hot_title">C</p>
+							<div class="city_area_hot_listA">
+								<ul>
+									<li index="21">承德</li>
+									<li index="22">沧州</li>
+									<li index="28">长治</li>
+									<li index="40">赤峰</li>
+									<li index="50">朝阳</li>
+									<li index="60">长春</li>
+									<li index="90">常州</li>
+									<li index="109">滁州</li>
+									<li index="112">巢湖</li>
+									<li index="115">池州</li>
+									<li index="196">长沙</li>
+									<li index="197">郴州</li>
+									<li index="207">常德</li>
+									<li index="224">潮州</li>
+									<li index="236">崇左</li>
+									<li index="266">重庆</li>
+									<li index="267">成都</li>
+									<li index="298">楚雄</li>
+									<li index="314">昌都</li>
+									<li index="361">昌吉</li>
+									<li index="1799">常熟</li>
+									<li index="1876">慈溪</li>
+									<li index="2043">长乐</li>
+									<li index="2336">昌邑</li>
+									<li index="2372">长葛</li>
+									<li index="2549">赤壁</li>
+									<li index="2692">常宁</li>
+									<li index="2744">从化</li>
+									<li index="2942">岑溪</li>
+									<li index="3029">崇州</li>
+									<li index="3272">赤水</li>
+									<li index="3294">楚雄</li>
+									<li index="3758">昌吉</li>
+									<li index="3972">澄迈县</li>
+									<li index="3974">昌江黎族自治县</li>
+								</ul>
+							</div>
+						</div>
+						<div class="city_area_hot">
+							<p class="city_area_hot_title">D</p>
+							<div class="city_area_hot_listA">
+								<ul>
+									<li index="26">大同</li>
+									<li index="52">大连</li>
+									<li index="56">丹东</li>
+									<li index="74">大兴安岭</li>
+									<li index="78">大庆</li>
+									<li index="149">德州</li>
+									<li index="156">东营</li>
+									<li index="218">东莞</li>
+									<li index="249">儋州</li>
+									<li index="252">东方</li>
+									<li index="274">达州</li>
+									<li index="284">德阳</li>
+									<li index="302">大理</li>
+									<li index="304">德宏</li>
+									<li index="306">迪庆</li>
+									<li index="332">定西</li>
+									<li index="1157">定州</li>
+									<li index="1443">灯塔</li>
+									<li index="1453">调兵山</li>
+									<li index="1502">东港</li>
+									<li index="1516">大石桥</li>
+									<li index="1533">德惠</li>
+									<li index="1545">敦化</li>
+									<li index="1583">大安</li>
+									<li index="1753">丹阳</li>
+									<li index="1834">东台</li>
+									<li index="1835">大丰</li>
+									<li index="1914">东阳</li>
+									<li index="2147">德兴</li>
+									<li index="2366">登封</li>
+									<li index="2396">邓州</li>
+									<li index="2557">大冶</li>
+									<li index="2573">丹江口</li>
+									<li index="2585">当阳</li>
+									<li index="2950">东兴</li>
+									<li index="3026">都江堰</li>
+									<li index="3248">都匀</li>
+									<li index="3328">大理</li>
+									<li index="3675">敦煌</li>
+									<li index="3715">德令哈</li>
+									<li index="3971">定安县</li>
+								</ul>
+							</div>
+						</div>
+						<div class="city_area_hot">
+							<p class="city_area_hot_title">E</p>
+							<div class="city_area_hot_listA">
+								<ul>
+									<li index="42">鄂尔多斯</li>
+									<li index="185">恩施</li>
+									<li index="189">鄂州</li>
+									<li index="1347">二连浩特</li>
+									<li index="1404">额尔古纳</li>
+									<li index="2558">恩施</li>
+									<li index="2841">恩平</li>
+									<li index="3045">峨眉山</li>
+								</ul>
+							</div>
+						</div>
+						<div class="city_area_hot">
+							<p class="city_area_hot_title">F</p>
+							<div class="city_area_hot_listA">
+								<ul>
+									<li index="54">抚顺</li>
+									<li index="59">阜新</li>
+									<li index="110">阜阳</li>
+									<li index="124">福州</li>
+									<li index="134">抚州</li>
+									<li index="227">佛山</li>
+									<li index="241">防城港</li>
+									<li index="1243">汾阳</li>
+									<li index="1423">丰镇</li>
+									<li index="1503">凤城</li>
+									<li index="1707">富锦</li>
+									<li index="1847">富阳</li>
+									<li index="1877">奉化</li>
+									<li index="2042">福清</li>
+									<li index="2114">福安</li>
+									<li index="2115">福鼎</li>
+									<li index="2212">丰城</li>
+									<li index="2354">肥城</li>
+									<li index="3249">福泉</li>
+									<li index="3759">阜康</li>
+								</ul>
+							</div>
+						</div>
+						<div class="city_area_hot">
+							<p class="city_area_hot_title">G</p>
+							<div class="city_area_hot_listA">
+								<ul>
+									<li index="141">赣州</li>
+									<li index="210">广州</li>
+									<li index="238">桂林</li>
+									<li index="243">贵港</li>
+									<li index="273">广安</li>
+									<li index="280">甘孜</li>
+									<li index="286">广元</li>
+									<li index="288">贵阳</li>
+									<li index="337">甘南</li>
+									<li index="349">果洛</li>
+									<li index="355">固原</li>
+									<li index="1051">藁城</li>
+									<li index="1159">高碑店</li>
+									<li index="1213">古交</li>
+									<li index="1278">高平</li>
+									<li index="1405">根河</li>
+									<li index="1515">盖州</li>
+									<li index="1555">公主岭</li>
+									<li index="1748">高邮</li>
+									<li index="2173">贵溪</li>
+									<li index="2214">高安</li>
+									<li index="2335">高密</li>
+									<li index="2362">巩义</li>
+									<li index="2551">广水</li>
+									<li index="2751">高要</li>
+									<li index="2854">高州</li>
+									<li index="2959">桂平</li>
+									<li index="3168">广汉</li>
+									<li index="3304">个旧</li>
+									<li index="3714">格尔木</li>
+									<li index="4002">共青城</li>
+								</ul>
+							</div>
+						</div>
+						<div class="city_area_hot">
+							<p class="city_area_hot_title">H</p>
+							<div class="city_area_hot_listA">
+								<ul>
+									<li index="14">衡水</li>
+									<li index="17">邯郸</li>
+									<li index="34">呼和浩特</li>
+									<li index="43">呼伦贝尔</li>
+									<li index="51">葫芦岛</li>
+									<li index="69">哈尔滨</li>
+									<li index="71">黑河</li>
+									<li index="76">鹤岗</li>
+									<li index="94">淮安</li>
+									<li index="96">杭州</li>
+									<li index="102">湖州</li>
+									<li index="107">合肥</li>
+									<li index="108">黄山</li>
+									<li index="119">淮南</li>
+									<li index="121">淮北</li>
+									<li index="152">菏泽</li>
+									<li index="175">鹤壁</li>
+									<li index="181">黄冈</li>
+									<li index="184">黄石</li>
+									<li index="199">怀化</li>
+									<li index="204">衡阳</li>
+									<li index="212">惠州</li>
+									<li index="215">河源</li>
+									<li index="233">贺州</li>
+									<li index="234">河池</li>
+									<li index="245">海口</li>
+									<li index="299">红河</li>
+									<li index="327">汉中</li>
+									<li index="345">海东</li>
+									<li index="346">海北</li>
+									<li index="347">黄南</li>
+									<li index="348">海南</li>
+									<li index="351">海西</li>
+									<li index="360">哈密</li>
+									<li index="367">和田</li>
+									<li index="1202">黄骅</li>
+									<li index="1203">河间</li>
+									<li index="1229">侯马</li>
+									<li index="1230">霍州</li>
+									<li index="1308">河津</li>
+									<li index="1384">霍林郭勒</li>
+									<li index="1484">海城</li>
+									<li index="1540">桦甸</li>
+									<li index="1546">珲春</li>
+									<li index="1548">和龙</li>
+									<li index="1609">海林</li>
+									<li index="1627">海伦</li>
+									<li index="1654">虎林</li>
+									<li index="1811">海门</li>
+									<li index="1893">海宁</li>
+									<li index="2324">海阳</li>
+									<li index="2496">辉县</li>
+									<li index="2532">洪湖</li>
+									<li index="2610">汉川</li>
+									<li index="2653">洪江</li>
+									<li index="2840">鹤山</li>
+									<li index="2855">化州</li>
+									<li index="2901">合山</li>
+									<li index="3075">华蓥</li>
+									<li index="3541">韩城</li>
+									<li index="3542">华阴</li>
+									<li index="3632">合作</li>
+									<li index="3755">哈密</li>
+									<li index="3802">和田</li>
+								</ul>
+							</div>
+						</div>
+						<div class="city_area_hot">
+							<p class="city_area_hot_title">J</p>
+							<div class="city_area_hot_listA">
+								<ul>
+									<li index="29">晋城</li>
+									<li index="31">晋中</li>
+									<li index="57">锦州</li>
+									<li index="61">吉林</li>
+									<li index="75">鸡西</li>
+									<li index="80">佳木斯</li>
+									<li index="101">嘉兴</li>
+									<li index="104">金华</li>
+									<li index="136">景德镇</li>
+									<li index="138">九江</li>
+									<li index="142">吉安</li>
+									<li index="144">济南</li>
+									<li index="159">济宁</li>
+									<li index="170">济源</li>
+									<li index="177">焦作</li>
+									<li index="180">荆州</li>
+									<li index="190">荆门</li>
+									<li index="225">揭阳</li>
+									<li index="228">江门</li>
+									<li index="334">嘉峪关</li>
+									<li index="336">金昌</li>
+									<li index="343">酒泉</li>
+									<li index="1052">晋州</li>
+									<li index="1074">冀州</li>
+									<li index="1295">介休</li>
+									<li index="1531">九台</li>
+									<li index="1539">蛟河</li>
+									<li index="1567">集安</li>
+									<li index="1749">江都</li>
+									<li index="1755">句容</li>
+									<li index="1759">靖江</li>
+									<li index="1761">姜堰</li>
+									<li index="1773">江阴</li>
+									<li index="1792">金坛</li>
+									<li index="1846">建德</li>
+									<li index="1921">江山</li>
+									<li index="1955">界首</li>
+									<li index="2077">晋江</li>
+									<li index="2098">建瓯</li>
+									<li index="2099">建阳</li>
+									<li index="2204">井冈山</li>
+									<li index="2289">胶州</li>
+									<li index="2290">即墨</li>
+									<li index="2292">胶南</li>
+									<li index="2673">吉首</li>
+									<li index="2722">津市</li>
+									<li index="3098">简阳</li>
+									<li index="3179">江油</li>
+									<li index="3325">景洪</li>
+								</ul>
+							</div>
+						</div>
+						<div class="city_area_hot">
+							<p class="city_area_hot_title">K</p>
+							<div class="city_area_hot_listA">
+								<ul>
+									<li index="171">开封</li>
+									<li index="297">昆明</li>
+									<li index="358">克拉玛依</li>
+									<li index="365">克州</li>
+									<li index="366">喀什</li>
+									<li index="1454">开原</li>
+									<li index="1801">昆山</li>
+									<li index="2839">开平</li>
+									<li index="3232">凯里</li>
+									<li index="3305">开远</li>
+									<li index="3768">库尔勒</li>
+									<li index="3790">喀什</li>
+									<li index="3811">奎屯</li>
+								</ul>
+							</div>
+						</div>
+						<div class="city_area_hot">
+							<p class="city_area_hot_title">L</p>
+							<div class="city_area_hot_listA">
+								<ul>
+									<li index="13">廊坊</li>
+									<li index="24">临汾</li>
+									<li index="25">吕梁</li>
+									<li index="47">辽阳</li>
+									<li index="64">辽源</li>
+									<li index="93">连云港</li>
+									<li index="98">丽水</li>
+									<li index="113">六安</li>
+									<li index="131">龙岩</li>
+									<li index="147">莱芜</li>
+									<li index="148">临沂</li>
+									<li index="150">聊城</li>
+									<li index="163">漯河</li>
+									<li index="172">洛阳</li>
+									<li index="200">娄底</li>
+									<li index="235">来宾</li>
+									<li index="237">柳州</li>
+									<li index="269">乐山</li>
+									<li index="281">凉山</li>
+									<li index="283">泸州</li>
+									<li index="289">六盘水</li>
+									<li index="310">丽江</li>
+									<li index="312">临沧</li>
+									<li index="313">拉萨</li>
+									<li index="319">林芝</li>
+									<li index="330">兰州</li>
+									<li index="333">陇南</li>
+									<li index="335">临夏</li>
+									<li index="1054">鹿泉</li>
+									<li index="1272">潞城</li>
+									<li index="1461">凌源</li>
+									<li index="1509">凌海</li>
+									<li index="1547">龙井</li>
+									<li index="1573">临江</li>
+									<li index="1791">溧阳</li>
+									<li index="1848">临安</li>
+									<li index="1857">临海</li>
+									<li index="1866">龙泉</li>
+									<li index="1888">乐清</li>
+									<li index="1912">兰溪</li>
+									<li index="2089">龙海</li>
+									<li index="2151">乐平</li>
+									<li index="2256">乐陵</li>
+									<li index="2265">临清</li>
+									<li index="2293">莱西</li>
+									<li index="2318">龙口</li>
+									<li index="2319">莱阳</li>
+									<li index="2320">莱州</li>
+									<li index="2383">灵宝</li>
+									<li index="2479">林州</li>
+									<li index="2559">利川</li>
+									<li index="2593">老河口</li>
+									<li index="2619">浏阳</li>
+									<li index="2657">冷水江</li>
+									<li index="2658">涟源</li>
+									<li index="2667">醴陵</li>
+									<li index="2691">耒阳</li>
+									<li index="2713">临湘</li>
+									<li index="2769">陆丰</li>
+									<li index="2787">连州</li>
+									<li index="2797">乐昌</li>
+									<li index="2829">罗定</li>
+									<li index="2848">廉江</li>
+									<li index="2849">雷州</li>
+									<li index="3054">阆中</li>
+									<li index="3622">临夏</li>
+									<li index="3724">灵武</li>
+									<li index="3967">临高县</li>
+									<li index="3975">乐东黎族自治县</li>
+									<li index="3976">陵水黎族自治县</li>
+								</ul>
+							</div>
+						</div>
+						<div class="city_area_hot">
+							<p class="city_area_hot_title">M</p>
+							<div class="city_area_hot_listA">
+								<ul>
+									<li index="70">牡丹江</li>
+									<li index="120">马鞍山</li>
+									<li index="213">梅州</li>
+									<li index="230">茂名</li>
+									<li index="271">眉山</li>
+									<li index="285">绵阳</li>
+									<li index="1401">满洲里</li>
+									<li index="1566">梅河口</li>
+									<li index="1611">穆棱</li>
+									<li index="1655">密山</li>
+									<li index="1947">明光</li>
+									<li index="2506">孟州</li>
+									<li index="2542">麻城</li>
+									<li index="2712">汨罗</li>
+									<li index="3170">绵竹</li>
+									<li index="3306">蒙自</li>
+									<li index="4003">芒</li>
+								</ul>
+							</div>
+						</div>
+						<div class="city_area_hot">
+							<p class="city_area_hot_title">N</p>
+							<div class="city_area_hot_listA">
+								<ul>
+									<li index="83">南京</li>
+									<li index="92">南通</li>
+									<li index="99">宁波</li>
+									<li index="130">南平</li>
+									<li index="132">宁德</li>
+									<li index="133">南昌</li>
+									<li index="165">南阳</li>
+									<li index="231">南宁</li>
+									<li index="268">内江</li>
+									<li index="270">南充</li>
+									<li index="305">怒江</li>
+									<li index="317">那曲</li>
+									<li index="1133">南宫</li>
+									<li index="1610">宁安</li>
+									<li index="1643">讷河</li>
+									<li index="1987">宁国</li>
+									<li index="2078">南安</li>
+									<li index="2191">南康</li>
+									<li index="2798">南雄</li>
+								</ul>
+							</div>
+						</div>
+						<div class="city_area_hot">
+							<p class="city_area_hot_title">P</p>
+							<div class="city_area_hot_listA">
+								<ul>
+									<li index="48">盘锦</li>
+									<li index="126">莆田</li>
+									<li index="137">萍乡</li>
+									<li index="173">平顶山</li>
+									<li index="178">濮阳</li>
+									<li index="282">攀枝花</li>
+									<li index="311">普洱</li>
+									<li index="342">平凉</li>
+									<li index="1476">普兰店</li>
+									<li index="1542">磐石</li>
+									<li index="1785">邳州</li>
+									<li index="1894">平湖</li>
+									<li index="2291">平度</li>
+									<li index="2321">蓬莱</li>
+									<li index="2824">普宁</li>
+									<li index="2908">凭祥</li>
+									<li index="3027">彭州</li>
+								</ul>
+							</div>
+						</div>
+						<div class="city_area_hot">
+							<p class="city_area_hot_title">Q</p>
+							<div class="city_area_hot_listA">
+								<ul>
+									<li index="16">秦皇岛</li>
+									<li index="73">齐齐哈尔</li>
+									<li index="81">七台河</li>
+									<li index="105">衢州</li>
+									<li index="128">泉州</li>
+									<li index="153">青岛</li>
+									<li index="193">潜江</li>
+									<li index="217">清远</li>
+									<li index="242">钦州</li>
+									<li index="248">琼海</li>
+									<li index="291">黔西南</li>
+									<li index="293">黔东南</li>
+									<li index="294">黔南</li>
+									<li index="303">曲靖</li>
+									<li index="331">庆阳</li>
+									<li index="1089">迁安</li>
+									<li index="1808">启东</li>
+									<li index="2323">栖霞</li>
+									<li index="2331">青州</li>
+									<li index="2346">曲阜</li>
+									<li index="2505">沁阳</li>
+									<li index="3028">邛崃</li>
+									<li index="3201">清镇</li>
+									<li index="3731">青铜峡</li>
+									<li index="3978">琼中黎族苗族自治县</li>
+								</ul>
+							</div>
+						</div>
+						<div class="city_area_hot">
+							<p class="city_area_hot_title">R</p>
+							<div class="city_area_hot_listA">
+								<ul>
+									<li index="146">日照</li>
+									<li index="316">日喀则</li>
+									<li index="1201">任丘</li>
+									<li index="1809">如皋</li>
+									<li index="1887">瑞安</li>
+									<li index="2168">瑞昌</li>
+									<li index="2190">瑞金</li>
+									<li index="2227">荣成</li>
+									<li index="2228">乳山</li>
+									<li index="2470">汝州</li>
+									<li index="3273">仁怀</li>
+									<li index="3349">瑞丽</li>
+									<li index="3440">日喀则</li>
+								</ul>
+							</div>
+						</div>
+						<div class="city_area_hot">
+							<p class="city_area_hot_title">S</p>
+							<div class="city_area_hot_listA">
+								<ul>
+									<li index="12">石家庄</li>
+									<li index="30">朔州</li>
+									<li index="46">沈阳</li>
+									<li index="63">四平</li>
+									<li index="67">松原</li>
+									<li index="72">绥化</li>
+									<li index="77">双鸭山</li>
+									<li index="82">上海</li>
+									<li index="87">宿迁</li>
+									<li index="91">苏州</li>
+									<li index="103">绍兴</li>
+									<li index="111">宿州</li>
+									<li index="127">三明</li>
+									<li index="135">上饶</li>
+									<li index="164">三门峡</li>
+									<li index="166">商丘</li>
+									<li index="183">随州</li>
+									<li index="186">十堰</li>
+									<li index="195">神农架</li>
+									<li index="205">邵阳</li>
+									<li index="214">汕尾</li>
+									<li index="219">韶关</li>
+									<li index="221">深圳</li>
+									<li index="223">汕头</li>
+									<li index="246">三亚</li>
+									<li index="287">遂宁</li>
+									<li index="315">山南</li>
+									<li index="321">商洛</li>
+									<li index="353">石嘴山</li>
+									<li index="371">石河子</li>
+									<li index="1064">三河</li>
+									<li index="1075">深州</li>
+									<li index="1134">沙河</li>
+									<li index="1541">舒兰</li>
+									<li index="1556">双辽</li>
+									<li index="1599">双城</li>
+									<li index="1600">尚志</li>
+									<li index="1608">绥芬河</li>
+									<li index="1905">上虞</li>
+									<li index="1906">嵊州</li>
+									<li index="2076">石狮</li>
+									<li index="2096">邵武</li>
+									<li index="2333">寿光</li>
+									<li index="2531">石首</li>
+									<li index="2533">松滋</li>
+									<li index="2672">韶山</li>
+									<li index="2752">四会</li>
+									<li index="3169">什邡</li>
+									<li index="3970">三沙</li>
+								</ul>
+							</div>
+						</div>
+						<div class="city_area_hot">
+							<p class="city_area_hot_title">T</p>
+							<div class="city_area_hot_listA">
+								<ul>
+									<li index="11">天津</li>
+									<li index="15">唐山</li>
+									<li index="23">太原</li>
+									<li index="41">通辽</li>
+									<li index="49">铁岭</li>
+									<li index="65">通化</li>
+									<li index="86">泰州</li>
+									<li index="97">台州</li>
+									<li index="122">铜陵</li>
+									<li index="160">泰安</li>
+									<li index="194">天门</li>
+									<li index="290">铜仁</li>
+									<li index="322">铜川</li>
+									<li index="339">天水</li>
+									<li index="359">吐鲁番</li>
+									<li index="369">塔城</li>
+									<li index="400">台北</li>
+									<li index="1544">图们</li>
+									<li index="1582">洮南</li>
+									<li index="1697">铁力</li>
+									<li index="1706">同江</li>
+									<li index="1760">泰兴</li>
+									<li index="1803">太仓</li>
+									<li index="1895">桐乡</li>
+									<li index="1946">天长</li>
+									<li index="2030">桐城</li>
+									<li index="2307">滕州</li>
+									<li index="2838">台山</li>
+									<li index="3752">吐鲁番</li>
+									<li index="3820">塔城</li>
+									<li index="3969">屯昌县</li>
+								</ul>
+							</div>
+						</div>
+						<div class="city_area_hot">
+							<p class="city_area_hot_title">X</p>
+							<div class="city_area_hot_listA">
+								<ul>
+									<li index="18">邢台</li>
+									<li index="33">忻州</li>
+									<li index="36">兴安</li>
+									<li index="37">锡林郭勒</li>
+									<li index="89">徐州</li>
+									<li index="116">宣城</li>
+									<li index="125">厦门</li>
+									<li index="139">新余</li>
+									<li index="162">许昌</li>
+									<li index="167">信阳</li>
+									<li index="176">新乡</li>
+									<li index="182">咸宁</li>
+									<li index="188">襄阳</li>
+									<li index="191">孝感</li>
+									<li index="192">仙桃</li>
+									<li index="202">湘潭</li>
+									<li index="203">湘西</li>
+									<li index="301">西双版纳</li>
+									<li index="320">西安</li>
+									<li index="324">咸阳</li>
+									<li index="344">西宁</li>
+									<li index="398">香港</li>
+									<li index="1050">辛集</li>
+									<li index="1053">新乐</li>
+									<li index="1242">孝义</li>
+									<li index="1348">锡林浩特</li>
+									<li index="1436">新民</li>
+									<li index="1467">兴城</li>
+									<li index="1758">兴化</li>
+									<li index="1784">新沂</li>
+									<li index="2353">新泰</li>
+									<li index="2364">新密</li>
+									<li index="2365">新郑</li>
+									<li index="2425">项城</li>
+									<li index="2671">湘乡</li>
+									<li index="2765">兴宁</li>
+									<li index="2856">信宜</li>
+									<li index="3136">西昌</li>
+									<li index="3216">兴义</li>
+									<li index="3348">宣威</li>
+									<li index="3531">兴平</li>
+								</ul>
+							</div>
+						</div>
+						<div class="city_area_hot">
+							<p class="city_area_hot_title">Y</p>
+							<div class="city_area_hot_listA">
+								<ul>
+									<li index="27">阳泉</li>
+									<li index="32">运城</li>
+									<li index="58">营口</li>
+									<li index="62">延边</li>
+									<li index="79">伊春</li>
+									<li index="84">扬州</li>
+									<li index="95">盐城</li>
+									<li index="140">鹰潭</li>
+									<li index="143">宜春</li>
+									<li index="157">烟台</li>
+									<li index="187">宜昌</li>
+									<li index="198">永州</li>
+									<li index="206">岳阳</li>
+									<li index="209">益阳</li>
+									<li index="216">阳江</li>
+									<li index="226">云浮</li>
+									<li index="244">玉林</li>
+									<li index="272">宜宾</li>
+									<li index="275">雅安</li>
+									<li index="307">玉溪</li>
+									<li index="326">延安</li>
+									<li index="328">榆林</li>
+									<li index="350">玉树</li>
+									<li index="352">银川</li>
+									<li index="368">伊犁</li>
+									<li index="1307">永济</li>
+									<li index="1322">原平</li>
+									<li index="1402">牙克石</li>
+									<li index="1532">榆树</li>
+									<li index="1543">延吉</li>
+									<li index="1747">仪征</li>
+									<li index="1754">扬中</li>
+									<li index="1774">宜兴</li>
+									<li index="1875">余姚</li>
+									<li index="1913">义乌</li>
+									<li index="1915">永康</li>
+									<li index="2066">永安</li>
+									<li index="2257">禹城</li>
+									<li index="2347">兖州</li>
+									<li index="2363">荥阳</li>
+									<li index="2371">禹州</li>
+									<li index="2382">义马</li>
+									<li index="2405">永城</li>
+									<li index="2460">偃师</li>
+									<li index="2584">宜都</li>
+									<li index="2595">宜城</li>
+									<li index="2608">应城</li>
+									<li index="2732">沅江</li>
+									<li index="2779">阳春</li>
+									<li index="2786">英德</li>
+									<li index="2895">宜州</li>
+									<li index="3674">玉门</li>
+									<li index="3810">伊宁</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+		</div>
+		@@include('../tpl/footer.tpl')
+		<script type="text/javascript" src="lib/hprose.js" charset="utf-8"></script>
+		<script type="text/javascript" src="lib/imgload/js/imgload.js" charset="utf-8"></script>
+		<script type="text/javascript" src="assets/js/buy-ticket.js" charset="utf-8"></script>
+	</body>
+
+</html>

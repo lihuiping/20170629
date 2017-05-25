@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html class="pixel-ratio-1">
+
+	<head>
+		@@include('../tpl/header.tpl',{ "title":"购票搜索" })
+	</head>
+
+	<body>
+		<div class="page page-current" id="page-1495694939475">
+			<div class="content">
+				<!--标签页-->
+				<header class="bar-nav wsl-header">
+					<div class="title-box">
+						<a class="icon icon-left" href="javascript:history.go(-1)"></a>
+						<div class="w-title">购票搜索</div>
+					</div>
+				</header>
+				<form class="dy-sousuo">
+					<i class="iconfont icon-sousuo" id="lb-sousuo"></i>
+					<input placeholder="请输入影片名" id="sousuo-input" type="search">
+					<i class="iconfont icon-shanchuzifu" id="ss-shanchu"></i> &nbsp;
+					<span id="sousuo-quxiao">取消</span>
+				</form>
+				<div class="not-found-video" style="display: none;background: #EFEFF4;">
+					<i class="iconfont icon-shipinqueshen"></i>
+					<p>没有找到相关视频</p>
+				</div>
+				<div class="sousuo-list">
+					<ul>
+					</ul>
+					<div class="clear-record" id="qingkongjilu" style="display: none;">
+						<i class="iconfont icon-shanchu"></i>清空历史记录
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="lib/hprose.js" charset="utf-8"></script>
+		<script type="text/javascript" src="assets/js/sousuoliebiao.js" charset="utf-8"></script>
+	</body>
+</html>
