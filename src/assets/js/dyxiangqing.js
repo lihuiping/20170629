@@ -20,7 +20,6 @@ client.getMoviesInfo({
 	"movies_id": thisurl_id
 }, function(result) {
 	var result = $.parseJSON(result);
-	console.log(result.data.info);
 	document.title = result.data.info.name;
 	var dyxq_jiaohu_xinxi = "<div class='OrderDetailLeft gp_OrderDetailLeft'>" +
 		"<img src='" + result.data.info.poster_url + "'>" +
@@ -35,10 +34,10 @@ client.getMoviesInfo({
 		"</div>" +
 		"</div>" +
 		"<p class='icon icon-down dyxq_introduction' index='1' style='font-size:0.75rem;color:#ccc;'></p>"
-//	$('.dyxq_jiaohu').append(dyxq_jiaohu_xinxi);
-//	for(var i = 0; i < 4; i++) {
-//		$('.dyxq_juzhao ul').append('<li class="pb-standalone"><img src="' + result.data.info.still_list[i].original_url + '"/></li>');
-//	};
+	$('.dyxq_jiaohu').append(dyxq_jiaohu_xinxi);
+	for(var i = 0; i < 4; i++) {
+		$('.dyxq_juzhao ul').append('<li class="pb-standalone"><img src="' + result.data.info.still_list[i].original_url + '"/></li>');
+	};
 	var myPhotoBrowserStandalone = $.photoBrowser({
 		photos: [result.data.info.still_list[0].display_url, result.data.info.still_list[1].display_url, result.data.info.still_list[2].display_url, result.data.info.still_list[3].display_url, ]
 	});
