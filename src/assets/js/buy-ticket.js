@@ -109,154 +109,159 @@ var link = !uniquemark ? "http://v.7cai.tv" : "http://v.7cai.tv" + "?unique=" + 
 
 //购票页面
 //$("#goupiao").on("pageInit", function(e, id, page) {
-	var client1 = hprose.Client.create("http://test.7cai.tv/index.php/api/api/ticket", ['getOrderLists', 'login', 'getCityMoviesLists2', 'getCityWillMoviesLists2', 'getCinemaSchedInfo', 'getTicketCinemaUrl', 'register', 'getTicketCinemaUrl', 'getCityCinemasLists', 'isLogin', 'logout', 'getCityMoviesLists', 'getCinemaInfo', 'getCinemaSchedInfo', 'getCityWillMoviesLists', 'findPwd', 'getMoviesInfo', 'sendCode', 'getUserInfo', 'getMoviesInfo', 'getAddressList', 'getUploadParams', 'getPayOrderInfo', 'getOpenId', 'getCityLists', 'getCityCinemasLists']);
-	var Areaid;
-	var Areatext;
-	var hotAreatext;
-	var totalheight;
-	var thismoves_id;
-	var totalpage;
-	var totalpage2;
-	var currentpage = 1;
-	var currentpage2 = 1;
-	var cityidSure = window.localStorage.getItem('city_select1');
-	if(cityidSure == null) {
-		$.getScript("http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=jsonp",
-			function() {
-				window.localStorage.setItem('city_selected', remote_ip_info.city);
-				$('.gp_changeaddress').text(remote_ip_info.city);
-				$('.city_area_content').find('.city_area_selectd span:eq(0)').text(remote_ip_info.city);
-				$('.city_area_content').find(".city_area_hot ul:contains(" + remote_ip_info.city + ")").trigger("click");
-			});
-		window.localStorage.setItem('city_select1', '10');
-	};
-	$('.gp_changeaddress,.city_area_selectd span:eq(0)').text(localStorage.getItem('city_selected'));
-
-	var cityidSure = window.localStorage.getItem('city_select1'); //首次刷新需要重新写入localstorage，要在这拿一下
-	function getmovieList2() {
-		client1.getCityMoviesLists2({
-				"city_id": cityidSure,
-				"page": currentpage
-			}, function(result) //正在上映
-			{
-				$.hidePreloader();
-				var result = $.parseJSON(result);
-				totalpage = result.data.common.totalPage;
-//				var rdil = result.data.info.length;
-//				var html2 = "";
-//				for(var i = 0; i < rdil; i++) {
-//					html2 += "<li><div class='OrderDetail gp_OrderDetail'>" + "<div class='OrderDetailLeft gp_OrderDetailLeft' index='" + result.data.info[i].id + "'>" + "<img src='" + result.data.info[i].poster_url + "'>" + "<div class='OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft'>" + "<p>" + result.data.info[i].name.substring(0, 10) + "<b style='bakground:#fff;color:#fff;'>测</b><span>" + result.data.info[i].version.substring(0, 2) + "</span></p>" + "<p style='font-size:0.65rem;'>" + result.data.info[i].remark.substring(0, 12) + "...</p>" + "<p style='color:#909090;font-size:0.6rem;'><span>导演:</span><span>" + result.data.info[i].director + "</span></p>" + "<p style='color:#909090; font-size:0.6rem;'><span>主演:</span><span>" + result.data.info[i].actor.substring(0, 16) + "</span></p>" + "</div>" + "</div>" + "<div class='OrderDetailRight gp_OrderDetailRight2'>" + "<p>" + result.data.info[i].score + "</p>" + "<p class='gphref_button' index='" + result.data.info[i].id + "'>购票</p></div>"
-//				};
-//				$('.gp_box_list2 .list-container').append(html2);
-				if($(window).height() == 568 && $(document).width() == 320) {
-					$('html').css('font-size', '17px');
-					$(".OrderDetailLeft_des_fix").css('width', '55%');
-				};
-			});
-	}
-
-	function getmovieList1() {
-		client1.getCityWillMoviesLists2({
-				"city_id": cityidSure,
-				"page": currentpage2
-			}, function(result) //即将上映
-			{
-				$.hidePreloader();
-				var result = $.parseJSON(result);
-				totalpage2 = result.data.common.totalPage;
-//				var rdil = result.data.info.length;
-//				var html1 = "";
-//				for(var i = 0; i < rdil; i++) {
-//					html1 += "<li><div class='OrderDetail gp_OrderDetail'>" + "<div class='OrderDetailLeft gp_OrderDetailLeft' index='" + result.data.info[i].id + "'>" + "<img src='" + result.data.info[i].poster_url + "'>" + "<div class='OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft'>" + "<p>" + result.data.info[i].name.substring(0, 10) + "<b style='bakground:#fff;color:#fff;'>测</b><span>" + result.data.info[i].version.substring(0, 2) + "</span></p>" + "<p style='font-size:0.65rem;'>" + result.data.info[i].remark.substring(0, 12) + "...</p>" + "<p style='color:#909090;font-size:0.6rem;'><span>导演:</span><span>" + result.data.info[i].director + "</span></p>" + "<p style='color:#909090; font-size:0.6rem;'><span>主演:</span><span>" + result.data.info[i].actor.substring(0, 16) + "</span></p>" + "</div>" + "</div>" + "<div class='OrderDetailRight gp_OrderDetailRight'>" + "<p style='font-size:0.7rem;'><span>1023</span>想看</p>" + "<p index='" + result.data.info[i].id + "'>预售</p></div></li>"
-//				};
-//				$('.gp_box_list1 .list-container').append(html1);
-				if($(window).height() == 568 && $(document).width() == 320) {
-					$('html').css('font-size', '17px');
-					$(".OrderDetailLeft_des_fix").css('width', '55%');
-				};
-			});
-	};
-	getmovieList2();
-	getmovieList1();
-
-	//城市列表函数
-	function getCitylists() {
-		client1.getCityLists(function(result) {
-			var result = $.parseJSON(result);
-			if(result.res == 1) {
-				var rdhl = result.data.hot.length;
-				for(i = 0; i < rdhl; i++) {
-					$('.city_area_hot_list ul').append('<li index=' + result.data.hot[i].id + '>' + result.data.hot[i].name + '</li>');
-				}
-//				var character = new Array("A", "B", "C", "D", "E", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "X", "Y", "Z");
-//				var lists = result.data.list;
-//				for(var i = 0; i < 20; i++) {
-//					$('.city_area_content').append('<div class="city_area_hot"><p class="city_area_hot_title">' + character[i] + '</p><div class="city_area_hot_listA"><ul></ul></div></div>');
-//					for(var j in lists[character[i]]) {
-//						$('.city_area_hot_listA ul').eq(i).append(('<li index=' + lists[character[i]][j].id + '>' + lists[character[i]][j].name + '</li>'));
-//					}
-//				};
-			};
-			sessionStorage.setItem('getCityLists', JSON.stringify(result.data));
+var client1 = hprose.Client.create("http://test.7cai.tv/index.php/api/api/ticket", ['getOrderLists', 'login', 'getCityMoviesLists2', 'getCityWillMoviesLists2', 'getCinemaSchedInfo', 'getTicketCinemaUrl', 'register', 'getTicketCinemaUrl', 'getCityCinemasLists', 'isLogin', 'logout', 'getCityMoviesLists', 'getCinemaInfo', 'getCinemaSchedInfo', 'getCityWillMoviesLists', 'findPwd', 'getMoviesInfo', 'sendCode', 'getUserInfo', 'getMoviesInfo', 'getAddressList', 'getUploadParams', 'getPayOrderInfo', 'getOpenId', 'getCityLists', 'getCityCinemasLists']);
+var Areaid;
+var Areatext;
+var hotAreatext;
+var totalheight;
+var thismoves_id;
+var totalpage;
+var totalpage2;
+var currentpage = 1;
+var currentpage2 = 1;
+var cityidSure = window.localStorage.getItem('city_select1');
+if(cityidSure == null) {
+	$.getScript("http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=jsonp",
+		function() {
+			window.localStorage.setItem('city_selected', remote_ip_info.city);
+			$('.gp_changeaddress').text(remote_ip_info.city);
+			$('.city_area_content').find('.city_area_selectd span:eq(0)').text(remote_ip_info.city);
+			$('.city_area_content').find(".city_area_hot ul:contains(" + remote_ip_info.city + ")").trigger("click");
 		});
-	};
-	//城市session存储判断
-	if(sessionStorage.getItem('getCityLists') == null) {
-		getCitylists();
-	} else {
-		var CityListSession = $.parseJSON(sessionStorage.getItem('getCityLists'));
-		var rdhl = CityListSession.hot.length;
-		for(i = 0; i < rdhl; i++) {
-			$('.city_area_hot_list ul').append('<li index=' + CityListSession.hot[i].id + '>' + CityListSession.hot[i].name + '</li>');
+	window.localStorage.setItem('city_select1', '10');
+};
+$('.gp_changeaddress,.city_area_selectd span:eq(0)').text(localStorage.getItem('city_selected'));
+
+var cityidSure = window.localStorage.getItem('city_select1'); //首次刷新需要重新写入localstorage，要在这拿一下
+function getmovieList2() {
+	client1.getCityMoviesLists2({
+			"city_id": cityidSure,
+			"page": currentpage
+		}, function(result) //正在上映
+		{
+			$.hidePreloader();
+			var result = $.parseJSON(result);
+			totalpage = result.data.common.totalPage;
+			var rdil = result.data.info.length;
+			var html2 = "";
+			for(var i = 0; i < rdil; i++) {
+				html2 += "<li><div class='OrderDetail gp_OrderDetail'>" + "<div class='OrderDetailLeft gp_OrderDetailLeft' index='" + result.data.info[i].id + "'>" + "<img src='" + result.data.info[i].poster_url + "'>" + "<div class='OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft'>" + "<p>" + result.data.info[i].name.substring(0, 10) + "<b style='bakground:#fff;color:#fff;'>测</b><span>" + result.data.info[i].version.substring(0, 2) + "</span></p>" + "<p style='font-size:0.65rem;'>" + result.data.info[i].remark.substring(0, 12) + "...</p>" + "<p style='color:#909090;font-size:0.6rem;'><span>导演:</span><span>" + result.data.info[i].director + "</span></p>" + "<p style='color:#909090; font-size:0.6rem;'><span>主演:</span><span>" + result.data.info[i].actor.substring(0, 16) + "</span></p>" + "</div>" + "</div>" + "<div class='OrderDetailRight gp_OrderDetailRight2'>" + "<p>" + result.data.info[i].score + "</p>" + "<p class='gphref_button' index='" + result.data.info[i].id + "'>购票</p></div>"
+			};
+			$('.gp_box_list2 .list-container').append(html2);
+			if($(window).height() == 568 && $(document).width() == 320) {
+				$('html').css('font-size', '17px');
+				$(".OrderDetailLeft_des_fix").css('width', '55%');
+			};
+		});
+}
+
+function getmovieList1() {
+	client1.getCityWillMoviesLists2({
+			"city_id": cityidSure,
+			"page": currentpage2
+		}, function(result) //即将上映
+		{
+			$.hidePreloader();
+			var result = $.parseJSON(result);
+			totalpage2 = result.data.common.totalPage;
+			var rdil = result.data.info.length;
+			var html1 = "";
+			for(var i = 0; i < rdil; i++) {
+				html1 += "<li><div class='OrderDetail gp_OrderDetail'>" + "<div class='OrderDetailLeft gp_OrderDetailLeft' index='" + result.data.info[i].id + "'>" + "<img src='" + result.data.info[i].poster_url + "'>" + "<div class='OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft'>" + "<p>" + result.data.info[i].name.substring(0, 10) + "<b style='bakground:#fff;color:#fff;'>测</b><span>" + result.data.info[i].version.substring(0, 2) + "</span></p>" + "<p style='font-size:0.65rem;'>" + result.data.info[i].remark.substring(0, 12) + "...</p>" + "<p style='color:#909090;font-size:0.6rem;'><span>导演:</span><span>" + result.data.info[i].director + "</span></p>" + "<p style='color:#909090; font-size:0.6rem;'><span>主演:</span><span>" + result.data.info[i].actor.substring(0, 16) + "</span></p>" + "</div>" + "</div>" + "<div class='OrderDetailRight gp_OrderDetailRight'>" + "<p style='font-size:0.7rem;'><span>1023</span>想看</p>" + "<p index='" + result.data.info[i].id + "'>预售</p></div></li>"
+			};
+			$('.gp_box_list1 .list-container').append(html1);
+			if($(window).height() == 568 && $(document).width() == 320) {
+				$('html').css('font-size', '17px');
+				$(".OrderDetailLeft_des_fix").css('width', '55%');
+			};
+		});
+};
+getmovieList2();
+getmovieList1();
+
+//城市列表函数
+function getCitylists() {
+	client1.getCityLists(function(result) {
+		var result = $.parseJSON(result);
+		if(result.res == 1) {
+			var rdhl = result.data.hot.length;
+			console.log(result.data.hot);
+			for(i = 0; i < rdhl; i++) {
+				$('.city_area_hot_list ul').append('<li index=' + result.data.hot[i].id + '>' + result.data.hot[i].name + '</li>');
+			}
+			var character = new Array("A", "B", "C", "D", "E", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "X", "Y", "Z");
+			var lists = result.data.list;
+			for(var i = 0; i < 20; i++) {
+				$('.city_area_content').append('<div class="city_area_hot"><p class="city_area_hot_title">' + character[i] + '</p><div class="city_area_hot_listA"><ul></ul></div></div>');
+				for(var j in lists[character[i]]) {
+					$('.city_area_hot_listA ul').eq(i).append(('<li index=' + lists[character[i]][j].id + '>' + lists[character[i]][j].name + '</li>'));
+				}
+			};
+		};
+		sessionStorage.setItem('getCityLists', JSON.stringify(result.data));
+	});
+};
+//城市session存储判断
+if(sessionStorage.getItem('getCityLists') == null) {
+	getCitylists();
+} else {
+	var CityListSession = $.parseJSON(sessionStorage.getItem('getCityLists'));
+	var rdhl = CityListSession.hot.length;
+	for(i = 0; i < rdhl; i++) {
+		$('.city_area_hot_list ul').append('<li index=' + CityListSession.hot[i].id + '>' + CityListSession.hot[i].name + '</li>');
+	}
+	var character = new Array("A", "B", "C", "D", "E", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "X", "Y", "Z");
+	var lists = CityListSession.list;
+	for(var i = 0; i < 20; i++) {
+		$('.city_area_content').append('<div class="city_area_hot"><p class="city_area_hot_title">' + character[i] + '</p><div class="city_area_hot_listA"><ul></ul></div></div>');
+		for(var j in lists[character[i]]) {
+			$('.city_area_hot_listA ul').eq(i).append(('<li index=' + lists[character[i]][j].id + '>' + lists[character[i]][j].name + '</li>'));
 		}
-//		var character = new Array("A", "B", "C", "D", "E", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "X", "Y", "Z");
-//		var lists = CityListSession.list;
-//		for(var i = 0; i < 20; i++) {
-//			$('.city_area_content').append('<div class="city_area_hot"><p class="city_area_hot_title">' + character[i] + '</p><div class="city_area_hot_listA"><ul></ul></div></div>');
-//			for(var j in lists[character[i]]) {
-//				$('.city_area_hot_listA ul').eq(i).append(('<li index=' + lists[character[i]][j].id + '>' + lists[character[i]][j].name + '</li>'));
-//			}
-//		};
 	};
-	//滚动加载
-	function gundongloading() {
-		var loading = false;
-		$('.infinite-scroll').on('infinite', function() {
-			// 如果正在加载，则退出
-			if(loading) return;
-			// 设置flag
-			loading = true;
-			setTimeout(function() {
-				loading = false;
-				if(currentpage2 >= totalpage2) {
-					$.detachInfiniteScroll($('.infinite-scroll_2'));
-					$('.gp_box_list1 .infinite-scroll-preloader').remove();
+};
+//滚动加载
+function gundongloading() {
+	var loading = false;
+	$('.infinite-scroll').on('infinite', function() {
+		// 如果正在加载，则退出
+		if(loading) return;
+		// 设置flag
+		loading = true;
+		setTimeout(function() {
+			loading = false;
+			if(currentpage2 >= totalpage2) {
+				$.detachInfiniteScroll($('.infinite-scroll_2'));
+				$('.gp_box_list1 .infinite-scroll-preloader').remove();
+				return;
+			}
+			if(currentpage >= totalpage) {
+				$.detachInfiniteScroll($('.infinite-scroll_1'));
+				$('.gp_box_list2 .infinite-scroll-preloader').remove();
+			}
+			if($('.gp_box_list2').css("display") === 'block') {
+				currentpage++;
+				if(currentpage > totalpage) {
 					return;
 				}
-				if(currentpage >= totalpage) {
-					$.detachInfiniteScroll($('.infinite-scroll_1'));
-					$('.gp_box_list2 .infinite-scroll-preloader').remove();
-				}
-				if($('.gp_box_list2').css("display") === 'block') {
-					currentpage++;
-					if(currentpage > totalpage) {
-						return;
-					}
-					getmovieList2(currentpage);
-				} else if($('.gp_box_list1').css("display") === 'block') {
-					currentpage2++;
-					if(currentpage2 > totalpage2) {
-						return;
-					};
-					getmovieList1(currentpage2);
-				}
-			}, 500);
-		});
-	};
+				getmovieList2(currentpage);
+			} else if($('.gp_box_list1').css("display") === 'block') {
+				currentpage2++;
+				if(currentpage2 > totalpage2) {
+					return;
+				};
+				getmovieList1(currentpage2);
+			}
+		}, 500);
+	});
+};
 
-	gundongloading();
+gundongloading();
+
+//购票
+setTimeout(function() {
+
 	//热门
-	$(".city_area_hot_list ul li").on("click", 
+	$(".city_area_hot_list ul li").on("click",
 		function() {
 			currentpage = 1;
 			currentpage2 = 1;
@@ -274,8 +279,8 @@ var link = !uniquemark ? "http://v.7cai.tv" : "http://v.7cai.tv" + "?unique=" + 
 			Areaid = parseInt(Areaid);
 			window.location.href = window.location.href + '?timestamp=' + Date.parse(new Date());
 		});
-		//选择城市
-	$(".city_area_hot_listA ul li").on("click", 
+	//选择城市
+	$(".city_area_hot_listA ul li").on("click",
 		function() {
 			currentpage = 1;
 			currentpage2 = 1;
@@ -294,18 +299,19 @@ var link = !uniquemark ? "http://v.7cai.tv" : "http://v.7cai.tv" + "?unique=" + 
 
 			window.location.href = window.location.href + '?timestamp=' + Date.parse(new Date());
 		});
-		//点击影票ul
-	$(".gp_OrderDetailLeft").on("click", 
+	//点击影票ul
+	$(".gp_OrderDetailLeft").on("click",
 		function() {
 			var thismoves_id = $(this).attr('index');
 			window.location.href = "./dyxiangqing.html?id=" + thismoves_id;
 		});
-	//购票
+
 	$(".gphref_button").on("click",
 		function() {
 			var thismoves_id = $(this).attr('index');
 			window.location.href = "./gparea.html?id=" + thismoves_id;
 		});
+
 	//搜索
 	$("#goupiao-input").on('click',
 		function() {
@@ -317,7 +323,7 @@ var link = !uniquemark ? "http://v.7cai.tv" : "http://v.7cai.tv" + "?unique=" + 
 			var thismoves_id = $(this).attr('index');
 			window.location.href = "./gparea.html?id=" + thismoves_id;
 		});
-		//更换城市
+	//更换城市
 	$('.cta_close').on('click', function() {
 		if($('.gp_box_title_right').hasClass('gp_box_title_right_on')) {
 			$('.gp_citypicker').hide();
@@ -355,6 +361,8 @@ var link = !uniquemark ? "http://v.7cai.tv" : "http://v.7cai.tv" + "?unique=" + 
 		$('.gp_box_title').hide();
 		$('.gp_box_list').hide();
 	});
+}, 500);
+
 //});
 
 $(".mytouch").on("touchstart", function() {
