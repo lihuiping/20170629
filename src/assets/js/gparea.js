@@ -94,14 +94,14 @@ function getCitylists() {
 			for(i = 0; i < rdhl; i++) {
 				$('.city_area_hot_list ul').append('<li index=' + result.data.hot[i].id + '>' + result.data.hot[i].name + '</li>');
 			}
-//			var character = new Array("A", "B", "C", "D", "E", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "X", "Y", "Z");
+			var character = new Array("A", "B", "C", "D", "E", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "X", "Y", "Z");
 			var lists = result.data.list;
-//			for(var i = 0; i < 20; i++) {
-//				$('.city_area_content').append('<div class="city_area_hot"><p class="city_area_hot_title">' + character[i] + '</p><div class="city_area_hot_listA"><ul></ul></div></div>');
-//				for(var j in lists[character[i]]) {
-//					$('.city_area_hot_listA ul').eq(i).append(('<li index=' + lists[character[i]][j].id + '>' + lists[character[i]][j].name + '</li>'));
-//				}
-//			};
+			for(var i = 0; i < 20; i++) {
+				$('.city_area_content').append('<div class="city_area_hot"><p class="city_area_hot_title">' + character[i] + '</p><div class="city_area_hot_listA"><ul></ul></div></div>');
+				for(var j in lists[character[i]]) {
+					$('.city_area_hot_listA ul').eq(i).append(('<li index=' + lists[character[i]][j].id + '>' + lists[character[i]][j].name + '</li>'));
+				}
+			};
 		};
 		sessionStorage.setItem('getCityLists', JSON.stringify(result.data));
 	});
@@ -114,14 +114,14 @@ if(sessionStorage.getItem('getCityLists') == null) {
 	for(i = 0; i < rdhl; i++) {
 		$('.city_area_hot_list ul').append('<li index=' + CityListSession.hot[i].id + '>' + CityListSession.hot[i].name + '</li>');
 	}
-//	var character = new Array("A", "B", "C", "D", "E", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "X", "Y", "Z");
+	var character = new Array("A", "B", "C", "D", "E", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "X", "Y", "Z");
 	var lists = CityListSession.list;
-//	for(var i = 0; i < 20; i++) {
-//		$('.city_area_content').append('<div class="city_area_hot"><p class="city_area_hot_title">' + character[i] + '</p><div class="city_area_hot_listA"><ul></ul></div></div>');
-//		for(var j in lists[character[i]]) {
-//			$('.city_area_hot_listA ul').eq(i).append(('<li index=' + lists[character[i]][j].id + '>' + lists[character[i]][j].name + '</li>'));
-//		}
-//	};
+	for(var i = 0; i < 20; i++) {
+		$('.city_area_content').append('<div class="city_area_hot"><p class="city_area_hot_title">' + character[i] + '</p><div class="city_area_hot_listA"><ul></ul></div></div>');
+		for(var j in lists[character[i]]) {
+			$('.city_area_hot_listA ul').eq(i).append(('<li index=' + lists[character[i]][j].id + '>' + lists[character[i]][j].name + '</li>'));
+		}
+	};
 };
 
 function listshow(cityidSure, currentpage) {
@@ -250,7 +250,7 @@ $(".city_area_content").on("click", "li", function() {
 	Areaid = parseInt(Areaid);
 	document.location.reload();;
 });
-gundongloading(cityidSure);
+//gundongloading(cityidSure);
 
 function GetRequest() {
 	var url = location.search;
@@ -271,7 +271,7 @@ thismovie_id = parseInt(thismovie_id);
 $(document).on("click", ".yyjs_xx ul li", function() {
 	var thisCinema_id = $(this).attr('index');
 	//点击li跳转
-	window.location.href = "dyyjieshao.html?id=" + thisCinema_id + "&movie=" + thismovie_id;
+	window.location.href = "./theater-tickets.html?id=" + thisCinema_id + "&movie=" + thismovie_id;
 });
 $(".gp_box_title_left").click(function() {
 	$(".gp_box_title_right").css({
