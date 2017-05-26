@@ -14,4 +14,8 @@
             margin-top: 0;
         }
     }
+    .yyjs_yyname{
+        width: 64%;
+        @extend %text-overflow;
+    }
 }
