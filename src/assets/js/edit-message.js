@@ -1,4 +1,3 @@
-
 //发送验证码
 function myCode() {
 	var i = 60; // 倒计时时间
@@ -71,7 +70,7 @@ $(document).on("pageInit", "#backpsword", function(e, id, page) {
 //播放页
 $(document).on("pageInit", "#VideoPlay", function() {
 	if(isLogin() == false) {
-	//	noLogin();
+		//	noLogin();
 	}
 	$("#button-fenxiang").click(function() {
 		$("#tip").addClass("zindex");
@@ -122,29 +121,28 @@ $(document).on("pageInit", "#VideoPlay", function() {
 
 });
 
-
 // 修改基础资料
 $(document).on("pageInit", "#editmessage", function(e, id, page) {
-//	client.invoke("getUserInfo", function(result) {
-//		var result = $.parseJSON(result);
-//		console.log(result);
-//		Cache.set("issafe", result.data.isSafe);
-//		var touxiang = result.data.imgurl ? result.data.imgurl : "/images/tx-120.png";
-//		$("#mytouxiang-div").append("<img id='my-touxiang' src=" + touxiang + ">");
-//		$("#mename").html(result.data.username ? result.data.username : result.data.mobile);
-//		$("#megenger").val(parseInt(result.data.sex) ? "女" : "男");
-//		$("#isAuth").html(parseInt(result.data.isAuth) ? "已认证" : "未认证");
-//		$("#brdate").val(result.data.birth != '' ? result.data.birth : "");
-//		$("#anquanmima").html(result.data.isSafe == 1 ? "去修改" : "去设置");
-//		var phone = result.data.mobile.substr(0, 3) + "****" + result.data.mobile.substr(7);
-//		$("#mobilephone").html(phone);
-//		$('#brdate').date();
-//		$('#brdate').on("click", function(e) {
-//			e.preventDefault();
-//		})
-//
-//	});
-$("#megenger").val("女");
+	//	client.invoke("getUserInfo", function(result) {
+	//		var result = $.parseJSON(result);
+	//		console.log(result);
+	//		Cache.set("issafe", result.data.isSafe);
+	//		var touxiang = result.data.imgurl ? result.data.imgurl : "/images/tx-120.png";
+	//		$("#mytouxiang-div").append("<img id='my-touxiang' src=" + touxiang + ">");
+	//		$("#mename").html(result.data.username ? result.data.username : result.data.mobile);
+	//		$("#megenger").val(parseInt(result.data.sex) ? "女" : "男");
+	//		$("#isAuth").html(parseInt(result.data.isAuth) ? "已认证" : "未认证");
+	//		$("#brdate").val(result.data.birth != '' ? result.data.birth : "");
+	//		$("#anquanmima").html(result.data.isSafe == 1 ? "去修改" : "去设置");
+	//		var phone = result.data.mobile.substr(0, 3) + "****" + result.data.mobile.substr(7);
+	//		$("#mobilephone").html(phone);
+	//		$('#brdate').date();
+	//		$('#brdate').on("click", function(e) {
+	//			e.preventDefault();
+	//		})
+	//
+	//	});
+	$("#megenger").val("女");
 	//选择性别
 	$("#megenger").on("click", function(e) {
 
@@ -164,10 +162,10 @@ $("#megenger").val("女");
 		$.actions(buttons);
 	})
 	//选择生日
-   $('#brdate').date();
-		$('#brdate').on("click",function(e){
-			e.preventDefault();
-		})
+	$('#brdate').date();
+	$('#brdate').on("click", function(e) {
+		e.preventDefault();
+	})
 	//更改手机号跳转
 	$("#changemobile").on("click", function() {
 		window.location.href = "./ModifyMobile.html"
@@ -192,152 +190,169 @@ $("#megenger").val("女");
 	})
 
 	//头像
-	if(isWenxin) {
-		$("#changetx").on("click", function() {
-			var sendImg;
-			client.invoke("getWxSdkSignInfo", [{ "url": window.location.href }], function(result) {
-				var result = $.parseJSON(result);
-				if(result.res == 1) {
-					wx.config({
-						debug: false,
-						appId: result.data.appid,
-						timestamp: result.data.timestamp,
-						nonceStr: result.data.noncestr,
-						signature: result.data.signature,
-						jsApiList: ["chooseImage", "previewImage", "uploadImage"]
-					});
-				} else {
-					$.toast(result.msg);
-				}
+	$("#changetx").on("click", function() {
+		var sendImg;
+		//			client.invoke("getWxSdkSignInfo", [{ "url": window.location.href }], function(result) {
+		//				var result = $.parseJSON(result);
+		//				if(result.res == 1) {
+		//					wx.config({
+		//						debug: false,
+		//						appId: result.data.appid,
+		//						timestamp: result.data.timestamp,
+		//						nonceStr: result.data.noncestr,
+		//						signature: result.data.signature,
+		//						jsApiList: ["chooseImage", "previewImage", "uploadImage"]
+		//					});
+		//				} else {
+		//					$.toast(result.msg);
+		//				}
+		//			});
+		//			
+		sendImg = function(type) {
+			var FNPhotograph = api.require('FNPhotograph');
+			FNPhotograph.openCameraView({
+				rect: {
+					x: 0,
+					y: 0,
+					w: 320,
+					h: 300
+				},
+				orientation: 'portrait',
+				fixedOn: api.frameName,
+				fixed: true
+			}, function(ret) {
+				alert(JSON.stringify(ret));
 			});
-			sendImg = function(type) {
-				wx.chooseImage({
-					count: 1, // 默认9
-					sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-					sourceType: [type], // 可以指定来源是相册还是相机，默认二者都有
-					success: function(res) {
-						var localIds = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
-						wx.uploadImage({
-							localId: localIds[0],
-							isShowProgressTips: 1,
-							success: function(res) {
-								var serverId = res.serverId;
-								client.invoke("modifyHeadImg", [{ "media_id": serverId }], function(res) {
-									var res = $.parseJSON(res);
-									if(res.res == 1) {
-										$.toast("修改成功");
-									} else {
-										$.toast(res.msg);
-									}
-								})
-
-							}
-						})
-						$("#my-touxiang").attr("src", localIds);
-
-					},
-					fail: function(res) {
-						$.toast("图片获取失败");
-					}
-				});
-			};
-			var buttons1 = [{
-					text: "修改头像",
-					label: true,
-					color: "gray"
-				},
-				{
-					text: '拍照',
-					bold: true,
-					color: 'danger',
-					onClick: function() {
-						sendImg('camera');
-					}
-				},
-				{
-					text: '相册',
-					//bold:true,
-					color: 'warning',
-					onClick: function() {
-						sendImg('album');
-					}
-				}
-			];
-			var buttons2 = [{
-				text: '取消'
-			}];
-			var groups = [buttons1, buttons2];
-			$.actions(groups);
-		});
-
-	} else {
-		var timestamp = (new Date()).valueOf();
-		var savekey = "/tx/" + timestamp;
-		//var savekey = "/tx/"+Cache.get("whole_mobile");
-		var options = {
-			"bucket": "qicai",
-			"expiration": Math.floor(new Date().getTime() / 1000) + 86400,
-			'save-key': savekey,
-		};
-		var policy = window.btoa(JSON.stringify(options));
-		var signature = md5(policy + '&Tv+UtjmQj0nWt0mUv4Q2psJI8hY=');
-		options.policy = policy;
-		options.signature = signature;
-
-		$('#file_upload').uploadifive({
-			'auto': true,
-			'buttonClass': 'myUpload',
-			'buttonText': '',
-			'height': '', //按钮的大小
-			'width': '',
-			'formData': options,
-			'fileObjName': 'file',
-			//				'queueID': 'queue',
-			'queueSizeLimit': 1,
-			'removeCompleted': true,
-			'multi': false,
-			'fileSizeLimit': '5MB',
-			'uploadScript': "http://v0.api.upyun.com/qicai",
-			'onProgress': function(file, e) {
-				if(e.lengthComputable) {
-					var percent = Math.round((e.loaded / e.total) * 100);
-				}
-				if(percent == 100) {
-					$.hideIndicator();
-				}
-			},
-			//				'onAddQueueItem' : function(file) {
-			//					var fileSize = file.size;
-			//					var fileSizeKb = parseFloat(fileSize/1024);
-			//					if(fileSizeKb>5120){
-			//						$('#file_upload').uploadifive('clearQueue');
-			//						alert('照片大小不能超过5MB!');
-			//					}else{
+			//				wx.chooseImage({
+			//					count: 1, // 默认9
+			//					sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+			//					sourceType: [type], // 可以指定来源是相册还是相机，默认二者都有
+			//					success: function(res) {
+			//						var localIds = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
+			//						wx.uploadImage({
+			//							localId: localIds[0],
+			//							isShowProgressTips: 1,
+			//							success: function(res) {
+			//								var serverId = res.serverId;
+			//								client.invoke("modifyHeadImg", [{ "media_id": serverId }], function(res) {
+			//									var res = $.parseJSON(res);
+			//									if(res.res == 1) {
+			//										$.toast("修改成功");
+			//									} else {
+			//										$.toast(res.msg);
+			//									}
+			//								})
+			//
+			//							}
+			//						})
+			//						$("#my-touxiang").attr("src", localIds);
+			//
+			//					},
+			//					fail: function(res) {
+			//						$.toast("图片获取失败");
 			//					}
-			//				},
-			'onUploadComplete': function(file, data) {
-				data = $.parseJSON(data);
-
-				if(data.message == "ok") {
-					//$('#file_upload').uploadifive('clearQueue');
-					$("#my-touxiang").attr("src", 'http://img.7cai.tv' + data.url);
-					$.showPreloader('上传完成，正在处理中');
-					client.modifyInfo({ "imgurl": 'http://img.7cai.tv' + data.url }, function(result) {
-						var result = $.parseJSON(result);
-						if(result.res == 1) {
-							$.hidePreloader();
-							$.toast("修改完成!");
-						} else {
-							$.toast(result.msg)
-						}
-					})
-
-				} else {
-					$.toast(data.message);
+			//				});
+			//			
+		};
+		var buttons1 = [{
+				text: "修改头像",
+				label: true,
+				color: "gray"
+			},
+			{
+				text: '拍照',
+				bold: true,
+				color: 'danger',
+				onClick: function() {
+					sendImg('camera');
 				}
 			},
-		});
-	}
+			{
+				text: '相册',
+				//bold:true,
+				color: 'warning',
+				onClick: function() {
+					sendImg('album');
+				}
+			}
+		];
+		var buttons2 = [{
+			text: '取消'
+		}];
+		var groups = [buttons1, buttons2];
+		$.actions(groups);
+	});
+	//	if(isWenxin) {
+	//		
+	//
+	//	} else {
+	//		var timestamp = (new Date()).valueOf();
+	//		var savekey = "/tx/" + timestamp;
+	//		//var savekey = "/tx/"+Cache.get("whole_mobile");
+	//		var options = {
+	//			"bucket": "qicai",
+	//			"expiration": Math.floor(new Date().getTime() / 1000) + 86400,
+	//			'save-key': savekey,
+	//		};
+	//		var policy = window.btoa(JSON.stringify(options));
+	//		var signature = md5(policy + '&Tv+UtjmQj0nWt0mUv4Q2psJI8hY=');
+	//		options.policy = policy;
+	//		options.signature = signature;
+	//		$('#file_upload').uploadifive({
+	//			'auto': true,
+	//			'buttonClass': 'myUpload',
+	//			'buttonText': '',
+	//			'height': '', //按钮的大小
+	//			'width': '',
+	//			'formData': options,
+	//			'fileObjName': 'file',
+	//			//				'queueID': 'queue',
+	//			'queueSizeLimit': 1,
+	//			'removeCompleted': true,
+	//			'multi': false,
+	//			'fileSizeLimit': '5MB',
+	//			'uploadScript': "http://v0.api.upyun.com/qicai",
+	//			'onProgress': function(file, e) {
+	//				if(e.lengthComputable) {
+	//					var percent = Math.round((e.loaded / e.total) * 100);
+	//				}
+	//				if(percent == 100) {
+	//					$.hideIndicator();
+	//				}
+	//			},
+	//			//				'onAddQueueItem' : function(file) {
+	//			//					var fileSize = file.size;
+	//			//					var fileSizeKb = parseFloat(fileSize/1024);
+	//			//					if(fileSizeKb>5120){
+	//			//						$('#file_upload').uploadifive('clearQueue');
+	//			//						alert('照片大小不能超过5MB!');
+	//			//					}else{
+	//			//					}
+	//			//				},
+	//			'onUploadComplete': function(file, data) {
+	//				data = $.parseJSON(data);
+	//
+	//				if(data.message == "ok") {
+	//					//$('#file_upload').uploadifive('clearQueue');
+	//					$("#my-touxiang").attr("src", 'http://img.7cai.tv' + data.url);
+	//					$.showPreloader('上传完成，正在处理中');
+	//					client.modifyInfo({ "imgurl": 'http://img.7cai.tv' + data.url }, function(result) {
+	//						var result = $.parseJSON(result);
+	//						if(result.res == 1) {
+	//							$.hidePreloader();
+	//							$.toast("修改完成!");
+	//						} else {
+	//							$.toast(result.msg)
+	//						}
+	//					})
+	//
+	//				} else {
+	//					$.toast(data.message);
+	//				}
+	//			},
+	//		});
+	//	
+	//	}
 
 	//点击我的地址
 	$("#c-myaddress").on("click", function() {
