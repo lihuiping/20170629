@@ -3,22 +3,23 @@
 
 	<head>
 		@@include('../tpl/header.tpl',{ "title":"购票" })
+		<title>购票</title>
+		<!--<style>
+			html {
+				font-size: 17px;
+			}
+			
+			.OrderDetailLeft_des_fix {
+				width: 54%;
+			}
+		</style>-->
 	</head>
-
 	<body>
 		<div class="page scroll page-current page-inited butTic-page" id="goupiao">
-			<div class="">
-			<!--标签页-->
-			<header class="bar-nav wsl-header">
-				<div class="title-box">
-					<a class="icon icon-left" href="javascript:history.go(-1)"></a>
-					<div class="w-title">购票</div>
-				</div>
-			</header>
-			<div class="ip-scroll content">
+			<div class="ip-scroll">
 				<div class="dysuo dy-sousuo gp_dy_sousuo">
 					<div class="dysu_left">
-						<span class="gp_changeaddress">郑州</span><span class="iconfont icon-down gp_openAddress"></span>
+						<span class="gp_changeaddress">上海</span><span class="iconfont icon-down gp_openAddress"></span>
 					</div>
 					<div class="dysu_right">
 						<i class="iconfont icon-sousuo" id="lb-sousuo"></i>
@@ -27,169 +28,169 @@
 				</div>
 				<div class="gp_box_title gp_box_title_fix">
 					<div class="gp_box_title_left gp_box_title_right_on">正在上映</div>
-					<div class="gp_box_title_right">即将上映</div>
+					<div class="gp_box_title_right" style="margin-left:5.1rem;">即将上映</div>
 				</div>
 				<div class="gp_box gp_box_fix">
-					<div class="content infinite-scroll infinite-scroll_2" data-distance="100">
+					<div class="content infinite-scroll infinite-scroll_2" data-distance="100" style="display: none;">
 						<div class="gp_box_list gp_box_list_fix gp_box_list1 list-block" style="display: none;">
 							<ul class="list-container">
 								<!--<li>
 									<div class="OrderDetail gp_OrderDetail">
-										<div class="OrderDetailLeft gp_OrderDetailLeft" index="7131"><img src="assets/images/201704261105072505.jpg">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="5618"><img src="assets/images/201705081816448911.jpg">
 											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
-												<p>加勒比海盗5：死无对<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
-												<p style="font-size:0.65rem;">无垠瀚海多凶险，誓取神兵...</p>
-												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>乔阿吉姆·罗恩尼 / 艾斯彭·山德伯格</span></p>
-												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>约翰尼·德普 / 卡雅·斯考达里</span></p>
+												<p>潜艇总动员5：时光宝<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
+												<p style="font-size:0.65rem;">潜艇阿力再出击，寻宝之旅...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>何子力</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>范楚绒 / 洪海天 / 谢元真 </span></p>
 											</div>
 										</div>
 										<div class="OrderDetailRight gp_OrderDetailRight">
 											<p style="font-size:0.7rem;"><span>1023</span>想看</p>
-											<p index="7131" class="bt-first">预售</p>
+											<p index="5618">预售</p>
 										</div>
 									</div>
 								</li>
 								<li>
 									<div class="OrderDetail gp_OrderDetail">
-										<div class="OrderDetailLeft gp_OrderDetailLeft" index="1000116"><img src="assets/images/201705221145578599.jpg">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="167836"><img src="assets/images/201705111057204380.jpg">
 											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
-												<p>诡异酒楼<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
-												<p style="font-size:0.65rem;">负债累累陷两难，离奇事件...</p>
-												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>蒋国权</span></p>
-												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>欧阳鑫紫 / 赵东昊 / 李璐兵</span></p>
+												<p>摩尔庄园2：海妖宝藏<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
+												<p style="font-size:0.65rem;">神秘宝藏系命运，海洋深处...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>刘可欣</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>黄渤 / 宣晓鸣 / 周志强 /</span></p>
 											</div>
 										</div>
 										<div class="OrderDetailRight gp_OrderDetailRight">
 											<p style="font-size:0.7rem;"><span>1023</span>想看</p>
-											<p index="1000116">预售</p>
+											<p index="167836">预售</p>
 										</div>
 									</div>
 								</li>
 								<li>
 									<div class="OrderDetail gp_OrderDetail">
-										<div class="OrderDetailLeft gp_OrderDetailLeft" index="1000100"><img src="assets/images/201704281357108130.jpg">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="5104"><img src="assets/images/201705111054337036.jpg">
 											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
-												<p>颠覆<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
-												<p style="font-size:0.65rem;">人间悲喜纷来袭，从头再来...</p>
-												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>张旭洲</span></p>
-												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>张新岳 / 李建龙 / 刘振明 </span></p>
+												<p>龙骑侠<b style="bakground:#fff;color:#fff;">测</b><span>3D</span></p>
+												<p style="font-size:0.65rem;">机缘巧合担重任，少年圆梦...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>刘可欣</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>唐小喜 / 张雪凌 / 路知行</span></p>
 											</div>
 										</div>
 										<div class="OrderDetailRight gp_OrderDetailRight">
 											<p style="font-size:0.7rem;"><span>1023</span>想看</p>
-											<p index="1000100">预售</p>
+											<p index="5104">预售</p>
 										</div>
 									</div>
 								</li>
 								<li>
 									<div class="OrderDetail gp_OrderDetail">
-										<div class="OrderDetailLeft gp_OrderDetailLeft" index="228597"><img src="assets/images/201704261930387192.jpg">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="5639"><img src="assets/images/201705111049497817.jpg">
 											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
-												<p>黑白照相馆<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
-												<p style="font-size:0.65rem;">远离俗世入净土，誓保桃源...</p>
-												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>李柯</span></p>
-												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>范逸臣 / 车永莉 / 龚格尔 </span></p>
+												<p>超能兔战队<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
+												<p style="font-size:0.65rem;">耍宝卖萌超能兔，拯救嫦娥...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>傅燕</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>刘红韵 / 李旭乔 / 白文显 </span></p>
 											</div>
 										</div>
 										<div class="OrderDetailRight gp_OrderDetailRight">
 											<p style="font-size:0.7rem;"><span>1023</span>想看</p>
-											<p index="228597">预售</p>
+											<p index="5639">预售</p>
 										</div>
 									</div>
 								</li>
 								<li>
 									<div class="OrderDetail gp_OrderDetail">
-										<div class="OrderDetailLeft gp_OrderDetailLeft" index="6919"><img src="assets/images/201705221516199380.jpg">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="245052"><img src="assets/images/201705121332462505.jpg">
 											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
-												<p>夏天19岁的肖像<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
-												<p style="font-size:0.65rem;">少年痴情恋红颜，青春无忌...</p>
-												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>张荣吉</span></p>
-												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>黄子韬 / 杨采钰 / 杜天皓 </span></p>
+												<p>功夫小兔侠<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
+												<p style="font-size:0.65rem;">传统与科技较量，协力守护...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>董大可 / 马元</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>未知</span></p>
 											</div>
 										</div>
 										<div class="OrderDetailRight gp_OrderDetailRight">
 											<p style="font-size:0.7rem;"><span>1023</span>想看</p>
-											<p index="6919">预售</p>
+											<p index="245052">预售</p>
 										</div>
 									</div>
 								</li>
 								<li>
 									<div class="OrderDetail gp_OrderDetail">
-										<div class="OrderDetailLeft gp_OrderDetailLeft" index="229109"><img src="assets/images/201704201103469712.jpg">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="1000121"><img src="assets/images/201705101854028755.jpg">
 											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
-												<p>“吃吃”的爱<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
-												<p style="font-size:0.65rem;">康永导演脑洞大，志玲S一...</p>
-												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>蔡康永</span></p>
-												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>徐熙娣 / 林志玲 / 金世佳 </span></p>
+												<p>水神娃<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
+												<p style="font-size:0.65rem;">不负众望克劲敌，水宝励志...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>汤继业</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>未知</span></p>
 											</div>
 										</div>
 										<div class="OrderDetailRight gp_OrderDetailRight">
 											<p style="font-size:0.7rem;"><span>1023</span>想看</p>
-											<p index="229109">预售</p>
+											<p index="1000121">预售</p>
 										</div>
 									</div>
 								</li>
 								<li>
 									<div class="OrderDetail gp_OrderDetail">
-										<div class="OrderDetailLeft gp_OrderDetailLeft" index="6036"><img src="assets/images/201704100955345817.jpg">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="246948"><img src="assets/images/201705181741484849.jpg">
 											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
-												<p>临时演员<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
-												<p style="font-size:0.65rem;">逢场作戏不如意，人生如戏...</p>
-												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>钱江汉 / 黄志伟</span></p>
-												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>郑恺 / 热依扎 / 郭晓东 /</span></p>
+												<p>哆啦A梦：大雄的南极<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
+												<p style="font-size:0.65rem;">盛夏酷热挡不住，前往南极...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>高桥敦史</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>水田山葵 / 大原惠美 / 嘉数</span></p>
 											</div>
 										</div>
 										<div class="OrderDetailRight gp_OrderDetailRight">
 											<p style="font-size:0.7rem;"><span>1023</span>想看</p>
-											<p index="6036">预售</p>
+											<p index="246948">预售</p>
 										</div>
 									</div>
 								</li>
 								<li>
 									<div class="OrderDetail gp_OrderDetail">
-										<div class="OrderDetailLeft gp_OrderDetailLeft" index="234894"><img src="assets/images/201705091907290942.jpg">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="1000096"><img src="assets/images/201705231655005603.jpg">
 											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
-												<p>荡寇风云<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
-												<p style="font-size:0.65rem;">特种部队戚家军，拔剑光寒...</p>
-												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>陈嘉上</span></p>
-												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>赵文卓 / 洪金宝 / 万茜 /</span></p>
+												<p>北极星<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
+												<p style="font-size:0.65rem;">人生起伏多磨难，父子携手...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>张艺飞</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>刘牧 / 吴冰 / 王艺涵 / </span></p>
 											</div>
 										</div>
 										<div class="OrderDetailRight gp_OrderDetailRight">
 											<p style="font-size:0.7rem;"><span>1023</span>想看</p>
-											<p index="234894">预售</p>
+											<p index="1000096">预售</p>
 										</div>
 									</div>
 								</li>
 								<li>
 									<div class="OrderDetail gp_OrderDetail">
-										<div class="OrderDetailLeft gp_OrderDetailLeft" index="1000082"><img src="assets/images/201704261645248286.jpg">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="1000129"><img src="assets/images/201705181237587661.jpg">
 											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
-												<p>三只小猪2<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
-												<p style="font-size:0.65rem;">功夫怪狼很嚣张，阿潘阿达...</p>
-												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>刘炜</span></p>
-												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>洪海天 / 李晔 / 王燕华 /</span></p>
+												<p>红军小学<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
+												<p style="font-size:0.65rem;">传承红军新精神，争做红色...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>丁林</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>谯丹 / 唐楚梵 / 侯定江 /</span></p>
 											</div>
 										</div>
 										<div class="OrderDetailRight gp_OrderDetailRight">
 											<p style="font-size:0.7rem;"><span>1023</span>想看</p>
-											<p index="1000082">预售</p>
+											<p index="1000129">预售</p>
 										</div>
 									</div>
 								</li>
 								<li>
 									<div class="OrderDetail gp_OrderDetail">
-										<div class="OrderDetailLeft gp_OrderDetailLeft" index="228413"><img src="assets/images/201705161507468911.jpg">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="50205"><img src="assets/images/201705221257250161.jpg">
 											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
-												<p>银河守卫队<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
-												<p style="font-size:0.65rem;">为阻邪恶外星人，开展银河...</p>
-												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>杰瑞卡·克莱兰 / 凯文·芒罗</span></p>
-												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>保罗·吉亚玛提 / 约翰·古德曼</span></p>
+												<p>神奇女侠<b style="bakground:#fff;color:#fff;">测</b><span>3D</span></p>
+												<p style="font-size:0.65rem;">地表最强女战神，孤身浴火...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>派蒂·杰金斯</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>盖尔·加朵 / 克里斯·派恩 /</span></p>
 											</div>
 										</div>
 										<div class="OrderDetailRight gp_OrderDetailRight">
 											<p style="font-size:0.7rem;"><span>1023</span>想看</p>
-											<p index="228413">预售</p>
+											<p index="50205">预售</p>
 										</div>
 									</div>
 								</li>-->
@@ -199,8 +200,8 @@
 							</div>
 						</div>
 					</div>
-					<div class="content infinite-scroll infinite-scroll_1" data-distance="100">
-						<div class="gp_box_list gp_box_list_fix gp_box_list2 list-block">
+					<div class="content infinite-scroll infinite-scroll_1" data-distance="100" style="display: block;">
+						<div class="gp_box_list gp_box_list_fix gp_box_list2 list-block" style="display: block;">
 							<ul class="list-container">
 								<!--<li>
 									<div class="OrderDetail gp_OrderDetail">
@@ -213,7 +214,7 @@
 											</div>
 										</div>
 										<div class="OrderDetailRight gp_OrderDetailRight2">
-											<p>0</p>
+											<p>8.7</p>
 											<p class="gphref_button" index="7131">购票</p>
 										</div>
 									</div>
@@ -236,102 +237,6 @@
 								</li>
 								<li>
 									<div class="OrderDetail gp_OrderDetail">
-										<div class="OrderDetailLeft gp_OrderDetailLeft" index="241651"><img src="assets/images/201704232316118442.jpg">
-											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
-												<p>异星觉醒<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
-												<p style="font-size:0.65rem;">火星样本显生命，却不知其...</p>
-												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>丹尼尔·伊斯皮诺萨</span></p>
-												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>杰克·吉伦哈尔 / 瑞安·雷诺兹</span></p>
-											</div>
-										</div>
-										<div class="OrderDetailRight gp_OrderDetailRight2">
-											<p>7.3</p>
-											<p class="gphref_button" index="241651">购票</p>
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="OrderDetail gp_OrderDetail">
-										<div class="OrderDetailLeft gp_OrderDetailLeft" index="226008"><img src="assets/images/201704011628530356.jpg">
-											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
-												<p>银河护卫队2<b style="bakground:#fff;color:#fff;">测</b><span>3D</span></p>
-												<p style="font-size:0.65rem;">卖萌打趣宇宙漂，树人可要...</p>
-												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>詹姆斯·古恩</span></p>
-												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>克里斯·帕拉特 / 佐伊·索尔达</span></p>
-											</div>
-										</div>
-										<div class="OrderDetailRight gp_OrderDetailRight2">
-											<p>8.8</p>
-											<p class="gphref_button" index="226008">购票</p>
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="OrderDetail gp_OrderDetail">
-										<div class="OrderDetailLeft gp_OrderDetailLeft" index="222038"><img src="assets/images/201705191032209536.jpg">
-											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
-												<p>当怪物来敲门<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
-												<p style="font-size:0.65rem;">内心深处的秘密，恶魔来与...</p>
-												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>胡安·安东尼奥·巴亚纳</span></p>
-												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>刘易斯·麦克杜格尔 / 菲丽希缇</span></p>
-											</div>
-										</div>
-										<div class="OrderDetailRight gp_OrderDetailRight2">
-											<p>6.8</p>
-											<p class="gphref_button" index="222038">购票</p>
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="OrderDetail gp_OrderDetail">
-										<div class="OrderDetailLeft gp_OrderDetailLeft" index="1681"><img src="assets/images/201704280950253916.jpg">
-											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
-												<p>守护者：世纪战元<b style="bakground:#fff;color:#fff;">测</b><span>3D</span></p>
-												<p style="font-size:0.65rem;">超级英雄隐于市，危难来袭...</p>
-												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>萨里·奥德赛耶</span></p>
-												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>塞巴斯蒂安·斯萨克 /  艾琳娜</span></p>
-											</div>
-										</div>
-										<div class="OrderDetailRight gp_OrderDetailRight2">
-											<p>6.5</p>
-											<p class="gphref_button" index="1681">购票</p>
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="OrderDetail gp_OrderDetail">
-										<div class="OrderDetailLeft gp_OrderDetailLeft" index="239649"><img src="assets/images/201705080940343755.jpg">
-											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
-												<p>抢红<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
-												<p style="font-size:0.65rem;">糙老爷们儿Top3，醉后...</p>
-												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>黎明</span></p>
-												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>张涵予 / 杜鹃 / 黎明 / </span></p>
-											</div>
-										</div>
-										<div class="OrderDetailRight gp_OrderDetailRight2">
-											<p>6.2</p>
-											<p class="gphref_button" index="239649">购票</p>
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="OrderDetail gp_OrderDetail">
-										<div class="OrderDetailLeft gp_OrderDetailLeft" index="234149"><img src="assets/images/201703100152477789.jpg">
-											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
-												<p>速度与激情8<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
-												<p style="font-size:0.65rem;">硬汉豪车再纵横，依旧燃爆...</p>
-												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>F·加里·格雷</span></p>
-												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>范·迪塞尔 / 杰森·斯坦森 /</span></p>
-											</div>
-										</div>
-										<div class="OrderDetailRight gp_OrderDetailRight2">
-											<p>9.2</p>
-											<p class="gphref_button" index="234149">购票</p>
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="OrderDetail gp_OrderDetail">
 										<div class="OrderDetailLeft gp_OrderDetailLeft" index="234894"><img src="assets/images/201705091907290942.jpg">
 											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
 												<p>荡寇风云<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
@@ -341,56 +246,40 @@
 											</div>
 										</div>
 										<div class="OrderDetailRight gp_OrderDetailRight2">
-											<p>0</p>
+											<p>8.2</p>
 											<p class="gphref_button" index="234894">购票</p>
 										</div>
 									</div>
 								</li>
 								<li>
 									<div class="OrderDetail gp_OrderDetail">
-										<div class="OrderDetailLeft gp_OrderDetailLeft" index="8142"><img src="assets/images/201705091110378911.jpg">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="50205"><img src="assets/images/201705221257250161.jpg">
 											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
-												<p>美容针<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
-												<p style="font-size:0.65rem;">相识于网游世界，展开命运...</p>
-												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>黄美娜</span></p>
-												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>闫妮 / 杜天皓 / 宋伊人</span></p>
+												<p>神奇女侠<b style="bakground:#fff;color:#fff;">测</b><span>3D</span></p>
+												<p style="font-size:0.65rem;">地表最强女战神，孤身浴火...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>派蒂·杰金斯</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>盖尔·加朵 / 克里斯·派恩 /</span></p>
 											</div>
 										</div>
 										<div class="OrderDetailRight gp_OrderDetailRight2">
-											<p>7.6</p>
-											<p class="gphref_button" index="8142">购票</p>
+											<p>0</p>
+											<p class="gphref_button" index="50205">购票</p>
 										</div>
 									</div>
 								</li>
 								<li>
 									<div class="OrderDetail gp_OrderDetail">
-										<div class="OrderDetailLeft gp_OrderDetailLeft" index="226639"><img src="assets/images/201704211254103286.jpg">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="229109"><img src="assets/images/201705251547592955.jpg">
 											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
-												<p>亚瑟王：斗兽争霸<b style="bakground:#fff;color:#fff;">测</b><span>3D</span></p>
-												<p style="font-size:0.65rem;">圣剑再现惹纷争，改写预言...</p>
-												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>盖·里奇</span></p>
-												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>查理·汉纳姆 / 艾瑞克·巴纳 </span></p>
+												<p>“吃吃”的爱<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
+												<p style="font-size:0.65rem;">康永导演脑洞大，志玲S一...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>蔡康永</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>徐熙娣 / 林志玲 / 金世佳 </span></p>
 											</div>
 										</div>
 										<div class="OrderDetailRight gp_OrderDetailRight2">
-											<p>7.7</p>
-											<p class="gphref_button" index="226639">购票</p>
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="OrderDetail gp_OrderDetail">
-										<div class="OrderDetailLeft gp_OrderDetailLeft" index="232353"><img src="assets/images/201705081006325942.jpg">
-											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
-												<p>不期而遇<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
-												<p style="font-size:0.65rem;">冤家路窄异国遇，打闹中渐...</p>
-												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>陈卓</span></p>
-												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>张雨绮 / 张亮 / 王少雍 /</span></p>
-											</div>
-										</div>
-										<div class="OrderDetailRight gp_OrderDetailRight2">
-											<p>6.9</p>
-											<p class="gphref_button" index="232353">购票</p>
+											<p>8.4</p>
+											<p class="gphref_button" index="229109">购票</p>
 										</div>
 									</div>
 								</li>
@@ -421,72 +310,280 @@
 											</div>
 										</div>
 										<div class="OrderDetailRight gp_OrderDetailRight2">
-											<p>0</p>
+											<p>7.4</p>
 											<p class="gphref_button" index="6036">购票</p>
 										</div>
 									</div>
 								</li>
 								<li>
 									<div class="OrderDetail gp_OrderDetail">
-										<div class="OrderDetailLeft gp_OrderDetailLeft" index="8153"><img src="assets/images/201704131708003829.jpg">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="1000082"><img src="assets/images/201704261645248286.jpg">
 											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
-												<p>小情书<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
-												<p style="font-size:0.65rem;">大胆一场勇表白，掀起校园...</p>
-												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>乔梁</span></p>
-												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>赵顺然 / 朱颜曼滋 / 韩昊轩</span></p>
+												<p>三只小猪2<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
+												<p style="font-size:0.65rem;">功夫怪狼很嚣张，阿潘阿达...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>刘炜</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>洪海天 / 李晔 / 王燕华 /</span></p>
 											</div>
 										</div>
 										<div class="OrderDetailRight gp_OrderDetailRight2">
-											<p>7.9</p>
-											<p class="gphref_button" index="8153">购票</p>
+											<p>6.6</p>
+											<p class="gphref_button" index="1000082">购票</p>
 										</div>
 									</div>
 								</li>
 								<li>
 									<div class="OrderDetail gp_OrderDetail">
-										<div class="OrderDetailLeft gp_OrderDetailLeft" index="6970"><img src="assets/images/201704131029309684.jpg">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="241651"><img src="assets/images/201704232316118442.jpg">
 											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
-												<p>记忆大师<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
-												<p style="font-size:0.65rem;">不堪往事易存取，浑然不知...</p>
-												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>陈正道</span></p>
-												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>黄渤 / 徐静蕾 / 段奕宏 /</span></p>
+												<p>异星觉醒<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
+												<p style="font-size:0.65rem;">火星样本显生命，却不知其...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>丹尼尔·伊斯皮诺萨</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>杰克·吉伦哈尔 / 瑞安·雷诺兹</span></p>
 											</div>
 										</div>
 										<div class="OrderDetailRight gp_OrderDetailRight2">
-											<p>8.3</p>
-											<p class="gphref_button" index="6970">购票</p>
+											<p>7.3</p>
+											<p class="gphref_button" index="241651">购票</p>
 										</div>
 									</div>
 								</li>
 								<li>
 									<div class="OrderDetail gp_OrderDetail">
-										<div class="OrderDetailLeft gp_OrderDetailLeft" index="229109"><img src="assets/images/201704201103469712.jpg">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="6919"><img src="assets/images/201705261119336549.jpg">
 											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
-												<p>“吃吃”的爱<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
-												<p style="font-size:0.65rem;">康永导演脑洞大，志玲S一...</p>
-												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>蔡康永</span></p>
-												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>徐熙娣 / 林志玲 / 金世佳 </span></p>
+												<p>夏天19岁的肖像<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
+												<p style="font-size:0.65rem;">少年痴情恋红颜，青春无忌...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>张荣吉</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>黄子韬 / 杨采钰 / 杜天皓 </span></p>
+											</div>
+										</div>
+										<div class="OrderDetailRight gp_OrderDetailRight2">
+											<p>7.1</p>
+											<p class="gphref_button" index="6919">购票</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="OrderDetail gp_OrderDetail">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="228413"><img src="assets/images/201705161507468911.jpg">
+											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
+												<p>银河守卫队<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
+												<p style="font-size:0.65rem;">为阻邪恶外星人，开展银河...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>杰瑞卡·克莱兰 / 凯文·芒罗</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>保罗·吉亚玛提 / 约翰·古德曼</span></p>
+											</div>
+										</div>
+										<div class="OrderDetailRight gp_OrderDetailRight2">
+											<p>5.9</p>
+											<p class="gphref_button" index="228413">购票</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="OrderDetail gp_OrderDetail">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="1000088"><img src="assets/images/201705231153354669.jpg">
+											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
+												<p>我的爸爸是国王<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
+												<p style="font-size:0.65rem;">淘气任性小公主，独自出逃...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>刘骏 / 牛志远</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>吕豆 / 禹祥 / 绿绮 / 小</span></p>
+											</div>
+										</div>
+										<div class="OrderDetailRight gp_OrderDetailRight2">
+											<p>6.1</p>
+											<p class="gphref_button" index="1000088">购票</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="OrderDetail gp_OrderDetail">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="226008"><img src="assets/images/201704011628530356.jpg">
+											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
+												<p>银河护卫队2<b style="bakground:#fff;color:#fff;">测</b><span>3D</span></p>
+												<p style="font-size:0.65rem;">卖萌打趣宇宙漂，树人可要...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>詹姆斯·古恩</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>克里斯·帕拉特 / 佐伊·索尔达</span></p>
+											</div>
+										</div>
+										<div class="OrderDetailRight gp_OrderDetailRight2">
+											<p>8.8</p>
+											<p class="gphref_button" index="226008">购票</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="OrderDetail gp_OrderDetail">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="5618"><img src="assets/images/201705081816448911.jpg">
+											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
+												<p>潜艇总动员5：时光宝<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
+												<p style="font-size:0.65rem;">潜艇阿力再出击，寻宝之旅...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>何子力</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>范楚绒 / 洪海天 / 谢元真 </span></p>
+											</div>
+										</div>
+										<div class="OrderDetailRight gp_OrderDetailRight2">
+											<p>6.1</p>
+											<p class="gphref_button" index="5618">购票</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="OrderDetail gp_OrderDetail">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="245052"><img src="assets/images/201705121332462505.jpg">
+											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
+												<p>功夫小兔侠<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
+												<p style="font-size:0.65rem;">传统与科技较量，协力守护...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>董大可 / 马元</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>未知</span></p>
+											</div>
+										</div>
+										<div class="OrderDetailRight gp_OrderDetailRight2">
+											<p>4.3</p>
+											<p class="gphref_button" index="245052">购票</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="OrderDetail gp_OrderDetail">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="167836"><img src="assets/images/201705111057204380.jpg">
+											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
+												<p>摩尔庄园2：海妖宝藏<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
+												<p style="font-size:0.65rem;">神秘宝藏系命运，海洋深处...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>刘可欣</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>黄渤 / 宣晓鸣 / 周志强 /</span></p>
+											</div>
+										</div>
+										<div class="OrderDetailRight gp_OrderDetailRight2">
+											<p>5.8</p>
+											<p class="gphref_button" index="167836">购票</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="OrderDetail gp_OrderDetail">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="7558"><img src="assets/images/201703090958087945.jpg">
+											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
+												<p>蓝精灵3：寻找神秘村<b style="bakground:#fff;color:#fff;">测</b><span>3D</span></p>
+												<p style="font-size:0.65rem;">活泼可爱蓝精灵，智斗巫师...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>凯利·阿斯博瑞</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>曼迪·帕廷金 / 雷恩·威尔森 </span></p>
+											</div>
+										</div>
+										<div class="OrderDetailRight gp_OrderDetailRight2">
+											<p>8.4</p>
+											<p class="gphref_button" index="7558">购票</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="OrderDetail gp_OrderDetail">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="92423"><img src="assets/images/201705150939130474.jpg">
+											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
+												<p>迷失Z城<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
+												<p style="font-size:0.65rem;">探险亚马逊丛林，寻找古老...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>詹姆士·格雷</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>查理·汉纳姆 / 罗伯特·帕丁森</span></p>
 											</div>
 										</div>
 										<div class="OrderDetailRight gp_OrderDetailRight2">
 											<p>0</p>
-											<p class="gphref_button" index="229109">购票</p>
+											<p class="gphref_button" index="92423">购票</p>
 										</div>
 									</div>
 								</li>
 								<li>
 									<div class="OrderDetail gp_OrderDetail">
-										<div class="OrderDetailLeft gp_OrderDetailLeft" index="246444"><img src="assets/images/201704211111015317.jpg">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="234149"><img src="assets/images/201703100152477789.jpg">
 											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
-												<p>喜欢·你<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
-												<p style="font-size:0.65rem;">素未谋面生仰慕，现实相遇...</p>
-												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>许宏宇</span></p>
-												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>金城武 / 周冬雨 / 孙艺洲 </span></p>
+												<p>速度与激情8<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
+												<p style="font-size:0.65rem;">硬汉豪车再纵横，依旧燃爆...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>F·加里·格雷</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>范·迪塞尔 / 杰森·斯坦森 /</span></p>
+											</div>
+										</div>
+										<div class="OrderDetailRight gp_OrderDetailRight2">
+											<p>9.2</p>
+											<p class="gphref_button" index="234149">购票</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="OrderDetail gp_OrderDetail">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="7075"><img src="assets/images/201704281654192036.jpg">
+											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
+												<p>美好的意外<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
+												<p style="font-size:0.65rem;">精英淑女变主妇，心灵创伤...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>何蔚庭</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>桂纶镁 / 王景春 / 欧阳娜娜</span></p>
+											</div>
+										</div>
+										<div class="OrderDetailRight gp_OrderDetailRight2">
+											<p>0</p>
+											<p class="gphref_button" index="7075">购票</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="OrderDetail gp_OrderDetail">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="226639"><img src="assets/images/201704211254103286.jpg">
+											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
+												<p>亚瑟王：斗兽争霸<b style="bakground:#fff;color:#fff;">测</b><span>3D</span></p>
+												<p style="font-size:0.65rem;">圣剑再现惹纷争，改写预言...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>盖·里奇</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>查理·汉纳姆 / 艾瑞克·巴纳 </span></p>
+											</div>
+										</div>
+										<div class="OrderDetailRight gp_OrderDetailRight2">
+											<p>7.7</p>
+											<p class="gphref_button" index="226639">购票</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="OrderDetail gp_OrderDetail">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="5523"><img src="assets/images/201505211605480030.jpg">
+											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
+												<p>哆啦A梦：伴我同行<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
+												<p style="font-size:0.65rem;">大雄你一定要替我好好照顾...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>八木龙一 / 山崎贵</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>水田山葵 / 大原惠美 / 嘉数</span></p>
 											</div>
 										</div>
 										<div class="OrderDetailRight gp_OrderDetailRight2">
 											<p>8.7</p>
-											<p class="gphref_button" index="246444">购票</p>
+											<p class="gphref_button" index="5523">购票</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="OrderDetail gp_OrderDetail">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="5639"><img src="assets/images/201705111049497817.jpg">
+											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
+												<p>超能兔战队<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
+												<p style="font-size:0.65rem;">耍宝卖萌超能兔，拯救嫦娥...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>傅燕</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>刘红韵 / 李旭乔 / 白文显 </span></p>
+											</div>
+										</div>
+										<div class="OrderDetailRight gp_OrderDetailRight2">
+											<p>5.2</p>
+											<p class="gphref_button" index="5639">购票</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="OrderDetail gp_OrderDetail">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="222038"><img src="assets/images/201705191032209536.jpg">
+											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
+												<p>当怪物来敲门<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
+												<p style="font-size:0.65rem;">内心深处的秘密，恶魔来与...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>胡安·安东尼奥·巴亚纳</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>刘易斯·麦克杜格尔 / 菲丽希缇</span></p>
+											</div>
+										</div>
+										<div class="OrderDetailRight gp_OrderDetailRight2">
+											<p>7</p>
+											<p class="gphref_button" index="222038">购票</p>
 										</div>
 									</div>
 								</li>
@@ -508,17 +605,81 @@
 								</li>
 								<li>
 									<div class="OrderDetail gp_OrderDetail">
-										<div class="OrderDetailLeft gp_OrderDetailLeft" index="6919"><img src="assets/images/201705221516199380.jpg">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="7919"><img src="assets/images/201705041948441724.jpg">
 											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
-												<p>夏天19岁的肖像<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
-												<p style="font-size:0.65rem;">少年痴情恋红颜，青春无忌...</p>
-												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>张荣吉</span></p>
-												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>黄子韬 / 杨采钰 / 杜天皓 </span></p>
+												<p>重返·狼群<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
+												<p style="font-size:0.65rem;">与狼共舞两百天，历尽艰辛...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>亦风</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>李微漪 / 亦风</span></p>
 											</div>
 										</div>
 										<div class="OrderDetailRight gp_OrderDetailRight2">
 											<p>0</p>
-											<p class="gphref_button" index="6919">购票</p>
+											<p class="gphref_button" index="7919">购票</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="OrderDetail gp_OrderDetail">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="1000127"><img src="assets/images/201705161758319067.jpg">
+											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
+												<p>我是医生<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
+												<p style="font-size:0.65rem;">...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>谢晓明</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>赵有亮 / 胡亚捷 / 赵静 /</span></p>
+											</div>
+										</div>
+										<div class="OrderDetailRight gp_OrderDetailRight2">
+											<p>5.7</p>
+											<p class="gphref_button" index="1000127">购票</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="OrderDetail gp_OrderDetail">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="6970"><img src="assets/images/201704131029309684.jpg">
+											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
+												<p>记忆大师<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
+												<p style="font-size:0.65rem;">不堪往事易存取，浑然不知...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>陈正道</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>黄渤 / 徐静蕾 / 段奕宏 /</span></p>
+											</div>
+										</div>
+										<div class="OrderDetailRight gp_OrderDetailRight2">
+											<p>8.3</p>
+											<p class="gphref_button" index="6970">购票</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="OrderDetail gp_OrderDetail">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="1000116"><img src="assets/images/201705221145578599.jpg">
+											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
+												<p>诡异酒楼<b style="bakground:#fff;color:#fff;">测</b><span>2D</span></p>
+												<p style="font-size:0.65rem;">负债累累陷两难，离奇事件...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>蒋国权</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>欧阳鑫紫 / 赵东昊 / 李璐兵</span></p>
+											</div>
+										</div>
+										<div class="OrderDetailRight gp_OrderDetailRight2">
+											<p>3.6</p>
+											<p class="gphref_button" index="1000116">购票</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="OrderDetail gp_OrderDetail">
+										<div class="OrderDetailLeft gp_OrderDetailLeft" index="5104"><img src="assets/images/201705111054337036.jpg">
+											<div class="OrderDetailLeft_des OrderDetailLeft_des_fix gp_OrderDetailLeft">
+												<p>龙骑侠<b style="bakground:#fff;color:#fff;">测</b><span>3D</span></p>
+												<p style="font-size:0.65rem;">机缘巧合担重任，少年圆梦...</p>
+												<p style="color:#909090;font-size:0.6rem;"><span>导演:</span><span>刘可欣</span></p>
+												<p style="color:#909090; font-size:0.6rem;"><span>主演:</span><span>唐小喜 / 张雪凌 / 路知行</span></p>
+											</div>
+										</div>
+										<div class="OrderDetailRight gp_OrderDetailRight2">
+											<p>6.5</p>
+											<p class="gphref_button" index="5104">购票</p>
 										</div>
 									</div>
 								</li>-->
@@ -535,7 +696,7 @@
 							<span>更换城市</span><span class="iconfont icon-guanbi1 cta_close"></span>
 						</div>
 						<div class="city_area_selectd">
-							<span>郑州</span>
+							<span>上海</span>
 							<span>当前定位城市</span>
 						</div>
 						<div class="city_area_hot">
@@ -1230,7 +1391,7 @@
 									<li index="2838">台山</li>
 									<li index="3752">吐鲁番</li>
 									<li index="3820">塔城</li>
-									<li index="3969">屯昌县</li>
+									<li index="3969">屯昌县</li
 								</ul>
 							</div>
 						</div>
@@ -1345,12 +1506,10 @@
 					</div>
 				</div>
 			</div>
-			</div>
 		</div>
 		@@include('../tpl/footer.tpl')
 		<script type="text/javascript" src="lib/hprose.js" charset="utf-8"></script>
-		<script type="text/javascript" src="lib/imgload/js/imgload.js" charset="utf-8"></script>
+		<script type="text/javascript" src="lib/imgload.js" charset="utf-8"></script>
 		<script type="text/javascript" src="assets/js/buy-ticket.js" charset="utf-8"></script>
 	</body>
-
 </html>
