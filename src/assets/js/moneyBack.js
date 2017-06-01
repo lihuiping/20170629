@@ -1,3 +1,6 @@
+var conf = 1;
+var tokens = token();
+var moneyback = ['', 'http://my.shop.7cai.tv/member.php?r=order&m=tuikuanjine']; //退款接口
 //虚拟键盘遮挡底部按钮
 var oHeight = $(document).height(); //浏览器当前的高度
 $(window).resize(function() {
@@ -36,14 +39,26 @@ function order_urls(){
 }
 
 //退款
-new Vue({
+var moneyBack = new Vue({
 	el: '#moneyBack',
 	data: {
 		imgSrc: [],
 		status: status,
-		imgNum: '最多三张'
+		imgNum: '最多三张',
+		moneyBackData: []
+	},
+	mounted: function() {
+		//初始化加载数据
+		this.showMoneyBack();
 	},
 	methods: {
+		showMoneyBack: function(){
+			axios.get(moneyback[conf] +'&token='+ tokens + '&order_goods_ids=' +order_gods
+			).then(function(response) {
+				var data = response.data.data;
+				moneyBack.moneyBackData = data;
+			});
+		},
 		changeImg: function(e) { //获取上传img路径
 			var files = e.target.files || e.dataTransfer.files;
 			if(!files.length)
@@ -86,13 +101,7 @@ new Vue({
 					skin: 'msg',
 					time: 2, //2秒后自动关闭
 				});
-			} else if(bMoney == '') {
-				layer.open({
-					content: '请填写退款金额',
-					skin: 'msg',
-					time: 2, //2秒后自动关闭
-				});
-			} else {
+			}else {
 				layer.open({
 					content: '确认退款将不会返还您已消费的七彩币，您是否继续退款？',
 					btn: ['确定', '取消'],
@@ -100,9 +109,10 @@ new Vue({
 						layer.close(index);
 						var form = $("form[name=fileForm]");
 						var options = {
-							url: baseUrl()+'member.php?r=order&m=refund&token='+token() + order_urls(),
+							url: baseUrl()+'member.php?r=order&m=refund&token='+token() + '&order_goods_ids='+order_gods,
 							type: 'post',
 							success: function(data) {
+								console.log(order_gods);
 								var resfs = JSON.parse(data); //json字符串转换成json数据 不然点不出来
 								if(resfs.res == 1) {
 									layer.open({
@@ -134,3 +144,11 @@ new Vue({
 		}
 	}
 })
+
+// else if(bMoney == '') {
+//	layer.open({
+//		content: '请填写退款金额',
+//		skin: 'msg',
+//		time: 2, //2秒后自动关闭
+//	});
+//} 

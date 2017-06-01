@@ -14,7 +14,7 @@ var mm = "";
 var isFrist = false;
 window.onload = function() {
 	var mySwiper = new Swiper('#orderTable', {
-		speed: 500,
+		speed: 10 ,
 		onSlideChangeStart: function(swiper) {
 			$(".myOrder-tab .active").removeClass('active');
 			$(".myOrder-tab a").eq(swiper.activeIndex).addClass('active');
@@ -115,10 +115,9 @@ var orderList = new Vue({
 				}
 			}).then(function(response) {
 				var datas = response.data;
-				console.log(datas);
 				if(datas.res == 1) {
 					setTimeout(function() {
-						window.location.href = './moneyBack.html?order_id=' + orderId;
+						window.location.href = './moneyBack.html?order_goods=' + orderId;
 					}, 1000);
 				} else {
 					$.toast(msg);
@@ -186,7 +185,6 @@ var orderList = new Vue({
 				}), {
 					headers: header
 				}).then(function(response) {
-					console.log(response.data);
 					var res = response.data.res;
 					var orderId = response.data.data.orderId; //获取订单号
 					var amount = response.data.data.amount; //获取的总价钱
@@ -298,11 +296,29 @@ $(".order-sub-box").on('click', ".btn-shouhuo", function() {
 		$('.layui-m-layerbtn span[yes]').addClass("sure");
 	}
 });
+//else if(mtrefund1 == 1 && mtrefund2 == 1){
+//	godId = $(commentOrder).attr("ordergod");
+//	goodId.push(godId);
+//}else if(mtrefund1 == 1 && mtrefund2 == 2){
+//	godId = $(commentOrder).attr("ordergod");
+//	goodId.push(godId);
+//}
 /*申请退款*/
 $(".order-sub-box").on('click', ".btn-tuikuan", function() {
-	var orderId = $(this).parent().attr('id');
+	var commentOrder = $(this).parents(".ccart-status").siblings('.item-content').find(".item-inner");
+	var orderId = "";
+	var goodId = [];
+	$(commentOrder).each(function(i,v){
+		if($(v).attr("mtRefund") == 0){
+			godId = $(v).attr("ordergod");
+			goodId.push(godId);
+		}
+	});
+	//获取商品ID
+	orderId = goodId.join(',');
+	console.log(orderId);
 	var _this = this;
-	orderList.tuikuanOrder(orderId, _this);
+//	orderList.tuikuanOrder(orderId, _this);
 });
 /*评价*/
 $(".order-sub-box").on('click', ".btn-commentOrder", function() {
@@ -313,7 +329,7 @@ $(".order-sub-box").on('click', ".btn-commentOrder", function() {
 	// var ordergoodId = [];
 	// $(commentOrder).each(function(i, v) {
 	//     godId = $(v).attr("godId");
-	//     ordergodId = $(v).attr("ordergodId");
+	//     ordergodId = $(v).attr("ordergod");
 	//     goodId.push(godId);
 	//     ordergoodId.push(ordergodId);
 	// });
