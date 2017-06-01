@@ -4,7 +4,7 @@
 	<head>
 		@@include('../tpl/header.tpl',{ "title":"购票" })
 		<title>购票</title>
-		<!--<style>
+		<style>
 			html {
 				font-size: 17px;
 			}
@@ -12,12 +12,19 @@
 			.OrderDetailLeft_des_fix {
 				width: 54%;
 			}
-		</style>-->
+		</style>
 	</head>
 	<body>
 		<div class="page scroll page-current page-inited butTic-page" id="goupiao">
-			<div class="ip-scroll">
+			<header class="bar-nav wsl-header" style="position: fixed;top: 0;left: 0;z-index: 100;width: 100%;">
+				<div class="title-box">
+					<a class="icon icon-left" href="javascript:history.go(-1)"></a>
+					<div class="w-title">购票</div>
+				</div>
+			</header>
+			<div class="ip-scroll" style="margin-top: 2.1rem;">
 				<div class="dysuo dy-sousuo gp_dy_sousuo">
+					
 					<div class="dysu_left">
 						<span class="gp_changeaddress">上海</span><span class="iconfont icon-down gp_openAddress"></span>
 					</div>
@@ -28,7 +35,7 @@
 				</div>
 				<div class="gp_box_title gp_box_title_fix">
 					<div class="gp_box_title_left gp_box_title_right_on">正在上映</div>
-					<div class="gp_box_title_right" style="margin-left:5.1rem;">即将上映</div>
+					<div class="gp_box_title_right">即将上映</div>
 				</div>
 				<div class="gp_box gp_box_fix">
 					<div class="content infinite-scroll infinite-scroll_2" data-distance="100" style="display: none;">
