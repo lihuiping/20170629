@@ -1,5 +1,8 @@
 @charset "UTF-8";
 .butTic-page {
+    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
     .dysuo {
         width: 100%;
         margin-left: 0;
@@ -37,7 +40,9 @@
             font-size: .8rem;
             position: absolute;
             margin-top: .2rem;
-            padding: .2rem .4rem .2rem .6rem;
+            left: 25%;
+            top: 35%;
+            padding: 0;
         }
         .gp_openAddress{
             padding: .2rem 0;
@@ -52,12 +57,12 @@
         z-index: 9999;
         background: #fff;
         div {
-            width: 3.75rem;
+            width: 50%;
             height: 100%;
             text-align: center;
             line-height: 2.5rem;
             float: left;
-            margin-left: 3.2rem;
+            margin-left: 0;
         }
         .gp_box_title_right_on {
             border-bottom: 1px solid red;
@@ -65,7 +70,7 @@
         }
         .gp_box_title_right {
             color: #383838;
-            margin-left: 5.1rem;
+//          margin-left: 0;
         }
     }
     .infinite-scroll {
@@ -101,7 +106,7 @@
         }
     }
     .list-container {
-        margin-top: 6rem!important;
+        margin-top: 8.5rem!important;
     }
     .OrderDetail {
         margin-left: .5rem;
