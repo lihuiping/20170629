@@ -3,8 +3,18 @@
 
 	<head>
 		@@include('../tpl/header.tpl',{ "title":"在线选座影院" })
-		<!--<link rel="stylesheet" href="%E5%9C%A8%E7%BA%BF%E9%80%89%E5%BA%A7%E5%BD%B1%E9%99%A2_files/zg.css">-->
 		<link rel="stylesheet" href="lib/wj/css/wj.css">
+		<style type="text/css">
+			.gp_box_title div{
+				width: 50%;
+				margin-left: 0;
+			}
+			.gparea-page .yyjs_yyname{
+				width: 100%;
+				overflow: hidden;
+				
+			}
+		</style>
 	</head>
 	<body>
 		<div class="page scroll page-current page-inited gparea-page" id="gparea">
@@ -26,7 +36,7 @@
 				</div>
 				<div class="gp_box_title gpa_box_title">
 					<div class="gp_box_title_left">区域</div>
-					<div class="gp_box_title_right" style="margin-left:5.6rem;">筛选</div>
+					<div class="gp_box_title_right">筛选</div>
 				</div>
 				<div class="yyjs_Time">
 					<ul>
@@ -37,7 +47,7 @@
 					</ul>
 				</div>
 			</div>
-			<div class="tab_box content infinite-scroll" data-distance="100">
+			<div class="tab_box content infinite-scroll" data-distance="100" style="margin-bottom: 0;">
 				<div class="yyjs_xx yyjs_xy gp_yyjs_xy list-block">
 					<ul class="list-container">
 						<!--<li index="1000405">
@@ -341,9 +351,9 @@
 							</div>
 						</li>-->
 					</ul>
-					<div class="infinite-scroll-preloader">
+					<!--<div class="infinite-scroll-preloader">
 						<div class="preloader"></div>
-					</div>
+					</div>-->
 				</div>
 				<div class="yyjs_xx yyjs_xy gp_yyjs_xy list-block" style="display:block;">
 					<ul class="list-container">
@@ -648,9 +658,9 @@
 							</div>
 						</li>-->
 					</ul>
-					<div class="infinite-scroll-preloader">
+					<!--<div class="infinite-scroll-preloader">
 						<div class="preloader"></div>
-					</div>
+					</div>-->
 				</div>
 				<div class="yyjs_xx yyjs_xy gp_yyjs_xy list-block">
 					<ul class="list-container">
@@ -955,9 +965,9 @@
 							</div>
 						</li>-->
 					</ul>
-					<div class="infinite-scroll-preloader">
+					<!--<div class="infinite-scroll-preloader">
 						<div class="preloader"></div>
-					</div>
+					</div>-->
 				</div>
 				<div class="yyjs_xx yyjs_xy gp_yyjs_xy list-block">
 					<ul class="list-container">
@@ -1262,9 +1272,9 @@
 							</div>
 						</li>-->
 					</ul>
-					<div class="infinite-scroll-preloader">
+					<!--<div class="infinite-scroll-preloader">
 						<div class="preloader"></div>
-					</div>
+					</div>-->
 				</div>
 			</div>
 			<div class="gpa_ppsx" style="display:none;">
