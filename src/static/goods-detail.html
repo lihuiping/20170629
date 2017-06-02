@@ -306,6 +306,9 @@
 						</div>
 					</li>
 				</ul>
+				<div v-if="shopCouponList.res == 0" class="no-ticket"><span class="icon-wodekaquan"></span>
+					<p>暂无优惠券</p>
+				</div>
 			</div>
 			<!--关闭按钮-->
 			<div class="closeButton close-popup">关闭</div>
@@ -340,6 +343,9 @@
 					</li>
 
 				</ul>
+				<div v-if="platformCouponList.res == 0" class="no-ticket"><span class="icon-wodekaquan"></span>
+					<p>暂无优惠券</p>
+				</div>
 			</div>
 			<!--关闭按钮-->
 			<div class="closeButton close-popup">关闭</div>

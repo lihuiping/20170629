@@ -157,15 +157,16 @@ $(".bar-tab").on('click', ".tab-item", function(event) {
 	});
 });
 
-apiready = function() {
+var apiready = function() {
 	$api.fixStatusBar($api.dom('.shouye-head'));
 	$api.fixStatusBar($api.dom('.movie-souye-head'));
 	$api.fixStatusBar($api.dom('.bar-nav'));
 	$api.fixStatusBar($api.dom('.ad-bar'));
-	var offset = $api.offset($api.dom('.ad-bar'));
-	var left = offset.l;
-	var top = offset.t;
-	alert(top);
-	console.log(left);
+	var offset = $api.offset('.ad-bar');
+
+	
+	console.log(offset);
+	
 };
+apiready();
 
