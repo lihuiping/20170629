@@ -9,7 +9,7 @@
       <span class="icon icon-mall @@mallc"></span>
       <span class="tab-label">商城</span>
     </a>
-    <a class="tab-item @@ticket" href="#" data-class="icon-ticket">
+    <a class="tab-item @@ticket" href="buy-ticket.html" data-class="icon-ticket">
       <span class="icon icon-ticket @@ticketc"></span>
       <span class="tab-label">购票</span>
     </a>

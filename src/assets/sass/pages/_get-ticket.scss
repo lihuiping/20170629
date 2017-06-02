@@ -96,3 +96,16 @@
         top: auto;
     }
 }
+.no-ticket{
+   width: 100%;
+   text-align: center;
+   margin: 2.5rem auto;
+   span{
+       font-size: 4rem;
+       color:#999;
+   }
+   p{
+       font-size: 0.8rem;
+       margin: 0.5rem 0;
+   }
+}

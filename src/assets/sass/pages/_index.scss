@@ -95,14 +95,14 @@
             display: block;
         }
         .collect {
-            width: 1.2rem;
+            width: 1rem;
         }
         .cart {
-            width: 1.6rem;
+            width: 1.3rem;
             margin-left: -0.25rem;
         }
         .help {
-            width: 1.2rem;
+            width:1rem;
             margin-left: -0.2rem;
         }
         span {
@@ -111,7 +111,12 @@
         }
     }
 }
-
+.qc-color{
+    color:#ec4619;
+}
+.cny-color{
+    color:#ff8c24;
+}
 .pdbt {
     padding-bottom: 2.5rem;
 }
