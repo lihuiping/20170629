@@ -1533,15 +1533,6 @@ video {
 	overflow: hidden;
 }
 
-.yyjs_Time ul li {
-	width: 21%;
-	height: 2.5rem;
-	text-align: center;
-	font-size: 0.65rem;
-	line-height: 2.5rem;
-	float: left;
-	margin-left: 0.5rem;
-}
 
 .yy_time_on {
 	color: #ec4619;
@@ -1757,7 +1748,7 @@ video {
 }
 
 .yyjs_Time ul li {
-	width: 22%;
+	width: 21%;
 	height: 2.5rem;
 	text-align: center;
 	font-size: 0.75rem;
