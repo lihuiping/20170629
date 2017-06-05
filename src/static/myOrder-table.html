@@ -1,390 +1,378 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    @@include('../tpl/header.tpl',{ "title":"订单列表" })
-    <link rel="stylesheet" href="assets/css/swiper.min.css"/>
-    <script src="lib/swiper/js/swiper.min.js" type="text/javascript" charset="utf-8"></script>
-</head>
+	<head>
+		@@include('../tpl/header.tpl',{ "title":"订单列表" })
+		<link rel="stylesheet" href="assets/css/swiper.min.css" />
+		<script src="lib/swiper/js/swiper.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
 
-<body>
-<div class="page page-current">
-    <div class="content myOrder">
-        <div class="buttons-tab myOrder-tab">
-            <a href="#AllOrder" class="tabButton tab-link active button"><span>全部</span></a>
-            <a href="#change" class="tabButton tab-link button"><span>待兑换</span> </a>
-            <a href="#sendGoods" class="tabButton tab-link button"><span>待发货</span></a>
-            <a href="#recGoods" class="tabButton tab-link button"><span>待收货</span></a>
-            <a href="#goodsAppr" class="tabButton tab-link button"><span>待评价</span></a>
-        </div>
-        <div id="orderTable" class="content-block swiper-container">
-            <img src="assets/images/loading.gif" v-if="loadingFlag" class="loading-img"/>
-            <div class="tabs swiper-wrapper order-sub-box">
-                <div id="AllOrder" class="swiper-slide tab active  od-box">
-                    <div class="list-block media-list ccart-list" v-if="orderList.res==1" v-for="item in orderList.data"
-                         v-cloak>
-                        <div class="ccart-title" v-cloak>
-                            <div class="item-content">
-                                <div class="item-inner">
-                                    <div class="item-title-row">
-                                        <div class="item-title od-title">
-                                        	<a href="#" class="od-tit">
-                                        	<span class="od-payTit">{{item.store_name}}</span>
-                                           <i class="icon icon-right2 od-icon"></i>
-                                            </a>
-                                        </div>
-                                        <div class="item-after" v-if="item.order_state==10">等待买家付款</div>
-                                        <div class="item-after" v-if="item.order_state==20">等待卖家发货</div>
-                                        <div class="item-after" v-if="item.order_state==30">卖家已发货</div>
-                                        <div class="item-after" v-if="item.order_state==40">交易成功</div>
-                                        <div class="item-after" v-if="item.order_state==50">交易关闭</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <ul class="ccart-content">
-                            <li>
-                                <div class="ccart-con">
-                                    <div class="item-content" v-for="orderList in item.goodsList" v-cloak>
-                                        <div class="item-media">
-                                            <a :href="'order-details.html?id='+item.id">
-                                                <img :src="orderList.goods_image"></a>
-                                        </div>
-                                        <div class="item-inner" :ordergod="orderList.id" :mtRefund="orderList.refund_reason">
-                                            <div class="item-title-row">
-                                                <div class="item-title">
-                                                    <a :href="'order-details.html?id='+item.id">{{orderList.goods_name}}</a>
-                                                </div>
-                                               
-                                            </div>
-                                            <div class="item-subtitle">{{orderList.goods_description}}</div>
-                                            <div data-attrid="" class="item-text" v-html="'规格：'+orderList.attr"></div>
-                                            <div data-nums="1" data-qcb="1" data-sub="11" data-price="8"
-                                                 class="ccart-price">
-                                                <div v-if="item.exchange_type==1">
-                                                    七彩币<span>{{item.order_sell_price}}</span></div>
-                                                <em v-if="item.exchange_type==0">￥{{orderList.goods_price}}</em>
-                                                <i>数量:<span>{{orderList.goods_num}}</span></i>
-                                            </div>
-                                            <div class="tuikaun"
-                                                 v-if="orderList.refund_reason!=0 && orderList.refund_approval==0">退款中
-                                            </div>
-                                            <div class="tuikaun"
-                                                 v-if="orderList.refund_reason!=0 && orderList.refund_approval==1">退款关闭
-                                            </div>
-                                            <div class="tuikaun"
-                                                 v-if="orderList.refund_reason!=0 && orderList.refund_approval==2">退款成功
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="ccart-status" :id="item.id" v-if="item.order_state==10">
-                                        共计:{{item.total}}
-                                        <span v-if="item.exchange_type==0">￥ <em class="c-ec4619">{{item.order_money}}</em></span>
-                                        <span v-if="item.exchange_type==1">七彩币 <em class="c-ec4619">{{item.order_sell_price}}</em></span>
-                                        <span class="btn-order btn-cancelOrder">取消订单</span>
-                                        <!-- 	<a :href="'order-details.html?id='+item.id"><span class="btn-order btn-duihuan">立即兑换
+	<body>
+		<div class="page page-current">
+			<header class=" bar-nav wsl-header">
+				<div class="title-box">
+					<a class="icon icon-left" href="#" onclick="javascript:history.go(-1)"></a>
+					<div class="w-title">我的订单</div>
+				</div>
+
+			</header>
+			 <!--@@include('../tpl/bar-nav.tpl',{ "title":"我的订单" })--> 
+			<div class="content myOrder">
+				<div class="buttons-tab myOrder-tab">
+					<a href="#AllOrder" class="tabButton tab-link active button"><span>全部</span></a>
+					<a href="#change" class="tabButton tab-link button"><span>待兑换</span> </a>
+					<a href="#sendGoods" class="tabButton tab-link button"><span>待发货</span></a>
+					<a href="#recGoods" class="tabButton tab-link button"><span>待收货</span></a>
+					<a href="#goodsAppr" class="tabButton tab-link button"><span>待评价</span></a>
+				</div>
+				<div id="orderTable" class="content-block swiper-container">
+					<img src="assets/images/loading.gif" v-if="loadingFlag" class="loading-img" />
+					<div class="tabs swiper-wrapper order-sub-box">
+						<div id="AllOrder" class="swiper-slide tab active  od-box">
+							<div class="list-block media-list ccart-list" v-if="orderList.res==1" v-for="item in orderList.data" v-cloak>
+								<div class="ccart-title" v-cloak>
+									<div class="item-content">
+										<div class="item-inner">
+											<div class="item-title-row">
+												<div class="item-title od-title">
+													<a href="#" class="od-tit">
+														<span class="od-payTit">{{item.store_name}}</span>
+														<i class="icon icon-right2 od-icon"></i>
+													</a>
+												</div>
+												<div class="item-after" v-if="item.order_state==10">等待买家付款</div>
+												<div class="item-after" v-if="item.order_state==20">等待卖家发货</div>
+												<div class="item-after" v-if="item.order_state==30">卖家已发货</div>
+												<div class="item-after" v-if="item.order_state==40">交易成功</div>
+												<div class="item-after" v-if="item.order_state==50">交易关闭</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<ul class="ccart-content">
+									<li>
+										<div class="ccart-con">
+											<div class="item-content" v-for="orderList in item.goodsList" v-cloak>
+												<div class="item-media">
+													<a :href="'order-details.html?id='+item.id">
+														<img :src="orderList.goods_image"></a>
+												</div>
+												<div class="item-inner" :ordergod="orderList.id" :mtRefund="orderList.refund_reason">
+													<div class="item-title-row">
+														<div class="item-title">
+															<a :href="'order-details.html?id='+item.id">{{orderList.goods_name}}</a>
+														</div>
+
+													</div>
+													<div class="item-subtitle">{{orderList.goods_description}}</div>
+													<div data-attrid="" class="item-text" v-html="'规格：'+orderList.attr"></div>
+													<div data-nums="1" data-qcb="1" data-sub="11" data-price="8" class="ccart-price">
+														<div v-if="item.exchange_type==1">
+															七彩币<span>{{item.order_sell_price}}</span></div>
+														<em v-if="item.exchange_type==0">￥{{orderList.goods_price}}</em>
+														<i>数量:<span>{{orderList.goods_num}}</span></i>
+													</div>
+													<div class="tuikaun" v-if="orderList.refund_reason!=0 && orderList.refund_approval==0">退款中
+													</div>
+													<div class="tuikaun" v-if="orderList.refund_reason!=0 && orderList.refund_approval==1">退款关闭
+													</div>
+													<div class="tuikaun" v-if="orderList.refund_reason!=0 && orderList.refund_approval==2">退款成功
+													</div>
+												</div>
+											</div>
+											<div class="ccart-status" :id="item.id" v-if="item.order_state==10">
+												共计:{{item.total}}
+												<span v-if="item.exchange_type==0">￥ <em class="c-ec4619">{{item.order_money}}</em></span>
+												<span v-if="item.exchange_type==1">七彩币 <em class="c-ec4619">{{item.order_sell_price}}</em></span>
+												<span class="btn-order btn-cancelOrder">取消订单</span>
+												<!-- 	<a :href="'order-details.html?id='+item.id"><span class="btn-order btn-duihuan">立即兑换
                                         </span></a> -->
-                                        <span class="btn-order btn-duihuan">立即兑换
+												<span class="btn-order btn-duihuan">立即兑换
                                             </span>
-                                    </div>
-                                    <div class="ccart-status" :id="item.id" v-if="item.order_state==20">
-                                        共计:{{item.total}}
-                                        <span v-if="item.exchange_type==0">￥ <em class="c-ec4619">{{item.order_money}}</em></span>
-                                        <span v-if="item.exchange_type==1">七彩币 <em class="c-ec4619">{{item.order_sell_price}}</em></span>
-                                        <span v-if="item.exchange_type==0" class="btn-order btn-tuikuan">申请退款</span>
-                                        <span class="btn-order btn-cuiOrder">催单</span>
-                                    </div>
-                                    <div class="ccart-status" :id="item.id" v-if="item.order_state==30">
-                                        共计:{{item.total}}
-                                        <span v-if="item.exchange_type==0">￥ <em class="c-ec4619">{{item.order_money}}</em></span>
-                                        <span v-if="item.exchange_type==1">七彩币 <em class="c-ec4619">{{item.order_sell_price}}</em></span>
-                                        <a :href="'deliverDetail.html?id='+item.id"><span class="btn-order btn-deliver">查看物流</span></a>
-                                        <span class="btn-order btn-shouhuo">确认收货</span>
-                                    </div>
-                                    <div class="ccart-status" :id="item.id" v-if="item.order_state==40">
-                                        共计:{{item.total}}
-                                        <span v-if="item.exchange_type==0">￥ <em class="c-ec4619">{{item.order_money}}</em></span>
-                                        <span v-if="item.exchange_type==1">七彩币 <em class="c-ec4619">{{item.order_sell_price}}</em></span>
-                                        <span class="btn-order btn-delOrder">删除订单</span>
-                                        <a v-if="item.evaluation_status!=1" :href="'order-details.html?id='+item.id">
-                                            <span class="btn-order btn-commentOrder">评价</span> </a>
-                                    </div>
-                                    <div class="ccart-status" :id="item.id" v-if="item.order_state==50">
-                                        共计:{{item.total}}
-                                        <span v-if="item.exchange_type==0">￥ <em class="c-ec4619">{{item.order_money}}</em></span>
-                                        <span v-if="item.exchange_type==1">七彩币 <em class="c-ec4619">{{item.order_sell_price}}</em></span>
-                                        <span class="btn-order btn-delOrder">删除订单</span>
-                                    </div>
-                                </div>
-                    </div>
-                    </li>
-                    </ul>
-                    <div class="no-good fn-tyga" v-if="orderList.res == '0'">
-                        <img src="assets/images/shop.png" class="fn-pic">
-                        <p class="fn-tac">订单列表为空</p>
-                    </div>
-                </div>
-                <div id="change" class="swiper-slide tab od-box">
-                    <div class="list-block media-list ccart-list" v-if="orderList.res==1" v-for="item in orderList.data"
-                         v-cloak>
-                        <div class="ccart-title">
-                            <div class="item-content">
-                                <div class="item-inner">
-                                    <div class="item-title-row">
-                                       <div class="item-title od-title">
-                                        	<a href="#" class="od-tit">
-                                        	<span class="od-payTit">{{item.store_name}}</span>
-                                           <i class="icon icon-right2 od-icon"></i>
-                                            </a>
-                                        </div>
-                                        <div class="item-after">等待买家付款</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <ul class="ccart-content">
-                            <li>
-                                <div class="ccart-con">
-                                    <div class="item-content" v-for="orderList in item.goodsList">
-                                        <div class="item-media">
-                                            <a :href="'order-details.html?id='+item.id">
-                                                <img :src="orderList.goods_image"></a>
-                                        </div>
-                                        <div class="item-inner" :godId="orderList.goods_id" :ordergodId="orderList.id">
-                                            <div class="item-title-row">
-                                                <div class="item-title">
-                                                    <a :href="'order-details.html?id='+item.id">{{orderList.goods_name}}</a>
-                                                </div>
-                                            </div>
-                                            <div class="item-subtitle">{{orderList.goods_description}}</div>
-                                            <div data-attrid="" class="item-text" v-html="'规格：'+orderList.attr"></div>
-                                            <div data-nums="1" data-pro="" data-qcb="1" data-sub="11" data-price="8"
-                                                 class="ccart-price">
-                                                <div v-if="item.exchange_type==1">
-                                                    七彩币<span>{{item.order_sell_price}}</span></div>
-                                                <em v-if="item.exchange_type==0">￥{{orderList.goods_price}}</em>
-                                                <i>数量:<span>{{orderList.goods_num}}</span></i></div>
-                                        </div>
-                                    </div>
-                                    <div class="ccart-status" :id="item.id">
-                                        共计:{{item.total}}
-                                        <span v-if="item.exchange_type==0">￥ <em class="c-ec4619">{{item.order_money}}</em></span>
-                                        <span v-if="item.exchange_type==1">七彩币 <em class="c-ec4619">{{item.order_sell_price}}</em></span>
-                                        <span class="btn-order btn-cancelOrder">取消订单</span>
-                                        <span class="btn-order btn-duihuan">立即兑换
+											</div>
+											<div class="ccart-status" :id="item.id" v-if="item.order_state==20">
+												共计:{{item.total}}
+												<span v-if="item.exchange_type==0">￥ <em class="c-ec4619">{{item.order_money}}</em></span>
+												<span v-if="item.exchange_type==1">七彩币 <em class="c-ec4619">{{item.order_sell_price}}</em></span>
+												<span v-if="item.exchange_type==0" class="btn-order btn-tuikuan">申请退款</span>
+												<span class="btn-order btn-cuiOrder">催单</span>
+											</div>
+											<div class="ccart-status" :id="item.id" v-if="item.order_state==30">
+												共计:{{item.total}}
+												<span v-if="item.exchange_type==0">￥ <em class="c-ec4619">{{item.order_money}}</em></span>
+												<span v-if="item.exchange_type==1">七彩币 <em class="c-ec4619">{{item.order_sell_price}}</em></span>
+												<a :href="'deliverDetail.html?id='+item.id"><span class="btn-order btn-deliver">查看物流</span></a>
+												<span class="btn-order btn-shouhuo">确认收货</span>
+											</div>
+											<div class="ccart-status" :id="item.id" v-if="item.order_state==40">
+												共计:{{item.total}}
+												<span v-if="item.exchange_type==0">￥ <em class="c-ec4619">{{item.order_money}}</em></span>
+												<span v-if="item.exchange_type==1">七彩币 <em class="c-ec4619">{{item.order_sell_price}}</em></span>
+												<span class="btn-order btn-delOrder">删除订单</span>
+												<a v-if="item.evaluation_status!=1" :href="'order-details.html?id='+item.id">
+													<span class="btn-order btn-commentOrder">评价</span> </a>
+											</div>
+											<div class="ccart-status" :id="item.id" v-if="item.order_state==50">
+												共计:{{item.total}}
+												<span v-if="item.exchange_type==0">￥ <em class="c-ec4619">{{item.order_money}}</em></span>
+												<span v-if="item.exchange_type==1">七彩币 <em class="c-ec4619">{{item.order_sell_price}}</em></span>
+												<span class="btn-order btn-delOrder">删除订单</span>
+											</div>
+										</div>
+							</div>
+							</li>
+							</ul>
+							<div class="no-good fn-tyga" v-if="orderList.res == '0'">
+								<img src="assets/images/shop.png" class="fn-pic">
+								<p class="fn-tac">订单列表为空</p>
+							</div>
+						</div>
+						<div id="change" class="swiper-slide tab od-box">
+							<div class="list-block media-list ccart-list" v-if="orderList.res==1" v-for="item in orderList.data" v-cloak>
+								<div class="ccart-title">
+									<div class="item-content">
+										<div class="item-inner">
+											<div class="item-title-row">
+												<div class="item-title od-title">
+													<a href="#" class="od-tit">
+														<span class="od-payTit">{{item.store_name}}</span>
+														<i class="icon icon-right2 od-icon"></i>
+													</a>
+												</div>
+												<div class="item-after">等待买家付款</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<ul class="ccart-content">
+									<li>
+										<div class="ccart-con">
+											<div class="item-content" v-for="orderList in item.goodsList">
+												<div class="item-media">
+													<a :href="'order-details.html?id='+item.id">
+														<img :src="orderList.goods_image"></a>
+												</div>
+												<div class="item-inner" :godId="orderList.goods_id" :ordergodId="orderList.id">
+													<div class="item-title-row">
+														<div class="item-title">
+															<a :href="'order-details.html?id='+item.id">{{orderList.goods_name}}</a>
+														</div>
+													</div>
+													<div class="item-subtitle">{{orderList.goods_description}}</div>
+													<div data-attrid="" class="item-text" v-html="'规格：'+orderList.attr"></div>
+													<div data-nums="1" data-pro="" data-qcb="1" data-sub="11" data-price="8" class="ccart-price">
+														<div v-if="item.exchange_type==1">
+															七彩币<span>{{item.order_sell_price}}</span></div>
+														<em v-if="item.exchange_type==0">￥{{orderList.goods_price}}</em>
+														<i>数量:<span>{{orderList.goods_num}}</span></i></div>
+												</div>
+											</div>
+											<div class="ccart-status" :id="item.id">
+												共计:{{item.total}}
+												<span v-if="item.exchange_type==0">￥ <em class="c-ec4619">{{item.order_money}}</em></span>
+												<span v-if="item.exchange_type==1">七彩币 <em class="c-ec4619">{{item.order_sell_price}}</em></span>
+												<span class="btn-order btn-cancelOrder">取消订单</span>
+												<span class="btn-order btn-duihuan">立即兑换
                                             </span>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="no-good fn-tyga" v-if="orderList.res!=1">
-                        <img src="assets/images/shop.png" class="fn-pic">
-                        <p class="fn-tac">订单列表为空</p>
-                    </div>
-                </div>
-                <div id="sendGoods" class="swiper-slide tab od-box">
-                    <div class="list-block media-list ccart-list" v-if="orderList.res==1"
-                         v-for="item in orderList.data">
-                        <div class="ccart-title">
-                            <div class="item-content">
-                                <div class="item-inner">
-                                    <div class="item-title-row">
-                                         <div class="item-title od-title">
-                                        	<a href="#" class="od-tit">
-                                        	<span class="od-payTit">{{item.store_name}}</span>
-                                           <i class="icon icon-right2 od-icon"></i>
-                                            </a>
-                                        </div>
-                                        <div class="item-after">等待卖家发货</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <ul class="ccart-content">
-                            <li>
-                                <div class="ccart-con">
-                                    <div class="item-content" v-for="orderList in item.goodsList">
-                                        <div class="item-media">
-                                            <a :href="'order-details.html?id='+item.id">
-                                                <img :src="orderList.goods_image"></a>
-                                        </div>
-                                        <div class="item-inner" :ordergod="orderList.id" :mtRefund="orderList.refund_reason">
-                                            <div class="item-title-row">
-                                                <div class="item-title">
-                                                    <a :href="'order-details.html?id='+item.id">{{orderList.goods_name}}</a>
-                                                </div>
-                                            </div>
-                                            <div class="item-subtitle">{{orderList.goods_description}}</div>
-                                            <div data-attrid="" class="item-text" v-html="'规格：'+orderList.attr"></div>
-                                            <div data-nums="1" data-pro="" data-qcb="1" data-sub="11" data-price="8"
-                                                 class="ccart-price">
-                                                <div v-if="item.exchange_type==1">
-                                                    七彩币<span>{{item.order_sell_price}}</span></div>
-                                                <em v-if="item.exchange_type==0">￥{{orderList.goods_price}}</em>
-                                                <i>数量:<span>{{orderList.goods_num}}</span></i></div>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+							<div class="no-good fn-tyga" v-if="orderList.res!=1">
+								<img src="assets/images/shop.png" class="fn-pic">
+								<p class="fn-tac">订单列表为空</p>
+							</div>
+						</div>
+						<div id="sendGoods" class="swiper-slide tab od-box">
+							<div class="list-block media-list ccart-list" v-if="orderList.res==1" v-for="item in orderList.data">
+								<div class="ccart-title">
+									<div class="item-content">
+										<div class="item-inner">
+											<div class="item-title-row">
+												<div class="item-title od-title">
+													<a href="#" class="od-tit">
+														<span class="od-payTit">{{item.store_name}}</span>
+														<i class="icon icon-right2 od-icon"></i>
+													</a>
+												</div>
+												<div class="item-after">等待卖家发货</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<ul class="ccart-content">
+									<li>
+										<div class="ccart-con">
+											<div class="item-content" v-for="orderList in item.goodsList">
+												<div class="item-media">
+													<a :href="'order-details.html?id='+item.id">
+														<img :src="orderList.goods_image"></a>
+												</div>
+												<div class="item-inner" :ordergod="orderList.id" :mtRefund="orderList.refund_reason">
+													<div class="item-title-row">
+														<div class="item-title">
+															<a :href="'order-details.html?id='+item.id">{{orderList.goods_name}}</a>
+														</div>
+													</div>
+													<div class="item-subtitle">{{orderList.goods_description}}</div>
+													<div data-attrid="" class="item-text" v-html="'规格：'+orderList.attr"></div>
+													<div data-nums="1" data-pro="" data-qcb="1" data-sub="11" data-price="8" class="ccart-price">
+														<div v-if="item.exchange_type==1">
+															七彩币<span>{{item.order_sell_price}}</span></div>
+														<em v-if="item.exchange_type==0">￥{{orderList.goods_price}}</em>
+														<i>数量:<span>{{orderList.goods_num}}</span></i></div>
 
-                                            <div class="tuikaun"
-                                                 v-if="orderList.refund_reason!=0 && orderList.refund_approval==0">退款中
-                                            </div>
-                                            <div class="tuikaun"
-                                                 v-if="orderList.refund_reason!=0 && orderList.refund_approval==1">退款关闭
-                                            </div>
-                                            <div class="tuikaun"
-                                                 v-if="orderList.refund_reason!=0 && orderList.refund_approval==2">退款成功
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="ccart-status" :id="item.id">
-                                        共计:{{item.total}}
-                                        <span v-if="item.exchange_type==0">￥ <em class="c-ec4619">{{item.order_money}}</em></span>
-                                        <span v-if="item.exchange_type==1">七彩币 <em class="c-ec4619">{{item.order_sell_price}}</em></span>
-                                        <span v-if="item.exchange_type==0" class="btn-order btn-tuikuan">申请退款</span>
-                                        <span class="btn-order btn-cuiOrder">催单</span>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="no-good fn-tyga" v-if="orderList.res!=1">
-                        <img src="assets/images/shop.png" class="fn-pic">
-                        <p class="fn-tac">订单列表为空</p>
-                    </div>
-                </div>
-                <div id="recGoods" class="swiper-slide tab od-box">
-                    <div class="list-block media-list ccart-list" v-if="orderList.res==1"
-                         v-for="item in orderList.data">
-                        <div class="ccart-title">
-                            <div class="item-content">
-                                <div class="item-inner">
-                                    <div class="item-title-row">
-                                        <div class="item-title od-title">
-                                        	<a href="#" class="od-tit">
-                                        	<span class="od-payTit">{{item.store_name}}</span>
-                                           <i class="icon icon-right2 od-icon"></i>
-                                            </a>
-                                        </div>
-                                        <div class="item-after">卖家已发货</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <ul class="ccart-content">
-                            <li>
-                                <div class="ccart-con">
-                                    <div class="item-content" v-for="orderList in item.goodsList">
-                                        <div class="item-media">
-                                            <a :href="'order-details.html?id='+item.id">
-                                                <img :src="orderList.goods_image"></a>
-                                        </div>
-                                        <div class="item-inner">
-                                            <div class="item-title-row">
-                                                <div class="item-title">
-                                                    <a :href="'order-details.html?id='+item.id">{{orderList.goods_name}}</a>
-                                                </div>
-                                            </div>
-                                            <div class="item-subtitle">{{orderList.goods_description}}</div>
-                                            <div data-attrid="" class="item-text" v-html="'规格：'+orderList.attr"></div>
-                                            <div data-nums="1" data-pro="" data-qcb="1" data-sub="11" data-price="8"
-                                                 class="ccart-price">
-                                                <div v-if="item.exchange_type==1">
-                                                    七彩币<span>{{item.order_sell_price}}</span></div>
-                                                <em v-if="item.exchange_type==0">￥{{orderList.goods_price}}</em>
-                                                <i>数量:<span>{{orderList.goods_num}}</span></i></div>
-                                            <div class="tuikaun"
-                                                 v-if="orderList.refund_reason!=0 && orderList.refund_approval==0">退款中
-                                            </div>
-                                            <div class="tuikaun"
-                                                 v-if="orderList.refund_reason!=0 && orderList.refund_approval==1">退款关闭
-                                            </div>
-                                            <div class="tuikaun"
-                                                 v-if="orderList.refund_reason!=0 && orderList.refund_approval==2">退款成功
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="ccart-status" :id="item.id">
-                                        共计:{{item.total}}
-                                        <span v-if="item.exchange_type==0">￥ <em class="c-ec4619">{{item.order_money}}</em></span>
-                                        <span v-if="item.exchange_type==1">七彩币 <em class="c-ec4619">{{item.order_sell_price}}</em></span>
-                                        <a :href="'deliverDetail.html?id='+item.id"> <span
-                                                class="btn-order btn-deliver">查看物流</span></a>
-                                        <span class="btn-order btn-shouhuo">确认收货</span>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="no-good fn-tyga" v-if="orderList.res!=1">
-                        <img src="assets/images/shop.png" class="fn-pic">
-                        <p class="fn-tac">订单列表为空</p>
-                    </div>
-                </div>
-                <div id="goodsAppr" class="swiper-slide tab od-box">
-                    <div class="list-block media-list ccart-list" v-if="orderList.res==1"
-                         v-for="item in orderList.data">
-                        <div class="ccart-title">
-                            <div class="item-content">
-                                <div class="item-inner">
-                                    <div class="item-title-row">
-                                         <div class="item-title od-title">
-                                        	<a href="#" class="od-tit">
-                                        	<span class="od-payTit">{{item.store_name}}</span>
-                                           <i class="icon icon-right2 od-icon"></i>
-                                            </a>
-                                        </div>
-                                        <div class="item-after">交易成功</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <ul class="ccart-content">
-                            <li>
-                                <div class="ccart-con">
-                                    <div class="item-content" v-for="orderList in item.goodsList">
-                                        <div class="item-media">
-                                            <a :href="'order-details.html?id='+item.id">
-                                                <img :src="orderList.goods_image"></a>
-                                        </div>
-                                        <div class="item-inner" :godId="orderList.goods_id" :ordergodId="orderList.id">
-                                            <div class="item-title-row">
-                                                <div class="item-title">
-                                                    <a :href="'order-details.html?id='+item.id">{{orderList.goods_name}}</a>
-                                                </div>
-                                            </div>
-                                            <div class="item-subtitle">{{orderList.goods_description}}</div>
-                                            <div data-attrid="" class="item-text" v-html="'规格：'+orderList.attr"></div>
-                                            <div data-nums="1" data-pro="" data-qcb="1" data-sub="11" data-price="8"
-                                                 class="ccart-price">
-                                                <div v-if="item.exchange_type==1">七彩币<span>1</span></div>
-                                                <em v-if="item.exchange_type==0">￥{{orderList.goods_price}}</em>
-                                                <i>数量:<span>{{orderList.goods_num}}</span></i></div>
-                                        </div>
-                                    </div>
-                                    <div class="ccart-status" :id="item.id">
-                                        共计:{{item.total}}
-                                        <span v-if="item.exchange_type==0">￥ <em class="c-ec4619">{{item.order_money}}</em></span>
-                                        <span v-if="item.exchange_type==1">七彩币 <em class="c-ec4619">{{item.order_sell_price}}</em></span>
-                                        <span class="btn-order btn-delOrder">删除订单</span>
-                                        <a v-if="item.evaluation_status!=1" :href="'order-details.html?id='+item.id">
-                                            <span class="btn-order btn-commentOrder">评价</span> </a>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="no-good fn-tyga" v-if="orderList.res!=1">
-                        <img src="assets/images/shop.png" class="fn-pic">
-                        <p class="fn-tac">订单列表为空</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--///-->
-    </div>
-</div>
-<script src="http://cdn.bootcss.com/zepto/1.1.6/zepto.min.js"></script>
-<script src="http://m.fuqian.la/jssdk/h5jssdk.3.0.js"></script>
-<script src="assets/js/myOrder.js" type="text/javascript" charset="utf-8"></script>
-</body>
+													<div class="tuikaun" v-if="orderList.refund_reason!=0 && orderList.refund_approval==0">退款中
+													</div>
+													<div class="tuikaun" v-if="orderList.refund_reason!=0 && orderList.refund_approval==1">退款关闭
+													</div>
+													<div class="tuikaun" v-if="orderList.refund_reason!=0 && orderList.refund_approval==2">退款成功
+													</div>
+												</div>
+											</div>
+											<div class="ccart-status" :id="item.id">
+												共计:{{item.total}}
+												<span v-if="item.exchange_type==0">￥ <em class="c-ec4619">{{item.order_money}}</em></span>
+												<span v-if="item.exchange_type==1">七彩币 <em class="c-ec4619">{{item.order_sell_price}}</em></span>
+												<span v-if="item.exchange_type==0" class="btn-order btn-tuikuan">申请退款</span>
+												<span class="btn-order btn-cuiOrder">催单</span>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+							<div class="no-good fn-tyga" v-if="orderList.res!=1">
+								<img src="assets/images/shop.png" class="fn-pic">
+								<p class="fn-tac">订单列表为空</p>
+							</div>
+						</div>
+						<div id="recGoods" class="swiper-slide tab od-box">
+							<div class="list-block media-list ccart-list" v-if="orderList.res==1" v-for="item in orderList.data">
+								<div class="ccart-title">
+									<div class="item-content">
+										<div class="item-inner">
+											<div class="item-title-row">
+												<div class="item-title od-title">
+													<a href="#" class="od-tit">
+														<span class="od-payTit">{{item.store_name}}</span>
+														<i class="icon icon-right2 od-icon"></i>
+													</a>
+												</div>
+												<div class="item-after">卖家已发货</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<ul class="ccart-content">
+									<li>
+										<div class="ccart-con">
+											<div class="item-content" v-for="orderList in item.goodsList">
+												<div class="item-media">
+													<a :href="'order-details.html?id='+item.id">
+														<img :src="orderList.goods_image"></a>
+												</div>
+												<div class="item-inner">
+													<div class="item-title-row">
+														<div class="item-title">
+															<a :href="'order-details.html?id='+item.id">{{orderList.goods_name}}</a>
+														</div>
+													</div>
+													<div class="item-subtitle">{{orderList.goods_description}}</div>
+													<div data-attrid="" class="item-text" v-html="'规格：'+orderList.attr"></div>
+													<div data-nums="1" data-pro="" data-qcb="1" data-sub="11" data-price="8" class="ccart-price">
+														<div v-if="item.exchange_type==1">
+															七彩币<span>{{item.order_sell_price}}</span></div>
+														<em v-if="item.exchange_type==0">￥{{orderList.goods_price}}</em>
+														<i>数量:<span>{{orderList.goods_num}}</span></i></div>
+													<div class="tuikaun" v-if="orderList.refund_reason!=0 && orderList.refund_approval==0">退款中
+													</div>
+													<div class="tuikaun" v-if="orderList.refund_reason!=0 && orderList.refund_approval==1">退款关闭
+													</div>
+													<div class="tuikaun" v-if="orderList.refund_reason!=0 && orderList.refund_approval==2">退款成功
+													</div>
+												</div>
+											</div>
+											<div class="ccart-status" :id="item.id">
+												共计:{{item.total}}
+												<span v-if="item.exchange_type==0">￥ <em class="c-ec4619">{{item.order_money}}</em></span>
+												<span v-if="item.exchange_type==1">七彩币 <em class="c-ec4619">{{item.order_sell_price}}</em></span>
+												<a :href="'deliverDetail.html?id='+item.id"> <span class="btn-order btn-deliver">查看物流</span></a>
+												<span class="btn-order btn-shouhuo">确认收货</span>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+							<div class="no-good fn-tyga" v-if="orderList.res!=1">
+								<img src="assets/images/shop.png" class="fn-pic">
+								<p class="fn-tac">订单列表为空</p>
+							</div>
+						</div>
+						<div id="goodsAppr" class="swiper-slide tab od-box">
+							<div class="list-block media-list ccart-list" v-if="orderList.res==1" v-for="item in orderList.data">
+								<div class="ccart-title">
+									<div class="item-content">
+										<div class="item-inner">
+											<div class="item-title-row">
+												<div class="item-title od-title">
+													<a href="#" class="od-tit">
+														<span class="od-payTit">{{item.store_name}}</span>
+														<i class="icon icon-right2 od-icon"></i>
+													</a>
+												</div>
+												<div class="item-after">交易成功</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<ul class="ccart-content">
+									<li>
+										<div class="ccart-con">
+											<div class="item-content" v-for="orderList in item.goodsList">
+												<div class="item-media">
+													<a :href="'order-details.html?id='+item.id">
+														<img :src="orderList.goods_image"></a>
+												</div>
+												<div class="item-inner" :godId="orderList.goods_id" :ordergodId="orderList.id">
+													<div class="item-title-row">
+														<div class="item-title">
+															<a :href="'order-details.html?id='+item.id">{{orderList.goods_name}}</a>
+														</div>
+													</div>
+													<div class="item-subtitle">{{orderList.goods_description}}</div>
+													<div data-attrid="" class="item-text" v-html="'规格：'+orderList.attr"></div>
+													<div data-nums="1" data-pro="" data-qcb="1" data-sub="11" data-price="8" class="ccart-price">
+														<div v-if="item.exchange_type==1">七彩币<span>1</span></div>
+														<em v-if="item.exchange_type==0">￥{{orderList.goods_price}}</em>
+														<i>数量:<span>{{orderList.goods_num}}</span></i></div>
+												</div>
+											</div>
+											<div class="ccart-status" :id="item.id">
+												共计:{{item.total}}
+												<span v-if="item.exchange_type==0">￥ <em class="c-ec4619">{{item.order_money}}</em></span>
+												<span v-if="item.exchange_type==1">七彩币 <em class="c-ec4619">{{item.order_sell_price}}</em></span>
+												<span class="btn-order btn-delOrder">删除订单</span>
+												<a v-if="item.evaluation_status!=1" :href="'order-details.html?id='+item.id">
+													<span class="btn-order btn-commentOrder">评价</span> </a>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+							<div class="no-good fn-tyga" v-if="orderList.res!=1">
+								<img src="assets/images/shop.png" class="fn-pic">
+								<p class="fn-tac">订单列表为空</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--///-->
+			</div>
+		</div>
+		<script src="http://cdn.bootcss.com/zepto/1.1.6/zepto.min.js"></script>
+		<script src="http://m.fuqian.la/jssdk/h5jssdk.3.0.js"></script>
+		<script src="assets/js/myOrder.js" type="text/javascript" charset="utf-8"></script>
+	</body>
 
 </html>

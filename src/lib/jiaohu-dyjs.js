@@ -116,7 +116,7 @@ var isLogin = function(){
 //提示未登录跳转
 var noLogin = function(){
 			  			setTimeout(function(){
-		  				window.location.href = "/templets/gerenzhongxin/login/login.html";		  				
+		  				window.location.href = "login.html";		  				
 		  			},1500)
 }
 
