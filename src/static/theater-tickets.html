@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" class="pixel-ratio-1">
 
 	<head>
-		@@include('../tpl/header.tpl',{ "title":"北京耀莱成龙国际影城（五棵松店）" })
+		@@include('../tpl/header.tpl',{ "title":"购票" })
 
 		<link rel="stylesheet" href="lib/wj/css/wj.css">
 		<link rel="stylesheet" type="text/css" href="lib/swiper/css/swiper-3.css"/>
@@ -70,7 +70,7 @@
 						<ul>
 							<div class="swiper-container swiper-container-horizontal">
 								<div class="swiper-wrapper" style="transition-duration: 0ms; left: 0px;">
-									<!--<div class="swiper-slide" index_id="1681" index="0" style="border: medium none; top: 0.4rem; height: 5.5rem; width: 20%;"><img src="assets/images/201704280950253916.jpg"></div>
+									<div class="swiper-slide" index_id="1681" index="0" style="border: medium none; top: 0.4rem; height: 5.5rem; width: 20%;"><img src="assets/images/201704280950253916.jpg"></div>
 									<div class="swiper-slide" index_id="7131" index="1" style="border: 2px solid red; top: 0px; height: 6rem; width: 25%;"><img src="assets/images/201704261105072505.jpg"></div>
 									<div class="swiper-slide" index_id="8142" index="2" style="border: medium none; top: 0.4rem; height: 5.5rem; width: 20%;"><img src="assets/images/201705091110378911.jpg"></div>
 									<div class="swiper-slide" index_id="8153" index="3" style="border: medium none; top: 0.4rem; height: 5.5rem; width: 20%;"><img src="assets/images/201704131708003829.jpg"></div>
@@ -81,7 +81,7 @@
 									<div class="swiper-slide" index_id="234894" index="8" style="border: medium none; top: 0.4rem; height: 5.5rem; width: 20%;"><img src="assets/images/201705091907290942.jpg"></div>
 									<div class="swiper-slide" index_id="239649" index="9" style="border: medium none; top: 0.4rem; height: 5.5rem; width: 20%;"><img src="assets/images/201705080940343755.jpg"></div>
 									<div class="swiper-slide" index_id="241651" index="10" style="border: medium none; top: 0.4rem; height: 5.5rem; width: 20%;"><img src="assets/images/201704232316118442.jpg"></div>
-									<div class="swiper-slide" index_id="242932" index="11" style="border: medium none; top: 0.4rem; height: 5.5rem; width: 20%;"><img src="assets/images/201705051229441880.jpg"></div>-->
+									<div class="swiper-slide" index_id="242932" index="11" style="border: medium none; top: 0.4rem; height: 5.5rem; width: 20%;"><img src="assets/images/201705051229441880.jpg"></div>
 								</div>
 								<div class="swiper-pagination"></div>
 							</div>
@@ -1355,7 +1355,6 @@
 					}), api
 				}();
 			var client2 = hprose.Client.create("http://test.7cai.tv/index.php/api/api/ticket?t=" + Cache.get("flag"), ['getOrderLists', 'login', 'getCityMoviesLists2', 'getCityWillMoviesLists2', 'getCinemaSchedInfo', 'getTicketCinemaUrl', 'register', 'getTicketCinemaUrl', 'getCityCinemasLists', 'isLogin', 'logout', 'getCityMoviesLists', 'getCinemaInfo', 'getCinemaSchedInfo', 'getCityWillMoviesLists', 'findPwd', 'getMoviesInfo', 'sendCode', 'getUserInfo', 'getMoviesInfo', 'getAddressList', 'getUploadParams', 'getPayOrderInfo', 'getOpenId', 'getCityLists', 'getCityCinemasLists']);
-
 			function GetDateStr(AddDayCount) {
 				var dd = new Date();
 				dd.setDate(dd.getDate() + AddDayCount);
@@ -1460,7 +1459,6 @@
 				'cinema_id': dyy_cinema_id
 			}, function(result) {
 				var result = $.parseJSON(result);
-//				console.log(result.data);
 				var mv_index;
 				for(var i = 0; i < result.data.length; i++) {
 					$('.swiper-wrapper').append("<div class='swiper-slide' index_id='" + result.data[i].id + "' index='" + [i] + "'><img src='" + result.data[i].poster_url + "'/></div>");
@@ -1477,10 +1475,10 @@
 				}
 			});
 			$(document).on("click", ".swiper-slide", function() {
-				$('.yyjs_dypTime1 ul').empty();
-				$('.yyjs_dypTime2 ul').empty();
-				$('.yyjs_dypTime3 ul').empty();
-				$('.yyjs_dypTime4 ul').empty();
+//				$('.yyjs_dypTime1 ul').empty();
+//				$('.yyjs_dypTime2 ul').empty();
+//				$('.yyjs_dypTime3 ul').empty();
+//				$('.yyjs_dypTime4 ul').empty();
 				$(".swiper-slide").css({
 					'border': 'none',
 					'top': '0',
@@ -1520,36 +1518,36 @@
 						}
 					};
 
-					function sche(a, b) {
-						var sche_length = result.data[juzhao_index].sche[GetDateStr2(a)][0].seat_info.length;
-						var paiqi_arr = [];
-						var start_unixtime1 = [];
-						var end_unixtime1 = [];
-						for(var i = 0; i < sche_length; i++) {
-							paiqi_arr.push(result.data[juzhao_index].sche[GetDateStr2(a)][0].seat_info[i].time);
-							if(result.data[juzhao_index].sche[GetDateStr2(a)][0].seat_info[i].start_unixtime > timestamp) {
-								start_unixtime1.push(result.data[juzhao_index].sche[GetDateStr2(a)][0].seat_info[i].start_unixtime);
-								end_unixtime1.push(result.data[juzhao_index].sche[GetDateStr2(a)][0].seat_info[i].end_unixtime);
-							};
-						}
-						end_unixtime1.sort();
-						var start_unixtime_arr1 = [];
-						var end_unixtime1_arr1 = [];
-						start_unixtime1.sort();
-						for(var i = 0; i < end_unixtime1.length; i++) {
-							end_unixtime1_arr1.push(new Date(end_unixtime1[i] * 1000).toString().substring(16, 21));
-							start_unixtime_arr1.push(new Date(start_unixtime1[i] * 1000).toString().substring(16, 21));
-						};
-						for(var i = 0; i < start_unixtime_arr1.length; i++) {
-							var m = paiqi_arr.keys(start_unixtime_arr1[i]);
-							$(".yyjs_dypTime" + b + " ul").append("<li index3='" + result.data[juzhao_index].sche[GetDateStr2(a)][0].seat_info[m].agentid + "' date='" + GetDateStr2(a) + "' roomid='" + result.data[juzhao_index].sche[GetDateStr2(a)][0].seat_info[m].roomid + "' index2='" + result.data[juzhao_index].id + "' index='" + result.data[juzhao_index].sche[GetDateStr2(a)][0].seat_info[m].mpid + "'><div class='yyjs_dypTime_li_left'><div>" +
-								"<p>" + paiqi_arr[m] + "</p>" +
-								"<p style='font-size:0.65rem;color:#909090;'>" + end_unixtime1_arr1[i] + "结束</p></div><div><p style='font-size:0.75rem;'>" + result.data[juzhao_index].sche[GetDateStr2(a)][0].lagu + result.data[juzhao_index].sche[GetDateStr2(a)][0].seat_info[m].type + "</p>" +
-								"<p style='font-size:0.65rem;color:#909090;'>" + result.data[juzhao_index].sche[GetDateStr2(a)][0].seat_info[m].roomname + "</p></div></div><div class='yyjs_dypTime_li_right'>" +
-								"<span></span><span style='color:red;font-size:.8rem;'>￥" + result.data[juzhao_index].sche[GetDateStr2(a)][0].seat_info[m].price + "</span></div></li>");
-						};
-						$(".yyjs_dypTime" + b + " ul").append('<div class="bottom_line"></div>');
-					}
+//					function sche(a, b) {
+//						var sche_length = result.data[juzhao_index].sche[GetDateStr2(a)][0].seat_info.length;
+//						var paiqi_arr = [];
+//						var start_unixtime1 = [];
+//						var end_unixtime1 = [];
+//						for(var i = 0; i < sche_length; i++) {
+//							paiqi_arr.push(result.data[juzhao_index].sche[GetDateStr2(a)][0].seat_info[i].time);
+//							if(result.data[juzhao_index].sche[GetDateStr2(a)][0].seat_info[i].start_unixtime > timestamp) {
+//								start_unixtime1.push(result.data[juzhao_index].sche[GetDateStr2(a)][0].seat_info[i].start_unixtime);
+//								end_unixtime1.push(result.data[juzhao_index].sche[GetDateStr2(a)][0].seat_info[i].end_unixtime);
+//							};
+//						}
+//						end_unixtime1.sort();
+//						var start_unixtime_arr1 = [];
+//						var end_unixtime1_arr1 = [];
+//						start_unixtime1.sort();
+//						for(var i = 0; i < end_unixtime1.length; i++) {
+//							end_unixtime1_arr1.push(new Date(end_unixtime1[i] * 1000).toString().substring(16, 21));
+//							start_unixtime_arr1.push(new Date(start_unixtime1[i] * 1000).toString().substring(16, 21));
+//						};
+//						for(var i = 0; i < start_unixtime_arr1.length; i++) {
+//							var m = paiqi_arr.keys(start_unixtime_arr1[i]);
+//							$(".yyjs_dypTime" + b + " ul").append("<li index3='" + result.data[juzhao_index].sche[GetDateStr2(a)][0].seat_info[m].agentid + "' date='" + GetDateStr2(a) + "' roomid='" + result.data[juzhao_index].sche[GetDateStr2(a)][0].seat_info[m].roomid + "' index2='" + result.data[juzhao_index].id + "' index='" + result.data[juzhao_index].sche[GetDateStr2(a)][0].seat_info[m].mpid + "'><div class='yyjs_dypTime_li_left'><div>" +
+//								"<p>" + paiqi_arr[m] + "</p>" +
+//								"<p style='font-size:0.65rem;color:#909090;'>" + end_unixtime1_arr1[i] + "结束</p></div><div><p style='font-size:0.75rem;'>" + result.data[juzhao_index].sche[GetDateStr2(a)][0].lagu + result.data[juzhao_index].sche[GetDateStr2(a)][0].seat_info[m].type + "</p>" +
+//								"<p style='font-size:0.65rem;color:#909090;'>" + result.data[juzhao_index].sche[GetDateStr2(a)][0].seat_info[m].roomname + "</p></div></div><div class='yyjs_dypTime_li_right'>" +
+//								"<span></span><span style='color:red;font-size:.8rem;'>￥" + result.data[juzhao_index].sche[GetDateStr2(a)][0].seat_info[m].price + "</span></div></li>");
+//						};
+//						$(".yyjs_dypTime" + b + " ul").append('<div class="bottom_line"></div>');
+//					}
 				});
 			});
 			Array.prototype.keys = function(e) {
