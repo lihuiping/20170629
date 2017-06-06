@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="telephone=no,email=no" name="format-detection">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta name="description" content="这里是文档模式">
+		<meta name="keywords" content="这里是关键词">
+		<title>商品</title>
+		<link rel="stylesheet" href="lib/light7/css/light7.min.css">
+		<link rel="stylesheet" href="lib/layer-mobile/need/layer.css" />
+		<link rel="stylesheet" href="assets/css/common.css">
+		<!--<script type="text/javascript" src="lib/jquery-2.1.1.min.js"></script>-->
+		<script type="text/javascript" src="lib/zepto.min.js"></script>
+		<script type="text/javascript" src="lib/vue.js"></script>
+		<script type="text/javascript" src="lib/axios.min.js"></script>
+		<script type='text/javascript' src='lib/layer-mobile/layer.js' charset='utf-8'></script>
+	</head>
+	<style type="text/css">
+		.not-found-video {
+			position: static;
+			height: 70%;
+			margin-top: 0;
+			display: none;
+		}
+		
+		#ss-shanchu {
+			display: block;
+			position: absolute;
+			color: #d9d9d9;
+			top: .95rem;
+			right: 3.3rem;
+			display: none;
+		}
+		
+		#sousuo-input {
+			width: 72%;
+			-webkit-appearance: none;
+		}
+		
+		strong {
+			font-weight: 400;
+		}
+		/*搜索*/
+		
+		.dy-sousuo {
+			width: 100%;
+			padding: 1rem .5rem;
+			font-size: .8rem;
+			color: #a4a4a4;
+			position: relative;
+			background-color: white;
+		}
+		
+		.dy-sousuo i {
+			color: #caad9c;
+			font-size: .8rem;
+			position: absolute;
+			margin-top: .1rem;
+			padding: .2rem .4rem .2rem .6rem;
+		}
+		
+		.dy-sousuo input {
+			border-radius: .2rem;
+			padding: .2rem;
+			font-size: .8rem;
+			width: 85%;
+			border: 1px solid #caad9c;
+			border-style: solid;
+			padding-left: 1.8rem;
+		}
+		
+		.sousuo-list ul {
+			padding: 0 1rem;
+			background-color: white;
+		}
+		
+		.sousuo-list ul li {
+			height: 2rem;
+			line-height: 1.9rem;
+			padding: .1rem 0;
+			border-bottom: 1px solid #ececec;
+		}
+		
+		.sousuo-list a {
+			color: #8a8a8a;
+			font-size: .8rem;
+		}
+		
+		.clear-record {
+			font-size: .8rem;
+			color: #8a8a8a;
+			width: 100%;
+			text-align: center;
+			height: 2.5rem;
+			line-height: 2.5rem;
+		}
+		
+		.clear-record i {
+			font-size: 1rem;
+		}
+		/*  没有找到视频*/
+		
+		.not-found-video {
+			width: 100%;
+			text-align: center;
+			position: fixed;
+			top: 50%;
+			margin-top: -5rem;
+		}
+		
+		.not-found-video p {
+			font-size: .8rem;
+			margin-top: -1rem;
+			color: #a0a0a0;
+		}
+		
+		.not-found-video i {
+			font-size: 5rem;
+			opacity: .2;
+		}
+	</style>
+
+	<body>
+		<div class="page page-current page-inited" id="page-1496732055239">
+			<div class="content">
+				<form class="dy-sousuo">
+					<i class="icon icon-sousuo" id="lb-sousuo"></i>
+					<input placeholder="请输入影片名" id="sousuo-input" type="search">
+					<i class="icon icon-shanchuzifu" id="ss-shanchu"></i> &nbsp;
+					<span id="sousuo-quxiao">取消</span>
+				</form>
+				<div class="not-found-video">
+					<i class="icon icon-shipinqueshen"></i>
+					<p>没有找到相关视频</p>
+				</div>
+				<div class="sousuo-list">
+					<ul>
+					</ul>
+					<div class="clear-record" id="qingkongjilu" style="display: none;">
+						<i class="icon icon-shanchu"></i>清空历史记录
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="lib/hprose.js" charset="utf-8"></script>
+		<script type="text/javascript" src="assets/js/other.js" charset="utf-8"></script>
+		<script type="text/javascript">
+			$("#qingkongjilu").on("click", function() {
+				$(".sousuo-list ul li").remove();
+			})
+			$("#sousuo-quxiao").on("click", function() {
+				window.history.go(-1);
+			})
+			var u = navigator.userAgent;
+			var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+			var mJson = [{
+				"videoname": "灵异少女",
+				"id": "59"
+			}, {
+				"videoname": "童谣",
+				"id": "57"
+			}, {
+				"videoname": "天黑别闭眼",
+				"id": "47"
+			}, {
+				"videoname": " 幽冥船",
+				"id": "44"
+			}, {
+				"videoname": "当树枝折断时",
+				"id": "39"
+			}, {
+				"videoname": "暗夜心理师",
+				"id": "40"
+			}, {
+				"videoname": "新鬼打鬼",
+				"id": "42"
+			}, {
+				"videoname": "人类清除计划3",
+				"id": "50"
+			}, {
+				"videoname": "午夜红裙",
+				"id": "53"
+			}, {
+				"videoname": "哭泣的房间",
+				"id": "60"
+			}, {
+				"videoname": "擒叔记",
+				"id": "75"
+			}, {
+				"videoname": "炮哥传奇",
+				"id": "71"
+			}, {
+				"videoname": "危机13小时",
+				"id": "77"
+			}, {
+				"videoname": "异能传之点金圣手",
+				"id": "83"
+			}, {
+				"videoname": "斗艳",
+				"id": "109"
+			}, {
+				"videoname": "死亡格斗",
+				"id": "84"
+			}, {
+				"videoname": "霍拉斯一家",
+				"id": "113"
+			}, {
+				"videoname": "狙击时刻",
+				"id": "86"
+			}, {
+				"videoname": "超能敢死队",
+				"id": "120"
+			}, {
+				"videoname": "剩女脱单记",
+				"id": "122"
+			}, {
+				"videoname": "灵异赌圣",
+				"id": "123"
+			}, {
+				"videoname": "解救",
+				"id": "94"
+			}, {
+				"videoname": "金钱怪兽",
+				"id": "95"
+			}, {
+				"videoname": "千姬变之帝女幽魂",
+				"id": "128"
+			}, {
+				"videoname": "变形活宝",
+				"id": "130"
+			}, {
+				"videoname": "拯救汪星人大作战",
+				"id": "133"
+			}, {
+				"videoname": "德云三逗士",
+				"id": "136"
+			}, {
+				"videoname": "侦探拍档",
+				"id": "101"
+			}, {
+				"videoname": "超级战舰",
+				"id": "103"
+			}, {
+				"videoname": "公众之敌",
+				"id": "104"
+			}, {
+				"videoname": "辛德勒的名单",
+				"id": "106"
+			}, {
+				"videoname": "就是这样",
+				"id": "107"
+			}, {
+				"videoname": "8英里",
+				"id": "112"
+			}, {
+				"videoname": "凯撒万岁",
+				"id": "135"
+			}, {
+				"videoname": "几近成名",
+				"id": "114"
+			}, {
+				"videoname": "功夫熊猫3",
+				"id": "132"
+			}, {
+				"videoname": "狮子王",
+				"id": "116"
+			}, {
+				"videoname": "恐龙当家",
+				"id": "124"
+			}, {
+				"videoname": "秘密特工",
+				"id": "121"
+			}, {
+				"videoname": "愤怒的小鸟",
+				"id": "46"
+			}, {
+				"videoname": "三打白骨精",
+				"id": "87"
+			}, {
+				"videoname": "霍比特人传奇",
+				"id": "79"
+			}, {
+				"videoname": "所以和黑粉结婚了",
+				"id": "127"
+			}, {
+				"videoname": "疯狂的小事叫爱情",
+				"id": "92"
+			}, {
+				"videoname": "我盛大的希腊婚礼",
+				"id": "93"
+			}, {
+				"videoname": "诡异大湘西落花劫",
+				"id": "49"
+			}, {
+				"videoname": "捉迷藏",
+				"id": "37"
+			}, {
+				"videoname": "捉妖天师新妇借道",
+				"id": "41"
+			}, {
+				"videoname": "惊天破",
+				"id": "51"
+			}, {
+				"videoname": "圣杯神器",
+				"id": "62"
+			}, {
+				"videoname": "一回合",
+				"id": "169"
+			}, {
+				"videoname": "荷尔蒙大冒险",
+				"id": "160"
+			}, {
+				"videoname": "澳门风云3",
+				"id": "138"
+			}, {
+				"videoname": "<strong>三人行</strong>",
+				"id": "64"
+			}, {
+				"videoname": "唐人街探案",
+				"id": "129"
+			}, {
+				"videoname": "大鱼海棠",
+				"id": "115"
+			}, {
+				"videoname": "绝地逃亡",
+				"id": "119"
+			}, {
+				"videoname": "笔仙之生死劫",
+				"id": "118"
+			}, {
+				"videoname": "从你的全世界路过",
+				"id": "149"
+			}, {
+				"videoname": " 诸神之锤",
+				"id": "73"
+			}, {
+				"videoname": "疯狂动物城",
+				"id": "61"
+			}, {
+				"videoname": "巴黎危机",
+				"id": "54"
+			}, {
+				"videoname": "铁拳男人",
+				"id": "56"
+			}, {
+				"videoname": "封神传奇",
+				"id": "117"
+			}, {
+				"videoname": "永不退缩3",
+				"id": "63"
+			}, {
+				"videoname": "绝地逃生",
+				"id": "48"
+			}, {
+				"videoname": " 失常",
+				"id": "126"
+			}, {
+				"videoname": "老妈操碎心",
+				"id": "131"
+			}, {
+				"videoname": "危城",
+				"id": "74"
+			}, {
+				"videoname": "末日之战",
+				"id": "66"
+			}, {
+				"videoname": "<strong>蝙蝠侠3</strong>",
+				"id": "100"
+			}, {
+				"videoname": "<strong>碟中谍5</strong>",
+				"id": "67"
+			}, {
+				"videoname": "<strong>智取威虎山</strong>",
+				"id": "69"
+			}, {
+				"videoname": "<strong>神偷奶爸2</strong>",
+				"id": "97"
+			}, {
+				"videoname": "<strong>海底总动员2</strong>",
+				"id": "134"
+			}, {
+				"videoname": "爱宠大机密",
+				"id": "125"
+			}, {
+				"videoname": "怒海救援",
+				"id": "78"
+			}, {
+				"videoname": "超级名模2",
+				"id": "140"
+			}, {
+				"videoname": "守护者联盟",
+				"id": "154"
+			}, {
+				"videoname": "复仇者联盟",
+				"id": "58"
+			}, {
+				"videoname": "终结者:创世纪",
+				"id": "80"
+			}, {
+				"videoname": "在世界中心呼唤爱",
+				"id": "89"
+			}, {
+				"videoname": "奇幻森林",
+				"id": "90"
+			}, {
+				"videoname": "猎神:冬日之战",
+				"id": "96"
+			}, {
+				"videoname": "速度与激情6",
+				"id": "98"
+			}, {
+				"videoname": "马克-皮斯的经历",
+				"id": "110"
+			}, {
+				"videoname": "圆梦巨人",
+				"id": "111"
+			}, {
+				"videoname": "超级神仙石",
+				"id": "137"
+			}, {
+				"videoname": "铜牌巨星",
+				"id": "139"
+			}, {
+				"videoname": "道士上山",
+				"id": "150"
+			}, {
+				"videoname": "美国队长3",
+				"id": "151"
+			}, {
+				"videoname": "叶问3",
+				"id": "152"
+			}, {
+				"videoname": "机械师2:复活",
+				"id": "153"
+			}, {
+				"videoname": "微微一笑很倾城",
+				"id": "155"
+			}, {
+				"videoname": "寒战2",
+				"id": "157"
+			}, {
+				"videoname": "反贪风暴2",
+				"id": "158"
+			}, {
+				"videoname": "西游记之大圣归来",
+				"id": "159"
+			}, {
+				"videoname": "七月与安生",
+				"id": "161"
+			}, {
+				"videoname": "终结者:创世纪",
+				"id": "162"
+			}, {
+				"videoname": "鲨滩",
+				"id": "167"
+			}, ];
+			var find;
+			$("#sousuo-input").bind('input propertychange', function() {
+				var name = $("#sousuo-input").val();
+				find = 0;
+				$("#ss-shanchu").show();
+				$("#ss-shanchu").click(function() {
+					$("#sousuo-input").val("");
+				})
+				if(!name) {
+					$("#ss-shanchu").hide();
+				}
+				mJson.forEach(function(b) {
+					if(b.videoname.indexOf(name) != -1 && name) {
+						if($(".movie-sousuo").text().indexOf(b.videoname) == -1 || !$(".movie-sousuo").text()) {
+							$(".not-found-video").hide();
+							$(".sousuo-list ul").append("<li><a class='external movie-sousuo' href='/plus/view.php?aid=" + b.id + "'>" + b.videoname + "</a></li>");
+						}
+						find = 1;
+					}
+				})
+				if(find == 1) {
+					$("#qingkongjilu").show();
+				} else {
+					$(".sousuo-list ul li").remove();
+					$("#qingkongjilu").hide();
+					$(".not-found-video").show();
+				}
+				$("#sousuo-input").keydown(function(e) {
+					if(e.which == 13) {
+						if(find == 1) {
+							$.toast("请点击影片名观看");
+						} else {
+							$.toast("未找到影片");
+						}
+						e.preventDefault();
+					}
+				})
+			});
+		</script>
+	</body>
+
+</html>
