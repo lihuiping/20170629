@@ -36,3 +36,26 @@ label.label-checkbox input[type=checkbox]:checked+.item-media i.icon-form-checkb
         font-weight: normal;
     }
 }
+
+.shopcartAera{
+    padding: 1.5rem 0!important;
+    background: #fff!important;
+    font-size: 0.8rem!important;
+    border-radius: 0.5rem 0.5rem 0 0!important;
+    border-bottom: 1px solid #d2d2d2!important;
+    color: #262626!important;
+}
+.shopcartConfirm{
+    background: #fff;
+    font-size: 0.8rem;
+    color: #ec4619;
+}
+.shopcartCancel{
+    border-right: 1px solid #d2d2d2!important;
+    border-radius: 0 0 0 0.5rem!important;
+    color: #7b7b7b!important;
+}
+.shopcartSure{
+    border-radius: 0 0 0.5rem 0!important;
+    border-right: none!important;
+}
