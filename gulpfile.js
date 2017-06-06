@@ -24,7 +24,8 @@ livereload({
 
 //配置路径
 var baseUrl = './src/';
-var destUrl = './';
+//var destUrl = './wgt/';
+var destUrl = './html/';
 var tinypngApi = 'm66cergQwJ-L96d3X1QhVs-mQs8WzrPm';
 var config = {
 	file: {
@@ -268,7 +269,7 @@ gulp.task('miniJs', function() {
 
 //复制JS
 gulp.task('copypubJs', function() {
-	gulp.src(config.file.js)
+	gulp.src([config.file.js])
 		.pipe($.changed(config.dest.js))
 		.pipe(gulp.dest(config.dest.js))
 		.pipe($.notify({
@@ -355,7 +356,7 @@ gulp.task('compileHtml', function() {
 
 //替换有版本号的文件
 gulp.task('rev', ['relsass', 'fileinclude'], function() {
-	gulp.src([destUrl + 'rev/**/*.json', config.dest.htmlfile, config.dest.css]) //- 读取 rev-manifest.json 文件以及需要进行替换的文件
+	gulp.src([destUrl+'rev/**/*.json', config.dest.htmlfile, config.dest.css]) //- 读取 rev-manifest.json 文件以及需要进行替换的文件
 		.pipe(revCollector()) //- 执行文件内替换
 		.pipe(gulp.dest(destUrl)); //- 替换后的文件输出的目录
 });
@@ -389,7 +390,7 @@ gulp.task('watch', function() {
 });
 
 // 本地调试
-gulp.task('default', gulpSequence(['clean'], 'sass', ['copypubJs', 'copyData', 'copyImg', 'copyFont'], 'minicss', 'compileHtml', 'watch'));
+gulp.task('default', gulpSequence(['clean'], 'sass', ['copypubJs', 'copyJs', 'copyData', 'copyImg', 'copyFont'], 'minicss', 'compileHtml', 'watch'));
 
 //发布上线
 gulp.task('rel', gulpSequence(['clean'], 'relsass', ['miniJs', 'copyData', 'relcopyImg', 'copyFont'], 'minicss', 'fileinclude', ['rev'], 'watch'));
