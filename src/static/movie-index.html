@@ -50,9 +50,9 @@
 					  <div  v-for="(item, index) in goodslist"  v-if="index < 2" v-cloak>
 						<div class="content-top">
 							<span><i class="iconfont icon-huangguan"></i>至尊独享 </span>
-							<a class="external" href="zhizunduxiang.html"><span> 查看更多<i class="iconfont icon-yingdaicon10"></i></span></a>
+							<a class="external" :href="'zhizunduxiang.html?id='+item.id"><span> 查看更多<i class="iconfont icon-yingdaicon10"></i></span></a>
 						</div>
-						<a href="/plus/view.php?aid=169" class="external">
+						<a :href="'zhizunduxiang.html?id='+item.id" class="external">
 							<img  :src="item.cover" alt="">
 						</a>
 						<div class="content-bottom" style="padding-bottom: .2rem;">

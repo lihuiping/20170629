@@ -1,349 +1,295 @@
 <!DOCTYPE html>
 <html>
 
-	<head>
-		@@include('../tpl/header.tpl',{ "title":"中益七彩" })
-		<style>
-			li {
-				list-style: none;
-			}
-			
-			body {
-				background: #fff;
-				overflow: auto;
-			}
-			
-			.jwplayer .jw-icon-barlogo:before {
-				content: none;
-			}
-			
-			.jw-icon-barlogo {
-				background: url('') no-repeat;
-				background-position: center;
-			}
-			
-			#video {
-				width: 100%;
-				height: 100%;
-			}
-			
-			.tj-fenxiang li {
-				width: 3rem;
-				height: 4rem;
-			}
-			
-			.tj-fenxiang li img {
-				display: block;
-				width: 2.7rem;
-				height: 2.7rem;
-				margin: 0 auto;
-			}
-			
-			.tj-fenxiang li span {
-				display: block;
-				font-size: .7rem;
-				text-align: center;
-			}
-			
-			.tj-fenxiang li a {
-				color: black;
-			}
-			
-			a:active {
-				color: black;
-			}
-			
-			#link-address {
-				width: 100%;
-				height: 5rem;
-				position: absolute;
-				bottom: 0;
-				background: #f5f5f5;
-				opacity: 1;
-				display: none;
-				padding-top: .5rem;
-			}
-			
-			#link-address div,
-			#link-address p {
-				display: block;
-				width: 100%;
-				word-wrap: break-word;
-				font-size: .7rem;
-				padding: 0 .5rem;
-			}
-			
-			#link-address p {
-				text-align: center;
-			}
-			
-			.tj-fenxiang li span:nth-child(1) {
-				margin-top: 0;
-			}
-			
-			.vp-fenxiang .tj-fenxiang li span:nth-child(2) {
-				width: auto;
-				margin-left: -0.1rem;
-			}
-			
-			.vpl_VideoDetail_num_left {
-				font-size: .8rem;
-			}
-			
-			.vpl_VideoDetail_des_inf span {
-				font-size: .8rem;
-			}
-			
-			.vpl_remonForyou h1 {
-				font-size: .85rem;
-			}
-			
-			.vpl_remonForyou_list_right {
-				width: 53%;
-			}
-			
-			.vpl_remonForyou i {
-				font-size: 1rem;
-			}
-			
-			.icon-up,
-			.icon-down {
-				color: gray;
-			}
-			
-			.fenge-10 {
-				margin-bottom: 0;
-				height: 33%;
-			}
-			
-			.vpl_remonForyou {
-				margin-top: 1.5rem;
-			}
-			
-			#tip {
-				opacity: .5;
-				background: black;
-			}
-			
-			#tip img {
-				width: 50%;
-				float: right;
-			}
-			
-			.zindex {
-				z-index: 9999;
-			}
-			
-			#video {
-				z-index: 999;
-			}
-		</style>
-	</head>
+<head>
+    @@include('../tpl/header.tpl',{ "title":"中益七彩" })
+    <style>
+    li {
+        list-style: none;
+    }
+    
+    body {
+        background: #fff;
+        overflow: auto;
+    }
+    
+    .jwplayer .jw-icon-barlogo:before {
+        content: none;
+    }
+    
+    .jw-icon-barlogo {
+        background: url('') no-repeat;
+        background-position: center;
+    }
+    
+    #video {
+        width: 100%;
+        height: 100%;
+    }
+    
+    .tj-fenxiang li {
+        width: 3rem;
+        height: 4rem;
+    }
+    
+    .tj-fenxiang li img {
+        display: block;
+        width: 2.7rem;
+        height: 2.7rem;
+        margin: 0 auto;
+    }
+    
+    .tj-fenxiang li span {
+        display: block;
+        font-size: .7rem;
+        text-align: center;
+    }
+    
+    .tj-fenxiang li a {
+        color: black;
+    }
+    
+    a:active {
+        color: black;
+    }
+    
+    #link-address {
+        width: 100%;
+        height: 5rem;
+        position: absolute;
+        bottom: 0;
+        background: #f5f5f5;
+        opacity: 1;
+        display: none;
+        padding-top: .5rem;
+    }
+    
+    #link-address div,
+    #link-address p {
+        display: block;
+        width: 100%;
+        word-wrap: break-word;
+        font-size: .7rem;
+        padding: 0 .5rem;
+    }
+    
+    #link-address p {
+        text-align: center;
+    }
+    
+    .tj-fenxiang li span:nth-child(1) {
+        margin-top: 0;
+    }
+    
+    .vp-fenxiang .tj-fenxiang li span:nth-child(2) {
+        width: auto;
+        margin-left: -0.1rem;
+    }
+    
+    .vpl_VideoDetail_num_left {
+        font-size: .8rem;
+    }
+    
+    .vpl_VideoDetail_des_inf span {
+        font-size: .8rem;
+    }
+    
+    .vpl_remonForyou h1 {
+        font-size: .85rem;
+    }
+    
+    .vpl_remonForyou_list_right {
+        width: 53%;
+    }
+    
+    .vpl_remonForyou i {
+        font-size: 1rem;
+    }
+    
+    .icon-up,
+    .icon-down {
+        color: gray;
+    }
+    
+    .fenge-10 {
+        margin-bottom: 0;
+        height: 33%;
+    }
+    
+    .vpl_remonForyou {
+        margin-top: 1.5rem;
+    }
+    
+    #tip {
+        opacity: .5;
+        background: black;
+    }
+    
+    #tip img {
+        width: 50%;
+        float: right;
+    }
+    
+    .zindex {
+        z-index: 9999;
+    }
+    
+    #video {
+        z-index: 999;
+    }
+    
+    .videobox,.bg_video{
+        width: 100%;
+        position: fixed;
+        height: 30%;
+        top: 0;
+        z-index: 999;
+    }
+    .bg_video{
+        display: none;
+    }
+    .vip_tips{
+       position: absolute;
+       top: 50%;
+       z-index: 9999;
+       margin-top: -1.5rem;
+       height: 3rem;
+       line-height: 3rem;
+       width: 100%;
+       text-align: center;
+    }
+    </style>
+</head>
 
-	<body>
-		<div class="page-group">
-			<div class="page page-current movie-content" id="VideoPlay">
-				<div class="content">
-					<div class="fenge-10"></div>
-					<section class="vpl_VideoDetail">
-						<div class="vpl_VideoDetail_des">
-							<div class="vpl_VideoDetail_des_title">
-								<h2 class="fontsize-1">从你的全世界路过</h2>
-								<span class="iconfont icon-down vpl_introduction maigintop-05" index="1" style="font-size:1rem;"></span><span class="color-gray">简介</span>
-							</div>
-							<div class="vpl_VideoDetail_des_inf">
-								<span>3000万</span><span>次播放</span> <span>7.8分</span> <span style="margin-left:0.4rem;">播放源：</span> <span id="bofangyuan"> <img src="assets/images/mangguo.png" style="transform: scale(1.3);"/> <span>芒果TV</span> </span>
-							</div>
-							<div class="vpl_VideoDetail_member">
-								<ul>
-									<li> <span>导演 : </span> <span>张一白 </span> </li>
-									<li> <span>上映 : </span> <span>2016-8-5 </span> </li>
-									<li> <span>主演 : </span> <span> 邓超 / 白百何</span> </li>
-									<li> <span>标签 : </span> <span>喜剧</span> </li>
-									<li> 简介 : <span> 陈末（邓超 饰）被称为全城最贱，每天和王牌DJ小容（杜鹃 饰）针锋相对，谁也不知道他们的仇恨从何而来。陈末的两个兄弟，分别是全城最傻的 猪头（岳云鹏 饰），全城最纯的茅十八（杨洋 饰），三人每天横冲直撞，以为可以自在生活，结果都面临人生最大的转折点。 </span> </li>
-								</ul>
-							</div>
-						</div>
-					</section>
-					<div class="vpl_middleline"></div>
-					<div class="vpl_remonForyou">
-						<h1>为你推荐</h1>
-					</div>
-					<section class="vpl_remonForyou_list">
-						<ul>
-							<a href="/plus/view.php?aid=57" class="external color-default mytouch">
-								<li>
-									<div class="vpl_remonForyou_list_left"> <img src="assets/images/file0002.jpg" class="tuijian-pic" style="width: 100%;height: 100%;" /> </div>
-									<div class="vpl_remonForyou_list_right">
-										<div class="vpl_remonForyou_list_right_des">
-											<p style="font-size:0.8rem;margin:0;padding:0;">童谣</p>
-											<p style="font-size:0.75rem;color:#909090;margin-top:0.17rem;">主演:张秭禾/刘希婧</p>
-										</div>
-										<div class="vpl_remonForyou_list_right_go iconfont icon-yingdaicon10"></div>
-									</div>
-								</li>
-							</a>
-							<a href="/plus/view.php?aid=51" class="external color-default mytouch">
-								<li>
-									<div class="vpl_remonForyou_list_left"> <img src="assets/images/file0002.jpg" class="tuijian-pic" style="width: 100%;height: 100%;" /> </div>
-									<div class="vpl_remonForyou_list_right">
-										<div class="vpl_remonForyou_list_right_des">
-											<p style="font-size:0.8rem;margin:0;padding:0;">惊天破</p>
-											<p style="font-size:0.75rem;color:#909090;margin-top:0.17rem;">主演:谢霆锋</p>
-										</div>
-										<div class="vpl_remonForyou_list_right_go iconfont icon-yingdaicon10"></div>
-									</div>
-								</li>
-							</a>
-							<a href="/plus/view.php?aid=58" class="external color-default mytouch">
-								<li>
-									<div class="vpl_remonForyou_list_left"> <img src="assets/images/file0002.jpg" class="tuijian-pic" style="width: 100%;height: 100%;" /> </div>
-									<div class="vpl_remonForyou_list_right">
-										<div class="vpl_remonForyou_list_right_des">
-											<p style="font-size:0.8rem;margin:0;padding:0;">复仇者联盟</p>
-											<p style="font-size:0.75rem;color:#909090;margin-top:0.17rem;">主演:小罗伯特·唐尼</p>
-										</div>
-										<div class="vpl_remonForyou_list_right_go iconfont icon-yingdaicon10"></div>
-									</div>
-								</li>
-							</a>
-							<a href="/plus/view.php?aid=89" class="external color-default mytouch">
-								<li>
-									<div class="vpl_remonForyou_list_left"> <img src="assets/images/file0002.jpg" class="tuijian-pic" style="width: 100%;height: 100%;" /> </div>
-									<div class="vpl_remonForyou_list_right">
-										<div class="vpl_remonForyou_list_right_des">
-											<p style="font-size:0.8rem;margin:0;padding:0;">在世界中心呼唤爱</p>
-											<p style="font-size:0.75rem;color:#909090;margin-top:0.17rem;">主演:欧豪</p>
-										</div>
-										<div class="vpl_remonForyou_list_right_go iconfont icon-yingdaicon10"></div>
-									</div>
-								</li>
-							</a>
-							<a href="/plus/view.php?aid=90" class="external color-default mytouch">
-								<li>
-									<div class="vpl_remonForyou_list_left"> <img src="assets/images/file0002.jpg" class="tuijian-pic" style="width: 100%;height: 100%;" /> </div>
-									<div class="vpl_remonForyou_list_right">
-										<div class="vpl_remonForyou_list_right_des">
-											<p style="font-size:0.8rem;margin:0;padding:0;">奇幻森林</p>
-											<p style="font-size:0.75rem;color:#909090;margin-top:0.17rem;">主演:斯嘉丽·约翰逊</p>
-										</div>
-										<div class="vpl_remonForyou_list_right_go iconfont icon-yingdaicon10"></div>
-									</div>
-								</li>
-							</a>
-							<a href="/plus/view.php?aid=96" class="external color-default mytouch">
-								<li>
-									<div class="vpl_remonForyou_list_left"> <img src="assets/images/file0002.jpg" class="tuijian-pic" style="width: 100%;height: 100%;" /> </div>
-									<div class="vpl_remonForyou_list_right">
-										<div class="vpl_remonForyou_list_right_des">
-											<p style="font-size:0.8rem;margin:0;padding:0;">猎神:冬日之战</p>
-											<p style="font-size:0.75rem;color:#909090;margin-top:0.17rem;">克里斯·海姆斯沃斯</p>
-										</div>
-										<div class="vpl_remonForyou_list_right_go iconfont icon-yingdaicon10"></div>
-									</div>
-								</li>
-							</a>
-						</ul>
-						<div class="vpl_slidemore">
-							<p class="vpl_slidemore_go mytouch">查看更多></p>
-						</div>
-					</section>
-					<section class="vpl_box vpl_box_remonforyou" style="display:none;">
-						<div class="vpl_remonForyou vpl_remonForyou2">
-							<h1>为你推荐</h1>
-							<i class="iconfont icon-guanbi1 vpl_remonForyou_close"></i> </div>
-						<div class="vpl_remonForyou_list vpl_remonForyou_list2">
-							<ul>
-								<a href="/plus/view.php?aid=59" class="external color-default mytouch">
-									<li>
-										<div class="vpl_remonForyou_list_left"> <img src="assets/images/file0002.jpg" class="tuijian-pic" style="width: 100%;height: 100%;" /> </div>
-										<div class="vpl_remonForyou_list_right">
-											<div class="vpl_remonForyou_list_right_des">
-												<p style="font-size:0.8rem;margin:0;padding:0;">灵异少女</p>
-												<p style="font-size:0.7rem;color:#909090;margin-top:0.17rem;">主演:胡洁琼/张丁懿</p>
-											</div>
-											<div class="vpl_remonForyou_list_right_go iconfont icon-yingdaicon10"></div>
-										</div>
-									</li>
-								</a>
-								<a href="/plus/view.php?aid=57" class="external color-default mytouch">
-									<li>
-										<div class="vpl_remonForyou_list_left"> <img src="assets/images/file0002.jpg" class="tuijian-pic" style="width: 100%;height: 100%;" /> </div>
-										<div class="vpl_remonForyou_list_right">
-											<div class="vpl_remonForyou_list_right_des">
-												<p style="font-size:0.8rem;margin:0;padding:0;">童谣</p>
-												<p style="font-size:0.7rem;color:#909090;margin-top:0.17rem;">主演:张秭禾/刘希婧</p>
-											</div>
-											<div class="vpl_remonForyou_list_right_go iconfont icon-yingdaicon10"></div>
-										</div>
-									</li>
-								</a>
-								<a href="/plus/view.php?aid=47" class="external color-default mytouch">
-									<li>
-										<div class="vpl_remonForyou_list_left"> <img src="assets/images/file0002.jpg" class="tuijian-pic" style="width: 100%;height: 100%;" /> </div>
-										<div class="vpl_remonForyou_list_right">
-											<div class="vpl_remonForyou_list_right_des">
-												<p style="font-size:0.8rem;margin:0;padding:0;">天黑别闭眼</p>
-												<p style="font-size:0.7rem;color:#909090;margin-top:0.17rem;">主演:李佳璇/徐东</p>
-											</div>
-											<div class="vpl_remonForyou_list_right_go iconfont icon-yingdaicon10"></div>
-										</div>
-									</li>
-								</a>
-								<a href="/plus/view.php?aid=44" class="external color-default mytouch">
-									<li>
-										<div class="vpl_remonForyou_list_left"> <img src="assets/images/file0002.jpg" class="tuijian-pic" style="width: 100%;height: 100%;" /> </div>
-										<div class="vpl_remonForyou_list_right">
-											<div class="vpl_remonForyou_list_right_des">
-												<p style="font-size:0.8rem;margin:0;padding:0;"> 幽冥船</p>
-												<p style="font-size:0.7rem;color:#909090;margin-top:0.17rem;">主演:邹笨笨</p>
-											</div>
-											<div class="vpl_remonForyou_list_right_go iconfont icon-yingdaicon10"></div>
-										</div>
-									</li>
-								</a>
-							</ul>
-						</div>
-					</section>
-					<div style="width: 100%;height: 1rem;"></div>
-				</div>
-				<div class="video-box">
-					<div id="video" class="myvideo"> </div>
-				</div>
-				<div class="vpl_VideoDetail_num padding-lr">
-					<div class="vpl_VideoDetail_num_left" style="color:#d9d9d9"> <span class="iconfont icon-xiaoxizhongxin" style="font-size: 1rem;"></span> <span> 热评<span>77</span>次</span>
-					</div>
-					<div class="vpl_VideoDetail_num_right"> <span class="iconfont icon-weishoucang vpl_Collection" index="1"></span> <span class="iconfont icon-fenxiang vpl_share" id="button-fenxiang"></span> </div>
-					<div class="vpl_share_pingtai"> </div>
-				</div>
-			</div>
-		</div>
-	    <script src="assets/js/hprose.js"></script>
-	     <script src="assets/js/cyberplayer.js"></script>
-		<script type="text/javascript">
-//			var player = cyberplayer("video").setup({ width: '100%', height: "10rem", backcolor: "#000", file: "assets/images/aa.mp4", autostart: true, repeat: false, volume: 100, controls: 2, ak: "29ae328c22344cd789af28826dff55c0", });
-    var player = cyberplayer("video").setup({
-        width:'100%',
-        height:"100%",
-        backcolor:"#000",
-        stretching : "uniform",
-
-        file : "http://vjs.zencdn.net/v/oceans.mp4",
-        ak : "a6b710207cf845ffb40df4bc0544639f",
-        autoStart : true,
-        repeat : false,
-        volume : 100,
-        controls : "over"
-        });
-        
-         $("#a").on("click",function(){
-    setTimeout(function(){
-    alert(1);
-
-},3000);//这里设置的是3秒后触发事件
-
-})
-		</script>
-	</body>
+<body>
+    <div class="page-group">
+        <div class="page page-current movie-content" id="VideoPlay">
+            <div class="content">
+                <div class="fenge-10"></div>
+                <section class="vpl_VideoDetail">
+                    <div class="vpl_VideoDetail_des" id="content_movie" v-cloak>
+                        <div class="vpl_VideoDetail_des_title">
+                            <h2 class="fontsize-1">{{movieContent.name}}</h2>
+                         <span class="iconfont icon-down vpl_introduction maigintop-05" index="1" style="font-size:1rem;"></span><span class="color-gray">简介</span>
+                        </div>
+                        <div class="vpl_VideoDetail_des_inf">
+                            <span>{{movieContent.count}}</span><span>次播放</span> <span>7.8分</span> <span style="margin-left:0.4rem;">播放源：</span> <span id="bofangyuan"> <img src="assets/images/mangguo.png" style="transform: scale(1.3);"/> 
+                            <span>{{movieContent.play_source}}</span> </span>
+                        </div>
+                        <div class="vpl_VideoDetail_member">
+                            <ul>
+                                <li> <span>导演 : </span> <span>{{movieContent.director}} </span> </li>
+                                <li> <span>上映 : </span> <span>{{movieContent.release_time}} </span> </li>
+                                <li> <span>主演 : </span> <span>{{movieContent.role}}</span> </li>
+                                <li> <span>标签 : </span> <span>{{movieContent.type}}</span> </li>
+                                <li> 简介 : <span> {{movieContent.content}} </span> </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                <div class="vpl_middleline"></div>
+                <div class="vpl_remonForyou">
+                    <h1>为你推荐</h1>
+                </div>
+                <section class="vpl_remonForyou_list" id="tuijian_movie">
+                    <ul>
+                        <a href="/plus/view.php?aid=57" class="external color-default mytouch" v-for="item in movielist.data" v-cloak>
+                            <li id="item.id">
+                                <div class="vpl_remonForyou_list_left"> <img :src="item.cover" class="tuijian-pic" style="width: 100%;height: 100%;" /> </div>
+                                <div class="vpl_remonForyou_list_right">
+                                    <div class="vpl_remonForyou_list_right_des">
+                                        <p style="font-size:0.8rem;margin:0;padding:0;">{{item.name}}</p>
+                                        <p style="font-size:0.75rem;color:#909090;margin-top:0.17rem;">{{item.title}}</p>
+                                    </div>
+                                    <div class="vpl_remonForyou_list_right_go iconfont icon-yingdaicon10"></div>
+                                </div>
+                            </li>
+                        </a>
+                    </ul>
+                    <div class="vpl_slidemore">
+                        <p class="vpl_slidemore_go mytouch">查看更多></p>
+                    </div>
+                </section>
+                <section class="vpl_box vpl_box_remonforyou" style="display:none;">
+                    <div class="vpl_remonForyou vpl_remonForyou2">
+                        <h1>为你推荐</h1>
+                        <i class="iconfont icon-guanbi1 vpl_remonForyou_close"></i> </div>
+                    <div class="vpl_remonForyou_list vpl_remonForyou_list2">
+                        <ul>
+                            <a href="/plus/view.php?aid=59" class="external color-default mytouch">
+                                <li>
+                                    <div class="vpl_remonForyou_list_left"> <img src="assets/images/file0002.jpg" class="tuijian-pic" style="width: 100%;height: 100%;" /> </div>
+                                    <div class="vpl_remonForyou_list_right">
+                                        <div class="vpl_remonForyou_list_right_des">
+                                            <p style="font-size:0.8rem;margin:0;padding:0;">灵异少女</p>
+                                            <p style="font-size:0.7rem;color:#909090;margin-top:0.17rem;">主演:胡洁琼/张丁懿</p>
+                                        </div>
+                                        <div class="vpl_remonForyou_list_right_go iconfont icon-yingdaicon10"></div>
+                                    </div>
+                                </li>
+                            </a>
+                            <a href="/plus/view.php?aid=57" class="external color-default mytouch">
+                                <li>
+                                    <div class="vpl_remonForyou_list_left"> <img src="assets/images/file0002.jpg" class="tuijian-pic" style="width: 100%;height: 100%;" /> </div>
+                                    <div class="vpl_remonForyou_list_right">
+                                        <div class="vpl_remonForyou_list_right_des">
+                                            <p style="font-size:0.8rem;margin:0;padding:0;">童谣</p>
+                                            <p style="font-size:0.7rem;color:#909090;margin-top:0.17rem;">主演:张秭禾/刘希婧</p>
+                                        </div>
+                                        <div class="vpl_remonForyou_list_right_go iconfont icon-yingdaicon10"></div>
+                                    </div>
+                                </li>
+                            </a>
+                            <a href="/plus/view.php?aid=47" class="external color-default mytouch">
+                                <li>
+                                    <div class="vpl_remonForyou_list_left"> <img src="assets/images/file0002.jpg" class="tuijian-pic" style="width: 100%;height: 100%;" /> </div>
+                                    <div class="vpl_remonForyou_list_right">
+                                        <div class="vpl_remonForyou_list_right_des">
+                                            <p style="font-size:0.8rem;margin:0;padding:0;">天黑别闭眼</p>
+                                            <p style="font-size:0.7rem;color:#909090;margin-top:0.17rem;">主演:李佳璇/徐东</p>
+                                        </div>
+                                        <div class="vpl_remonForyou_list_right_go iconfont icon-yingdaicon10"></div>
+                                    </div>
+                                </li>
+                            </a>
+                            <a href="/plus/view.php?aid=44" class="external color-default mytouch">
+                                <li>
+                                    <div class="vpl_remonForyou_list_left"> <img src="assets/images/file0002.jpg" class="tuijian-pic" style="width: 100%;height: 100%;" /> </div>
+                                    <div class="vpl_remonForyou_list_right">
+                                        <div class="vpl_remonForyou_list_right_des">
+                                            <p style="font-size:0.8rem;margin:0;padding:0;"> 幽冥船</p>
+                                            <p style="font-size:0.7rem;color:#909090;margin-top:0.17rem;">主演:邹笨笨</p>
+                                        </div>
+                                        <div class="vpl_remonForyou_list_right_go iconfont icon-yingdaicon10"></div>
+                                    </div>
+                                </li>
+                            </a>
+                        </ul>
+                    </div>
+                </section>
+                <div style="width: 100%;height: 1rem;"></div>
+            </div>
+            <div class="videobox">
+               <div id="video" style="width:100%;height:auto;"></div>
+            </div>
+            <div class="bg_video">
+               <div class="vip_tips">试看结束</div>
+            </div>
+            <div class="vpl_VideoDetail_num padding-lr">
+                <div class="vpl_VideoDetail_num_left" style="color:#d9d9d9"> <span class="iconfont icon-xiaoxizhongxin" style="font-size: 1rem;"></span> <span> 热评<span>77</span>次</span>
+                </div>
+                <div class="vpl_VideoDetail_num_right"> <span class="iconfont icon-weishoucang vpl_Collection" index="1"></span> <span class="iconfont icon-fenxiang vpl_share" id="button-fenxiang"></span> </div>
+                <div class="vpl_share_pingtai"> </div>
+            </div>
+        </div>
+    </div>
+    <!-- <script src="assets/js/hprose.js"></script> -->
+    <script src="http://cyberplayer.bcelive.com/demo/player/cyberplayer.js"></script>
+    <script src="assets/js/movie_content.js"></script>
+    <script type="text/javascript">
+    //			var player = cyberplayer("video").setup({ width: '100%', height: "10rem", backcolor: "#000", file: "assets/images/aa.mp4", autostart: true, repeat: false, volume: 100, controls: 2, ak: "29ae328c22344cd789af28826dff55c0", });
+  
+    </script>
+</body>
 
 </html>
