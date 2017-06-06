@@ -355,6 +355,12 @@ var vm = new Vue({
 
 				});
 			});
+			
+			$('.modal-inner').addClass("shopcartAera");
+//			$('.modal-text').addClass("searchTop");
+			$('.modal-button').addClass("shopcartConfirm");
+			$('.modal-button:first-child').addClass("shopcartCancel");
+			$('.modal-button-bold').addClass("shopcartSure");
 
 		},
 		showEdit: function(product) {
