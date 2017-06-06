@@ -61,6 +61,11 @@
         color: #fff;
     }
 }
+
+.dy-sousuo {
+	color: #fff!important;
+	@extend .search-fm;
+}
 /*没有找到商品 */
 .search-none {
     width: 100%;
