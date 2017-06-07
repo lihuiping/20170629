@@ -88,3 +88,85 @@
     padding-left: .5rem;
     padding-right: .4rem;
 }
+
+.movie-buzz{
+    width: 100%;
+    line-height: 1rem;
+    padding: 1rem 0.5rem 1.25rem 0.5rem;
+    span{
+        font-size: 0.75rem;
+        color: #212121;
+    }
+    span.buzz-review{
+        font-size: 0.6rem;
+        color: #909090;
+        float: right;
+    }
+}
+.movie-user-review{
+    margin: 0 0 1rem 0;
+    padding-left: 0.5rem;
+    overflow: hidden;
+    width: 100%;
+    img{
+        width: 1.75rem;
+        height: 1.75rem;
+        border-radius: 50%;
+        margin-right: 0.95rem;
+        float: left;
+    }
+    .movie-user-input{
+        width: 79%;
+        text-align: center;
+        padding: 0.5rem 0;
+        border-radius: 0.25rem;
+        border: solid 0.05rem #D9D9D9;
+        font-size: 0.6rem;
+        color: #909090;
+    }
+}
+.movie-other-review{
+    box-shadow: none;
+    border-radius: 0;
+    overflow: hidden;
+    .item-content{
+        padding-left: 0;
+        .review-log{
+            color: #909090;
+            float: right;
+            width: 22%;
+            .icon{
+                //margin-right: 0.4rem;
+            }
+        }
+    }
+    .item-media{
+        img{
+            width: 1.75rem;
+            height: 1.75rem;
+        }
+    }
+    .item-title{
+        font-size: 0.7rem;
+        color: #212121;
+    }
+    .item-subtitle{
+        font-size: 0.6rem;
+        color: #909090;
+    }
+    .movie-cont{
+        float: right;
+        width: 86%;
+        font-size: 0.75rem;
+    }
+    .movie-other-cont{
+        float: right;
+        width: 86%;
+        background: #F5F5F5;
+        font-size: 0.7rem;
+        padding: 0.5rem;
+        span{
+            color: #909090;
+        }
+    }
+}
