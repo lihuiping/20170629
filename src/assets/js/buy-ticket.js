@@ -219,43 +219,7 @@ if(sessionStorage.getItem('getCityLists') == null) {
 		}
 	};
 };
-//滚动加载
-function gundongloading() {
-	var loading = false;
-	$('.infinite-scroll').on('infinite', function() {
-		// 如果正在加载，则退出
-		if(loading) return;
-		// 设置flag
-		loading = true;
-		setTimeout(function() {
-			loading = false;
-			if(currentpage2 >= totalpage2) {
-				$.detachInfiniteScroll($('.infinite-scroll_2'));
-				$('.gp_box_list1 .infinite-scroll-preloader').remove();
-				return;
-			}
-			if(currentpage >= totalpage) {
-				$.detachInfiniteScroll($('.infinite-scroll_1'));
-				$('.gp_box_list2 .infinite-scroll-preloader').remove();
-			}
-			if($('.gp_box_list2').css("display") === 'block') {
-				currentpage++;
-				if(currentpage > totalpage) {
-					return;
-				}
-				getmovieList2(currentpage);
-			} else if($('.gp_box_list1').css("display") === 'block') {
-				currentpage2++;
-				if(currentpage2 > totalpage2) {
-					return;
-				};
-				getmovieList1(currentpage2);
-			}
-		}, 500);
-	});
-};
 
-gundongloading();
 
 //购票
 setTimeout(function() {
@@ -365,45 +329,90 @@ setTimeout(function() {
 
 //});
 
+//滚动加载
+function gundongloading() {
+	var loading = false;
+	 $(document).on('infinite', '.infinite-scroll',function() {
+		// 如果正在加载，则退出
+		if(loading) return;
+		// 设置flag
+		loading = true;
+		setTimeout(function() {
+			loading = false;
+			if(currentpage2 >= totalpage2) {
+				$.detachInfiniteScroll($('.infinite-scroll_2'));
+				$('.gp_box_list1 .infinite-scroll-preloader').remove();
+				return;
+			}
+			if(currentpage >= totalpage) {
+				$.detachInfiniteScroll($('.infinite-scroll_1'));
+				$('.gp_box_list2 .infinite-scroll-preloader').remove();
+			}
+			if($('.gp_box_list2').css("display") === 'block') {
+				currentpage++;
+				if(currentpage > totalpage) {
+					return;
+				}
+				getmovieList2(currentpage);
+			} else if($('.gp_box_list1').css("display") === 'block') {
+				currentpage2++;
+				if(currentpage2 > totalpage2) {
+					return;
+				};
+				getmovieList1(currentpage2);
+			}
+		}, 500);
+    });
+};
+
+gundongloading();
+
+$(".mytouch").on("touchstart",function(){
+$(this).addClass("myop");
+})
+$(".mytouch").on("touchend",function(){
+$(this).removeClass("myop");
+})
+
 //阻止IOS底部拖动
-//function noscroll() {
-//	var content = document.querySelector('.content') || null;
-//	var startY;
-//
-//	if(content) {
-//		content.addEventListener('touchstart', function(e) {
-//			startY = e.touches[0].clientY;
-//		});
-//
-//		content.addEventListener('touchmove', function(e) {
-//			// 高位表示向上滚动
-//			// 底位表示向下滚动
-//			// 1容许 0禁止
-//			var status = '11';
-//			var ele = this;
-//
-//			var currentY = e.touches[0].clientY;
-//
-//			if(ele.scrollTop === 0) {
-//				// 如果内容小于容器则同时禁止上下滚动
-//				status = ele.offsetHeight >= ele.scrollHeight ? '00' : '01';
-//			} else if(ele.scrollTop + ele.offsetHeight >= ele.scrollHeight) {
-//				// 已经滚到底部了只能向上滚动
-//				status = '10';
-//			}
-//
-//			if(status != '11') {
-//				// 判断当前的滚动方向
-//				var direction = currentY - startY > 0 ? '10' : '01';
-//				// 操作方向和当前允许状态求与运算，运算结果为0，就说明不允许该方向滚动，则禁止默认事件，阻止滚动
-//				if(!(parseInt(status, 2) & parseInt(direction, 2))) {
-//					e.preventDefault();
-//				}
-//			}
-//		});
-//	}
-//}
-//
-//noscroll();
+function noscroll() {
+	var content = document.querySelector('.content') || null;
+	var startY;
+
+	if(content) {
+		content.addEventListener('touchstart', function(e) {
+			startY = e.touches[0].clientY;
+		});
+
+		content.addEventListener('touchmove', function(e) {
+			// 高位表示向上滚动
+			// 底位表示向下滚动
+			// 1容许 0禁止
+			var status = '11';
+			var ele = this;
+
+			var currentY = e.touches[0].clientY;
+
+			if(ele.scrollTop === 0) {
+				// 如果内容小于容器则同时禁止上下滚动
+				status = ele.offsetHeight >= ele.scrollHeight ? '00' : '01';
+			} else if(ele.scrollTop + ele.offsetHeight >= ele.scrollHeight) {
+				// 已经滚到底部了只能向上滚动
+				status = '10';
+			}
+
+			if(status != '11') {
+				// 判断当前的滚动方向
+				var direction = currentY - startY > 0 ? '10' : '01';
+				// 操作方向和当前允许状态求与运算，运算结果为0，就说明不允许该方向滚动，则禁止默认事件，阻止滚动
+				if(!(parseInt(status, 2) & parseInt(direction, 2))) {
+					e.preventDefault();
+				}
+			}
+		});
+	}
+}
+
+noscroll();
 
 $.init();
