@@ -8,10 +8,11 @@
 <title>@@title</title>
 <link rel="stylesheet" href="assets/css/light7.min.css">
 <link rel="stylesheet" href="assets/css/common.css">
-	<script type="text/javascript" src="lib/api.js"></script>
+	
 <script type="text/javascript" src="lib/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="lib/vue.min.js"></script>
 <script type="text/javascript" src="lib/axios.min.js"></script>
+<script type="text/javascript" src="lib/api.js"></script>
 <script type='text/javascript' src='lib/layer-mobile/layer.js' charset='utf-8'></script>
 <script type="text/javascript">
 	$.config = {
