@@ -83,32 +83,11 @@ function sclient() {
 }
 
 var client = sclient();
-
-//是否为微信客户端
-//function Is_weixn() {
-//	var ua = navigator.userAgent.toLowerCase();
-//	return(ua.match(/MicroMessenger/i) == "micromessenger");
-//}
-
 //  获取推荐码
 var uniquemark = Cache.get("uniquemark") || null;
 var link = !uniquemark ? "http://v.7cai.tv" : "http://v.7cai.tv" + "?unique=" + uniquemark;
-
-//获取分享码
-//var getUrlVars = function() {
-//	var vars = [],
-//		hash;
-//	var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-//	for(var i = 0; i < hashes.length; i++) {
-//		hash = hashes[i].split('=');
-//		vars.push(hash[0]);
-//		vars[hash[0]] = hash[1];
-//	}
-//	return vars;
-//}
-
 //购票页面
-//$("#goupiao").on("pageInit", function(e, id, page) {
+//	$(document).on("pageInit", "#goupiao", function(e, id, page) {
 var client1 = hprose.Client.create("http://test.7cai.tv/index.php/api/api/ticket", ['getOrderLists', 'login', 'getCityMoviesLists2', 'getCityWillMoviesLists2', 'getCinemaSchedInfo', 'getTicketCinemaUrl', 'register', 'getTicketCinemaUrl', 'getCityCinemasLists', 'isLogin', 'logout', 'getCityMoviesLists', 'getCinemaInfo', 'getCinemaSchedInfo', 'getCityWillMoviesLists', 'findPwd', 'getMoviesInfo', 'sendCode', 'getUserInfo', 'getMoviesInfo', 'getAddressList', 'getUploadParams', 'getPayOrderInfo', 'getOpenId', 'getCityLists', 'getCityCinemasLists']);
 var Areaid;
 var Areatext;
@@ -178,7 +157,6 @@ function getmovieList1() {
 };
 getmovieList2();
 getmovieList1();
-
 //城市列表函数
 function getCitylists() {
 	client1.getCityLists(function(result) {
@@ -220,10 +198,8 @@ if(sessionStorage.getItem('getCityLists') == null) {
 	};
 };
 
-
 //购票
 setTimeout(function() {
-
 	//热门
 	$(".city_area_hot_list ul li").on("click",
 		function() {
@@ -327,12 +303,12 @@ setTimeout(function() {
 	});
 }, 500);
 
-//});
+//	});
 
 //滚动加载
 function gundongloading() {
 	var loading = false;
-	 $(document).on('infinite', '.infinite-scroll',function() {
+//	$(document).on('infinite', '.infinite-scroll', function() {
 		// 如果正在加载，则退出
 		if(loading) return;
 		// 设置flag
@@ -347,6 +323,7 @@ function gundongloading() {
 			if(currentpage >= totalpage) {
 				$.detachInfiniteScroll($('.infinite-scroll_1'));
 				$('.gp_box_list2 .infinite-scroll-preloader').remove();
+				return;
 			}
 			if($('.gp_box_list2').css("display") === 'block') {
 				currentpage++;
@@ -362,17 +339,9 @@ function gundongloading() {
 				getmovieList1(currentpage2);
 			}
 		}, 500);
-    });
+//	});
 };
-
 gundongloading();
-
-$(".mytouch").on("touchstart",function(){
-$(this).addClass("myop");
-})
-$(".mytouch").on("touchend",function(){
-$(this).removeClass("myop");
-})
 
 //阻止IOS底部拖动
 function noscroll() {
@@ -385,7 +354,6 @@ function noscroll() {
 		});
 
 		content.addEventListener('touchmove', function(e) {
-			// 高位表示向上滚动
 			// 底位表示向下滚动
 			// 1容许 0禁止
 			var status = '11';
@@ -412,7 +380,5 @@ function noscroll() {
 		});
 	}
 }
-
 noscroll();
-
 $.init();
