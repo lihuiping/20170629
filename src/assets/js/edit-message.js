@@ -1,3 +1,13 @@
+var Cookie={Get:function(a){var d,b=document.cookie.split("; "),c=[];for(i=0;i<b.length;i++)d=b[i].split("="),c[d[0]]=unescape(d[1]);return a?c[a]:c},Set:function(a,b,c,d,e,f){var g,h;return a&&b?""==a||""==b?!1:(c&&(/^[0-9]+$/.test(c)?(g=new Date,c=new Date(g.getTime()+1e3*c).toGMTString()):/^wed, \d{2} \w{3} \d{4} \d{2}\:\d{2}\:\d{2} GMT$/.test(c)||(c=void 0)),h=a+"="+escape(b)+";"+(c?" expires="+c+";":"")+(d?"path="+d+";":"")+(e?"domain="+e+";":"")+(f&&0!=f?"secure":""),h.length<4096?(document.cookie=h,!0):!1):!1},Del:function(a,b,c){return a?""==a?!1:this.Get(a)?(document.cookie=a+"=;"+(b?"path="+b+";":"")+(c?"domain="+c+";":"")+"expires=Thu, 01-Jan-1970 00:00:01 GMT;",!0):!1:!1}},Cache=function(){var storage,api={},pre="NetCQ_",win=window,doc=win.document,localStorageName="localStorage",globalStorageName="globalStorage",JsonToStr=function(a){var c,b=[];if("string"==typeof a)return'"'+a.replace(/([\'\"\\])/g,"\\$1").replace(/(\n)/g,"\\n").replace(/(\r)/g,"\\r").replace(/(\t)/g,"\\t")+'"';if("undefined"==typeof a)return"undefined";if("object"==typeof a){if(null===a)return"null";if(a.sort){for(c=0;c<a.length;c++)b.push(JsonToStr(a[c]));b="["+b.join()+"]"}else{for(c in a)b.push('"'+c+'":'+JsonToStr(a[c]));b="{"+b.join()+"}"}return b}return a.toString()};return api.set=function(){},api.get=function(){},api.remove=function(){},api.clear=function(){},localStorageName in win&&win[localStorageName]?(storage=win[localStorageName],api.set=function(a,b){"object"==typeof b?storage.setItem(pre+a,JsonToStr(b)):storage.setItem(pre+a,b)},api.get=function(key){var _v,_cache=storage.getItem(pre+key)||"";try{_v=eval("("+_cache+")")}catch(e){_v=_cache}return _v},api.clear=function(a){a?storage.removeItem(pre+a):storage.clear()}):globalStorageName in win&&win[globalStorageName]?(storage=win[globalStorageName][win.location.hostname],api.set=function(a,b){"object"==typeof b?storage[pre+a]=JsonToStr(b):storage[a]=b},api.get=function(key){var _v,_cache=storage[pre+key].value||"";try{_v=eval("("+_cache+")")}catch(e){_v=_cache}return _v},api.clear=function(a){if(a)delete storage[pre+a];else for(var a in storage)delete storage[a]}):(api.set=function(a,b){Cookie.Set(pre+a,b)},api.get=function(a){return Cookie.Get(pre+a)},api.clear=function(a){var b,c;if(a)Cookie.Del(pre+a);else if(b=document.cookie.match(/[^ =;]+(?=\=)/g))for(c=b.length;c--;)document.cookie=b[c]+"=0;expires="+new Date(0).toUTCString()}),api}();
+var isVIP='';
+//获取token
+function sclient(){
+	var token = Cache.get("flag") || "";
+	var uri = "http://test.7cai.tv/index.php/api/api/user?t="+token;
+	return new hprose.HttpClient(uri);
+}
+
+var client = sclient();
 //发送验证码
 function myCode() {
 	var i = 60; // 倒计时时间
@@ -27,7 +37,9 @@ function myCode() {
 			} else {
 				time($(this));
 			}
-			client.invoke("sendCode", [{ "mobile": mobile }], function(result) {
+			client.invoke("sendCode", [{
+				"mobile": mobile
+			}], function(result) {
 				var result = $.parseJSON(result);
 				if(result.res == 0) {
 					$.toast("验证码发送失败！");
@@ -50,7 +62,11 @@ $(document).on("pageInit", "#backpsword", function(e, id, page) {
 		var code = $("#bk-code").val();
 		var passwd = $("#bk-newps").val();
 		if(/^1(3|5|7|8)\d{9}$/.test(mobile) && code && passwd) {
-			client.invoke("findPwd", [{ "mobile": mobile, "code": code, "passwd": passwd }], function(result) {
+			client.invoke("findPwd", [{
+				"mobile": mobile,
+				"code": code,
+				"passwd": passwd
+			}], function(result) {
 				var result = $.parseJSON(result);
 				if(result.res == 1) {
 					$.toast("密码找回成功");
@@ -123,25 +139,25 @@ $(document).on("pageInit", "#VideoPlay", function() {
 
 // 修改基础资料
 $(document).on("pageInit", "#editmessage", function(e, id, page) {
-	//	client.invoke("getUserInfo", function(result) {
-	//		var result = $.parseJSON(result);
-	//		console.log(result);
-	//		Cache.set("issafe", result.data.isSafe);
-	//		var touxiang = result.data.imgurl ? result.data.imgurl : "/images/tx-120.png";
-	//		$("#mytouxiang-div").append("<img id='my-touxiang' src=" + touxiang + ">");
-	//		$("#mename").html(result.data.username ? result.data.username : result.data.mobile);
-	//		$("#megenger").val(parseInt(result.data.sex) ? "女" : "男");
-	//		$("#isAuth").html(parseInt(result.data.isAuth) ? "已认证" : "未认证");
-	//		$("#brdate").val(result.data.birth != '' ? result.data.birth : "");
-	//		$("#anquanmima").html(result.data.isSafe == 1 ? "去修改" : "去设置");
-	//		var phone = result.data.mobile.substr(0, 3) + "****" + result.data.mobile.substr(7);
-	//		$("#mobilephone").html(phone);
-	//		$('#brdate').date();
-	//		$('#brdate').on("click", function(e) {
-	//			e.preventDefault();
-	//		})
-	//
-	//	});
+		client.invoke("getUserInfo", function(result) {
+			var result = $.parseJSON(result);
+			console.log(result);
+			Cache.set("issafe", result.data.isSafe);
+			var touxiang = result.data.imgurl ? result.data.imgurl : "assets/images/tx-120.png";
+			$("#mytouxiang-div").append("<img style='width: 3rem; height:3rem;border-radius:50%;' id='my-touxiang' src=" + touxiang + ">");
+			$("#mename").html(result.data.username ? result.data.username : result.data.mobile);
+			$("#megenger").val(parseInt(result.data.sex) ? "女" : "男");
+			$("#isAuth").html(parseInt(result.data.isAuth) ? "已认证" : "未认证");
+			$("#brdate").val(result.data.birth != '' ? result.data.birth : "");
+			$("#anquanmima").html(result.data.isSafe == 1 ? "去修改" : "去设置");
+			var phone = result.data.mobile.substr(0, 3) + "****" + result.data.mobile.substr(7);
+			$("#mobilephone").html(phone);
+			$('#brdate').date();
+			$('#brdate').on("click", function(e) {
+				e.preventDefault();
+			})
+	
+		});
 	$("#megenger").val("女");
 	//选择性别
 	$("#megenger").on("click", function(e) {
@@ -191,7 +207,7 @@ $(document).on("pageInit", "#editmessage", function(e, id, page) {
 
 	//头像
 	$("#changetx").on("click", function() {
-		var sendImg;
+		//		var sendImg;
 		//			client.invoke("getWxSdkSignInfo", [{ "url": window.location.href }], function(result) {
 		//				var result = $.parseJSON(result);
 		//				if(result.res == 1) {
@@ -209,50 +225,71 @@ $(document).on("pageInit", "#editmessage", function(e, id, page) {
 		//			});
 		//			
 		sendImg = function(type) {
-			var FNPhotograph = api.require('FNPhotograph');
-			FNPhotograph.openCameraView({
-				rect: {
-					x: 0,
-					y: 0,
-					w: 320,
-					h: 300
-				},
-				orientation: 'portrait',
-				fixedOn: api.frameName,
-				fixed: true
-			}, function(ret) {
-				alert(JSON.stringify(ret));
-			});
-			//				wx.chooseImage({
-			//					count: 1, // 默认9
-			//					sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-			//					sourceType: [type], // 可以指定来源是相册还是相机，默认二者都有
-			//					success: function(res) {
-			//						var localIds = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
-			//						wx.uploadImage({
-			//							localId: localIds[0],
-			//							isShowProgressTips: 1,
-			//							success: function(res) {
-			//								var serverId = res.serverId;
-			//								client.invoke("modifyHeadImg", [{ "media_id": serverId }], function(res) {
-			//									var res = $.parseJSON(res);
-			//									if(res.res == 1) {
-			//										$.toast("修改成功");
-			//									} else {
-			//										$.toast(res.msg);
-			//									}
-			//								})
-			//
-			//							}
-			//						})
-			//						$("#my-touxiang").attr("src", localIds);
-			//
-			//					},
-			//					fail: function(res) {
-			//						$.toast("图片获取失败");
-			//					}
-			//				});
-			//			
+			if(type == 1) { // 拍照
+				//获取一张图片
+				api.getPicture({
+					sourceType: 'camera',
+					encodingType: 'jpg',
+					mediaValue: 'pic',
+					allowEdit: false,
+					quality: 90,
+					saveToPhotoAlbum: true,
+					destinationType: 'url' //base64   字符流
+				}, function(ret, err) {
+					// 获取拍照数据并处理
+					var imgSrc = ret.data;
+					if(imgSrc != "") {
+						var ele = $api.dom('#my-touxiang');
+						$api.attr(ele, 'src', imgSrc);
+					}
+					// if (ret) {
+					//     var mid = $api.getStorage('mid');
+					//     api.ajax({
+					//         url: api_UploadHeadImage_url,
+					//         method: 'post',
+					//         data: {
+					//             values: {
+					//                 mid: mid,
+					//                 ClientSource: 'APP'
+					//             }, //上传数据
+					//             files: {
+					//                 file: ret.files
+					//             } //文件路径
+					//         }
+					//     }, function(ret, err) {
+					//         api.toast({
+					//             msg: JSON.stringify(err),
+					//             duration: 2000,
+					//             location: 'middle'
+					//         });
+					//     });
+					// }
+				});
+			} else {
+				api.getPicture({
+					sourceType: 'album',
+					encodingType: 'jpg',
+					mediaValue: 'pic',
+					destinationType: 'url',
+					allowEdit: true,
+					quality: 50,
+					targetWidth: 100,
+					targetHeight: 100,
+					saveToPhotoAlbum: false
+				}, function(ret, err) {
+					if(ret) {
+						var imgSrc = ret.data;
+						if(imgSrc != "") {
+							var ele = $api.dom('#my-touxiang');
+							var ss = $api.append(ele, '<img style="width: 3rem; height:3rem;border-radius:50%;"></img>');
+							$api.attr(ss, 'src', imgSrc);
+						}
+					} else {
+						alert(JSON.stringify(err));
+					}
+				});
+			}
+
 		};
 		var buttons1 = [{
 				text: "修改头像",
@@ -264,7 +301,7 @@ $(document).on("pageInit", "#editmessage", function(e, id, page) {
 				bold: true,
 				color: 'danger',
 				onClick: function() {
-					sendImg('camera');
+					sendImg(1);
 				}
 			},
 			{
@@ -272,7 +309,7 @@ $(document).on("pageInit", "#editmessage", function(e, id, page) {
 				//bold:true,
 				color: 'warning',
 				onClick: function() {
-					sendImg('album');
+					sendImg(0);
 				}
 			}
 		];
@@ -282,94 +319,30 @@ $(document).on("pageInit", "#editmessage", function(e, id, page) {
 		var groups = [buttons1, buttons2];
 		$.actions(groups);
 	});
-	//	if(isWenxin) {
-	//		
-	//
-	//	} else {
-	//		var timestamp = (new Date()).valueOf();
-	//		var savekey = "/tx/" + timestamp;
-	//		//var savekey = "/tx/"+Cache.get("whole_mobile");
-	//		var options = {
-	//			"bucket": "qicai",
-	//			"expiration": Math.floor(new Date().getTime() / 1000) + 86400,
-	//			'save-key': savekey,
-	//		};
-	//		var policy = window.btoa(JSON.stringify(options));
-	//		var signature = md5(policy + '&Tv+UtjmQj0nWt0mUv4Q2psJI8hY=');
-	//		options.policy = policy;
-	//		options.signature = signature;
-	//		$('#file_upload').uploadifive({
-	//			'auto': true,
-	//			'buttonClass': 'myUpload',
-	//			'buttonText': '',
-	//			'height': '', //按钮的大小
-	//			'width': '',
-	//			'formData': options,
-	//			'fileObjName': 'file',
-	//			//				'queueID': 'queue',
-	//			'queueSizeLimit': 1,
-	//			'removeCompleted': true,
-	//			'multi': false,
-	//			'fileSizeLimit': '5MB',
-	//			'uploadScript': "http://v0.api.upyun.com/qicai",
-	//			'onProgress': function(file, e) {
-	//				if(e.lengthComputable) {
-	//					var percent = Math.round((e.loaded / e.total) * 100);
-	//				}
-	//				if(percent == 100) {
-	//					$.hideIndicator();
-	//				}
-	//			},
-	//			//				'onAddQueueItem' : function(file) {
-	//			//					var fileSize = file.size;
-	//			//					var fileSizeKb = parseFloat(fileSize/1024);
-	//			//					if(fileSizeKb>5120){
-	//			//						$('#file_upload').uploadifive('clearQueue');
-	//			//						alert('照片大小不能超过5MB!');
-	//			//					}else{
-	//			//					}
-	//			//				},
-	//			'onUploadComplete': function(file, data) {
-	//				data = $.parseJSON(data);
-	//
-	//				if(data.message == "ok") {
-	//					//$('#file_upload').uploadifive('clearQueue');
-	//					$("#my-touxiang").attr("src", 'http://img.7cai.tv' + data.url);
-	//					$.showPreloader('上传完成，正在处理中');
-	//					client.modifyInfo({ "imgurl": 'http://img.7cai.tv' + data.url }, function(result) {
-	//						var result = $.parseJSON(result);
-	//						if(result.res == 1) {
-	//							$.hidePreloader();
-	//							$.toast("修改完成!");
-	//						} else {
-	//							$.toast(result.msg)
-	//						}
-	//					})
-	//
-	//				} else {
-	//					$.toast(data.message);
-	//				}
-	//			},
-	//		});
-	//	
-	//	}
+
 
 	//点击我的地址
 	$("#c-myaddress").on("click", function() {
 		client.invoke("getAddressList", function(result) {
 			var result = $.parseJSON(result);
 			if(result.data.length > 0) {
-				window.location.href = "/templets/gerenzhongxin/personMessage/MyAddress.html";
+				window.location.href = "my-address.html";
 			} else {
-				window.location.href = "./AdNnewaddress.html";
+				window.location.href = "my-address.html";
 			}
 		})
 	});
 	// 修改完成
 	$("#modifymessage").on("click", function() {
-		if($("#brdate").val() == "") { $.toast("请选择生日！"); return }
+		if($("#brdate").val() == "") {
+			$.toast("请选择生日！");
+			return
+		}
 		var gender = $("#megenger").val() == "男" ? 0 : 1;
-		client.invoke("modifyInfo", [{ "sex": gender, "birth": $("#brdate").val() }], function(result) {
+		client.invoke("modifyInfo", [{
+			"sex": gender,
+			"birth": $("#brdate").val()
+		}], function(result) {
 			var result = $.parseJSON(result);
 			if(result.res == 1) {
 				$.toast("修改完成！");
@@ -385,20 +358,23 @@ $(document).on("pageInit", "#editmessage", function(e, id, page) {
 
 //修改密码
 function ModifyPassword(old, new1, new2) {
-	$.showIndicator();
+//	$.showIndicator();
 	if(/^(.){6,20}$/.test(old) && /^(.){6,20}$/.test(new1) && /^(.){6,20}$/.test(new2)) {
 		if(new1 != new2) {
 			$.toast("两次输入密码不一致!")
 		} else if(old == new1) {
 			$.toast("不能与原密码相同！")
 		} else {
-			client.invoke("modifyPwd", [{ "oripasswd": old, "passwd": new1 }], function(result) {
-				$.hideIndicator();
+			client.invoke("modifyPwd", [{
+				"oripasswd": old,
+				"passwd": new1
+			}], function(result) {
+//				$.hideIndicator();
 				var result = $.parseJSON(result);
 				if(result.res == 1) {
 					$.toast("修改成功！");
 					setTimeout(function() {
-						window.location.href = "/templets/gerenzhongxin/personMessage/editmessage.html";
+						window.location.href = "edit-message.html";
 					}, 1500)
 				} else {
 					$.toast(result.msg);
@@ -411,11 +387,11 @@ function ModifyPassword(old, new1, new2) {
 }
 
 //修改登录密码
-$(document).on("pageInit", "#modifypwd", function(e, id, page) {
+//$(document).on("pageInit", "#modifypwd",function(e, id, page) {
 	$("#confirmmodifypwd").on("click", function() {
 		ModifyPassword($("#mobile").val(), $("#password1").val(), $("#password2").val());
 	})
-})
+//})
 
 //修改安全密码
 $(document).on("pageInit", "#modifysecpwd", function(e, id, page) {
@@ -440,8 +416,20 @@ $(document).on("pageInit", "#yijianfankui", function(e, id, page) {
 			client.invoke("getFKTypeLists", function(result) {
 				var result = $.parseJSON(result);
 			});
-			var fklx = { "内容问题": 1, "播放问题": 2, "卡顿问题": 3, "会员问题": 4, "账号问题": 5, "闪退、页面加载问题": 6, "产品意见": 7 }
-			client.invoke("addFkMsg", [{ "type": fklx[$("#fk-fklx").val()], "content": $(".yijian-text").val(), "contact": $(".liuyan-input").val() }], function(result) {
+			var fklx = {
+				"内容问题": 1,
+				"播放问题": 2,
+				"卡顿问题": 3,
+				"会员问题": 4,
+				"账号问题": 5,
+				"闪退、页面加载问题": 6,
+				"产品意见": 7
+			}
+			client.invoke("addFkMsg", [{
+				"type": fklx[$("#fk-fklx").val()],
+				"content": $(".yijian-text").val(),
+				"contact": $(".liuyan-input").val()
+			}], function(result) {
 				var result = $.parseJSON(result);
 				if(result.res == 1) {
 					$.toast("已收到您的反馈！");
@@ -457,9 +445,9 @@ $(document).on("pageInit", "#yijianfankui", function(e, id, page) {
 
 //修改用户名
 $(document).on("pageInit", "#changename", function(e, id, page) {
-	$.showIndicator();
+//	$.showIndicator();
 	client.invoke("getUserInfo", function(result) {
-		$.hideIndicator();
+//		$.hideIndicator();
 		var result = $.parseJSON(result);
 		if(result.res == 1) {
 			if(result.data.username) {
@@ -492,13 +480,15 @@ $(document).on("pageInit", "#changename", function(e, id, page) {
 				return(containSpecial.test(s));
 			}
 			$.showIndicator();
-			client.invoke("modifyInfo", [{ "username": $("#cname").val() }], function(result) {
+			client.invoke("modifyInfo", [{
+				"username": $("#cname").val()
+			}], function(result) {
 				$.hideIndicator();
 				var result = $.parseJSON(result);
 				if(result.res == 1) {
 					$.toast("修改成功");
 					setTimeout(function() {
-						window.location.href = "./editmessage.html";
+						window.location.href = "edit-message.html";
 					}, 1000)
 				} else {
 					$.toast(result.msg);
@@ -513,7 +503,12 @@ $(document).on("pageInit", "#modifynumber", function(e, id, page) {
 	myCode();
 	$("#modifymobile").on("click", function() {
 		if($("#old-phone").val() && $("#old-passwd").val() && $("#new-phone").val() && $("#Captcha").val()) {
-			client.invoke("modifyMobile", [{ "orimobile": $("#old-phone").val(), "oripasswd": $("#old-passwd").val(), "mobile": $("#new-phone").val(), "code": $("#Captcha").val() }], function(result) {
+			client.invoke("modifyMobile", [{
+				"orimobile": $("#old-phone").val(),
+				"oripasswd": $("#old-passwd").val(),
+				"mobile": $("#new-phone").val(),
+				"code": $("#Captcha").val()
+			}], function(result) {
 				var result = $.parseJSON(result);
 				if(result.res == 1) {
 					$.toast("修改成功！")
@@ -528,10 +523,46 @@ $(document).on("pageInit", "#modifynumber", function(e, id, page) {
 });
 
 //实名认证
-$(document).on("pageInit", "#IdOccupied", function(e, id, page) {
+//$("#IdOccupied").on(function(e, id, page) {
 
 	function IdentityCodeValid(code) {
-		var city = { 11: "北京", 12: "天津", 13: "河北", 14: "山西", 15: "内蒙古", 21: "辽宁", 22: "吉林", 23: "黑龙江 ", 31: "上海", 32: "江苏", 33: "浙江", 34: "安徽", 35: "福建", 36: "江西", 37: "山东", 41: "河南", 42: "湖北 ", 43: "湖南", 44: "广东", 45: "广西", 46: "海南", 50: "重庆", 51: "四川", 52: "贵州", 53: "云南", 54: "西藏 ", 61: "陕西", 62: "甘肃", 63: "青海", 64: "宁夏", 65: "新疆", 71: "台湾", 81: "香港", 82: "澳门", 91: "国外 " };
+		var city = {
+			11: "北京",
+			12: "天津",
+			13: "河北",
+			14: "山西",
+			15: "内蒙古",
+			21: "辽宁",
+			22: "吉林",
+			23: "黑龙江 ",
+			31: "上海",
+			32: "江苏",
+			33: "浙江",
+			34: "安徽",
+			35: "福建",
+			36: "江西",
+			37: "山东",
+			41: "河南",
+			42: "湖北 ",
+			43: "湖南",
+			44: "广东",
+			45: "广西",
+			46: "海南",
+			50: "重庆",
+			51: "四川",
+			52: "贵州",
+			53: "云南",
+			54: "西藏 ",
+			61: "陕西",
+			62: "甘肃",
+			63: "青海",
+			64: "宁夏",
+			65: "新疆",
+			71: "台湾",
+			81: "香港",
+			82: "澳门",
+			91: "国外 "
+		};
 		var tip = "";
 		var pass = true;
 		if(!code || !/^\d{6}(18|19|20)?\d{2}(0[1-9]|1[12])(0[1-9]|[12]\d|3[01])\d{3}(\d|X)$/i.test(code)) {
@@ -570,6 +601,7 @@ $(document).on("pageInit", "#IdOccupied", function(e, id, page) {
 
 	client.invoke("getUserInfo", function(result) {
 		var result = $.parseJSON(result);
+		console.log(result);
 		if(result.res == 1) {
 			if(result.data.isAuth == 1) {
 				$("input").attr("placeholder", "");
@@ -589,12 +621,15 @@ $(document).on("pageInit", "#IdOccupied", function(e, id, page) {
 					} else if(!IdentityCodeValid($("#testid").val())) {
 						$.toast("请输入18位有效身份证号");
 					} else {
-						client.invoke("certification", [{ "truename": $("#realname").val(), "cardid": $("#testid").val() }], function(result) {
+						client.invoke("certification", [{
+							"truename": $("#realname").val(),
+							"cardid": $("#testid").val()
+						}], function(result) {
 							var result = $.parseJSON(result);
 							if(result.res == 1) {
 								$.toast("您已通过实名认证！");
 								setTimeout(function() {
-									window.location.href = "/templets/gerenzhongxin/personMessage/editmessage.html";
+									window.location.href = "edit-message.html";
 								}, 1500)
 							} else {
 								$.toast(result.msg);
@@ -607,7 +642,7 @@ $(document).on("pageInit", "#IdOccupied", function(e, id, page) {
 			$.toast(result.msg)
 		}
 	})
-});
+//});
 
 // 推荐好友
 $(document).on("pageInit", "#tuijianYouli", function(e, id, page) {
@@ -715,7 +750,9 @@ $(document).on("pageInit", "#kaiHuiyuan", function(e, id, page) {
 			var code = getUrlVars()["code"] || null;
 			if(code) {
 				$.showIndicator();
-				client.invoke("getOpenId", [{ "code": code }], function(result) {
+				client.invoke("getOpenId", [{
+					"code": code
+				}], function(result) {
 					$.hideIndicator();
 					var result = $.parseJSON(result);
 					if(result.res == 1) {
@@ -736,7 +773,11 @@ $(document).on("pageInit", "#kaiHuiyuan", function(e, id, page) {
 		function Pay(style) {
 			if(style == 'wx_pay_pub') {
 				$.showIndicator();
-				client.invoke("getPayOrderInfo", [{ "amount": 500, "type": style, "subject": "超级会员VIP" }], function(result) {
+				client.invoke("getPayOrderInfo", [{
+					"amount": 500,
+					"type": style,
+					"subject": "超级会员VIP"
+				}], function(result) {
 					$.hideIndicator();
 					var result = $.parseJSON(result);
 					if(result.res == 1) {
@@ -779,7 +820,11 @@ $(document).on("pageInit", "#kaiHuiyuan", function(e, id, page) {
 			}
 			if(style == "ali_pay_wap") {
 				$.showIndicator();
-				client.invoke("getPayOrderInfo", [{ "amount": 500, "type": style, "subject": "超级会员VIP" }], function(result) {
+				client.invoke("getPayOrderInfo", [{
+					"amount": 500,
+					"type": style,
+					"subject": "超级会员VIP"
+				}], function(result) {
 					$.hideIndicator();
 					var result = $.parseJSON(result);
 					if(result.res == 1) {
@@ -792,7 +837,9 @@ $(document).on("pageInit", "#kaiHuiyuan", function(e, id, page) {
 							'subject': result.data.subject, //商品标题
 							'notifyUrl': result.data.notifyUrl, //异步支付结果通知地址					   
 						});
-					} else { $.toast(result.msg) }
+					} else {
+						$.toast(result.msg)
+					}
 				});
 
 			}

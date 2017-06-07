@@ -6,8 +6,15 @@
 
 	<body>
 		<div class="page page-current hm-changNmae" id="changename">
-			@@include('../tpl/bar-nav.tpl',{ "title":"编辑资料" })
+			<!--@@include('../tpl/bar-nav.tpl',{ "title":"编辑资料" })-->
 			<div class="content">
+				<header class=" bar-nav wsl-header">
+				<div class="title-box">
+					<a class="icon icon-left" href="#" onclick="javascript:history.go(-1)"></a>
+					<div class="w-title">购票</div>
+				</div>
+				
+				</header>
 				<div class=" editad no-margin">
 					<div class="border-bottom main-90">
 						<input type="text" name="cname" id="cname" />
@@ -21,5 +28,7 @@
 			</div>
 		</div>
 	</body>
+	<script src="lib/hprose.js" type="text/javascript" charset="utf-8"></script>
+	<script src="assets/js/edit-message.js" type="text/javascript" charset="utf-8"></script>
 
 </html>

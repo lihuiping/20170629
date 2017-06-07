@@ -7,8 +7,15 @@
 
 	<body>
 		<div class="page wj_page page-current modifynumber" id="modifynumber">
-			@@include('../tpl/bar-nav.tpl',{ "title":"修改手机号" })
+			<!--@@include('../tpl/bar-nav.tpl',{ "title":"修改手机号" })-->
 			<div class="content">
+				<header class=" bar-nav wsl-header">
+				<div class="title-box">
+					<a class="icon icon-left" href="#" onclick="javascript:history.go(-1)"></a>
+					<div class="w-title">修改手机号</div>
+				</div>
+				
+				</header>
 				<div class="list-block">
 					<div class="inhert-li">
 						<input type="tel" id="old-phone" placeholder="请输入原手机号">
@@ -36,5 +43,7 @@
 			</div>
 		</div>
 	</body>
+<script src="lib/hprose.js" type="text/javascript" charset="utf-8"></script>
+     <script type="text/javascript" src="assets/js/edit-message.js"></script>
 
 </html>
