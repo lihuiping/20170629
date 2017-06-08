@@ -1,7 +1,10 @@
 var conf = 1;
-var toke = token(); //获取token
-var tuijian_list = ['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/Recommend/index&token='+toke]; //banner
-var content_movie = ['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/videoInfo/index&token='+toke];
+var toke = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhZG1pbiI6ZmFsc2UsImNsYWltcyI6bnVsbCwidWlkIjoiODM4IiwidiI6MSwiaWF0IjoxNDkzMDAzMjg3fQ.PpqXb_oSU8EJVLAlwdzUBXsI67a2qAp7h5VuGf5Ly68'; //获取token
+var tuijian_list = ['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/Recommend/index&token=' + toke]; //banner
+var content_movie = ['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/videoInfo/index&token=' + toke];
+var add_collection = ['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/Favor/change.html'];
+var get_collection = ['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/Favor/check.html'];
+
 //获取地址参数
 function GetQueryString(name) {
     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
@@ -9,9 +12,7 @@ function GetQueryString(name) {
     if (r != null) return unescape(r[2]);
     return null;
 }
-
 var movieID = GetQueryString('id');
-
 //axios请求跨域  公用
 var header = {
     'content-type': 'application/x-www-form-urlencoded'
@@ -24,22 +25,56 @@ function transformRequest(data) {
     };
     return ret;
 };
-
-/*推荐视频列表*/
-var tuijian_movie = new Vue({
-    el: "#tuijian_movie",
+/*获取电影详情页的数据*/
+var movieDatail = new Vue({
+    el: "#VideoPlay",
     data: {
+        movieContent: [],
         movielist: [],
-        loadingFlag: true,
+        shop: [],
+        Comment: [],
+        keep: "icon-weishoucang",
+        keepId: ""
     },
     mounted: function() {
         //初始化加载数据
-        var _this = this;
-        _this.showMovie();
+        this.showMovie();
     },
     methods: {
         showMovie: function() {
+            //获取电影信息
             var _this = this;
+            axios.get(content_movie[conf], {
+                params: {
+                    id: movieID
+                }
+            }).then(function(response) {
+                var data = response.data.data;
+                movieDatail.movieContent = data;
+                var movie = "http://1253822065.vod2.myqcloud.com/eb5d41c9vodtransgzp1253822065/827c290f9031868222960789073/f0.f20.mp4";
+                video(movie);
+            });
+            //获取评价
+            // axios.get(evaluateList[conf] + orderID).then(function(response) {
+            //     var data = response.data.data;
+            //     if(response.data.res === 1) {
+            //         movieDatail.Comment = data;
+            //     }
+            // });
+            //获取收藏
+            axios.get(get_collection[conf], {
+                params: {
+                    token: tokens,
+                    mid: movieID
+                }
+            }).then(function(response) {
+                var data = response.data;
+                if (data.res == 1) {
+                    $(".vpl_Collection").addClass("icon-yishoucang")
+                    movieDatail.keepId = data.res;
+                }
+            });
+            //获取推荐的列表
             axios.get(tuijian_list[conf], {
                 params: {
                     id: movieID
@@ -48,100 +83,103 @@ var tuijian_movie = new Vue({
                 var data = res.data;
                 if (data.res == 1) {
                     _this.movielist = data;
+                    console.log(data);
                     _this.loadingFlag = false;
                 } else {
                     $.toast("商品数据错误");
                 }
             });
         },
-        getTitleHref: function(val) {
-            //  		return 'goods-detail.html?id=' + val
-            return 'movie-content.html?id=' + val
-        },
-    }
-});
-/*视频详情接口*/
-var content_movie = new Vue({
-    el: "#content_movie",
-    data: {
-        movieContent: [],
-        loadingFlag: true,
-    },
-    mounted: function() {
-        //初始化加载数据
-        var _this = this;
-        _this.showMovie();
-    },
-    methods: {
-        showMovie: function() {
-            var _this = this;
-            axios.get(content_movie[conf], {
+        clickKeep: function(keepId) {
+            axios.get(add_collection[conf], {
                 params: {
-                    id: movieID
+                    token: tokens,
+                    mid: movieID
                 }
-            }).then(function(res) {
-                var data = res.data;
-                if (data.res == 1) {
-                    _this.movieContent = data.data;
-                    _this.loadingFlag = false;
-                    var movie = "http://1253822065.vod2.myqcloud.com/eb5d41c9vodtransgzp1253822065/827c290f9031868222960789073/f0.f20.mp4";
-                    video(movie);
+            }).then(function(response) {
+                var res = response.data.res,
+                    data = response.data.data;
+                var msg = response.data.msg;
+                if (keepId == "") {
+                    if ($(".vpl_Collection").addClass("icon-weishoucang")) {
+                        $(".vpl_Collection").addClass("icon-yishoucang");
+                        $(".vpl_Collection").removeClass("icon-weishoucang");
+                        $(".detail-col p").text("已收藏");
+                    }
+                    movieDatail.keepId = data.type;
+                    layer.open({
+                        content: '收藏成功',
+                        skin: 'msg',
+                        time: 2, //2秒后自动关闭
+                    });
                 } else {
-                    $.toast("商品数据错误");
+                    movieDatail.keep = "icon-weishoucang";
+                    movieDatail.keepId = "";
+                    if ($(".vpl_Collection").addClass("icon-yishoucang")) {
+                        $(".vpl_Collection").addClass("icon-weishoucang");
+                        $(".vpl_Collection").removeClass("icon-yishoucang");
+                        $(".detail-col p").text("收藏");
+                    }
+                    layer.open({
+                        content: '已取消收藏',
+                        skin: 'msg',
+                        time: 2, //2秒后自动关闭
+                    });
                 }
-            });
+
+            })
+
         },
-        getTitleHref: function(val) {
-            //  		return 'goods-detail.html?id=' + val
-            return 'movie-content.html?id=' + val
-        },
+
     }
 });
-
 
 function video(movie) {
     var player = cyberplayer("video").setup({
-        width: '100%',
-        height: "100%",
-        backcolor: "#000",
-        stretching: "uniform",
-        file: movie,
-        ak: "a6b710207cf845ffb40df4bc0544639f",
-        autoStart: true,
-        repeat: false,
-        volume: 100,
-        controls: "over",
+        width: '100%', // 宽度，也可以支持百分比(不过父元素宽度要有)
+        height: '100%', // 高度，也可以支持百分比
+        title: "基本功能", // 标题
+        file: "http://gcqq450f71eywn6bv7u.exp.bcevod.com/mda-hbqagik5sfq1jsai/mda-hbqagik5sfq1jsai.mp4", // 播放地址
+        image: "http://gcqq450f71eywn6bv7u.exp.bcevod.com/mda-hbqagik5sfq1jsai/mda-hbqagik5sfq1jsai.jpg", // 预览图
+        autostart: false, // 是否自动播放
+        stretching: "uniform", // 拉伸设置
+        repeat: false, // 是否重复播放
+        volume: 100, // 音量
+        controls: 2, // controlbar是否显示
+        starttime: 0, // 视频开始播放时间，如果不设置，则可以从上次播放时间点续播
+        primary: "html5", // 首先使用html5还是flash播放，默认：html5
+        logo: { // logo设置
+            linktarget: "_blank",
+            margin: 8,
+            hide: false,
+            position: "top-right", // 位置
+            file: "./img/logo.png" // 图片地址
+        },
+        ak: "29ae328c22344cd789af28826dff55c0" // 公有云平台注册即可获得accessKey
     });
-    player.onTime(function(event) {
-    	console.log(event);
-    	 $(".bg_video").hide();
-        if (event.position > 10) {
-           //  $(".bg_video").show();
-            this.pause();
+    player.onFullscreen(function(event) {
+        if (event.fullscreen) {
+            api.setScreenOrientation({
+                orientation: 'landscape_left'
+            });
+        } else {
+            api.setScreenOrientation({
+                orientation: 'portrait_up'
+            });
         }
     });
+    player.onTime(function(event){ 
+     if(event.position>10){
+         player.pause();
+         $(".bg_video").show()
+     }
+});
 }
+
+
 
 /*简介*/
 $(".vpl_VideoDetail_des_title").on("click", '.vpl_introduction', function() {
     $(".vpl_VideoDetail_member").toggle();
     $(".vpl_introduction").toggleClass("icon-up");
 });
-
-/*收藏*/
-$(".vpl_Collection").on("click", function() {
-    if ($(this).attr("index") == 2) {
-        client1.addCollect({ "videoid": videoid, "videoname": videoname, "videoimg": videoimg }, function(result) {
-            var result = $.parseJSON(result);
-            if (result.res == 1) { $.toast("收藏成功"); } else { $.toast(result.msg); }
-        })
-    } else {
-        var delarr = [];
-        delarr.push(videoid);
-        console.log(delarr);
-        client1.delCollect({ "id": delarr }, function(result) {
-            var result = $.parseJSON(result);
-            if (result.res == 1) { $.toast("取消收藏"); } else { $.toast(result.msg); }
-        })
-    }
-})
