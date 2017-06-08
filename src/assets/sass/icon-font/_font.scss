@@ -23,17 +23,31 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
 .icon-youshang:before {
   content: "\e918";
 }
 .icon-zuoshang:before {
   content: "\e919";
 }
-.icon-qitapingtai:before {
+.icon-qitapingtai .path1:before {
   content: "\e900";
+  color: rgb(138, 147, 153);
 }
-.icon-cart:before {
-  content: "\e600";
+.icon-qitapingtai .path2:before {
+  content: "\e901";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-qitapingtai .path3:before {
+  content: "\e902";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-qitapingtai .path4:before {
+  content: "\e903";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
 }
 .icon-friends:before {
   content: "\e601";
@@ -549,58 +563,58 @@
   content: "\e736";
 }
 .icon-down3:before {
-  content: "\e901";
-}
-.icon-up3:before {
-  content: "\e902";
-}
-.icon-dengpao:before {
-  content: "\e903";
-}
-.icon-mall:before {
   content: "\e904";
 }
-.icon-mall-active:before {
+.icon-up3:before {
   content: "\e905";
 }
-.icon-video:before {
+.icon-dengpao:before {
   content: "\e906";
 }
-.icon-video-active:before {
+.icon-mall:before {
   content: "\e907";
 }
-.icon-user:before {
+.icon-mall-active:before {
   content: "\e908";
 }
-.icon-user-active:before {
+.icon-video:before {
   content: "\e909";
 }
-.icon-find:before {
+.icon-video-active:before {
   content: "\e90a";
 }
-.icon-find-active:before {
+.icon-user:before {
   content: "\e90b";
 }
-.icon-ticket:before {
+.icon-user-active:before {
   content: "\e90c";
 }
-.icon-bianji:before {
+.icon-find:before {
   content: "\e90d";
 }
-.icon-bianji1:before {
+.icon-find-active:before {
   content: "\e90e";
 }
-.icon-ticket-active:before {
+.icon-ticket:before {
   content: "\e90f";
 }
-.icon-qq:before {
+.icon-bianji:before {
   content: "\e910";
 }
-.icon-copylink:before {
+.icon-bianji1:before {
   content: "\e911";
 }
-.icon-pengyouquan:before {
+.icon-ticket-active:before {
   content: "\e912";
+}
+.icon-qq:before {
+  content: "\e913";
+}
+.icon-copylink:before {
+  content: "\e914";
+}
+.icon-pengyouquan:before {
+  content: "\e915";
 }
 .icon-weibo:before {
   content: "\e916";
