@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('../fonts/icomoon.eot?xqzayq');
-  src:  url('../fonts/icomoon.eot?xqzayq#iefix') format('embedded-opentype'),
-    url('../fonts/icomoon.ttf?xqzayq') format('truetype'),
-    url('../fonts/icomoon.woff?xqzayq') format('woff'),
-    url('../fonts/icomoon.svg?xqzayq#icomoon') format('svg');
+  src:  url('../fonts/icomoon.eot?kh77q6');
+  src:  url('../fonts/icomoon.eot?kh77q6#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?kh77q6') format('truetype'),
+    url('../fonts/icomoon.woff?kh77q6') format('woff'),
+    url('../fonts/icomoon.svg?kh77q6#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -23,7 +23,12 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+.icon-youshang:before {
+  content: "\e918";
+}
+.icon-zuoshang:before {
+  content: "\e919";
+}
 .icon-qitapingtai:before {
   content: "\e900";
 }
