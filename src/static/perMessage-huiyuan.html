@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html class="pixel-ratio-1">
+
+	<head>
+		@@include('../tpl/header.tpl',{ "title":"个人中心" })
+		<style type="text/css">
+			.person-mid{
+				width: 100%;
+			}
+			.person-mid li{
+				width: 100%;
+			}
+		</style>
+	</head>
+
+	<body>
+		@@include('../tpl/footer.tpl',{"center":"active","centerc":"icon-user-active"})
+		<div class="page page-current personmessage" id="personmessage_huiyuan">
+			@@include('../tpl/bar-nav.tpl',{ "title":"个人中心" })
+			<div class="content">
+				<div class="hybg mytouch" id="hy-edit">
+					<img src="assets/images/bg-vip.png">
+					<div class="hybg-touxiang" style="height: 134px;">
+						<!--<img src="assets/images/tx-160.png">-->
+					</div>
+					<div class="hybg-down-num">
+						<a href="edit-message.html">
+						<span id="hui-mobile"></span> <span id="vip-jifen"></span>
+						<i class="iconfont icon-jiaofeihuiyuanbianji1"></i>
+						</a>
+					</div>
+				</div>
+				<div class="hytequan" id="hytq">
+					<a href="membership.html">
+					<i class="iconfont icon-kaitonghuiyuan"></i>会员特权
+					<span class="right-icon"><i class="iconfont icon-right weight"></i></span>
+					</a>
+				</div>
+				<div class="fenge-2"></div>
+				<div class="person-mid">
+					<ul>
+						<div class="p-white mytouch" id="tuijian-page">
+							<li class="list-module">
+								<a href="tuijianYouli.html">
+								<span><i class="iconfont icon-tuijianyouli icon-size"></i></span>
+								<span>推荐有礼</span>
+								<span class="right-icon"><i class="iconfont icon-right weight"></i></span>
+								</a>
+							</li>
+						</div>
+						<div class="fenge-2"></div>
+						<div class="p-white mytouch" id="bfjl-page">
+							<li class="list-module">
+								<a href="PlayRecord.html">
+								<span><i class="iconfont icon-bofangjilu icon-size"></i></span>
+								<span>播放记录</span>
+								<span class="right-icon"><i class="iconfont icon-right weight"></i></span>
+								</a>
+							</li>
+						</div>
+						<div class="p-white mytouch" id="spsc-page">
+							<li class="list-module">
+								<a href="spsc.html">
+								<span><i class="iconfont icon-shipinshoucang icon-size"></i></span>
+								<span>视频收藏</span>
+								<span class="right-icon"><i class="iconfont icon-right weight"></i></span>
+								</a>
+							</li>
+						</div>
+						<div class="fenge-2"></div>
+						<div class="p-white mytouch" id="wddyp-page">
+							<li class="list-module">
+								<a href="wddianyingpiao.html">
+								<span><i class="iconfont icon-wodedianyingpiao1 icon-size"></i></span>
+								<span>我的电影票</span>
+								<span class="right-icon"><i class="iconfont icon-right weight"></i></span>
+								</a>
+							</li>
+						</div>
+						<div class="p-white mytouch" id="wdjf-page">
+							<li class="list-module">
+								<a href="my-colorfulcoin.html">
+								<span style="font-weight: bolder;"><i class="iconfont icon-jifen icon-size"></i></span>
+								<span>我的七彩币</span>
+								<span class="right-icon"><i class="iconfont icon-right weight"></i></span>
+								</a>
+							</li>
+						</div>
+						<div class="p-white mytouch" id="kajuan-page">
+							<li class="list-module">
+								<a href="my-cardvolume.html">
+								<span><i class="iconfont icon-wodekaquan icon-size"></i></span>
+								<span>我的卡券</span>
+								<span class="right-icon"><i class="iconfont icon-right weight"></i></span>
+								</a>
+							</li>
+						</div>
+						<div class="p-white mytouch" id="dingdan-page">
+							<li class="list-module">
+								<a href="myOrder-table.html">
+								<span><i class="iconfont icon-wodedingdan icon-size"></i></span>
+								<span>我的订单</span>
+								<span class="right-icon"><i class="iconfont icon-right weight"></i></span>
+								</a>
+							</li>
+						</div>
+						<div class="fenge-2"></div>
+						<div class="p-white mytouch" id="xxzx-page">
+							<li class="list-module">
+								<a href="xiaoxizhongxin.html">
+								<div id="p-biaoqian">0</div>
+								<span><i class="iconfont icon-xiaoxizhongxin icon-size"></i></span>
+								<span>消息中心</span>
+								<span class="right-icon"><i class="iconfont icon-right weight"></i></span>
+								</a>
+							</li>
+						</div>
+						<div class="p-white mytouch" id="yjfk-page">
+							<li class="list-module">
+								<a href="feedback.html">
+								<span><i class="iconfont icon-yijianfankui icon-size"></i></span>
+								<span>意见反馈</span>
+								<span class="right-icon"><i class="iconfont icon-right weight"></i></span>
+								</a>
+							</li>
+						</div>
+						<div class="p-white mytouch" id="shezhi-page">
+							<li class="list-module">
+								<a href="my-setting.html">
+								<span><i class="iconfont icon-shezhi1 icon-size"></i></span>
+								<span>设置</span>
+								<span class="right-icon"><i class="iconfont icon-right weight"></i></span>
+								</a>
+							</li>
+						</div>
+						<div class="fenge-2"></div>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="lib/hprose.js" charset="utf-8"></script>
+		<script type="text/javascript" src="lib/imgload.js" charset="utf-8"></script>
+		<script type="text/javascript" src="assets/js/other.js" charset="utf-8"></script>
+		<script type="text/javascript" src="assets/js/perMessage-huiyuan.js" charset="utf-8"></script>
+	</body>
+
+</html>
