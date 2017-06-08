@@ -102,7 +102,7 @@ var client = sclient();
 						Cache.clear("uniquemark");
 						Cache.clear("tuijianma");
 						setTimeout(function() {
-							window.location.href = "/";//退出后跳转到的页面
+							window.location.href = "./login.html";//退出后跳转到的页面
 						}, 1500)
 					} else {
 						$.toast(result.msg);
