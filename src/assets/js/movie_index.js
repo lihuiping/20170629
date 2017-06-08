@@ -1,10 +1,10 @@
 var conf = 1;
-var banner = ['./assets/data/banner.json', baseUrl() + 'index.php/Api/Carousel/index']; //banner
+var banner = ['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/Carousel/index']; //banner
 var hotdata = ['./assets/data/list.json', baseUrl() + 'tv/?s=/Api/movie/lists/type/1']; //热映大片
 var yuxian_ry = ['./assets/data/list.json', baseUrl() + 'tv/?s=/Api/movie/lists/type/2']; //院线热映
 var wl_movie = ['./assets/data/list.json', baseUrl() + 'tv/?s=/Api/movie/lists/type/3']; //网络电影
 var jd_movie = ['./assets/data/list.json', baseUrl() + 'tv/?s=/Api/movie/lists/type/4']; //经典影院
-var zzdx_movie = ['./assets/data/zzdx.json', baseUrl() + 'index.php/Api/Zhizun/get_one']; //至尊独享
+var zzdx_movie = ['./assets/data/zzdx.json', baseUrl() + 'tv/index.php?s=/Api/zhizun/get_one']; //至尊独享
 /*懒加载*/
 function imgload() {
 	$("img.lazy").scrollLoading({
