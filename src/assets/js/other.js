@@ -221,12 +221,12 @@ var isVip = function() {
 			var result = $.parseJSON(result);
 			console.log(result);
 			if(result.res == 1) {
-				Cache.set("isVIP", result.data.isVip);
-				isVIP = result.data.isVip;
+				Cache.set("isVIP", result.data.isvip);
+				isVIP = result.data.isvip;
 				if(isVIP == 1) {
-					window.location.href = "/templets/gerenzhongxin/personmessage_huiyuan.html";
+					window.location.href = "./perMessage-huiyuan.html";
 				} else {
-					window.location.href = "/templets/gerenzhongxin/personmessage.html";
+					window.location.href = "./user-center.html";
 				}
 
 			} else {
@@ -234,65 +234,14 @@ var isVip = function() {
 			}
 		})
 	} else {
-		window.location.href = "/templets/gerenzhongxin/personmessage_huiyuan.html";
+		window.location.href = "./perMessage-huiyuan.html";
 	}
 }
 
 //导航跳转
 function myNav() {
-	//首页
-	$("#nav-shouye").on("click", function() {
-		$("#nav-shouye span:nth-child(1)").addClass("icon-shouye-tianchong");
-		$("#nav-shangcheng span:nth-child(1)").addClass("icon-shangcheng1");
-		$("#nav-shangcheng span:nth-child(1)").removeClass("icon-shangcheng-tianchong");
-		$("#nav-goupiao span:nth-child(1)").addClass("icon-goupiao1");
-		$("#nav-goupiao span:nth-child(1)").removeClass("icon-goupiao-tianchong");
-		$("#nav-faxian span:nth-child(1)").removeClass("icon-faxian-tianchong");
-		$("#nav-wode span:nth-child(1)").addClass("icon-wode1");
-		$("#nav-wode span:nth-child(1)").removeClass("icon-wode-tianchong");
-		window.location.href = "/";
-	});
-	//商城
-	$("#nav-shangcheng").on("click", function() {
-		$("#nav-shangcheng span:nth-child(1)").addClass("icon-shangcheng-tianchong");
-		$("#nav-shouye span:nth-child(1)").removeClass("icon-shouye-tianchong");
-		$("#nav-goupiao span:nth-child(1)").addClass("icon-goupiao1");
-		$("#nav-goupiao span:nth-child(1)").removeClass("icon-goupiao-tianchong");
-		$("#nav-faxian span:nth-child(1)").removeClass("icon-faxian-tianchong");
-		$("#nav-wode span:nth-child(1)").addClass("icon-wode1");
-		$("#nav-wode span:nth-child(1)").removeClass("icon-wode-tianchong");
-		window.location.href = "http://shop.7cai.tv/wx/index.html";
-	});
-	//购票
-	$("#nav-goupiao").on("click", function() {
-		$("#nav-goupiao span:nth-child(1)").addClass("icon-goupiao-tianchong");
-		$("#nav-shouye span:nth-child(1)").removeClass("icon-shouye-tianchong");
-		$("#nav-shangcheng span:nth-child(1)").removeClass("icon-shangcheng-tianchong");
-		$("#nav-faxian span:nth-child(1)").removeClass("icon-faxian-tianchong");
-		$("#nav-wode span:nth-child(1)").addClass("icon-wode1");
-		$("#nav-wode span:nth-child(1)").removeClass("icon-wode-tianchong");
-		window.location.href = "/templets/goupiao/goupiao.html";
-	});
-	//发现
-	$("#nav-faxian").on("click", function() {
-		$("#nav-faxian span:nth-child(1)").addClass("icon-faxian-tianchong");
-		$("#nav-shouye span:nth-child(1)").removeClass("icon-shouye-tianchong");
-		$("#nav-shangcheng span:nth-child(1)").removeClass("icon-shangcheng-tianchong");
-		$("#nav-goupiao span:nth-child(1)").addClass("icon-goupiao1");
-		$("#nav-goupiao span:nth-child(1)").removeClass("icon-goupiao-tianchong");
-		$("#nav-wode span:nth-child(1)").addClass("icon-wode1");
-		$("#nav-wode span:nth-child(1)").removeClass("icon-wode-tianchong");
-		window.location.href = "/templets/faxian/faxian.html";
-	});
 	//我的
-	$("#nav-wode").on("click", function(e) {
-		$("#nav-wode span:nth-child(1)").removeClass("icon-wode1");
-		$("#nav-wode span:nth-child(1)").addClass("icon-wode-tianchong");
-		$("#nav-shouye span:nth-child(1)").removeClass("icon-shouye-tianchong");
-		$("#nav-shangcheng span:nth-child(1)").removeClass("icon-shangcheng-tianchong");
-		$("#nav-goupiao span:nth-child(1)").addClass("icon-goupiao1");
-		$("#nav-goupiao span:nth-child(1)").removeClass("icon-goupiao-tianchong");
-		$("#nav-faxian span:nth-child(1)").removeClass("icon-faxian-tianchong");
+	$("#me").on("click", function(e) {
 		$.showIndicator();
 		if(isLogin() == false) {
 			e.preventDefault();
@@ -1319,20 +1268,6 @@ $(document).on("pageInit", "#kaiHuiyuan", function(e, id, page) {
 									'openid': openid,
 									'cb': function() {
 										window.location.href = "http://v.7cai.tv/templets/gerenzhongxin/huiyuan/tz.html";
-										//											$.toast("恭喜您，成功加入VIP会员！")
-										//											 setTimeout(function(){
-										//											 	var token = Cache.get("flag") || "";
-										//											 	var client2 = hprose.Client.create("http://192.168.1.241:82/api/api/voucher?t="+token,["isCapable"]);
-										//													client2.isCapable({"actid":Cache.get("act").parseInt()},function(result){
-										//														var result = $.parseJSON(result);
-										//														if(result.res == 1){
-										//															window.location.href = "./lqkj.html";
-										//														}else{
-										//															window.location.href = "/";
-										//														}
-										//													})
-										//												
-										//											},1000);
 									}
 								}
 							});
@@ -1378,73 +1313,6 @@ $(document).on("pageInit", "#kaiHuiyuan", function(e, id, page) {
 	})
 });
 
-//导航跳转
-function myNav() {
-	//首页
-	$("#nav-shouye").on("click", function() {
-		$.showIndicator();
-		$("#nav-shouye span:nth-child(1)").addClass("icon-shouye-tianchong");
-		$("#nav-shangcheng span:nth-child(1)").addClass("icon-shangcheng1");
-		$("#nav-shangcheng span:nth-child(1)").removeClass("icon-shangcheng-tianchong");
-		$("#nav-goupiao span:nth-child(1)").addClass("icon-goupiao1");
-		$("#nav-goupiao span:nth-child(1)").removeClass("icon-goupiao-tianchong");
-		$("#nav-faxian span:nth-child(1)").removeClass("icon-faxian-tianchong");
-		$("#nav-wode span:nth-child(1)").addClass("icon-wode1");
-		$("#nav-wode span:nth-child(1)").removeClass("icon-wode-tianchong");
-		window.location.href = "/";
-	});
-	//商城
-	$("#nav-shangcheng").on("click", function() {
-		$("#nav-shangcheng span:nth-child(1)").addClass("icon-shangcheng-tianchong");
-		$("#nav-shouye span:nth-child(1)").removeClass("icon-shouye-tianchong");
-		$("#nav-goupiao span:nth-child(1)").addClass("icon-goupiao1");
-		$("#nav-goupiao span:nth-child(1)").removeClass("icon-goupiao-tianchong");
-		$("#nav-faxian span:nth-child(1)").removeClass("icon-faxian-tianchong");
-		$("#nav-wode span:nth-child(1)").addClass("icon-wode1");
-		$("#nav-wode span:nth-child(1)").removeClass("icon-wode-tianchong");
-		window.location.href = "/templets/shangcheng/shangcheng.html";
-	});
-	//购票
-	$("#nav-goupiao").on("click", function() {
-		$("#nav-goupiao span:nth-child(1)").addClass("icon-goupiao-tianchong");
-		$("#nav-shouye span:nth-child(1)").removeClass("icon-shouye-tianchong");
-		$("#nav-shangcheng span:nth-child(1)").removeClass("icon-shangcheng-tianchong");
-		$("#nav-faxian span:nth-child(1)").removeClass("icon-faxian-tianchong");
-		$("#nav-wode span:nth-child(1)").addClass("icon-wode1");
-		$("#nav-wode span:nth-child(1)").removeClass("icon-wode-tianchong");
-		window.location.href = "/templets/goupiao/goupiao.html";
-	});
-	//发现
-	$("#nav-faxian").on("click", function() {
-		$("#nav-faxian span:nth-child(1)").addClass("icon-faxian-tianchong");
-		$("#nav-shouye span:nth-child(1)").removeClass("icon-shouye-tianchong");
-		$("#nav-shangcheng span:nth-child(1)").removeClass("icon-shangcheng-tianchong");
-		$("#nav-goupiao span:nth-child(1)").addClass("icon-goupiao1");
-		$("#nav-goupiao span:nth-child(1)").removeClass("icon-goupiao-tianchong");
-		$("#nav-wode span:nth-child(1)").addClass("icon-wode1");
-		$("#nav-wode span:nth-child(1)").removeClass("icon-wode-tianchong");
-		window.location.href = "/templets/faxian/faxian.html";
-	});
-	//我的
-	$("#nav-wode").on("click", function(e) {
-		$("#nav-wode span:nth-child(1)").removeClass("icon-wode1");
-		$("#nav-wode span:nth-child(1)").addClass("icon-wode-tianchong");
-		$("#nav-shouye span:nth-child(1)").removeClass("icon-shouye-tianchong");
-		$("#nav-shangcheng span:nth-child(1)").removeClass("icon-shangcheng-tianchong");
-		$("#nav-goupiao span:nth-child(1)").addClass("icon-goupiao1");
-		$("#nav-goupiao span:nth-child(1)").removeClass("icon-goupiao-tianchong");
-		$("#nav-faxian span:nth-child(1)").removeClass("icon-faxian-tianchong");
-		$.showIndicator();
-		if(isLogin() == false) {
-			e.preventDefault();
-			noLogin();
-		} else {
-			isVip();
-		}
-	});
-}
-
-myNav();
 
 //部分交互，跳转
 function test() {
@@ -1487,12 +1355,6 @@ function test() {
 	$(".mytouch").on("touchend", function() {
 		$(this).removeClass("myop");
 	})
-
-	//圆圈勾选
-	//	$(".my-select").on("click",function(){
-	//		$(this).toggleClass("bg-myse");
-	//		$(this).attr("checked",!$(this).attr("checked"));
-	//	})
 	//文本展开
 	$(".tk-open").on("click", function() {
 		$(this).toggleClass("icon-up");
@@ -1511,19 +1373,6 @@ function test() {
 			values: ['内容问题', '播放问题', '卡顿问题', '会员问题', '账号问题', '闪退、页面加载问题', '产品意见']
 		}]
 	});
-
-	/*
-		//退票按钮
-		$(".mybutton-2").on("click",function(){
-			$.confirm('确定要放弃观看电影吗？',
-			function(){
-				window.location.href="wddyp-tp.html"
-			},
-			function(){
-				
-			}
-			)
-		});*/
 
 	//阻止IOS底部拖动
 	function noscroll() {
@@ -1566,5 +1415,4 @@ function test() {
 	noscroll();
 }
 
-test();
 $.init();
