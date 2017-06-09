@@ -1,164 +1,143 @@
 <!DOCTYPE html>
 <html>
-
 	<head>
 		@@include('../tpl/header.tpl',{ "title":"个人中心" })
 	</head>
-
 	<body>
 		@@include('../tpl/footer.tpl',{"center":"active","centerc":"icon-user-active"})
 		<div class="page-group">
 			<div class="page page-current personmessage" id="personmessage">
 				<!--从这里开始写代码-->
-				@@include('../tpl/bar-nav.tpl',{ "title":"个人中心" })
+			 @@include('../tpl/bar-nav.tpl',{ "title":"个人中心" }) 
 				<div class="content pdbt">
-					<div class="userhead mytouch" id="p-message" style="display: none;">
+					<div class="userhead mytouch" id="p-message">
 						<a href="edit-message.html">
-							<div id="p-touxiang">
-								<!--<img id="touxiang2" src="assets/images/tx-120.png">-->
-
-							</div>
-							<div id="">
-								<p class="username"></p>
-								<p class="score"></p>
-							</div>
-							<span><i class="iconfont icon-right weight"></i></span>
-						</a>
-					</div>
-
-					<div class="hybg mytouch" id="hy-edit" style="display: none;">
-						<img src="assets/images/bg-vip.png">
-						<div class="hybg-touxiang" style="height: 134px;">
-							<!--<img src="assets/images/tx-160.png">-->
+						<div id="p-touxiang">
+							<!--<img id="touxiang2" src="assets/images/tx-120.png">-->
+							
 						</div>
-						<div class="hybg-down-num">
-							<a href="edit-message.html">
-								<span id="hui-mobile"></span> <span id="vip-jifen"></span>
-								<i class="iconfont icon-jiaofeihuiyuanbianji1"></i>
-							</a>
+						<div id="">
+							<p class="username"></p>
+							<p class="score"></p>
 						</div>
-					</div>
-					<div class="hytequan" id="hytq" style="display: none;">
-						<a href="membership.html">
-							<i class="iconfont icon-kaitonghuiyuan"></i>会员特权
-							<span class="right-icon"><i class="iconfont icon-right weight"></i></span>
+						<span><i class="iconfont icon-right weight"></i></span>
 						</a>
 					</div>
 					<div class="person-mid" style="width: 100%;">
-
-						<div class="p-white mytouch" id="huiyuan-page" style="display: none;">
-							<div class="list-module">
-								<a href="become-member.html">
+						
+							<div class="p-white mytouch" id="huiyuan-page">
+								<div class="list-module">
+									<a href="become-member.html">
 									<span><i class="iconfont icon-kaitonghuiyuan"></i></span>
 									<span class="myorange marginleft-01">开通会员</span>
 									<span class="right-icon"><i class="iconfont icon-right weight"></i></span>
-								</a>
+									</a>
+								</div>
 							</div>
-						</div>
-						<div class="fenge-2"></div>
-						<div class="p-white mytouch" id="tuijian-page">
-							<div class="list-module">
-								<a href="tuijianYouli.html">
+							<div class="fenge-2"></div>
+							<div class="p-white mytouch" id="tuijian-page">
+								<div class="list-module">
+									<a href="tuijianYouli.html">
 									<span><i class="iconfont icon-tuijianyouli icon-size"></i></span>
 									<span>推荐有礼</span>
 									<span class="right-icon"><i class="iconfont icon-right weight"></i></span>
-								</a>
+									</a>
+								</div>
 							</div>
-						</div>
-						<div class="fenge-2"></div>
-						<div class="p-white mytouch" id="bfjl-page">
-							<div class="list-module">
-								<a href="PlayRecord.html">
+							<div class="fenge-2"></div>
+							<div class="p-white mytouch" id="bfjl-page">
+								<div class="list-module">
+									<a href="PlayRecord.html">
 									<span><i class="iconfont icon-bofangjilu icon-size"></i></span>
 									<span>播放记录</span>
 									<span class="right-icon"><i class="iconfont icon-right weight"></i></span>
-								</a>
+									</a>
+								</div>
 							</div>
-						</div>
-						<div class="p-white mytouch" id="spsc-page">
-							<div class="list-module">
-								<a href="spsc.html">
+							<div class="p-white mytouch" id="spsc-page">
+								<div class="list-module">
+									<a href="spsc.html">
 									<span><i class="iconfont icon-shipinshoucang icon-size"></i></span>
 									<span>视频收藏</span>
 									<span class="right-icon"><i class="iconfont icon-right weight"></i></span>
-								</a>
+									</a>
+								</div>
 							</div>
-						</div>
-						<div class="fenge-2"></div>
-						<div class="p-white mytouch" id="wddyp-page">
-							<div class="list-module">
-								<a href="wddianyingpiao.html">
+							<div class="fenge-2"></div>
+							<div class="p-white mytouch" id="wddyp-page">
+								<div class="list-module">
+									<a href="wddianyingpiao.html">
 									<span><i class="iconfont icon-wodedianyingpiao1 icon-size"></i></span>
 									<span>我的电影票</span>
 									<span class="right-icon"><i class="iconfont icon-right weight"></i></span>
-								</a>
+									</a>
+								</div>
 							</div>
-						</div>
-						<div class="p-white mytouch" id="wdjf-page">
-							<div class="list-module">
-								<a href="my-colorfulcoin.html">
+							<div class="p-white mytouch" id="wdjf-page">
+								<div class="list-module">
+									<a href="my-colorfulcoin.html">
 									<span style="font-weight: bolder;"><i class="iconfont icon-jifen icon-size"></i></span>
 									<span>我的七彩币</span>
 									<span class="right-icon"><i class="iconfont icon-right weight"></i></span>
-								</a>
+									</a>
+								</div>
 							</div>
-						</div>
-						<div class="p-white mytouch" id="kajuan-page">
-							<div class="list-module">
-								<a href="my-cardvolume.html">
+							<div class="p-white mytouch" id="kajuan-page">
+								<div class="list-module">
+									<a href="my-cardvolume.html">
 									<span><i class="iconfont icon-wodekaquan icon-size"></i></span>
 									<span>我的卡券</span>
 									<span class="right-icon"><i class="iconfont icon-right weight"></i></span>
-								</a>
+									</a>
+								</div>
 							</div>
-						</div>
-						<div class="p-white mytouch" id="dingdan-page">
-							<div class="list-module">
-								<a href="myOrder-table.html">
+							<div class="p-white mytouch" id="dingdan-page">
+								<div class="list-module">
+									<a href="myOrder-table.html">
 									<span><i class="iconfont icon-wodedingdan icon-size"></i></span>
 									<span>我的订单</span>
 									<span class="right-icon"><i class="iconfont icon-right weight"></i></span>
-								</a>
+									</a>
+								</div>
 							</div>
-						</div>
-						<div class="fenge-2"></div>
-						<div class="p-white mytouch" id="xxzx-page">
-							<div class="list-module">
-								<div id="p-biaoqian">0</div>
-								<a href="xiaoxizhongxin.html">
+							<div class="fenge-2"></div>
+							<div class="p-white mytouch" id="xxzx-page">
+								<div class="list-module">
+									<div id="p-biaoqian">0</div>
+									<a href="xiaoxizhongxin.html">
 									<span><i class="iconfont icon-xiaoxizhongxin icon-size"></i></span>
 									<span>消息中心</span>
 									<span class="right-icon"><i class="iconfont icon-right weight"></i></span>
-								</a>
+									</a>
+								</div>
 							</div>
-						</div>
-						<div class="p-white mytouch" id="yjfk-page">
-							<div class="list-module">
-								<a href="feedback.html">
+							<div class="p-white mytouch" id="yjfk-page">
+								<div class="list-module">
+									<a href="feedback.html">
 									<span><i class="iconfont icon-yijianfankui icon-size"></i></span>
 									<span>意见反馈</span>
 									<span class="right-icon"><i class="iconfont icon-right weight"></i></span>
-								</a>
+									</a>
+								</div>
 							</div>
-						</div>
-						<div class="p-white mytouch" id="shezhi-page">
-							<div class="list-module">
-								<a href="my-setting.html">
+							<div class="p-white mytouch" id="shezhi-page">
+								<div class="list-module">
+									<a href="my-setting.html">
 									<span><i class="iconfont icon-shezhi1 icon-size"></i></span>
 									<span>设置</span>
 									<span class="right-icon"><i class="iconfont icon-right weight"></i></span>
-								</a>
+									</a>
+								</div>
 							</div>
-						</div>
-						<div class="fenge-2"></div>
-
+							<div class="fenge-2"></div>
+						
 					</div>
 				</div>
 			</div>
 		</div>
 		<script type="text/javascript" src="assets/js/hprose.js"></script>
-		<script type="text/javascript" src="assets/js/perMessage-other.js"></script>
-		<!--<script type="text/javascript" src="assets/js/perCenter.js"></script>-->
+		<script type="text/javascript" src="assets/js/other.js"></script>
+		<script type="text/javascript" src="assets/js/perCenter.js"></script>
 	</body>
 
 </html>
