@@ -76,7 +76,8 @@ var Cookie = {
 	}();
 //获取token
 var token = function() {
-	return Cache.get('token')
+	return 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhZG1pbiI6ZmFsc2UsImNsYWltcyI6bnVsbCwidWlkIjoiODM4IiwidiI6MSwiaWF0IjoxNDkzMDAzMjg3fQ.PpqXb_oSU8EJVLAlwdzUBXsI67a2qAp7h5VuGf5Ly68';
+//	return Cache.get('token')
 };
 
 function Is_weixn() {
@@ -126,8 +127,8 @@ if(isWenxin && tokens != '') {
 	}
 }
 $(function() {
-	//var tokEn = getUrlVars()["token"];
-	var tokEn = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhZG1pbiI6ZmFsc2UsImNsYWltcyI6bnVsbCwidWlkIjoiODM4IiwidiI6MSwiaWF0IjoxNDkzMDAzMjg3fQ.PpqXb_oSU8EJVLAlwdzUBXsI67a2qAp7h5VuGf5Ly68';
+	var tokEn = getUrlVars()["token"];
+//	var tokEn = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhZG1pbiI6ZmFsc2UsImNsYWltcyI6bnVsbCwidWlkIjoiODM4IiwidiI6MSwiaWF0IjoxNDkzMDAzMjg3fQ.PpqXb_oSU8EJVLAlwdzUBXsI67a2qAp7h5VuGf5Ly68';
 	if(tokEn != undefined) {
 		Cache.set('token', tokEn);
 	};
@@ -163,10 +164,6 @@ var apiready = function() {
 	$api.fixStatusBar($api.dom('.bar-nav'));
 	$api.fixStatusBar($api.dom('.ad-bar'));
 	var offset = $api.offset('.ad-bar');
-
-	
-	console.log(offset);
-	
 };
 apiready();
 

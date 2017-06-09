@@ -138,6 +138,7 @@ function video(movie) {
     var player = cyberplayer("video").setup({
         width: '100%', // 宽度，也可以支持百分比(不过父元素宽度要有)
         height: '100%', // 高度，也可以支持百分比
+        backcolor:"#000",
         title: "基本功能", // 标题
         file: "http://gcqq450f71eywn6bv7u.exp.bcevod.com/mda-hbqagik5sfq1jsai/mda-hbqagik5sfq1jsai.mp4", // 播放地址
         image: "http://gcqq450f71eywn6bv7u.exp.bcevod.com/mda-hbqagik5sfq1jsai/mda-hbqagik5sfq1jsai.jpg", // 预览图
@@ -145,17 +146,13 @@ function video(movie) {
         stretching: "uniform", // 拉伸设置
         repeat: false, // 是否重复播放
         volume: 100, // 音量
-        controls: 2, // controlbar是否显示
+        controls: true, // controlbar是否显示
         starttime: 0, // 视频开始播放时间，如果不设置，则可以从上次播放时间点续播
         primary: "html5", // 首先使用html5还是flash播放，默认：html5
-        logo: { // logo设置
-            linktarget: "_blank",
-            margin: 8,
-            hide: false,
-            position: "top-right", // 位置
-            file: "./img/logo.png" // 图片地址
+        controlbar: {
+            barLogo: false
         },
-        ak: "29ae328c22344cd789af28826dff55c0" // 公有云平台注册即可获得accessKey
+        ak: "41707430fa52422f83b8efdc797f90c1" // 公有云平台注册即可获得accessKey
     });
     player.onFullscreen(function(event) {
         if (event.fullscreen) {
@@ -168,15 +165,14 @@ function video(movie) {
             });
         }
     });
-    player.onTime(function(event){ 
-     if(event.position>10){
-         player.pause();
-         $(".bg_video").show()
-     }
-});
+    player.onTime(function(event) {
+        if (event.position > 10) {
+            player.pause();
+            $(".bg_video").addClass('bg_video_show')  
+
+        }
+    });
 }
-
-
 
 /*简介*/
 $(".vpl_VideoDetail_des_title").on("click", '.vpl_introduction', function() {
