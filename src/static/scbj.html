@@ -42,15 +42,18 @@
 				<div class="pr_wj_content1">
 					<ul>
 						<li>
-							<div class='pr_left'>
-								<div class='my-select' videoid=" + data.videoid + "><input type='radio' /><i class='icon icon-fankui' style='top:-3px;'></i></div>
-							</div>
-							<div class='pr_right'>
-								<div class='pr_right_box_left'><img class='bj-img' src='" + data.videoimg + "' /></div>
-								<div class='pr_right_box_right'>
-									<p class='pr_right_box_right_top'>ssdsdsd</p>
+							<a :href="getTitleHref(god.goods_id)">
+								
+								<div class='pr_left'>
+									<div class='my-select' videoid=" + data.videoid + "><input type='radio' /><i class='icon icon-fankui' style='top:-3px;'></i></div>
 								</div>
-							</div>
+								<div class='pr_right'>
+									<div class='pr_right_box_left'><img class='bj-img' src='" + data.videoimg + "' /></div>
+									<div class='pr_right_box_right'>
+										<p class='pr_right_box_right_top'>ssdsdsd</p>
+									</div>
+								</div>
+							</a>
 						</li>
 					</ul>
 				</div>
@@ -64,7 +67,7 @@
 		<script type="text/javascript" src="lib/light7/js/i18n/cn.min.js"></script>
 		<script>
 			var token = Cache.get("flag") || "";
-			var client1 = hprose.Client.create("http://test.7cai.tv/index.php/api/api/video?t=" + token, ["getCollectLists", "delCollect"]);
+			var client1 = hprose.Client.create("http://my.shop.7cai.tv/tv/index.php?s=/Api/Favor/index.html?t=" + token, ["getCollectLists", "delCollect"]);
 			$.showIndicator();
 			client1.getCollectLists(function(result) {
 				$.hideIndicator();
