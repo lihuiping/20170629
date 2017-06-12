@@ -26,6 +26,6 @@
 </script>
 <script type="text/javascript" src="assets/js/iscroll.js"></script>
 <script type="text/javascript" src="assets/js/date.js"></script>
-<script type="text/javascript" src="assets/js/imgload.js"></script>
+<script type="text/javascript" src="lib/imgload.js"></script>
 <script  src="assets/js/common.js" type="text/javascript" charset="utf-8" ></script>
 <script type="text/javascript" src="lib/light7/js/light7.min.js"></script>
