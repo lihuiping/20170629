@@ -4,165 +4,7 @@
 <head>
     @@include('../tpl/header.tpl',{ "title":"中益七彩" })
     <style>
-    li {
-        list-style: none;
-    }
-    
-    body {
-        background: #fff;
-        overflow: auto;
-    }
-    
-    .jwplayer .jw-icon-barlogo:before {
-        content: none;
-    }
-    
-    .jw-icon-barlogo {
-        background: url('') no-repeat;
-        background-position: center;
-    }
-    
-    #video {
-        width: 100%;
-        height: 100%;
-    }
-    
-    a:active {
-        color: black;
-    }
-    
-    #link-address {
-        width: 100%;
-        height: 5rem;
-        position: absolute;
-        bottom: 0;
-        background: #f5f5f5;
-        opacity: 1;
-        display: none;
-        padding-top: .5rem;
-    }
-    
-    #link-address div,
-    #link-address p {
-        display: block;
-        width: 100%;
-        word-wrap: break-word;
-        font-size: .7rem;
-        padding: 0 .5rem;
-    }
-    
-    #link-address p {
-        text-align: center;
-    }
-    
-    .tj-fenxiang li span:nth-child(1) {
-        margin-top: 0;
-    }
-    
-    .vp-fenxiang .tj-fenxiang li span:nth-child(2) {
-        width: auto;
-        margin-left: -0.1rem;
-    }
-    
-    .vpl_VideoDetail_num_left {
-        font-size: .8rem;
-    }
-    
-    .vpl_VideoDetail_des_inf span {
-        font-size: .8rem;
-    }
-    
-    .vpl_remonForyou h1 {
-        font-size: .85rem;
-    }
-    
-    .vpl_remonForyou_list_right {
-        width: 53%;
-    }
-    
-    .vpl_remonForyou i {
-        font-size: 1rem;
-    }
-    
-    .icon-up,
-    .icon-down {
-        color: gray;
-    }
-    
-    .fenge-10 {
-        margin-bottom: 0;
-        height: 33%;
-    }
-    
-    .vpl_remonForyou {
-        margin-top: 1.5rem;
-    }
-    
-    #tip {
-        opacity: .5;
-        background: black;
-    }
-    
-    #tip img {
-        width: 50%;
-        float: right;
-    }
-    
-    .zindex {
-        z-index: 9999;
-    }
-    
-    #video {
-        z-index: 999;
-    }
-    
-    .videobox,
-    .bg_video {
-        width: 100%;
-        position: fixed;
-        height: 30%;
-        top: 0;
-        z-index: 999;
-    }
-    
-    .bg_video {
-        display: none;
-        background-color: rgba(0, 0, 0, .5);
-    }
-    
-    .bg_video_show {
-        display: block;
-        z-index: 2147483647;
-        height: 100%;
-        position: absolute;
-        left: 0;
-    }
-    
-    .vip_tips {
-        width: 75%;
-        text-align: center;
-        color: #fff;
-        margin: 2.5rem auto;
-        font-size: 0.7rem;
-        letter-spacing:
-    }
-    
-    .vip_tips ul {
-        display: flex;
-        width: 68%;
-        margin: 0 auto;
-    }
-    
-    .vip_tips ul li {
-        float: left;
-        text-align: center;
-        margin: 1rem auto .2rem;
-        width: 3.9rem;
-        background: #ff8c24;
-        height: 1.7rem;
-        line-height: 1.7rem;
-        border-radius: .25rem;
-    }
+  
     </style>
 </head>
 
@@ -171,14 +13,20 @@
         <div class="page page-current movie-content" id="VideoPlay">
             <div class="content">
                 <div class="fenge-10"></div>
+                                <div class="vpl_VideoDetail_num padding-lr clearfix">
+                    <div class="vpl_VideoDetail_num_left"> <span class="iconfont icon-xiaoxizhongxin" style="font-size: 1rem;"></span> <span> 热评<span>{{comCount}}</span>次</span>
+                    </div>
+                    <div class="vpl_VideoDetail_num_right"> <span class="iconfont icon-weishoucang vpl_Collection" index="1" @click="clickKeep(keepId)"></span> <span class="iconfont icon-fenxiang vpl_share" id="button-fenxiang"></span> </div>
+                    <div class="vpl_share_pingtai"> </div>
+                </div>
                 <section class="vpl_VideoDetail">
                     <div class="vpl_VideoDetail_des" id="content_movie" v-cloak>
                         <div class="vpl_VideoDetail_des_title">
                             <h2 class="fontsize-1">{{movieContent.name}}</h2>
-                            <span class="iconfont icon-down vpl_introduction maigintop-05" index="1" style="font-size:1rem;"></span><span class="color-gray">简介</span>
+                            <span class="iconfont icon-down3 vpl_introduction" index="1"></span><span class="color-gray">简介</span>
                         </div>
                         <div class="vpl_VideoDetail_des_inf">
-                            <span>{{movieContent.count}}</span><span>次播放</span> <span>7.8分</span> <span style="margin-left:0.4rem;">播放源：</span> <span id="bofangyuan"> <img src="assets/images/mangguo.png" style="transform: scale(1.3);"/> 
+                            <span>{{movieContent.count}}</span><span>次播放</span> <span>{{movieContent.grade}}分</span> <span style="margin-left:0.4rem;">播放源：</span> <span id="bofangyuan"> <img src="assets/images/mangguo.png" style="transform: scale(1.3);"/> 
                             <span>{{movieContent.play_source}}</span> </span>
                         </div>
                         <div class="vpl_VideoDetail_member">
@@ -187,92 +35,58 @@
                                 <li> <span>上映 : </span> <span>{{movieContent.release_time}} </span> </li>
                                 <li> <span>主演 : </span> <span>{{movieContent.role}}</span> </li>
                                 <li> <span>标签 : </span> <span>{{movieContent.type}}</span> </li>
-                                <li> 简介 : <span> {{movieContent.content}} </span> </li>
+                                <li> <span>简介 : </span><span> {{movieContent.content}} </span> </li>
                             </ul>
                         </div>
                     </div>
                 </section>
                 <div class="vpl_middleline"></div>
-                <div class="vpl_remonForyou">
-                    <h1>为你推荐</h1>
-                </div>
-                <section class="vpl_remonForyou_list" id="tuijian_movie">
-                    <ul>
-                        <a href="/plus/view.php?aid=57" class="external color-default mytouch" v-for="item in movielist.data" v-cloak>
-                            <li id="item.id">
-                                <div class="vpl_remonForyou_list_left"> <img :src="item.cover" class="tuijian-pic" style="width: 100%;height: 100%;" /> </div>
-                                <div class="vpl_remonForyou_list_right">
-                                    <div class="vpl_remonForyou_list_right_des">
-                                        <p style="font-size:0.8rem;margin:0;padding:0;">{{item.name}}</p>
-                                        <p style="font-size:0.75rem;color:#909090;margin-top:0.17rem;">{{item.title}}</p>
-                                    </div>
-                                    <div class="vpl_remonForyou_list_right_go iconfont icon-yingdaicon10"></div>
-                                </div>
-                            </li>
-                        </a>
-                    </ul>
-                    <div class="vpl_slidemore">
-                        <p class="vpl_slidemore_go mytouch">查看更多></p>
-                    </div>
-                </section>
-                <section class="vpl_box vpl_box_remonforyou" style="display:none;">
-                    <div class="vpl_remonForyou vpl_remonForyou2">
+                <div class="tuijian clearfix">
+                    <div class="vpl_remonForyou">
                         <h1>为你推荐</h1>
-                        <i class="iconfont icon-guanbi1 vpl_remonForyou_close"></i> </div>
-                    <div class="vpl_remonForyou_list vpl_remonForyou_list2">
+                    </div>
+                    <section class="vpl_remonForyou_list" id="tuijian_movie">
                         <ul>
-                            <a href="/plus/view.php?aid=59" class="external color-default mytouch">
-                                <li>
-                                    <div class="vpl_remonForyou_list_left"> <img src="assets/images/file0002.jpg" class="tuijian-pic" style="width: 100%;height: 100%;" /> </div>
+                            <a href="/plus/view.php?aid=57" class="external color-default mytouch" v-for="item in movielist.data" v-cloak>
+                                <li id="item.id">
+                                    <div class="vpl_remonForyou_list_left"> <img :src="item.cover" class="tuijian-pic" style="width: 100%;height: 100%;" /> </div>
                                     <div class="vpl_remonForyou_list_right">
                                         <div class="vpl_remonForyou_list_right_des">
-                                            <p style="font-size:0.8rem;margin:0;padding:0;">灵异少女</p>
-                                            <p style="font-size:0.7rem;color:#909090;margin-top:0.17rem;">主演:胡洁琼/张丁懿</p>
-                                        </div>
-                                        <div class="vpl_remonForyou_list_right_go iconfont icon-yingdaicon10"></div>
-                                    </div>
-                                </li>
-                            </a>
-                            <a href="/plus/view.php?aid=57" class="external color-default mytouch">
-                                <li>
-                                    <div class="vpl_remonForyou_list_left"> <img src="assets/images/file0002.jpg" class="tuijian-pic" style="width: 100%;height: 100%;" /> </div>
-                                    <div class="vpl_remonForyou_list_right">
-                                        <div class="vpl_remonForyou_list_right_des">
-                                            <p style="font-size:0.8rem;margin:0;padding:0;">童谣</p>
-                                            <p style="font-size:0.7rem;color:#909090;margin-top:0.17rem;">主演:张秭禾/刘希婧</p>
-                                        </div>
-                                        <div class="vpl_remonForyou_list_right_go iconfont icon-yingdaicon10"></div>
-                                    </div>
-                                </li>
-                            </a>
-                            <a href="/plus/view.php?aid=47" class="external color-default mytouch">
-                                <li>
-                                    <div class="vpl_remonForyou_list_left"> <img src="assets/images/file0002.jpg" class="tuijian-pic" style="width: 100%;height: 100%;" /> </div>
-                                    <div class="vpl_remonForyou_list_right">
-                                        <div class="vpl_remonForyou_list_right_des">
-                                            <p style="font-size:0.8rem;margin:0;padding:0;">天黑别闭眼</p>
-                                            <p style="font-size:0.7rem;color:#909090;margin-top:0.17rem;">主演:李佳璇/徐东</p>
-                                        </div>
-                                        <div class="vpl_remonForyou_list_right_go iconfont icon-yingdaicon10"></div>
-                                    </div>
-                                </li>
-                            </a>
-                            <a href="/plus/view.php?aid=44" class="external color-default mytouch">
-                                <li>
-                                    <div class="vpl_remonForyou_list_left"> <img src="assets/images/file0002.jpg" class="tuijian-pic" style="width: 100%;height: 100%;" /> </div>
-                                    <div class="vpl_remonForyou_list_right">
-                                        <div class="vpl_remonForyou_list_right_des">
-                                            <p style="font-size:0.8rem;margin:0;padding:0;"> 幽冥船</p>
-                                            <p style="font-size:0.7rem;color:#909090;margin-top:0.17rem;">主演:邹笨笨</p>
+                                            <p style="font-size:0.8rem;margin:0;padding:0;">{{item.name}}</p>
+                                            <p style="font-size:0.75rem;color:#909090;margin-top:0.17rem;">{{item.title}}</p>
                                         </div>
                                         <div class="vpl_remonForyou_list_right_go iconfont icon-yingdaicon10"></div>
                                     </div>
                                 </li>
                             </a>
                         </ul>
-                    </div>
-                </section>
-                <div style="width: 100%;height: 1rem;border-bottom: solid 0.05rem #D9D9D9;"></div>
+                        <div class="vpl_slidemore">
+                            <p class="vpl_slidemore_go mytouch">查看更多></p>
+                        </div>
+                    </section>
+                    <section class="vpl_box vpl_box_remonforyou" style="display:none;">
+                        <div class="vpl_remonForyou vpl_remonForyou2">
+                            <h1>为你推荐</h1>
+                            <i class="iconfont icon-guanbi1 vpl_remonForyou_close"></i> </div>
+                        <div class="vpl_remonForyou_list vpl_remonForyou_list2">
+                            <ul>
+                              <a href="/plus/view.php?aid=57" class="external color-default mytouch" v-for="item in movielist.data" v-cloak>
+                                <li id="item.id">
+                                    <div class="vpl_remonForyou_list_left"> <img :src="item.cover" class="tuijian-pic" style="width: 100%;height: 100%;" /> </div>
+                                    <div class="vpl_remonForyou_list_right">
+                                        <div class="vpl_remonForyou_list_right_des">
+                                            <p style="font-size:0.8rem;margin:0;padding:0;">{{item.name}}</p>
+                                            <p style="font-size:0.75rem;color:#909090;margin-top:0.17rem;">{{item.title}}</p>
+                                        </div>
+                                        <div class="vpl_remonForyou_list_right_go iconfont icon-yingdaicon10"></div>
+                                    </div>
+                                </li>
+                            </a>
+                            </ul>
+                        </div>
+                    </section>
+                </div>
+                <div class="vpl_middleline"></div>
                 <!--评价 start-->
                 <div class="movie-buzz">
                     <span>热评</span>
@@ -280,66 +94,66 @@
                 </div>
                 <div class="movie-user-review">
                     <img src="assets/images/my_user.png" />
-                    <input class="movie-user-input" type="text" placeholder="我来说两句" />
+                    <input class="movie-user-input" type="text" placeholder="我来说两句" @click='addComment()' />
                 </div>
                 <div class="card movie-other-review">
-                    <div class="card-content">
-                        <div class="list-block media-list">
-                            <ul>
-                                <li class="item-content">
-                                    <div class="item-media">
-                                        <img src="assets/images/other_user.png">
-                                    </div>
-                                    <div class="item-inner">
-                                        <div class="item-title-row">
-                                            <div class="item-title">暖日阳光</div>
+                    <div style="display: block;">
+                        <div class="card-content clearfix" v-for='item in Comment' v-cloak>
+                            <div class="list-block media-list" id="{{item.id}}">
+                                <ul>
+                                    <li class="item-content">
+                                        <div class="item-media">
+                                            <img :src="'http://img.7cai.tv/'+item.head">
                                         </div>
-                                        <div class="item-subtitle">3小时前</div>
-                                    </div>
-                                    <div class="review-log">
-                                        <i class="icon icon-xiaoxizhongxin1"></i>
-                                        <span>45</span>
-                                    </div>
-                                </li>
-                            </ul>
-                            <div class="movie-cont">
-                                相对于第二部，我更喜欢第一部，因为这部电影的故事更加行云流水，反派的给力指数更高。当然，不得不说第一部的小黄人确实萌到爆表 相对于第二部，我更喜欢第一部，因为这部电影的故事更加行云流水，反派的给力指数更高。当然，不得不说第一部的小黄人确实萌到爆表
-                            </div>
-                            <div class="movie-other-cont">
-                                <span class="movieCont-tit">会飞的小猪</span><span>：</span> 相对于第二部，我更喜欢第一部，因为这部电影的故事更加行云流水，反派的给力指数更高。当然，不得不说第一部的小黄人确实萌到爆表 相对于第二部，我更喜欢第一部，因为这部电影的故事更加行云流水，反派的给力指数更高。当然，不得不说第一部的小黄人确实萌到爆表
+                                        <div class="item-inner">
+                                            <div class="item-title-row">
+                                                <div class="item-title">{{item.user_name}}</div>
+                                            </div>
+                                            <div class="item-subtitle">{{item.add_time}}</div>
+                                        </div>
+                                        <div class="review-log" @click='addComment(item.id)' :id="item.id">
+                                            <i class="icon icon-xiaoxizhongxin1"></i>
+                                            <span>{{item.reply_num}}</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="movie-cont">
+                                    {{item.content}}
+                                </div>
+                                <div class="movie-other-cont" v-if="item.reply!=''" v-for="items in item.reply">
+                                    <span class="movieCont-tit">{{items.user_name}}</span><span>：</span> {{items.content}}
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <div class="vpl_slidemore" v-show="switchShow" @click="getCommentMore()">
+                        <p class="vpl_slidemore_go mytouch">查看更多></p>
+                    </div>
+                    <!--评价 end-->
                 </div>
-                <div class="vpl_slidemore">
-                    <p class="vpl_slidemore_go mytouch">查看更多></p>
-                </div>
-                <!--评价 end-->
-            </div>
-            <div class="videobox">
-                <div id="video" style="width:100%;height:auto;"></div>
-                <div class="bg_video">
-                    <div class="vip_tips">
-                        <p>试看结束,继续播放需要付费5元或开通会员终身免费本平台所有影视资源~</p>
-                        <ul>
-                            <li>付费点播</li>
-                            <li>开通会员</li>
-                        </ul>
+                <div class="videobox">
+                    <div id="video" style="width:100%;height:auto;"></div>
+                    <div class="bg_video">
+                        <div class="vip_tips">
+                            <p>试看结束,继续播放需要付费5元或开通会员终身免费本平台所有影视资源~</p>
+                            <ul>
+                                <li>付费点播</li>
+                                <li>开通会员</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="vpl_VideoDetail_num padding-lr">
-                <div class="vpl_VideoDetail_num_left" style="color:#d9d9d9"> <span class="iconfont icon-xiaoxizhongxin" style="font-size: 1rem;"></span> <span> 热评<span>77</span>次</span>
+                <div class="comment_bar">
+                    <textarea name="" id="f_comment" cols="30" rows="4"></textarea>
+                    <button @click='btn_comment()'>发送</button>
                 </div>
-                <div class="vpl_VideoDetail_num_right"> <span class="iconfont icon-weishoucang vpl_Collection" index="1" @click="clickKeep(keepId)"></span> <span class="iconfont icon-fenxiang vpl_share" id="button-fenxiang"></span> </div>
-                <div class="vpl_share_pingtai"> </div>
             </div>
         </div>
-    </div>
-    <!-- <script src="assets/js/hprose.js"></script> -->
-    <script src="lib/cyberplayer.js"></script>
-    <!-- <script src="http://imgcache.qq.com/open/qcloud/video/vcplayer/TcPlayer.js" charset="utf-8"></script> -->
-    <script src="assets/js/movie_content.js"></script>
+        <!-- <script src="assets/js/hprose.js"></script> -->
+        <script src="lib/cyberplayer.js"></script>
+        <script src="assets/js/fx.js"></script>
+        <!-- <script src="http://imgcache.qq.com/open/qcloud/video/vcplayer/TcPlayer.js" charset="utf-8"></script> -->
+        <script src="assets/js/movie_content.js"></script>
 </body>
 
 </html>
