@@ -104,7 +104,7 @@ var yx_ry = new Vue({
 		},
 		getTitleHref: function(val) {
 			//return 'goods-detail.html?id=' + val
-			return 'movie-content.html'
+			return 'movie-content.html?id='+val
 		},
 	}
 });
@@ -135,7 +135,7 @@ var wl_movie = new Vue({
 		},
 		getTitleHref: function(val) {
 			//return 'goods-detail.html?id=' + val
-			return 'movie-content.html'
+			return 'movie-content.html?id='+val
 		},
 	}
 });
@@ -166,7 +166,7 @@ var jd_movie = new Vue({
 		},
 		getTitleHref: function(val) {
 		//	return 'goods-detail.html?id=' + val
-		return 'movie-content.html'
+		return 'movie-content.html?id='+val
 		},
 	}
 }); /*至尊独享*/
