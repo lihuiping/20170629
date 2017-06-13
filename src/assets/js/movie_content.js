@@ -1,10 +1,11 @@
 var conf = 1;
-var toke = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhZG1pbiI6ZmFsc2UsImNsYWltcyI6bnVsbCwidWlkIjoiODM4IiwidiI6MSwiaWF0IjoxNDkzMDAzMjg3fQ.PpqXb_oSU8EJVLAlwdzUBXsI67a2qAp7h5VuGf5Ly68'; //获取token
+var toke = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhZG1pbiI6ZmFsc2UsImNsYWltcyI6bnVsbCwidWlkIjoiODg4IiwidiI6MSwiaWF0IjoxNDk2OTEzOTU1fQ.47xETg6GOcUcGegHQXn7xX1mf3OECo5NrOLEzXl7M68'; //获取token
 var tuijian_list = ['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/Recommend/index&token=' + toke]; //banner
 var content_movie = ['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/videoInfo/index&token=' + toke];
 var add_collection = ['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/Favor/change.html'];
 var get_collection = ['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/Favor/check.html'];
-
+var add_comment = ['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/Comment/add.html&token=' + toke];
+var get_comment = ['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/Comment/index.html'];
 //获取地址参数
 function GetQueryString(name) {
     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
@@ -34,11 +35,16 @@ var movieDatail = new Vue({
         shop: [],
         Comment: [],
         keep: "icon-weishoucang",
-        keepId: ""
+        keepId: "",
+        replyId: "",
+        nowPage: 1,
+        comCount:"",
+        switchShow: false
     },
     mounted: function() {
         //初始化加载数据
         this.showMovie();
+        this.init();
     },
     methods: {
         showMovie: function() {
@@ -51,17 +57,14 @@ var movieDatail = new Vue({
             }).then(function(response) {
                 var data = response.data.data;
                 movieDatail.movieContent = data;
-                var movie = "http://1253822065.vod2.myqcloud.com/eb5d41c9vodtransgzp1253822065/827c290f9031868222960789073/f0.f20.mp4";
-                video(movie);
+                var movie = data.url;
+                var movieTitle = data.name;
+                var movieCover = data.cover;
+                video(movie, movieTitle, movieCover);
             });
             //获取评价
-            // axios.get(evaluateList[conf] + orderID).then(function(response) {
-            //     var data = response.data.data;
-            //     if(response.data.res === 1) {
-            //         movieDatail.Comment = data;
-            //     }
-            // });
-            //获取收藏
+       
+            // 获取收藏
             axios.get(get_collection[conf], {
                 params: {
                     token: tokens,
@@ -83,7 +86,6 @@ var movieDatail = new Vue({
                 var data = res.data;
                 if (data.res == 1) {
                     _this.movielist = data;
-                    console.log(data);
                     _this.loadingFlag = false;
                 } else {
                     $.toast("商品数据错误");
@@ -130,18 +132,75 @@ var movieDatail = new Vue({
             })
 
         },
+        addComment: function(obj) {
+            $(".comment_bar").show();
+            $(".comment_bar textarea").focus();
+            movieDatail.replyId = obj;
+        },
+        btn_comment: function(replyId) {
+            var comment = $("#f_comment").val();
+            axios.get(add_comment[conf], {
+                params: {
+                    program_id: movieID,
+                    content: comment,
+                    reply_to: movieDatail.replyId
+                }
+            }).then(function(res) {
+                var data = res.data;
+                if (data.res == 1) {
+                    //   _this.movielist = data;
+                    console.log(data);
+                    // _this.loadingFlag = false;
+                    //showMovie();
+                } else {
+                    $.toast("商品数据错误");
+                }
+            });
+        },
+        moreFn: function(itemIndex) {
+            axios.get(get_comment[conf], {
+                params: {
+                    program_id: movieID,
+                    page: itemIndex
+                }
+            }).then(function(res) {
+                var data = res.data;
+                if (data.res == 1) {
+                    //   _this.movielist = data;
+                    //  console.log(data);
+                    // movieDatail.$set(movieDatail.Comment,movieDatail.Comment.concat(data.data));
 
+                    movieDatail.comCount=data.data[0].comCount;
+                    movieDatail.Comment = movieDatail.Comment.concat(data.data);
+                    console.log(movieDatail.Comment);
+                    this.switchShow = !this.switchShow;
+                    scrollComment();
+                } else {
+                    $.toast("暂无评论");
+                }
+            });
+
+            this.switchShow = !this.switchShow;
+        },
+        getCommentMore: function() {
+            this.switchShow = !this.switchShow;
+            this.nowPage++;
+            this.moreFn(this.nowPage);
+        },
+        init: function() {
+            this.moreFn(this.nowPage);
+        }
     }
 });
 
-function video(movie) {
+function video(movie, movieTitle, movieCover) {
     var player = cyberplayer("video").setup({
         width: '100%', // 宽度，也可以支持百分比(不过父元素宽度要有)
         height: '100%', // 高度，也可以支持百分比
-        backcolor:"#000",
-        title: "基本功能", // 标题
-        file: "http://gcqq450f71eywn6bv7u.exp.bcevod.com/mda-hbqagik5sfq1jsai/mda-hbqagik5sfq1jsai.mp4", // 播放地址
-        image: "http://gcqq450f71eywn6bv7u.exp.bcevod.com/mda-hbqagik5sfq1jsai/mda-hbqagik5sfq1jsai.jpg", // 预览图
+        backcolor: "#000",
+        title: movieTitle, // 标题
+        file: movie, // 播放地址
+        image: movieCover, // 预览图
         autostart: false, // 是否自动播放
         stretching: "uniform", // 拉伸设置
         repeat: false, // 是否重复播放
@@ -168,7 +227,7 @@ function video(movie) {
     player.onTime(function(event) {
         if (event.position > 10) {
             player.pause();
-            $(".bg_video").addClass('bg_video_show')  
+            $(".bg_video").addClass('bg_video_show')
 
         }
     });
@@ -177,5 +236,17 @@ function video(movie) {
 /*简介*/
 $(".vpl_VideoDetail_des_title").on("click", '.vpl_introduction', function() {
     $(".vpl_VideoDetail_member").toggle();
-    $(".vpl_introduction").toggleClass("icon-up");
+    $(".vpl_introduction").toggleClass("icon-up3");
 });
+/*点击热评的效果*/
+$(".vpl_VideoDetail_num_left").on('click',function(){
+    alert("反应");
+    scrollComment();
+})
+/*滑动的效果*/
+function scrollComment(){
+     var navHeigth=$(window).height()-$(".videobox").height();
+       $(".content").scrollTo({
+                        toT: navHeigth
+                    });
+}
