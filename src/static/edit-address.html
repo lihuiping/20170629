@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html class="pixel-ratio-1">
+
+	<head>
+		@@include('../tpl/header.tpl',{ "title":"编辑地址" })
+
+	</head>
+
+	<body>
+		<div class="page page-current page-inited" id="editaddress">
+			<div class="content">
+				<header class=" bar-nav wsl-header">
+					<div class="title-box">
+						<a class="icon icon-left" href="#" onclick="javascript:history.go(-1)"></a>
+						<div class="w-title">编辑地址</div>
+					</div>
+
+				</header>
+				<div class="editad no-margin">
+					<ul class="list-block text-center registbody">
+						<li>
+							<div class="item-content z-content-1 no-bordertop">
+								<div class="item-media ed-title">收件人：</div>
+								<div class="item-input">
+									<input name="adperson" class="color-input" id="adperson" type="text">
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="item-content z-content-1 no-bordertop">
+								<div class="item-media ed-title">手机号：</div>
+								<div class="item-input">
+									<input name="mobile" class="color-input" id="ed-mobile" type="text">
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="item-content z-content-1 no-bordertop">
+								<div class="item-media ed-title">选择地区：</div>
+								<div class="item-input">
+									<!--<input name="area" class="color-input" id="ed-chosearea" type="text">-->
+										<input id="ad-ad-arpicker" class="color-input ed-chosearea" readonly="true" type="text">
+								</div>
+							</div>
+						</li>
+						<li class="no-border-bottom">
+							<div class="item-content z-content-1 no-bordertop no-border-bottom">
+								<div class="item-media ed-title">详细地址：</div>
+								<div class="item-input" id="adarea">
+									<textarea name="ed-address" class="color-input" id="ed-address"></textarea>
+								</div>
+							</div>
+						</li>
+					</ul>
+					<div class="fenge"></div>
+					<div class="moren">
+						<div class="ed-title">设为默认</div>
+						<div class="item-input" id="item-input">
+							<label class="label-switch scale-1">
+<input checked="checked" type="checkbox">
+<div class="checkbox bg-ff8"></div>
+</label>
+						</div>
+					</div>
+					<div class="fenge"></div>
+					<div id="editAddressCommit" class="newbutton" style="margin-top: 2.81rem;">
+					完成
+				</div>
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript" src="lib/light7/js/light7-city-picker.js" charset="utf-8"></script>
+		<script type="text/javascript" src="assets/js/cn.js" charset="utf-8"></script>
+		<script type="text/javascript" src="lib/hprose.js" charset="utf-8"></script>
+		<script type="text/javascript" src="assets/js/edit-message.js" charset="utf-8"></script>
+
+	</body>
+
+</html>

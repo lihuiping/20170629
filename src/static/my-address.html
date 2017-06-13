@@ -6,14 +6,9 @@
 </head>
 <body>
 <div class="page page-current">
+	@@include('../tpl/bar-nav.tpl',{"title":"我的地址"})
     <div class="content  address-page">
-    	<header class=" bar-nav wsl-header">
-				<div class="title-box">
-					<a class="icon icon-left" href="#" onclick="javascript:history.go(-1)"></a>
-					<div class="w-title">我的地址</div>
-				</div>
 				
-				</header>
         <!--地址列表外壳-->
         <div class="myAddress">
             <!--地址列表开始-->
@@ -38,13 +33,12 @@
                     </div>
                     <div class="card-footer">
                         <label class="label-checkbox">
-                            <input type="radio" name="radio" value="1" v-model="item.isdef" :id="item.id">
+                            <input type="radio" name="radio" value="1" v-model="item.isdef" :id="item.id" />
                             <div class="item-media ccart_checkbox"><i
                                     class="icon icon-form-checkbox"></i><span>设为默认</span></div>
                         </label>
-                        <div class="edit">
-                            <!--<a href="http://v.7cai.tv/templets/gerenzhongxin/personMessage/editaddress.html">
-                           <i class=" icon icon-bianji1"></i><span>编辑</span></a>-->
+                        <div class="edit">                          
+                      <a :href="'edit-address.html?id='+item.id"><i class="icon icon-bianji1"></i><span>编辑</span></a>
                             <i class="icon icon-shanchu"></i><span class="del—address" :id="item.id">删除</span>
                         </div>
                     </div>
@@ -62,7 +56,6 @@
         <!--地址列表外壳结束-->
     </div>
 </div>
-<script src="assets/js/address.js"></script>
 <script type="text/javaScript">
     var obj;
     function getQueryString(name) {
@@ -81,10 +74,10 @@
         return ret;
     };
     var token = token();
-
     var attrList = getQueryString('attr');
     var header = {'content-type': 'application/x-www-form-urlencoded'};
-    var url = baseUrl() + 'member.php?r=address&m=index';
+    var url = baseUrl() + 'member.php?r=address&m=getAddressList';
+    
     axios.post(url, transformRequest({token: token}), {headers: header, async: false,})
         .then(function (response) {
 
@@ -107,18 +100,50 @@
             console.log(error);
         });
 
-    $(".myAddress").on("click", "input[name='radio']", function (e) {
-
-        var id = $(e.currentTarget).attr('id');
-        setDefaultAddress(id);
-
-
+//设置默认地址
+var defUrl= baseUrl() + 'member.php?r=address&m=setDefaultAddress';
+    $(".myAddress").on("change", "input[name='radio']", function (e) {
+       var id = $(e.currentTarget).attr("id");
+		$.ajax({
+			type:"post",
+			url:defUrl,
+			async: false,
+			data:{
+				id:id,
+				token: token
+			},
+			success:function(result){
+				$.toast("设置成功");
+			}
+		});
     });
 
+//点击删除地址
+	var delUrl = baseUrl() + 'member.php?r=address&m=delAddress';
     $(".myAddress").on("click", ".del—address", function (e) {
-        var id = $(e.currentTarget).attr('id');
-        $(e.currentTarget).parent().parent().parent().remove();
-        delAddress(id);
+    	var id = $(e.currentTarget).attr('id');
+    	$.confirm('您确定要删除该地址吗？', function() {
+    		
+			$.ajax({
+				type:"post",
+				url:delUrl,
+				async: false,
+				data:{
+					id:id,
+					token: token
+				},
+				success: function(result) {
+					var result = $.parseJSON(result);
+					console.log(result);
+					if(result.res == 1) {
+				        $(e.currentTarget).parent().parent().parent().remove();
+						$.toast("已删除当前地址！")
+					}else{
+						$.toast(result.data.msg);
+					}
+				}
+			});
+		});
     });
 
     $(".myAddress").on("click", ".card-content-inner", function (e) {
