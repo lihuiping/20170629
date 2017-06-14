@@ -75,9 +75,11 @@ var Cookie = {
 		}), api
 	}();
 var isVIP = '';
+var token = token();
 //获取token
 function sclient() {
-	var token = Cache.get("flag") || "";
+	//var token = Cache.get("flag") || "";
+//	token = token();
 	return hprose.Client.create("http://test.7cai.tv/index.php/api/api/user?t=" + token, ["login", "register", "isLogin", "logout", "findPwd", "sendCode", "getUserInfo", "isSafe", "modifyInfo", "isRegister", "modifyMobile", "modifyHeadImg", "certif ication", "modifyPwd", "modifySafePwd", "getAddressList", "getAddress", "addOrEditAddress", "setDefaultAddress", "delAddress", "getPayOrderInfo", "getOpenId ", "getUploadParams", "getFriends", "getPoints", "getTicketUrl", "getFkTypeLists", "addFkMsg", "getWxSdkSignInfo"]);
 	//http://test.7cai.tv/index.php
 }
@@ -86,7 +88,7 @@ var client = sclient();
 
 //是否VIP
 var isVip = function() {
-	var token = Cache.get("flag") || "";
+//	var token = Cache.get("flag") || "";
 	$.ajax({
 		type:"get",
 		url:"http://my.shop.7cai.tv/tv/index.php?s=/Api/Center/is_vip&token="+token,
@@ -171,10 +173,10 @@ var isVip = function() {
 
 $(function(){
 	isVip();
-	var token = token();
-	if(!token){
-		window.location.href = "./login.html";
-	}
+//	var token = token();
+//	if(!token){
+//		window.location.href = "./login.html";
+//	}
 });
 
 

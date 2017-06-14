@@ -75,9 +75,10 @@ var Cookie = {
 		}), api
 	}();
 var isVIP = '';
+var token = token();
 //获取token
 function sclient() {
-	var token = Cache.get("flag") || "";
+//	var token = Cache.get("flag") || "";
 	return hprose.Client.create("http://test.7cai.tv/index.php/api/api/user?t=" + token, ["login", "register", "isLogin", "logout", "findPwd", "sendCode", "getUserInfo", "isSafe", "modifyInfo", "isRegister", "modifyMobile", "modifyHeadImg", "certif ication", "modifyPwd", "modifySafePwd", "getAddressList", "getAddress", "addOrEditAddress", "setDefaultAddress", "delAddress", "getPayOrderInfo", "getOpenId ", "getUploadParams", "getFriends", "getPoints", "getTicketUrl", "getFkTypeLists", "addFkMsg", "getWxSdkSignInfo"]);
 	//http://test.7cai.tv/index.php
 }
@@ -150,7 +151,6 @@ $("#ad-ad-arpicker").on("click", function(e) {
 });
 //添加地址按钮
 var url = baseUrl() + 'member.php?r=address&m=addOrEditAddress';
-var token = token();
 $("#address-commit").on('click', function() {
 	var name = $("#sh-name").val();
 	var phone = $("#sh-phone").val();
