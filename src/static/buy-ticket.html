@@ -10,13 +10,9 @@
 	</head>
 	<body>
 		<div class="page scroll page-current page-inited butTic-page" id="goupiao">
-			<header class="bar-nav wsl-header" style="position: fixed;top: 0;left: 0;z-index: 100;width: 100%;">
-				<div class="title-box">
-					<a class="icon icon-left" href="javascript:history.go(-1)"></a>
-					<div class="w-title">购票</div>
-				</div>
-			</header>
-			<div class="ip-scroll" style="margin-top: 2.1rem;">
+			@@include('../tpl/bar-nav.tpl',{ "title":"购票" })
+			<div class="content znTop">
+			<div class="ip-scroll">
 				<div class="dysuo dy-sousuo gp_dy_sousuo">
 					
 					<div class="dysu_left">
@@ -71,6 +67,7 @@
 						</div>
 					</div>
 				</div>
+			</div>
 			</div>
 		</div>
 		@@include('../tpl/footer.tpl',{"ticket":"active","ticketc":"icon-ticket-active"})
