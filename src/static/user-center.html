@@ -8,8 +8,15 @@
 		<div class="page-group">
 			<div class="page page-current personmessage" id="personmessage">
 				<!--从这里开始写代码-->
-			 @@include('../tpl/bar-nav.tpl',{ "title":"个人中心" }) 
+			 	@@include('../tpl/bar-nav.tpl',{ "title":"个人中心" }) 
 				<div class="content pdbt">
+					<header class="bar-nav wsl-header" style="position: fixed;top: 0;left: 0;z-index: 100;width: 100%;">
+						<div class="title-box">
+							<a class="icon icon-left" href="javascript:history.go(-1)"></a>
+							<div class="w-title">个人中心</div>
+						</div>
+					</header>
+					<!--普通会员-->
 					<div class="userhead mytouch" id="p-message">
 						<a href="edit-message.html">
 						<div id="p-touxiang">
@@ -23,8 +30,30 @@
 						<span><i class="iconfont icon-right weight"></i></span>
 						</a>
 					</div>
+					
+					<!--vip会员-->
+					<div class="hybg mytouch" id="hy-edit" style="display: none;">
+						<img src="assets/images/bg-vip.png">
+						<div class="hybg-touxiang" style="height: 134px;">
+							<!--<img src="assets/images/tx-160.png">-->
+						</div>
+						<div class="hybg-down-num">
+							<a href="edit-message.html">
+							<span id="hui-mobile"></span> <span id="vip-jifen"></span>
+							<i class="iconfont icon-jiaofeihuiyuanbianji1"></i>
+							</a>
+						</div>
+					</div>
+					<div class="hytequan" id="hytq" style="display: none;">
+						<a href="membership.html">
+						<i class="iconfont icon-kaitonghuiyuan"></i>会员特权
+						<span class="right-icon"><i class="iconfont icon-right weight"></i></span>
+						</a>
+					</div>
+					
+					
 					<div class="person-mid" style="width: 100%;">
-						
+							<!--普通会员-->
 							<div class="p-white mytouch" id="huiyuan-page">
 								<div class="list-module">
 									<a href="become-member.html">
@@ -34,6 +63,8 @@
 									</a>
 								</div>
 							</div>
+							
+							
 							<div class="fenge-2"></div>
 							<div class="p-white mytouch" id="tuijian-page">
 								<div class="list-module">
@@ -82,7 +113,7 @@
 									</a>
 								</div>
 							</div>
-							<div class="p-white mytouch" id="kajuan-page">
+							<!--<div class="p-white mytouch" id="kajuan-page">
 								<div class="list-module">
 									<a href="my-cardvolume.html">
 									<span><i class="iconfont icon-wodekaquan icon-size"></i></span>
@@ -90,7 +121,7 @@
 									<span class="right-icon"><i class="iconfont icon-right weight"></i></span>
 									</a>
 								</div>
-							</div>
+							</div>-->
 							<div class="p-white mytouch" id="dingdan-page">
 								<div class="list-module">
 									<a href="myOrder-table.html">
@@ -135,8 +166,8 @@
 				</div>
 			</div>
 		</div>
-		<script type="text/javascript" src="assets/js/hprose.js"></script>
-		<script type="text/javascript" src="assets/js/other.js"></script>
+		<script type="text/javascript" src="lib/hprose.js"></script>
+		<!--<script type="text/javascript" src="assets/js/other.js"></script>-->
 		<script type="text/javascript" src="assets/js/perCenter.js"></script>
 	</body>
 
