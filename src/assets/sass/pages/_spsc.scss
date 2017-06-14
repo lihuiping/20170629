@@ -30,7 +30,33 @@
 }
 .moviedel{
     font-size: 0.8rem!important;
+    
 }
 .lqMovies .item-inner{
 	position: relative;
+}
+.lqMovies li{
+	border: 0!important;
+}
+.moviedel .del_num{
+	font-style: normal;
+}
+.lqmedia{
+	display: block;
+    position: relative;
+    top: 2rem;
+    line-height: 0!important;
+}
+.movie-inner{
+	border-bottom:1px solid #ccc;
+	height:4.3rem;
+}
+.lqmovietime{
+	position: absolute;
+    top: 75%;
+    width: 100%;
+	color: #fff;
+	background-color: rgba(0,0,0,0.3);
+	font-size: 0.6rem;
+	text-indent: 2%;
 }
