@@ -215,10 +215,33 @@ var noLogin = function() {
 
 //是否VIP
 var isVip = function() {
-	var isVIP = Cache.get("isVIP") || 0;
-	if(!isVIP) {
-		client.getUserInfo(function(result) {
-			var result = $.parseJSON(result);
+//	var isVIP = Cache.get("isVIP") || 0;
+//	if(!isVIP) {
+//		client.getUserInfo(function(result) {
+//			var result = $.parseJSON(result);
+//			console.log(result);
+//			if(result.res == 1) {
+//				Cache.set("isVIP", result.data.isvip);
+//				isVIP = result.data.isvip;
+//				if(isVIP == 1) {
+//					window.location.href = "./perMessage-huiyuan.html";
+//				} else {
+//					window.location.href = "./user-center.html";
+//				}
+//
+//			} else {
+//				$.toast(result.msg);
+//			}
+//		})
+//	} else {
+//		window.location.href = "./perMessage-huiyuan.html";
+//	}
+	var token = Cache.get("flag") || "";
+	$.ajax({
+		type:"get",
+		url:"http://my.shop.7cai.tv/tv/index.php?s=/Api/Center/is_vip&token="+token,
+		async:true,
+		success: function(result){
 			console.log(result);
 			if(result.res == 1) {
 				Cache.set("isVIP", result.data.isvip);
@@ -228,14 +251,11 @@ var isVip = function() {
 				} else {
 					window.location.href = "./user-center.html";
 				}
-
 			} else {
 				$.toast(result.msg);
 			}
-		})
-	} else {
-		window.location.href = "./perMessage-huiyuan.html";
-	}
+		}
+	});
 }
 
 //导航跳转
@@ -396,7 +416,7 @@ $(document).on("pageInit", "#VideoPlay", function() {
 });
 
 //  新增收货地址
-$(document).on("pageInit", "#add-address", function(e, id, page) {
+//$(document).on("pageInit", "#add-address", function(e, id, page) {
 	//新增地址选择地区
 	$("#ad-ad-arpicker").on("click", function(e) {
 		e.preventDefault();
@@ -439,8 +459,8 @@ $(document).on("pageInit", "#add-address", function(e, id, page) {
 			$.toast("请填写正确的资料(或手机格式)");
 		}
 
-	})
-})
+	});
+//})
 
 //MyAddress   我的地址
 $(document).on("pageInit", "#myAddress", function(e, id, page) {
@@ -1414,5 +1434,9 @@ function test() {
 	}
 	noscroll();
 }
+
+$(function(){
+//	isVip();
+});
 
 $.init();
