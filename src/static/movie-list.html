@@ -6,7 +6,8 @@
 
 	<body>
 		<div class="page page-current">
-			<div class="content">
+			@@include('../tpl/bar-nav.tpl',{ "title":"电影列表" })
+			<div class="content znTop">
 				<div class="sy-content" id="movie_list">
 					<div class="content-body reying-page">
 						<div class="item"  v-for="item in list.list">
