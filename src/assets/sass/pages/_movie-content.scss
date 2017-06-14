@@ -13,7 +13,8 @@
 .vpl_VideoDetail_member {
     display: none;
     margin-top: 1rem;
-    font-size: .8rem;
+    font-size: 0.7rem;
+    color: #535353;
      span:first-child{
         color: #909090;
     }
@@ -82,11 +83,10 @@
 }
 
 .vpl_remonForyou {
-    width: 94.5%;
+    width: 100%;
     margin: 0 auto;
-    height: 2rem;
+    padding: 0.8rem 0.5rem;
     overflow: hidden;
-    margin-top: 1.5rem;
     h1 {
         font-size: 0.85rem;
         font-weight: normal;
@@ -98,7 +98,8 @@
 .vpl_remonForyou_list li {
     list-style: none;
     margin: 0;
-    width: 94.5%;
+    width: 100%;
+    padding:0 0.5rem;
     height: 4.7rem;
     margin: 0 auto;
 }
@@ -116,22 +117,32 @@
 }
 
 .vpl_remonForyou_list_right {
-    width: 53%;
+    width: 58%;
     float: right;
     overflow: hidden;
 }
-
+.vpl_remonForyou_list_right_go {
+    float: right;
+    margin-top: 1.25rem;
+}
 .vpl_remonForyou_list_right_des {
     float: left;
     margin-top: 0.75rem;
+    font-size: 0.75rem;
+    color: #212121;
+    p:last-child{
+        font-size: 0.6rem;
+        color: #909090;
+    }
 }
 
 .vpl_slidemore p {
     width: 30%;
     text-align: center;
-    font-size: 0.75rem;
+    font-size: 0.6rem;
     margin: 0 auto;
-    color: #909090;
+    color: #b6907c;
+    margin-bottom: 1rem;
 }
 
 .padding-lr {
@@ -180,13 +191,14 @@
 .movie-other-review {
     box-shadow: none;
     border-radius: 0;
-    overflow: hidden;
+    overflow: auto;
+    height: auto;
     .item-content {
         padding-left: 0;
         .review-log {
             color: #909090;
             float: right;
-            width: 22%;
+            width: 18%;
             .icon {
                 //margin-right: 0.4rem;
             }
@@ -236,6 +248,7 @@
     width: 100%;
     height: 100%;
     z-index: 999;
+        position: absolute;
 }
 
 a:active {
@@ -254,10 +267,6 @@ a:active {
     font-size: .85rem;
 }
 
-.vpl_remonForyou_list_right {
-    width: 53%;
-}
-
 .vpl_remonForyou i {
     font-size: 1rem;
 }
@@ -271,11 +280,6 @@ a:active {
     margin-bottom: 0;
     height: 30%;
 }
-
-.vpl_remonForyou {
-    margin-top: 1.5rem;
-}
-
 .videobox,
 .bg_video {
     width: 100%;
@@ -322,6 +326,9 @@ a:active {
     height: 1.7rem;
     line-height: 1.7rem;
     border-radius: .25rem;
+    a{
+        color: #fff;
+    }
 }
 
 .comment_bar {
@@ -356,4 +363,22 @@ a:active {
     width: 2.5rem;
     height: 1.5rem;
     border-radius: 5px;
+}
+.movie-content .vpl_box{
+    display: block;
+    position: fixed;
+    top: 30%;
+    width: 100%;
+    height: 70%;
+    overflow: auto;
+        .movie-buzz{
+    i{
+        float: right;
+    }
+    }
+}
+.vpl_tc_comment{
+     .vpl_slidemore{
+        padding-bottom:4rem;
+     }
 }

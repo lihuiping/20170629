@@ -4,16 +4,16 @@
 <head>
     @@include('../tpl/header.tpl',{ "title":"中益七彩" })
     <style>
-  
+
     </style>
 </head>
 
 <body>
     <div class="page-group">
         <div class="page page-current movie-content" id="VideoPlay">
-            <div class="content">
+            <div class="content" v-cloak>
                 <div class="fenge-10"></div>
-                                <div class="vpl_VideoDetail_num padding-lr clearfix">
+                <div class="vpl_VideoDetail_num padding-lr clearfix">
                     <div class="vpl_VideoDetail_num_left"> <span class="iconfont icon-xiaoxizhongxin" style="font-size: 1rem;"></span> <span> 热评<span>{{comCount}}</span>次</span>
                     </div>
                     <div class="vpl_VideoDetail_num_right"> <span class="iconfont icon-weishoucang vpl_Collection" index="1" @click="clickKeep(keepId)"></span> <span class="iconfont icon-fenxiang vpl_share" id="button-fenxiang"></span> </div>
@@ -47,42 +47,21 @@
                     </div>
                     <section class="vpl_remonForyou_list" id="tuijian_movie">
                         <ul>
-                            <a href="/plus/view.php?aid=57" class="external color-default mytouch" v-for="item in movielist.data" v-cloak>
-                                <li id="item.id">
-                                    <div class="vpl_remonForyou_list_left"> <img :src="item.cover" class="tuijian-pic" style="width: 100%;height: 100%;" /> </div>
+                            <li v-for="(item, index) in movielist.data" :id="index" v-if="index < 5" v-cloak>
+                                <a :href="'movie-content.html?id='+item.id" class="external color-default mytouch">
+                                    <div id="item.id" class="vpl_remonForyou_list_left"> <img :src="item.cover" class="tuijian-pic" style="width: 100%;height: 100%;" /> </div>
                                     <div class="vpl_remonForyou_list_right">
                                         <div class="vpl_remonForyou_list_right_des">
-                                            <p style="font-size:0.8rem;margin:0;padding:0;">{{item.name}}</p>
-                                            <p style="font-size:0.75rem;color:#909090;margin-top:0.17rem;">{{item.title}}</p>
+                                            <p>{{item.name}}</p>
+                                            <p>{{item.title}}</p>
                                         </div>
-                                        <div class="vpl_remonForyou_list_right_go iconfont icon-yingdaicon10"></div>
+                                        <div class="vpl_remonForyou_list_right_go iconfont icon-right2"></div>
                                     </div>
-                                </li>
-                            </a>
+                                </a>
+                            </li>
                         </ul>
                         <div class="vpl_slidemore">
                             <p class="vpl_slidemore_go mytouch">查看更多></p>
-                        </div>
-                    </section>
-                    <section class="vpl_box vpl_box_remonforyou" style="display:none;">
-                        <div class="vpl_remonForyou vpl_remonForyou2">
-                            <h1>为你推荐</h1>
-                            <i class="iconfont icon-guanbi1 vpl_remonForyou_close"></i> </div>
-                        <div class="vpl_remonForyou_list vpl_remonForyou_list2">
-                            <ul>
-                              <a href="/plus/view.php?aid=57" class="external color-default mytouch" v-for="item in movielist.data" v-cloak>
-                                <li id="item.id">
-                                    <div class="vpl_remonForyou_list_left"> <img :src="item.cover" class="tuijian-pic" style="width: 100%;height: 100%;" /> </div>
-                                    <div class="vpl_remonForyou_list_right">
-                                        <div class="vpl_remonForyou_list_right_des">
-                                            <p style="font-size:0.8rem;margin:0;padding:0;">{{item.name}}</p>
-                                            <p style="font-size:0.75rem;color:#909090;margin-top:0.17rem;">{{item.title}}</p>
-                                        </div>
-                                        <div class="vpl_remonForyou_list_right_go iconfont icon-yingdaicon10"></div>
-                                    </div>
-                                </li>
-                            </a>
-                            </ul>
                         </div>
                     </section>
                 </div>
@@ -97,7 +76,7 @@
                     <input class="movie-user-input" type="text" placeholder="我来说两句" @click='addComment()' />
                 </div>
                 <div class="card movie-other-review">
-                    <div style="display: block;">
+                    <div style="display: block;overflow: auto;">
                         <div class="card-content clearfix" v-for='item in Comment' v-cloak>
                             <div class="list-block media-list" id="{{item.id}}">
                                 <ul>
@@ -127,33 +106,102 @@
                         </div>
                     </div>
                     <div class="vpl_slidemore" v-show="switchShow" @click="getCommentMore()">
-                        <p class="vpl_slidemore_go mytouch">查看更多></p>
+                        <p class="mytouch">查看更多></p>
                     </div>
                     <!--评价 end-->
                 </div>
-                <div class="videobox">
-                    <div id="video" style="width:100%;height:auto;"></div>
-                    <div class="bg_video">
-                        <div class="vip_tips">
-                            <p>试看结束,继续播放需要付费5元或开通会员终身免费本平台所有影视资源~</p>
-                            <ul>
-                                <li>付费点播</li>
-                                <li>开通会员</li>
-                            </ul>
+            </div>
+            <section class="vpl_box vpl_box_remonforyou" style="display:none;">
+                <div class="vpl_remonForyou vpl_remonForyou2">
+                    <h1>为你推荐</h1>
+                    <i class="iconfont icon-guanbi vpl_remonForyou_close" @click="close_tj()"></i> </div>
+                <div class="vpl_remonForyou_list vpl_remonForyou_list2">
+                    <ul>
+                       <li v-for="(item, index) in movielist.data" :id="index" v-if="index < 5" v-cloak>
+                                <a :href="'movie-content.html?id='+item.id" class="external color-default mytouch">
+                                <div class="vpl_remonForyou_list_left"> <img :src="item.cover" class="tuijian-pic" style="width: 100%;height: 100%;" /> </div>
+                                <div class="vpl_remonForyou_list_right">
+                                    <div class="vpl_remonForyou_list_right_des">
+                                        <p>{{item.name}}</p>
+                                        <p>{{item.title}}</p>
+                                    </div>
+                                    <div class="vpl_remonForyou_list_right_go iconfont icon-right2"></div>
+                                </div>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </section>
+            <section class="vpl_box vpl_tc_comment" style="display: none;">
+                   <div class="movie-buzz">
+                    <span>热评</span>
+                    <i class="iconfont icon-guanbi vpl_remonForyou_close" @click="close_tj()"></i>
+                </div>
+                <div class="movie-user-review">
+                    <img src="assets/images/my_user.png" />
+                    <input class="movie-user-input" type="text" placeholder="我来说两句" @click='addComment()' />
+                </div>
+                <div class="card movie-other-review">
+                    <div style="display: block;height: 100%;">
+                        <div class="card-content clearfix" v-for='item in Comment' v-cloak>
+                            <div class="list-block media-list" id="{{item.id}}">
+                                <ul>
+                                    <li class="item-content">
+                                        <div class="item-media">
+                                            <img :src="'http://img.7cai.tv/'+item.head">
+                                        </div>
+                                        <div class="item-inner">
+                                            <div class="item-title-row">
+                                                <div class="item-title">{{item.user_name}}</div>
+                                            </div>
+                                            <div class="item-subtitle">{{item.add_time}}</div>
+                                        </div>
+                                        <div class="review-log" @click='addComment(item.id)' :id="item.id">
+                                            <i class="icon icon-xiaoxizhongxin1"></i>
+                                            <span>{{item.reply_num}}</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="movie-cont">
+                                    {{item.content}}
+                                </div>
+                                <div class="movie-other-cont" v-if="item.reply!=''" v-for="items in item.reply">
+                                    <span class="movieCont-tit">{{items.user_name}}</span><span>：</span> {{items.content}}
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    <div class="vpl_slidemore" v-show="switchShow" @click="getCommentMore()">
+                        <p class="mytouch">查看更多></p>
+                    </div>
+                    <!--评价 end-->
                 </div>
-                <div class="comment_bar">
-                    <textarea name="" id="f_comment" cols="30" rows="4"></textarea>
-                    <button @click='btn_comment()'>发送</button>
+             </section>
+            <div class="videobox">
+            <div>
+                <div id="video" style="width:100%;height:auto;"></div>
+               </div>
+                <div class="bg_video" style="z-index: 99999999999;">
+                    <div class="vip_tips">
+                        <p>试看结束,继续播放需要付费5元或开通会员终身免费本平台所有影视资源~</p>
+                        <ul>
+                            <li><a href="payForView.html">付费点播</a></li>
+                            <li><a href="become-member.html">开通会员</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
+            <div class="comment_bar">
+                <textarea name="" id="f_comment" cols="30" rows="4"></textarea>
+                <button @click='btn_comment()'>发送</button>
+            </div>
         </div>
-        <!-- <script src="assets/js/hprose.js"></script> -->
-        <script src="lib/cyberplayer.js"></script>
-        <script src="assets/js/fx.js"></script>
-        <!-- <script src="http://imgcache.qq.com/open/qcloud/video/vcplayer/TcPlayer.js" charset="utf-8"></script> -->
-        <script src="assets/js/movie_content.js"></script>
+    </div>
+    <!-- <script src="assets/js/hprose.js"></script> -->
+    <script src="lib/cyberplayer.js"></script>
+    <script src="assets/js/fx.js"></script>
+    <!-- <script src="http://imgcache.qq.com/open/qcloud/video/vcplayer/TcPlayer.js" charset="utf-8"></script> -->
+    <script src="assets/js/movie_content.js"></script>
 </body>
 
 </html>
