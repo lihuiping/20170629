@@ -129,12 +129,7 @@ html{-webkit-text-size-adjust: none;}
     width:96%;
     margin:0 auto;
 }
-.pr_content ul li
-{
-    overflow:hidden;
-//  padding:1rem 2rem 1rem 0;
-    border-bottom:1px solid #ccc;
-}
+
 .pr_li_left
 {
     width:30%;
@@ -221,13 +216,13 @@ html{-webkit-text-size-adjust: none;}
 {
     overflow:hidden;
 //  padding:0.7rem 0 0.7rem 0;
-    border-bottom:1px solid #ccc;
+//  border-bottom:1px solid #ccc;
 }
 .pr_li_left
 {
     width:30%;
     height:3.6rem;
-    border:1px solid #ccc;
+//  border:1px solid #ccc;
     float:left;
 }
 .pr_li_right
@@ -245,8 +240,8 @@ html{-webkit-text-size-adjust: none;}
 .pr_li_right_down
 {
     font-size:0.7rem;
-    margin-top:0.4rem;
-    color:#ccc;
+    margin-top:0.5rem;
+    color:#aeaeae;
 }
 .pr_edit
 {
@@ -319,4 +314,14 @@ html{-webkit-text-size-adjust: none;}
 //}
 .my-select input {
     display: none;
+}
+.lqMovierecord .item-inner{
+    position: relative;
+}
+.movie-inner{
+    border-bottom:1px solid #ccc;
+    height:4.3rem;
+    a{
+        display: block;
+    }
 }
