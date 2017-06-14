@@ -38,7 +38,7 @@ var movieDatail = new Vue({
         keepId: "",
         replyId: "",
         nowPage: 1,
-        comCount:"",
+        comCount: "",
         switchShow: false
     },
     mounted: function() {
@@ -58,12 +58,13 @@ var movieDatail = new Vue({
                 var data = response.data.data;
                 movieDatail.movieContent = data;
                 var movie = data.url;
+             //   var movie="http://my.shop.7cai.tv/tv/f000000";
                 var movieTitle = data.name;
                 var movieCover = data.cover;
                 video(movie, movieTitle, movieCover);
             });
             //获取评价
-       
+
             // 获取收藏
             axios.get(get_collection[conf], {
                 params: {
@@ -135,6 +136,7 @@ var movieDatail = new Vue({
         addComment: function(obj) {
             $(".comment_bar").show();
             $(".comment_bar textarea").focus();
+           $(".comment_bar textarea").val("");
             movieDatail.replyId = obj;
         },
         btn_comment: function(replyId) {
@@ -150,14 +152,16 @@ var movieDatail = new Vue({
                 if (data.res == 1) {
                     //   _this.movielist = data;
                     console.log(data);
+                    movieDatail.moreFn(this.nowPage,0);
+                    $(".comment_bar").hide();
                     // _this.loadingFlag = false;
                     //showMovie();
                 } else {
-                    $.toast("商品数据错误");
+                    $.toast("评论有问题了哦~");
                 }
             });
         },
-        moreFn: function(itemIndex) {
+        moreFn: function(itemIndex,fabiao) {
             axios.get(get_comment[conf], {
                 params: {
                     program_id: movieID,
@@ -166,26 +170,32 @@ var movieDatail = new Vue({
             }).then(function(res) {
                 var data = res.data;
                 if (data.res == 1) {
-                    //   _this.movielist = data;
-                    //  console.log(data);
+                     movieDatail.switchShow = !movieDatail.switchShow;
                     // movieDatail.$set(movieDatail.Comment,movieDatail.Comment.concat(data.data));
-
-                    movieDatail.comCount=data.data[0].comCount;
-                    movieDatail.Comment = movieDatail.Comment.concat(data.data);
-                    console.log(movieDatail.Comment);
-                    this.switchShow = !this.switchShow;
-                    scrollComment();
+                    movieDatail.comCount = data.data[0].comCount;
+                    if(fabiao ==0){
+                          movieDatail.Comment = data.data;
+                          movieDatail.switchShow = !movieDatail.switchShow;
+                    }else{
+                           movieDatail.Comment = movieDatail.Comment.concat(data.data);
+                    }
+                    console.log(movieDatail.Comment);   
+                    //   scrollComment();
                 } else {
-                    $.toast("暂无评论");
+                    $.toast("没有更多的评论了~");
+                  
                 }
             });
 
-            this.switchShow = !this.switchShow;
         },
         getCommentMore: function() {
             this.switchShow = !this.switchShow;
             this.nowPage++;
             this.moreFn(this.nowPage);
+        },
+        close_tj: function() {
+            $(".content").show();
+            $(".vpl_box").hide();
         },
         init: function() {
             this.moreFn(this.nowPage);
@@ -232,21 +242,45 @@ function video(movie, movieTitle, movieCover) {
         }
     });
 }
+/*滑动的效果*/
+function scrollComment() {
+    var navHeigth = $(window).height() - $(".videobox").height();
+    $(".content").scrollTo({
+        toT: navHeigth
+    });
+};
+
+$(function(){
+
+/*点击热评的效果*/
+$(".movie-content").on('click', '.vpl_VideoDetail_num_left', function() {
+    // alert("反应");
+    scrollComment();
+});
+
+// $(".vpl_slidemore").on("click", '.vpl_slidemore_go', function() {
+//     $(".content").hide();
+//     $(".vpl_box_remonforyou").show();
+//     $(".vpl_remonForyou_list2").scrollTop(0);
+// });
+
+$(".vpl_slidemore_go").click(function(){
+     $(".content").hide();
+    $(".vpl_box_remonforyou").show();
+    $(".vpl_remonForyou_list2").scrollTop(0); 
+})
+
+/*点击全部热评*/
+  $(".buzz-review").on('click',function(){
+     $(".content").hide();
+    $(".vpl_tc_comment").show();
+    $(".movie-other-review").scrollTop(0); 
+  })
 
 /*简介*/
 $(".vpl_VideoDetail_des_title").on("click", '.vpl_introduction', function() {
     $(".vpl_VideoDetail_member").toggle();
     $(".vpl_introduction").toggleClass("icon-up3");
 });
-/*点击热评的效果*/
-$(".vpl_VideoDetail_num_left").on('click',function(){
-    alert("反应");
-    scrollComment();
+
 })
-/*滑动的效果*/
-function scrollComment(){
-     var navHeigth=$(window).height()-$(".videobox").height();
-       $(".content").scrollTo({
-                        toT: navHeigth
-                    });
-}
