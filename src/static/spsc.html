@@ -193,13 +193,9 @@
 
 	<body>
 		<div class="page wj_page page-current page-inited" id="getpwd">
-			<div class="content content-block pr_content">
-				<header class=" bar-nav wsl-header">
-					<div class="title-box">
-						<a class="icon icon-left" href="javascript:history.go(-1);"></a>
-						<div class="w-title">视频收藏</div>
-					</div>
-				</header>
+			@@include('../tpl/bar-nav.tpl',{ "title":"视频收藏" })
+			<div class="content content-block pr_content znTop">
+			
 				<ul class="lqMovies" v-cloak v-show="res == 1">
 					<li v-for="movie in data">
 						<label class="label-checkbox item-content clearfix" :for="movie.mid">

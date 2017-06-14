@@ -8,14 +8,9 @@
 
 	<body>
 		<div class="page page-current page-inited" id="MyPoints">
-			<div class="content mp_content">
+			@@include('../tpl/bar-nav.tpl',{ "title":"我的七彩币" })
+			<div class="content mp_content znTop">
 				<!--标签页-->
-				<header class="bar-nav wsl-header">
-					<div class="title-box">
-						<a class="icon icon-left" href="javascript:history.go(-1)"></a>
-						<div class="w-title">我的七彩币</div>
-					</div>
-				</header>
 				
 				<div class="buttons-tab mp_buttontap">
 					<a href="#tab1" class="tab-link active button">七彩币</a>

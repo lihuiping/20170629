@@ -545,4 +545,13 @@
     color: #ff8b24;
 }
 
+//头部固定
+.zngd-header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 50px;
+    width: 100%;
+    z-index: 100;
+}
 //.gd-noData{text-align: center;height: 14.2rem;line-height: 14.2rem;color: #D9D9D9;}
