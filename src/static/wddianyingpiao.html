@@ -163,13 +163,9 @@
 
 	<body>
 		<div class="page scroll" id="wddianyingpiao">
-			<div class="content">
-				<header class=" bar-nav wsl-header">
-					<div class="title-box">
-						<a class="icon icon-left" href="javascript:history.go(-1);"></a>
-						<div class="w-title">我的电影票</div>
-					</div>
-				</header>
+			@@include('../tpl/bar-nav.tpl',{ "title":"我的电影票" })
+			<div class="content znTop">
+			
 				<div class="buttons-tab">
 					<a href="#wd-tab1" class="tabTicketButton tab-link button active">待使用</a>
 					<a href="#wd-tab2" class="tabTicketButton tab-link button">待付款</a>

@@ -7,15 +7,10 @@
 
 	<body>
 		<div class="page page-current page-inited feed-back" id="yijianfankui">
-			<div class="content">
+			@@include('../tpl/bar-nav.tpl',{ "title":"意见反馈" })
+			<div class="content znTop">
 				<!--标签页-->
-				<header class="bar-nav wsl-header">
-					<div class="title-box">
-						<a class="icon icon-left" href="javascript:history.go(-1)"></a>
-						<div class="w-title">意见反馈</div>
-					</div>
-				</header>
-
+				
 				<div class="list-default fb-default">
 					反馈类型
 					<input id="fk-fklx" class="fb-input" readonly="readonly" value="请选择" type="text">
