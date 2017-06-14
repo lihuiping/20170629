@@ -131,12 +131,12 @@ var movieDatail = new Vue({
                 }
 
             })
-
         },
         addComment: function(obj) {
             $(".comment_bar").show();
             $(".comment_bar textarea").focus();
            $(".comment_bar textarea").val("");
+           $(".bg_zhezhao").show();
             movieDatail.replyId = obj;
         },
         btn_comment: function(replyId) {
@@ -186,7 +186,6 @@ var movieDatail = new Vue({
                   
                 }
             });
-
         },
         getCommentMore: function() {
             this.switchShow = !this.switchShow;
@@ -196,6 +195,10 @@ var movieDatail = new Vue({
         close_tj: function() {
             $(".content").show();
             $(".vpl_box").hide();
+        },
+        close_fabiao:function(){
+            $(".bg_zhezhao").hide();
+           $(".comment_bar").hide();
         },
         init: function() {
             this.moreFn(this.nowPage);
@@ -254,7 +257,6 @@ $(function(){
 
 /*点击热评的效果*/
 $(".movie-content").on('click', '.vpl_VideoDetail_num_left', function() {
-    // alert("反应");
     scrollComment();
 });
 
