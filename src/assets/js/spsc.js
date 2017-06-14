@@ -114,34 +114,6 @@ $(function() {
 			$(".del_num").text($("input[name='my-radio']:checked").length);
 		}
 	});
-	
-	/*$(document).on('click', '#pr_selectAll', function() {
-		nb = $('.pr_wj_content1 ul li').length;
-		if($(".lqSelcet h6").text() == "全选") {
-			$(".my-select").each(function(dom) {
-				idarr.push($(".my-select")[dom].getAttribute("videoid"));
-			});
-			$("#pr_selectAll").html('取消全选');
-			$("#pr_delete").addClass('prde_bgchange');
-			$(".my-select").addClass("bg-myse");
-			$(".my-select").attr("checked", !$(this).attr("checked"));
-			$("#pr_selectAll").removeClass("prse_bgchange");
-			$("#pr_selectAll").removeClass("prde_bgchange");
-			$('.del_num').text(nb);
-			na = nb;
-		} else {
-			idarr = [];
-			$("#pr_selectAll").html('全选');
-			$("#pr_delete").removeClass('prde_bgchange');
-			$(".my-select").removeClass("bg-myse");
-			$(".my-select").attr("checked", false);
-			$("#pr_selectAll").addClass("prse_bgchange");
-			$('.del_num').text(0);
-			na = 0;
-		}
-		$("#pr_selectAll").toggleClass("prse_bgchange");
-	});*/
-
 	//加载时显示有无收藏视频
 	if($(".pr_content li").length == 0) {
 		$("#bfjl-qs").show();
@@ -150,7 +122,6 @@ $(function() {
 		$(".foot-all").hide();
 		$(".complete").hide();
 	}
-
 	//编辑
 	$(".pr_edit").on("click", function() {
 		$(".pr_edit").hide();
