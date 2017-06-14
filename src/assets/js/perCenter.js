@@ -159,6 +159,11 @@ var isVip = function() {
 				}
 			} else {
 				$.toast(result.msg);
+				if(!token){
+					setTimeout(function(){
+						window.location.href = "./login.html";
+					},1000);
+				}
 			}
 		}
 	});
@@ -166,6 +171,10 @@ var isVip = function() {
 
 $(function(){
 	isVip();
+	var token = token();
+	if(!token){
+		window.location.href = "./login.html";
+	}
 });
 
 
