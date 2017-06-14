@@ -15,7 +15,8 @@
 
 	<body>
 		<div class="page page-current" id="zhizunduxiang">
-			<div class="content" id="zzdx_list">
+		@@include('../tpl/bar-nav.tpl',{ "title":"至尊独享" })
+			<div class="content znTop" id="zzdx_list">
 				<div class="zzdx sy-content" v-for="item in list">		
 					<a :href="getTitleHref(item.id)" class="external">
 						<img :src="item.cover" alt=""></a>
