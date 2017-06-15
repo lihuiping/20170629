@@ -750,6 +750,8 @@ var allShare = new Vue({
 	}
 });
 
+ $('.buttons-tab').fixedTab({offset:70});
+
 $(".fixed-wrap").on('click', ".buttons-tab", function(e) {
 	var $buttonsTab = $(".buttons-tab").offset().top;
 	var $nativeTop = $(".native-scroll").offset().top;
@@ -757,7 +759,7 @@ $(".fixed-wrap").on('click', ".buttons-tab", function(e) {
 	var $heightTab = $(".buttons-tab").height();
 	if($buttonsTab > $nativeTop) {
 		$(".native-scroll").scrollTo({
-			toT: $buttonsTab + $nativeScroll - $heightTab
+			toT: $buttonsTab + $nativeScroll - $heightTab - 70
 		});
 	} else {
 		//         $(".native-scroll").scrollTo({toT:cc});
