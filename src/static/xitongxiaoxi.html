@@ -8,27 +8,62 @@
 			.icon-xiaoxi-quesheng {
 				color: #d9d9d9;
 			}
+			body {
+				background: #f5f5f5;
+			}
+			
+			.lqnoxiaoxi {
+				background: #f5f5f5;
+			}
+			
+			.lqnoxiaoxiicon {
+				font-size: 4.5rem;
+				color: #d9d9d9;
+			}
+			
+			.noxiaoxibox {
+				text-align: center;
+				margin-top: 6rem;
+			}
+			
+			/*.icon-xiaoxi-quesheng {
+				
+			}*/
+			
+			.noxiaoxibox p {
+				margin-top: 0.6rem;
+				font-size: 0.75rem;
+				color: #979797;
+			}
 		</style>
 	</head>
 
 	<body>
-		<div class="page goodPages page-current" id="xitongxiaoxi">
+		<div class="page goodPages page-current" id="sysMessage">
 			<header class=" bar-nav wsl-header">
-					<div class="title-box">
-						<a class="icon icon-left" href="javascript:history.go(-1);"></a>
-						<div class="w-title">我的电影票</div>
-					</div>
-				</header>
+				<div class="title-box">
+					<a class="icon icon-left" href="javascript:history.go(-1);"></a>
+					<div class="w-title">系统消息</div>
+				</div>
+			</header>
 			<div class="content znTop">
-				
-				<div class="message-95">
-					<div><i class="icon icon-xitongxiaoxi lqnoxiaoxi"></i></div>
-					<div class="message-text">
-						<p>系统消息系统消息系统消息系统消息系统消息系统消息系统消息系统消息系统消息系统消息系统消息系统消息。</p>
-						<p>2016-12-16 16:27</p>
+				<!--没有消息-->
+				<div class="lqnoxiaoxi" v-if="allsysmessage.res == 0">
+					<div class="noxiaoxibox">
+						<i class="icon icon-xiaoxi-quesheng lqnoxiaoxiicon"></i>
+						<p>您当前没有收到的消息~</p>
 					</div>
 				</div>
-				<div class="message-95">
+				
+				<!--有消息-->
+				<div class="message-95" v-for="item in sysmessage" v-if="allsysmessage.res == 1">
+					<div><i class="icon icon-xitongxiaoxi lqnoxiaoxi"></i></div>
+					<div class="message-text">
+						<p>{{item.content}}</p>
+						<p>{{item.add_time | moment}}</p>
+					</div>
+				</div>
+				<!--<div class="message-95">
 					<div><i class="icon icon-shangchengxiaoxi lqshangcheng"></i></div>
 					<div class="message-text">
 						<p>商城消息商城消息商城消息商城消息。</p>
@@ -41,11 +76,10 @@
 						<p>观影消息观影消息观影消息观影消息观影消息观影消息观影消息观影消息。</p>
 						<p>2016-12-16 16:27</p>
 					</div>
-				</div>
+				</div>-->
 			</div>
 		</div>
 		<script type="text/javascript" src="lib/light7/js/i18n/cn.min.js" charset="utf-8"></script>
-		<script type="text/javascript" src="assets/js/jiaohu.js" charset="utf-8"></script>
-	</body>
+		<script type="text/javascript" src="assets/js/message.js" charset="utf-8"></script>
 	</body>
 </html>
