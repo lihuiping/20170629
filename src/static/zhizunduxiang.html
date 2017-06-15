@@ -10,6 +10,15 @@
 			img {
 				height: 8rem;
 			}
+			.zhizun-cont{
+				position: relative;
+			}
+			.zhizun-position{
+				position: absolute;
+				left: 0.5rem;
+				bottom: 0.5rem;
+				color: #fbfbfb;
+			}
 		</style>
 	</head>
 
@@ -17,10 +26,10 @@
 		<div class="page page-current" id="zhizunduxiang">
 		@@include('../tpl/bar-nav.tpl',{ "title":"至尊独享" })
 			<div class="content znTop" id="zzdx_list">
-				<div class="zzdx sy-content" v-for="item in list">		
+				<div class="zzdx sy-content zhizun-cont" v-for="item in list">		
 					<a :href="getTitleHref(item.id)" class="external">
 						<img :src="item.cover" alt=""></a>
-					<div class="content-bottom">
+					<div class="content-bottom zhizun-position">
 						<h4>{{item.name}}</h4>
 						<p>{{item.title}}</p>
 					</div>
@@ -57,7 +66,7 @@ var zzdx_list = new Vue({
 			});
 		},
 	    getTitleHref: function(val) {
-			return 'goods-detail.html?id=' + val
+			return 'movie-content.html?id=' + val;
 		},
 	}
 });
