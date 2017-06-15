@@ -7,7 +7,7 @@
 	<body>
 		<div class="page page-current">
 			@@include('../tpl/bar-nav.tpl',{ "title":"电影列表" })
-			<div class="content znTop">
+			<div class="content znTop noBottom">
 				<div class="sy-content" id="movie_list">
 					<div class="content-body reying-page">
 						<div class="item"  v-for="item in list.list">
@@ -20,6 +20,9 @@
 						</div>
 						
 					</div>
+				</div>
+				<div class="noMore">
+					没有更多了
 				</div>
 			</div>
 		</div>

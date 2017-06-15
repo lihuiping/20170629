@@ -33,16 +33,13 @@
 				bottom: 1rem;
 				right: 0.5rem;
 			}
-			/*.zhizun-position{
-				width: 93%;
-			}*/
 		</style>
 	</head>
 
 	<body>
 		<div class="page page-current" id="zhizunduxiang">
 		@@include('../tpl/bar-nav.tpl',{ "title":"至尊独享" })
-			<div class="content znTop" id="zzdx_list">
+			<div class="content znTop noBottom" id="zzdx_list">
 				<div class="zzdx sy-content zhizun-cont" v-for="item in list">		
 					<a :href="getTitleHref(item.id)" class="external">
 						<img :src="item.cover" alt=""></a>
@@ -53,7 +50,10 @@
 					</div>
 					<img class="bofangBLogo" src="assets/images/bofangBLogo.png"/>
 				</div>
-						</div>
+				<div class="noMore">
+					没有更多了
+				</div>
+			</div>
 		</div>
   <script>
  
