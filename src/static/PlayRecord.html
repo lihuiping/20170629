@@ -196,14 +196,14 @@
 				
 				<ul class="lqMovierecord" v-cloak v-show="res == 1">
 					<li v-for="movierecord in data">
-						<label class="label-checkbox item-content clearfix" :for="movierecord.movie_id">
-                            <input :id="movierecord.movie_id" type="checkbox" name="my-radio" class="icon-btn" />
+						<label class="label-checkbox item-content clearfix" :for="movierecord.id">
+                            <input :id="movierecord.id" type="checkbox" name="my-radio" class="icon-btn" />
                             <div class="item-media lqmedia media">
                                 <i class="icon icon-form-checkbox"></i>
                             </div>
                         </label>
                         <div class="item-inner movie-inner">
-							<a :href="getTitleHref(movierecord.movie_id)">
+							<a :href="getTitleHref(movierecord.id)">
 								<div class='pr_li_left'>
 									<img class='bf-img' :src="movierecord.cover" />
 									<span class="lqmovietime">00:00:00</span>
@@ -216,19 +216,19 @@
 									<p class='pr_li_right_top'>{{movierecord.name}}</p>
 									<p class='pr_li_right_down'>{{movierecord.start_time}}</p>
 								</div>-->
-								<a class='external' :href="getTitleHref(movierecord.movie_id)" v-if="movierecord.type == 1">
+								<a class='external' :href="getTitleHref(movierecord.id)" v-if="movierecord.type = 1">
 									<div class='pr_li_play'>
 										<i class='icon icon-jixubofang'></i>
 										<p style='color:#ccc;'>继续播放</p>
 									</div>
 								</a>
-								<a class='external' :href="getTitleHref(movierecord.movie_id)" v-if="movierecord.type == 2">
+								<a class='external' :href="getTitleHref(movierecord.id)" v-if="movierecord.type = 2">
 									<div class='pr_li_play'>
 										<i class='icon icon-chongxinbofang'></i>
 										<p style='color:#ccc;'>重新播放</p>
 									</div>
 								</a>
-								<a class='external' :href="getTitleHref(movierecord.movie_id)" v-if="movierecord.type == 0">
+								<a class='external' :href="getTitleHref(movierecord.id)" v-if="movierecord.type = 0">
 									<div class='pr_li_play'>
 										<i class='icon icon-jixubofang'></i>
 										<p style='color:#ccc;'>观看时长</p>
