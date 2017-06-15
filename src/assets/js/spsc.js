@@ -147,7 +147,9 @@ function moviedel() {
 		} else {
 			checkList += ',' + $(v).attr('id');
 		}
+		
 	});
+	console.log(checkList);
 	var p_checked = $(".lqMovies input[name='my-radio']:checked");
 	if(p_checked.length > 0) {
 		layer.open({
