@@ -19,7 +19,7 @@ html,body,.swiper-wrapper img{}
 .content-bottom h4 {font-size:.72rem;font-weight:500;padding-top:0;margin:0 .4rem .1rem;}
 .content-bottom h4 strong{font-weight: 400;}
 .content-bottom {margin-top:-.1rem;padding-bottom: .75rem;}
-.content-bottom p {color:#adadad;font-size:.62rem;padding-bottom:.2rem;margin:-.05rem .4rem;}
+.content-bottom p {color:#adadad;font-size:.62rem;padding-bottom:.2rem;margin:-.05rem .4rem; @extend %text-overflow;}
 .sy-content img {width:100%;margin-bottom:0;}
 .content-body {overflow:hidden;width:100%;}
 .content-body .item {width:49.4%;float:left;position:relative;}

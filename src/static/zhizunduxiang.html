@@ -19,6 +19,23 @@
 				bottom: 0.5rem;
 				color: #fbfbfb;
 			}
+			/*.zzdx-name{
+				float: left !important;
+			}*/
+			.zzdx-detail{
+				color: #fbfbfb !important;
+				/*float: left !important;*/
+			}
+			.bofangBLogo{
+				width: 1rem !important;
+				height: 1rem !important;
+				position: absolute;
+				bottom: 1rem;
+				right: 0.5rem;
+			}
+			/*.zhizun-position{
+				width: 93%;
+			}*/
 		</style>
 	</head>
 
@@ -30,9 +47,11 @@
 					<a :href="getTitleHref(item.id)" class="external">
 						<img :src="item.cover" alt=""></a>
 					<div class="content-bottom zhizun-position">
-						<h4>{{item.name}}</h4>
-						<p>{{item.title}}</p>
+						<h4 class="zzdx-name">{{item.name}}</h4>
+						<p class="zzdx-detail">{{item.title}}</p>
+						
 					</div>
+					<img class="bofangBLogo" src="assets/images/bofangBLogo.png"/>
 				</div>
 						</div>
 		</div>

@@ -17,7 +17,7 @@
     #searchIcon {
         color: #fff;
         position: absolute;
-        top: 1rem;
+        top: 0.8rem;
         left: 1.1rem;
         z-index: 999;
     }
@@ -25,8 +25,8 @@
     input {
         display: inline-block;
         width: 88%;
-        height: 1.5rem;
-        line-height: 1.5rem;
+        height: 1.2rem;
+        line-height: 1.2rem;
         border-radius: 0.75rem;
         border: 1px solid #fff;
 //      background-color: #fe7b0b;
@@ -59,7 +59,7 @@
     /*搜索框取消按钮*/
     #search-cancel {
         position: absolute;
-        top: 0.8rem;
+        top: 0.6rem;
         right: 0.5rem;
         font-size: 0.75rem;
         color: #fff;

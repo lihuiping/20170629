@@ -92,7 +92,7 @@ function GetQueryString(name) {
 	return null;
 }
 var editId = GetQueryString('id');
-console.log(editId)
+
 
 //发送验证码
 function myCode() {
