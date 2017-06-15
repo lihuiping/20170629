@@ -267,7 +267,7 @@
     .swiper-slide {
         height: 0.5rem;
     }
-    .swiper-slide.active {
+    .active {
         height: auto;
     }
 }
@@ -277,7 +277,7 @@
 #picDetail {
     padding: 0.3rem 0.5rem 0 0.5rem;
     background-color: #fff;
-    height: auto;
+//  height: auto;
     font-size: 0.6rem;
     overflow: hidden;
     word-break: break-all;
