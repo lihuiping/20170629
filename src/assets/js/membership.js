@@ -75,9 +75,10 @@ var Cookie = {
 		}), api
 	}();
 var isVIP = '';
+var token = token();
 //获取token
 function sclient() {
-	var token = Cache.get("flag") || "";
+//	var token = Cache.get("flag") || "";
 	return hprose.Client.create("http://test.7cai.tv/index.php/api/api/user?t=" + token, ["login", "register", "isLogin", "logout", "findPwd", "sendCode", "getUserInfo", "isSafe", "modifyInfo", "isRegister", "modifyMobile", "modifyHeadImg", "certif ication", "modifyPwd", "modifySafePwd", "getAddressList", "getAddress", "addOrEditAddress", "setDefaultAddress", "delAddress", "getPayOrderInfo", "getOpenId ", "getUploadParams", "getFriends", "getPoints", "getTicketUrl", "getFkTypeLists", "addFkMsg", "getWxSdkSignInfo"]);
 	//http://test.7cai.tv/index.php
 }
@@ -149,15 +150,14 @@ client.invoke("getUserInfo", function(result) {
 		if(!isVIP) {
 
 			Cache.set("isVIP", result.data.isVip);
-			C
 			isVIP = result.data.isVip;
 			if(isVIP == 1) {
 				// 已经是会员。		
-				$(".user-box").append('<span id="huiyuanlogo">会员服务协议 <i class="iconfont icon-right"></i> &nbsp;</span>');
+				$(".user-box").append('<a href="./agreement.html"><span id="huiyuanlogo">会员服务协议 <i class="iconfont icon-right"></i> &nbsp;</span></a>');
 				$(".VIP").css("display", "none");
 			}
 		} else {
-			$(".user-box").append('<span id="huiyuanlogo">会员服务协议 <i class="iconfont icon-right"></i> &nbsp;</span>');
+			$(".user-box").append('<a href="./agreement.html"><span id="huiyuanlogo">会员服务协议 <i class="iconfont icon-right"></i> &nbsp;</span></a>');
 			$(".VIP").css("display", "none");
 		}
 	} else {
