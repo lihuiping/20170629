@@ -10,8 +10,9 @@
 		<div id="order-details">
 			<!--page容器-->
 			<div class="page page-current">
+				@@include('../tpl/bar-nav.tpl',{ "title":"订单详情" })
 				<!--内容页面-->
-				<div class="content padding-btn">
+				<div class="content padding-btn znTop">
 					<img src="assets/images/loading.gif" v-if="loadingFlag" class="loading-img"/>
 					<!--ban start-->
 					<div class="od-ban" v-cloak :odOId="orderDetailsList.id" :odStatus="orderDetailsList.order_state">
