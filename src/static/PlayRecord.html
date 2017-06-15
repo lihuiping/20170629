@@ -192,7 +192,7 @@
 	<body>
 		<div class="page wj_page page-current page-inited" id="lqShowList">
 			@@include('../tpl/bar-nav.tpl',{ "title":"播放记录" })
-			<div class="content pr_content znTop">
+			<div class="content pr_content znTop lqrecordcont">
 				
 				<ul class="lqMovierecord" v-cloak v-show="res == 1">
 					<li v-for="movierecord in data">
@@ -226,12 +226,6 @@
 									<div class='pr_li_play'>
 										<i class='icon icon-chongxinbofang'></i>
 										<p style='color:#ccc;'>重新播放</p>
-									</div>
-								</a>
-								<a class='external' :href="getTitleHref(movierecord.id)" v-if="movierecord.type = 0">
-									<div class='pr_li_play'>
-										<i class='icon icon-jixubofang'></i>
-										<p style='color:#ccc;'>观看时长</p>
 									</div>
 								</a>
 							</a>
