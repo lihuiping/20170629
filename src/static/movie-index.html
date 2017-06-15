@@ -7,7 +7,7 @@
 
 	<body>
 		<div class="page-group">
-			<div class="page page-current" id="router">
+			<div class="page page-current moveIndex" id="router">
 				<!--头部logo和搜索框 start-->
 				
 				<div class="content pdbt">
@@ -49,11 +49,11 @@
 						  <!--<img src="assets/images/loading.gif" v-if="loadingFlag" class="loading-img"/>-->
 					  <div  v-for="(item, index) in goodslist"  v-if="index < 2" v-cloak>
 						<div class="content-top">
-							<span><i class="iconfont icon-huangguan"></i>至尊独享 </span>
-							<a class="external" :href="'zhizunduxiang.html?id='+item.id"><span> 查看更多<i class="iconfont icon-yingdaicon10"></i></span></a>
+							<!--<i class="iconfont icon-huangguan"></i>--><img class="xiaoLogo" src="./assets/images/xaioLogo.png"/><span>至尊独享 </span>
+							<a class="external" :href="'zhizunduxiang.html?id='+item.id"><span> 查看更多&nbsp;<i class="iconfont icon-right go-right"></i></span></a>
 						</div>
 						<a :href="'zhizunduxiang.html?id='+item.id" class="external">
-							<img  :src="item.cover" alt="">
+							<img class="zzdx-coverPic"  :src="item.cover" alt="">
 						</a>
 						<div class="content-bottom" style="padding-bottom: .2rem;">
 							<h4>{{item.name}}</h4>
@@ -66,8 +66,9 @@
 					<!-- 列表 -->
 					<div class="sy-content">
 						<div class="content-top">
-							<i class="shouye-i"></i>
-							<span>热映大片</span><span></span>
+							<img class="xiaoLogo" src="./assets/images/xaioLogo.png"/>
+							<span>热映大片</span><!--<span></span>-->
+							<a class="external color-gengduo" href="movie-list.html"> <span>查看更多&nbsp; <i class="iconfont  icon-right go-right"></i></span></a>
 						</div>
 						<div class="content-body" id="hot-list">
 							<div class="item" v-for="(item, index) in goodslist.list" :id="index" v-if="index < 6"  v-cloak>
@@ -80,14 +81,15 @@
 							</div>
 							
 						</div>
-						<div class="lookmore2">
+						<!--<div class="lookmore2">
 							<a class="external color-gengduo" href="movie-list.html"> 查看更多 <i class="iconfont icon-yingdaicon10"></i></a>
-						</div>
+						</div>-->
 					</div>
 					<div class="sy-content">
 						<div class="content-top">
-							<i class="shouye-i"></i>
-							<span>院线热映</span><span></span>
+							<img class="xiaoLogo" src="./assets/images/xaioLogo.png"/>
+							<span>院线热映</span>
+							<a class="external color-gengduo" href="movie-list.html"> <span>查看更多&nbsp; <i class="iconfont  icon-right go-right"></i></span></a>
 						</div>
 						<div class="content-body" id="yx-list">
 							<div class="item" v-for="(item, index) in goodslist.list" :id="index" v-if="index < 6"  v-cloak>
@@ -100,14 +102,15 @@
 							</div>
 						
 						</div>
-						<div class="lookmore2">
+						<!--<div class="lookmore2">
 							<a class="external color-gengduo" href="movie-list.html"> 查看更多 <i class="iconfont icon-yingdaicon10"></i></a>
-						</div>
+						</div>-->
 					</div>
 							<div class="sy-content">
 						<div class="content-top">
-							<i class="shouye-i"></i>
-							<span>网络电影</span><span></span>
+							<img class="xiaoLogo" src="./assets/images/xaioLogo.png"/>
+							<span>网络电影</span>
+							<a class="external color-gengduo" href="movie-list.html"> <span>查看更多&nbsp; <i class="iconfont  icon-right go-right"></i></span></a>
 						</div>
 						<div class="content-body" id="wl_movie">
 							<div class="item" v-for="(item, index) in goodslist.list" :id="index" v-if="index < 6"  v-cloak>
@@ -120,14 +123,15 @@
 							</div>
 						
 						</div>
-						<div class="lookmore2">
+						<!--<div class="lookmore2">
 							<a class="external color-gengduo" href="movie-list.html"> 查看更多 <i class="iconfont icon-yingdaicon10"></i></a>
-						</div>
+						</div>-->
 					</div>
 							<div class="sy-content">
 						<div class="content-top">
-							<i class="shouye-i"></i>
-							<span>经典影院</span><span></span>
+							<img class="xiaoLogo" src="./assets/images/xaioLogo.png"/>
+							<span>经典影院</span>
+							<a class="external color-gengduo" href="movie-list.html"> <span>查看更多&nbsp; <i class="iconfont  icon-right go-right"></i></span></a>
 						</div>
 						<div class="content-body" id="jd_movie">
 							<div class="item" v-for="(item, index) in goodslist.list" :id="index" v-if="index < 6"  v-cloak>
@@ -140,9 +144,9 @@
 							</div>
 						
 						</div>
-						<div class="lookmore2">
+						<!--<div class="lookmore2">
 							<a class="external color-gengduo" href="movie-list.html"> 查看更多 <i class="iconfont icon-yingdaicon10"></i></a>
-						</div>
+						</div>-->
 					</div>
 					
 					<div class="buttom-logo">

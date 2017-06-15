@@ -194,6 +194,7 @@ li{list-style: none;}
 .infinite-scroll{margin-bottom: 2.5rem;}
 .infinite-scroll .list-block{margin: 0 0;}
 
+
 /*电影详情页面*/
 .video-box {
     width: 100%;
@@ -210,4 +211,20 @@ li{list-style: none;}
 /**/
 .reying-page{
 	padding-top:.5rem;
+}
+
+//向右的箭头
+.go-right{
+    font-size:0.5rem !important;
+}
+//至尊独享cover图片
+.zzdx-coverPic{
+    height: 8rem;
+}
+//xiaotub
+.xiaoLogo{
+    width: 0.65rem !important;
+    margin-right: 0.25rem;
+    margin-top: 0.05rem;
+    vertical-align:text-top;
 }
