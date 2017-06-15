@@ -16,7 +16,7 @@ $("#lg-denglu").on('click', function() {
 				Cache.set("whole_mobile", mobile);
 				Cache.set("passwd", passwd);
 				setTimeout(function() {
-					window.location.href = "./index.html";
+					window.location.href = "./movie-index.html";
 				}, 1500);
 			} else {
 				$.toast(result.msg);
