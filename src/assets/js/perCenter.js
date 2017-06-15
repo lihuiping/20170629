@@ -102,9 +102,7 @@ var isVip = function() {
 					$("#p-message").css("display","none");
 					$("#huiyuan-page").css("display","none");
 					$("#hy-edit").css("display","block");
-					$("#hytq").css("display","block");
-					
-					
+					$("#hytq").css("display","block");					
 					//vip会员个人中心渲染
 					$.showIndicator();
 					var txwidth = $(".hybg-touxiang").width();
@@ -112,8 +110,8 @@ var isVip = function() {
 					client.invoke("getUserInfo", function(result) {
 						$.hideIndicator();
 						var result = $.parseJSON(result);
-						if(result.data.imgurl) {
-							$(".hybg-touxiang").append("<img src=" + result.data.imgurl + ">")
+						if(result.data.headimg) {
+							$(".hybg-touxiang").append("<img src='http://img.7cai.tv/" + result.data.headimg + "'>")
 						} else {
 							$(".hybg-touxiang").append("<img src='assets/images/tx-160.png'>")
 						}
@@ -122,8 +120,8 @@ var isVip = function() {
 						} else {
 							$("#hui-mobile").html(result.data.mobile);
 						}
-						if(result.data.score) {
-							$("#vip-jifen").html("积分" + result.data.score);
+						if(result.data.integral) {
+							$("#vip-jifen").html("积分" + result.data.integral);
 						} else {
 							$("#vip-jifen").html("积分 : 0");
 						}
@@ -141,8 +139,8 @@ var isVip = function() {
 					client.invoke("getUserInfo",function(result){
 					 	$.hideIndicator();
 						var result = $.parseJSON(result);
-						if(result.data.imgurl){
-							$("#p-touxiang").append("<img id='touxiang2' src="+result.data.imgurl+">")
+						if(result.data.headimg){
+							$("#p-touxiang").append("<img id='touxiang2' src='http://img.7cai.tv/"+result.data.headimg+"'>")
 						}else{
 							$("#p-touxiang").append("<img id='touxiang2'" + " src='assets/images/tx-120.png'>")
 						}
@@ -151,8 +149,8 @@ var isVip = function() {
 						}else{
 							$("#p-message  .username").html(result.data.mobile);
 						}
-						if(result.data.score){
-							$("#p-message  .score").html("积分 : "+result.data.score);
+						if(result.data.integral){
+							$("#p-message  .score").html("积分 : "+result.data.integral);
 						}else{
 							$("#p-message  .score").html("积分 : 0");
 						}

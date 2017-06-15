@@ -76,7 +76,7 @@ var Cookie = {
 	}();
 //获取token
 var token = function() {
-	return 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhZG1pbiI6ZmFsc2UsImNsYWltcyI6bnVsbCwidWlkIjoiODM4IiwidiI6MSwiaWF0IjoxNDkzMDAzMjg3fQ.PpqXb_oSU8EJVLAlwdzUBXsI67a2qAp7h5VuGf5Ly68';
+	return 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhZG1pbiI6ZmFsc2UsImNsYWltcyI6bnVsbCwidWlkIjoiODg4IiwidiI6MSwiaWF0IjoxNDk2OTEzOTU1fQ.47xETg6GOcUcGegHQXn7xX1mf3OECo5NrOLEzXl7M68';
 //	return Cache.get('token')
 };
 
