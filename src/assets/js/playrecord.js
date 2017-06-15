@@ -52,19 +52,12 @@ function getrecordList(){
 		       url: movie_record[conf], //实际上访问时产生的地址为: ajax.ashx?callbackfun=jsonpCallback&id=10
 		       cache: false, //默认值true
 		       dataType :   'json',
-//		data: {
-//								token: token()
-//		},
 		success: function(json) {           
 			dataList = json;
 			console.log(dataList);
 			var len_movierecord = $(".lqMovierecord li").length;
-//			if(dataList.res == '1'){
-//				
-//			}
 			if(len_movierecord > "1" || dataList.res == "1") {
 				$("#bfjl-qs").hide();
-				//               window.location.href = "./scbj.html";
 			} else if(dataList.res == "0" || len_movierecord == "0") {
 				$('.pr_edit').hide();
 				$("#bfjl-qs").show();
