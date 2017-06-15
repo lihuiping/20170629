@@ -1,7 +1,7 @@
 var conf = 1;
 var toke = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhZG1pbiI6ZmFsc2UsImNsYWltcyI6bnVsbCwidWlkIjoiODM4IiwidiI6MSwiaWF0IjoxNDkzMDAzMjg3fQ.PpqXb_oSU8EJVLAlwdzUBXsI67a2qAp7h5VuGf5Ly68'; //获取token
 var getmovie = ['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/Favor/index.html&token=' + toke];
-var del_movie = ['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/Favor/change.html'];
+var del_movie = ['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/Favor/delete.html'];
 
 //获取地址参数
 function GetQueryString(name) {
