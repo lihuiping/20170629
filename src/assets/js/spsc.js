@@ -64,6 +64,7 @@ function getmovielist() {
 			var len_movie = $(".lqMovies li").length;
 			if(len_movie > "1" || dataList.res == "1") {
 				$("#bfjl-qs").hide();
+				$('#getpwd').show();
 				//               window.location.href = "./scbj.html";
 			} else if(dataList.res == "0" || len_movie == "0") {
 				$('.pr_edit').hide();
@@ -149,7 +150,7 @@ function moviedel() {
 		}
 		
 	});
-	console.log(checkList);
+//	console.log(checkList);
 	var p_checked = $(".lqMovies input[name='my-radio']:checked");
 	if(p_checked.length > 0) {
 		layer.open({
