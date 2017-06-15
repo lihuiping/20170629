@@ -40,7 +40,13 @@
     color: gray;
     font-size: .7rem;
 }
-
+.yq-li a{
+        display: table;
+        width: 100%;
+        span{
+        	margin-right: 0rem;
+        }
+}
 .bg-f5 {
     background: #f5f5f5!important;
 }
