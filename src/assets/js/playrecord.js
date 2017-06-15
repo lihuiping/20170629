@@ -112,34 +112,6 @@ $(function() {
 			$(".del_num").text($("input[name='my-radio']:checked").length);
 		}
 	});
-	
-	/*$(document).on('click', '#pr_selectAll', function() {
-		nb = $('.pr_wj_content1 ul li').length;
-		if($(".lqSelcet h6").text() == "全选") {
-			$(".my-select").each(function(dom) {
-				idarr.push($(".my-select")[dom].getAttribute("videoid"));
-			});
-			$("#pr_selectAll").html('取消全选');
-			$("#pr_delete").addClass('prde_bgchange');
-			$(".my-select").addClass("bg-myse");
-			$(".my-select").attr("checked", !$(this).attr("checked"));
-			$("#pr_selectAll").removeClass("prse_bgchange");
-			$("#pr_selectAll").removeClass("prde_bgchange");
-			$('.del_num').text(nb);
-			na = nb;
-		} else {
-			idarr = [];
-			$("#pr_selectAll").html('全选');
-			$("#pr_delete").removeClass('prde_bgchange');
-			$(".my-select").removeClass("bg-myse");
-			$(".my-select").attr("checked", false);
-			$("#pr_selectAll").addClass("prse_bgchange");
-			$('.del_num').text(0);
-			na = 0;
-		}
-		$("#pr_selectAll").toggleClass("prse_bgchange");
-	});*/
-
 	//加载时显示有无视频记录
 	if($(".pr_content li").length == 0) {
 		$("#bfjl-qs").show();
@@ -174,18 +146,16 @@ function recorddel() {
 		} else {
 			checkList += ',' + $(v).attr('id');
 		}
+		console.log(checkList);
 	});
 	var p_checked = $(".lqMovierecord input[name='my-radio']:checked");
 	if(p_checked.length > 0) {
 		layer.open({
 			content: '此操作将删除所有播放记录,该操作不可恢复是否继续？',
 			btn: ['确定', '取消'],
-			no: function() {
-				return false;
-			},
 			yes: function(index) {
 
-				//console.log(p_checked.length);
+				console.log(p_checked.length);
 
 				p_checked.parent().parent().remove();
 				var del_num = $(".lqMovierecord input[name='my-radio']:checked").length;
@@ -193,16 +163,19 @@ function recorddel() {
 				layer.close(index);
 				$.ajax({
 					type: "GET",
+					async: false,
 					url: del_movierecord[conf],
 					traditional: true,
+					cache: false, //默认值true
 					data: {
 						ids: checkList,
-						token: token()
+//						token: token()
 					},
 					cache: false, //默认值true
 					        //dataType :   'jsonp',
 					          // jsonp: "jsoncallback",
 					success: function(data) {
+//						console.log(data);
 						window.location.reload(); 
 					},
 					error: function(data) {
