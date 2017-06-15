@@ -1,4 +1,5 @@
 var conf = 1;
+//var toke = token();
 var toke = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhZG1pbiI6ZmFsc2UsImNsYWltcyI6bnVsbCwidWlkIjoiMTI5NCIsInYiOjEsImlhdCI6MTQ5NTc5MDA1OH0.T8cESgLZa9eX5TcErXNgMHb93xuHs9IGVsqubfpoJK4'; //获取token
 var movie_record = ['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/Movie/playRecordList&token=' + toke];
 var del_movierecord = ['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/Movie/playRecorddestroy&token=' + toke];

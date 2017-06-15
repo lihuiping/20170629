@@ -1,5 +1,6 @@
 var conf = 1;
-var toke = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhZG1pbiI6ZmFsc2UsImNsYWltcyI6bnVsbCwidWlkIjoiODM4IiwidiI6MSwiaWF0IjoxNDkzMDAzMjg3fQ.PpqXb_oSU8EJVLAlwdzUBXsI67a2qAp7h5VuGf5Ly68'; //获取token
+var toke = token();
+//var toke = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhZG1pbiI6ZmFsc2UsImNsYWltcyI6bnVsbCwidWlkIjoiODM4IiwidiI6MSwiaWF0IjoxNDkzMDAzMjg3fQ.PpqXb_oSU8EJVLAlwdzUBXsI67a2qAp7h5VuGf5Ly68'; //获取token
 var getmovie = ['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/Favor/index.html&token=' + toke];
 var del_movie = ['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/Favor/delete.html'];
 
@@ -11,6 +12,7 @@ function GetQueryString(name) {
 	return null;
 }
 var movieID = GetQueryString('id');
+
 //axios请求跨域  公用
 var header = {
 	'content-type': 'application/x-www-form-urlencoded'
@@ -60,7 +62,7 @@ function getmovielist() {
 				       
 		success: function(json) {           
 			dataList = json;
-			//console.log(dataList.data);
+//			console.log(dataList.data);
 			var len_movie = $(".lqMovies li").length;
 			if(len_movie > "1" || dataList.res == "1") {
 				$("#bfjl-qs").hide();
@@ -68,6 +70,7 @@ function getmovielist() {
 				//               window.location.href = "./scbj.html";
 			} else if(dataList.res == "0" || len_movie == "0") {
 				$('.pr_edit').hide();
+				$('#getpwd').show();
 				$("#bfjl-qs").show();
 			}
 			var app = new Vue({
