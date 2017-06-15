@@ -471,8 +471,8 @@ $(document).on("pageInit", "#editmessage", function(e, id, page) {
 			if(result.res == 1) {
 				$.toast("修改完成！");
 				setTimeout(function() {
-					isVip();
-				}, 1500)
+					window.location.href = "user-center.html";
+					}, 1500)
 			} else {
 				$.toast(result.msg);
 			}
