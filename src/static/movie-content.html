@@ -74,7 +74,7 @@
                 </div>
                 <div class="movie-user-review">
                     <img src="assets/images/my_user.png" />
-                    <input class="movie-user-input" type="text" placeholder="我来说两句" @click='addComment()' />
+                    <input class="movie-user-input" type="text" placeholder="我来说两句" @click='addComment(1)' />
                 </div>
                 <div class="card movie-other-review">
                     <div style="display: block;overflow: auto;">
@@ -91,7 +91,7 @@
                                             </div>
                                             <div class="item-subtitle">{{item.add_time}}</div>
                                         </div>
-                                        <div class="review-log" @click='addComment(item.id)' :id="item.id">
+                                        <div class="review-log" @click='addComment(0,item.id)' :id="item.id">
                                             <i class="icon icon-xiaoxizhongxin1"></i>
                                             <span>{{item.reply_num}}</span>
                                         </div>
@@ -140,7 +140,7 @@
                 </div>
                 <div class="movie-user-review">
                     <img src="assets/images/my_user.png" />
-                    <input class="movie-user-input" type="text" placeholder="我来说两句" @click='addComment()' />
+                    <input class="movie-user-input" type="text" placeholder="我来说两句" @click='addComment(1)' />
                 </div>
                 <div class="card movie-other-review">
                     <div style="display: block;height: 100%;">
@@ -157,7 +157,7 @@
                                             </div>
                                             <div class="item-subtitle">{{item.add_time}}</div>
                                         </div>
-                                        <div class="review-log" @click='addComment(item.id)' :id="item.id">
+                                        <div class="review-log" @click='addComment(0,item.id)' :id="item.id">
                                             <i class="icon icon-xiaoxizhongxin1"></i>
                                             <span>{{item.reply_num}}</span>
                                         </div>

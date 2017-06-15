@@ -5,6 +5,7 @@ var add_collection = ['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/
 var get_collection = ['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/Favor/check.html'];
 var add_comment = ['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/Comment/add.html&token=' + token()];
 var get_comment = ['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/Comment/index.html'];
+var playRecord=['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/Movie/playRecord&token='+ token()];
 //获取地址参数
 function GetQueryString(name) {
     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
@@ -38,6 +39,7 @@ var movieDatail = new Vue({
         replyId: "",
         nowPage: 1,
         comCount: "",
+        is_read:"",
         switchShow: false
     },
     mounted: function() {
@@ -60,7 +62,9 @@ var movieDatail = new Vue({
              //   var movie="http://my.shop.7cai.tv/tv/f000000";
                 var movieTitle = data.name;
                 var movieCover = data.cover;
-                video(movie, movieTitle, movieCover);
+                var istrytime=data.is_try_time;
+                var start_time=data.start_time;
+                video(movie, movieTitle, movieCover,istrytime,start_time);
             });
             //获取评价
 
@@ -131,27 +135,29 @@ var movieDatail = new Vue({
 
             })
         },
-        addComment: function(obj) {
+        addComment: function(isread,obj) {
             $(".comment_bar").show();
             $(".comment_bar textarea").focus();
            $(".comment_bar textarea").val("");
            $(".bg_zhezhao").show();
             movieDatail.replyId = obj;
+            movieDatail.is_read=isread
         },
-        btn_comment: function(replyId) {
+        btn_comment: function(replyId,is_read) {
             var comment = $("#f_comment").val();
             axios.get(add_comment[conf], {
                 params: {
                     program_id: movieID,
                     content: comment,
-                    reply_to: movieDatail.replyId
+                    reply_to: movieDatail.replyId,
+                    is_read: movieDatail.is_read
                 }
             }).then(function(res) {
                 var data = res.data;
                 if (data.res == 1) {
                     //   _this.movielist = data;
                     console.log(data);
-                    movieDatail.moreFn(this.nowPage,0);
+                    movieDatail.moreFn(movieDatail.nowPage,0);
                     $(".comment_bar").hide();
                     // _this.loadingFlag = false;
                     //showMovie();
@@ -181,7 +187,7 @@ var movieDatail = new Vue({
                     console.log(movieDatail.Comment);   
                     //   scrollComment();
                 } else {
-                    $.toast("没有更多的评论了~");
+                   // $.toast("没有更多的评论了~");
                   
                 }
             });
@@ -205,7 +211,8 @@ var movieDatail = new Vue({
     }
 });
 
-function video(movie, movieTitle, movieCover) {
+function video(movie, movieTitle, movieCover,istrytime,start_time) {
+      //var play_status=0;
     var player = cyberplayer("video").setup({
         width: '100%', // 宽度，也可以支持百分比(不过父元素宽度要有)
         height: '100%', // 高度，也可以支持百分比
@@ -216,14 +223,16 @@ function video(movie, movieTitle, movieCover) {
         autostart: false, // 是否自动播放
         stretching: "uniform", // 拉伸设置
         repeat: false, // 是否重复播放
-        volume: 100, // 音量
+        volume: 80, // 音量
         controls: true, // controlbar是否显示
-        starttime: 0, // 视频开始播放时间，如果不设置，则可以从上次播放时间点续播
+        starttime: start_time,
+        playRate: false,
         primary: "html5", // 首先使用html5还是flash播放，默认：html5
         controlbar: {
             barLogo: false
         },
-        ak: "41707430fa52422f83b8efdc797f90c1" // 公有云平台注册即可获得accessKey
+        ak: "41707430fa52422f83b8efdc797f90c1",
+         // 公有云平台注册即可获得accessKey
     });
     player.onFullscreen(function(event) {
         if (event.fullscreen) {
@@ -237,12 +246,24 @@ function video(movie, movieTitle, movieCover) {
         }
     });
     player.onTime(function(event) {
-        if (event.position > 10) {
+        if (istrytime ==0 && event.position > 10) {
             player.pause();
             $(".bg_video").addClass('bg_video_show')
 
         }
     });
+    player.onPause(function(event){
+          var playTime= player.getPosition();
+          axios.get(playRecord[conf], {
+                params: {
+                    movieId: movieID,
+                    startTime: playTime
+                }
+            }).then(function(res) {
+                var data = res.data;
+            });
+
+    })
 }
 /*滑动的效果*/
 function scrollComment() {
