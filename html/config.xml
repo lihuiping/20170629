@@ -1,0 +1,73 @@
+ <widget id="A6940555676996"  version="0.0.1">
+
+    <name>qcmall</name>
+
+    <description></description>
+
+    <author email="908160819@qq.com" href="http://v.7cai.tv">李程</author>
+
+    <content src="index.html" />
+
+    <access origin="*" />
+
+    <preference name="pageBounce" value="false"/>
+
+	<preference name="appBackground" value="rgba(0,0,0,0.0)"/>
+
+	<preference name="windowBackground" value="rgba(0,0,0,0.0)"/>
+
+	<preference name="frameBackgroundColor" value="rgba(0,0,0,0.0)"/>
+
+	<preference name="hScrollBarEnabled" value="true"/>
+
+	<preference name="vScrollBarEnabled" value="true"/>
+
+	<preference name="autoLaunch" value="true"/>
+
+	<preference name="fullScreen" value="false"/>
+
+	<preference name="autoUpdate" value="true" />
+
+	<preference name="smartUpdate" value="false" />
+
+	<preference name="debug" value="true"/>
+
+	<preference name="statusBarAppearance" value="true"/>
+
+	<permission name="readPhoneState" />
+
+	<permission name="camera" />
+
+	<permission name="record" />
+
+	<permission name="location" />
+
+	<permission name="fileSystem" />
+
+	<permission name="internet" />
+
+	<permission name="bootCompleted" />
+
+	<permission name="hardware" />
+  <feature name="wx">
+    <param name="urlScheme" value="wx4489f0b8009731e9"/>
+    <param name="apiKey" value="wx4489f0b8009731e9"/>
+    <param name="apiSecret" value="4ef1c72c37b414dd82f31ec12c3833f3"/>
+  </feature>
+  <feature name="qq">
+   <param name="urlScheme" value="tencent1106138135" />
+   <param name="apiKey" value="1106138135" />
+  </feature>
+  <feature name="fuqianla">
+  <param name="fqlAppID" value="VWT0GaNzbX3Dqesop5zrOg" />
+  </feature>
+  <feature name="2A55B8CB77E40466">
+  <param name="urlScheme" value="wx53413d9947536a39" />
+  </feature>
+  <feature name="DBD5D92C3E6FD784">
+  <param name="urlScheme" value="zbX3Dqesop5zrOg" />
+  </feature>
+
+</widget>
+
+

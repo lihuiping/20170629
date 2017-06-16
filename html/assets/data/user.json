@@ -1,0 +1,22 @@
+{
+    "res": 1,
+    "msg": "",
+    "data": {
+        "id": "888",
+        "username": "",
+        "integral": "0",
+        "mobile": "13526779920",
+        "headimg": "",
+        "sex": "1",
+        "birthday": "0",
+        "isattest": "0",
+        "isvip": "0",
+        "fettle": "1",
+        "safepasswd": "b8ec741d02fd36cc21c6999e0aa9848419c1077c",
+        "safesaltcode": "1OQ278",
+        "uniquecode": "0279L2",
+        "identitycard": "",
+        "realname": "",
+        "addtime": "1489987271"
+    }
+}

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="yes" name="apple-touch-fullscreen">
+<meta content="telephone=no,email=no" name="format-detection">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<title>中益七彩</title>
+<link rel="stylesheet" href="assets/css/light7.min.css">
+<link rel="stylesheet" href="assets/css/common.css">
+	
+<script type="text/javascript" src="lib/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="lib/vue.min.js"></script>
+<script type="text/javascript" src="lib/axios.min.js"></script>
+<script type="text/javascript" src="lib/api.js"></script>
+<script type='text/javascript' src='lib/layer-mobile/layer.js' charset='utf-8'></script>
+<script type="text/javascript">
+	$.config = {
+		router: false,
+	}
+	//公用url
+	function baseUrl() {
+		return 'http://my.shop.7cai.tv/';
+	//	return 'http://www.movie.com/';	
+	}
+</script>
+<script type="text/javascript" src="assets/js/iscroll.js"></script>
+<script type="text/javascript" src="assets/js/date.js"></script>
+<script type="text/javascript" src="lib/imgload.js"></script>
+<script  type="text/javascript" charset="utf-8" src="assets/js/common.js" ></script>
+<script type="text/javascript" src="lib/light7/js/light7.min.js"></script>
+
+    <link rel="stylesheet" href="assets/css/swiper.min.css"/>
+</head>
+
+<body>
+
+<div class="page-group">
+    <div class="page page-current" id="router">
+        <div class="content pdbt">
+                 <!--头部logo和搜索框 start-->
+         <div class="shouye-head">
+            <div class="shouyelogo">
+                <img src="assets/images/l-logo.png">
+                <a href="search.html" class="external shouye-a4" id="shouye-ss">
+                    <div class="shouye-sousuo ">
+                        <i class="iconfont icon-sousuo"></i> 商品名称
+                    </div>
+                </a>
+            </div>
+        </div>
+            <!-- banner 黄正添加-->
+            <div class="swiper-container" id="index-banner">
+                <div class="swiper-wrapper" id="banner">
+                    <div class="swiper-slide" v-for="item in data" v-cloak>
+                        <a href="javascript:;"><img :src="item.img">
+                        </a>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+            <!--wsl 选项卡按钮start-->
+            <div class="tab-wrap bg-color">
+                <a id="ifLogin" class="tab-list ifLogin" href="shopCollect.html">
+                    <img class="collect" src="assets/images/collect.png"/>
+                    <span class="tab-label">我的收藏</span>
+                </a>
+                <a class="tab-list ifLogin" href="shopping-cart.html">
+                    <img class="cart" src="assets/images/cart.png"/>
+                    <span class="tab-label">购物车</span>
+                </a>
+                <a class="tab-list" href="myOrder-table.html">
+                    <img class="help" src="assets/images/help.png"/>
+                    <span class="tab-label">我的订单</span>
+                </a>
+            </div>
+            <!--选项卡按钮end-->
+            <!-- 列表 黄正添加 -->
+            <div class="content-row" id="goods-list">
+                <img src="assets/images/loading.gif" v-if="loadingFlag" class="loading-img"/>
+                <div class="content-half" v-for="item in goodslist.data" v-cloak>
+                    <a class="card demo-card-header-pic" :href="getTitleHref(item.id)" :data-id="item.goodsId">
+                        <div valign="bottom" class="card-header color-white no-border no-padding card-img-box">
+                            <img class='card-cover' :src="item.goods_thumb" alt="">
+                        </div>
+                        <div class="typg-box">
+                            <div class="item-title-row">
+
+                                <div class="item-title">{{item.goods_name}}</div>
+                            </div>
+                            <div class="item-subtitle"><span class="qc-color">七彩币<em>{{item.sell_price}}</em></span> <span class="cny-color"><em>￥{{item.market_price}}</em></span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+            <div class="footer-hint">
+                <p>没有更多了</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+<!--footer bar-->
+<nav class="bar bar-tab pub-bar">
+    <a class="tab-item  @@video" href="movie-index.html" data-class="icon-video">
+      <span class="icon icon-video @@videoc video"></span>
+      <span class="tab-label">首页</span>
+    </a>
+    
+    <a class="tab-item active"  href="index.html" data-class="icon-mall">
+      <span class="icon icon-mall icon-mall-active"></span>
+      <span class="tab-label">商城</span>
+    </a>
+    <a class="tab-item @@ticket" href="buy-ticket.html" data-class="icon-ticket">
+      <span class="icon icon-ticket @@ticketc"></span>
+      <span class="tab-label">购票</span>
+    </a>
+    <a class="tab-item @@find" href="discover.html" data-class="icon-find">
+      <span class="icon icon-find @@findc"></span>
+      <span class="tab-label">发现</span>
+    </a>
+    <a class="tab-item @@center"  href="user-center.html" id="me" data-class="icon-user">
+      <span class="icon icon-user @@centerc"></span>
+      <span class="tab-label">我的</span>
+    </a>
+  </nav>
+<script src="lib/swiper/js/swiper.min.js"></script>
+<script src="assets/js/index.js"></script>
+<script type="text/javascript" src="assets/js/public.js"></script>
+<script src="assets/js/ifLogin.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>

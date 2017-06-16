@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="yes" name="apple-touch-fullscreen">
+<meta content="telephone=no,email=no" name="format-detection">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<title>我的收藏</title>
+<link rel="stylesheet" href="assets/css/light7.min.css">
+<link rel="stylesheet" href="assets/css/common.css">
+	
+<script type="text/javascript" src="lib/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="lib/vue.min.js"></script>
+<script type="text/javascript" src="lib/axios.min.js"></script>
+<script type="text/javascript" src="lib/api.js"></script>
+<script type='text/javascript' src='lib/layer-mobile/layer.js' charset='utf-8'></script>
+<script type="text/javascript">
+	$.config = {
+		router: false,
+	}
+	//公用url
+	function baseUrl() {
+		return 'http://my.shop.7cai.tv/';
+	//	return 'http://www.movie.com/';	
+	}
+</script>
+<script type="text/javascript" src="assets/js/iscroll.js"></script>
+<script type="text/javascript" src="assets/js/date.js"></script>
+<script type="text/javascript" src="lib/imgload.js"></script>
+<script  type="text/javascript" charset="utf-8" src="assets/js/common.js" ></script>
+<script type="text/javascript" src="lib/light7/js/light7.min.js"></script>
+
+    <script type='text/javascript' src='assets/js/shopCollect.js' charset='utf-8'></script>
+</head>
+
+<body>
+<div class="page goodPage page-current">
+    	<header class="bar bar-nav bdbt-none ad-bar" style="z-index: 1000;">
+  <a class="icon icon-left pull-left" href="javascript:history.go(-1)"></a>
+  <!--<a class="icon icon-refresh pull-right"></a>-->
+  <h1 class="title">我的收藏</h1>
+</header> 
+    <div class="content znTop">
+        <div class="buttons-tab tab-size">
+            <a href="#tab1" class="tab-link active button bdbtm" style="padding: 0;">
+                <span class="bmsy">商品</span>
+            </a>
+            <a href="#tab2" class="tab-link button bdbtm" style="padding: 0;">
+                <span class="bmsy">商店</span>
+            </a>
+            <a class="tab-link button tab-w2 editor pdbtm" style="padding: 0;">
+                <span class="lfsy" style="height: 1.8rem;border-left: solid 0.05rem #D9D9D9;">编辑</span>
+            </a>
+            <a class="tab-link button complete hidden tab-w2 pdbtm" style="padding: 0;">
+                <span class="lfsy" style="height: 1.8rem;border-left: solid 0.05rem #D9D9D9;">完成</span>
+            </a>
+        </div>
+        <!--没有添加商店时显示-->
+
+        <!--中间内容-->
+        <div class="content-block">
+            <div class="tabs">
+                <!--商品的内容-->
+                <div id="tab1" class="tab active">
+                    <div class="content-block" id="good">
+                        <ul class="goods good" v-cloak v-show="res == 1">
+                            <!--绑定数据-->
+                            <li v-for="god in data">
+                                <label class="label-checkbox item-content clearfix" :for="god.id">
+                                    <input :id="god.id" type="checkbox" name="my-radio" class="icon-btn">
+                                    <div class="item-media media">
+                                        <i class="icon icon-form-checkbox"></i>
+                                    </div>
+                                </label>
+                                <div class="item-inner good-inner">
+                                    <div class="item-title-row">
+                                        <a :href="getTitleHref(god.goods_id)"><img :src="god.goods_thumb">
+
+                                            <div class="bomContent">
+                                                <h6>{{god.goods_name}}</h6>
+                                                <p class="middel">{{god.seo_desc}}</p>
+                                                <p class="lastPrice goodPrice" v-if="god.status==0">七彩币<span>{{god.sell_price}}</span>
+                                                    <span class="money">￥{{god.money}}</span></p>
+                                                <p class="lastShelve" v-if="god.status==1">已下架</p>
+                                                <!--v-if="{{god.status}}"-->
+                                                <!--v-else="{{god.status}}"-->
+                                            </div>
+                                        </a>
+                                        <a class="cancelCollect">取消收藏</a>
+                                    </div>
+                                </div>
+
+                            </li>
+                        </ul>
+                    </div>
+                    <!--没有添加商品时显示-->
+                    <div class="no-good hidden">
+                        <div class="good-i"><img src="assets/images/shop.png"/></div>
+                        <center>您还没有收藏的商品哦,赶快去逛逛吧~</center>
+                    </div>
+                    <!--  <div class="footer-none">
+                         没有更多了
+                     </div> -->
+                </div>
+                <!--商店的内容-->
+                <div id="tab2" class="tab">
+                    <div class="content-block" id="shop" v-show="res == 1" v-cloak>
+                        <ul class="goods shop">
+                            <li v-for="sshop in data">
+                                <label class="label-checkbox item-content clearfix" :for="sshop.id">
+                                    <input :id="sshop.id" type="checkbox" name="my-radio" class="icon-btn">
+                                    <div class="item-media media"><i class="icon icon-form-checkbox"></i></div>
+                                    <div class="item-inner good-inner">
+                                        <div class="item-title-row shopBom">
+                                            <a><img :src="sshop.business_picture"/><h6>{{sshop.business_name}}</h6></a>
+                                            <a class="cancelCollect" :id="sshop.id">取消收藏</a>
+                                        </div>
+                                    </div>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="no-shop hidden" v-show="data.res==1">
+                        <div class="good-i"><img src="assets/images/shopCollect.png"/></div>
+                        <center>您还没有收藏的商店哦,赶快去逛逛吧~</center>
+                    </div>
+                    <!-- <div class="footer-none ">
+                          没有更多了
+                      </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--商品的底部显示-->
+    <div class="foot-all">
+        <ul class="foot-btn" style="overflow: hidden;">
+            <li class="all-btn">
+                <label class="label-checkbox item-content">
+                    <input name="chkAll" id="chkAll" type="checkbox"/>
+                    <div class="item-media all-media hidden"><i class="icon icon-form-checkbox "></i></div>
+                    <h6>全选</h6>
+                </label>
+            </li>
+            <!--<li class="collect">
+                <a href="javascript:;">
+                    <span>取消收藏</span>
+                </a>
+            </li>-->
+            <li class="gooddel"><a href="javascript:;">删除<span>(<i class="del_num">0</i>)</span></a></li>
+        </ul>
+    </div>
+</div>
+</body>
+
+</html>

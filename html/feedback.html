@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="yes" name="apple-touch-fullscreen">
+<meta content="telephone=no,email=no" name="format-detection">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<title>意见反馈</title>
+<link rel="stylesheet" href="assets/css/light7.min.css">
+<link rel="stylesheet" href="assets/css/common.css">
+	
+<script type="text/javascript" src="lib/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="lib/vue.min.js"></script>
+<script type="text/javascript" src="lib/axios.min.js"></script>
+<script type="text/javascript" src="lib/api.js"></script>
+<script type='text/javascript' src='lib/layer-mobile/layer.js' charset='utf-8'></script>
+<script type="text/javascript">
+	$.config = {
+		router: false,
+	}
+	//公用url
+	function baseUrl() {
+		return 'http://my.shop.7cai.tv/';
+	//	return 'http://www.movie.com/';	
+	}
+</script>
+<script type="text/javascript" src="assets/js/iscroll.js"></script>
+<script type="text/javascript" src="assets/js/date.js"></script>
+<script type="text/javascript" src="lib/imgload.js"></script>
+<script  type="text/javascript" charset="utf-8" src="assets/js/common.js" ></script>
+<script type="text/javascript" src="lib/light7/js/light7.min.js"></script>
+
+	</head>
+
+	<body>
+		<div class="page page-current page-inited feed-back" id="yijianfankui">
+			<header class="bar bar-nav bdbt-none ad-bar" style="z-index: 1000;">
+  <a class="icon icon-left pull-left" href="javascript:history.go(-1)"></a>
+  <!--<a class="icon icon-refresh pull-right"></a>-->
+  <h1 class="title">意见反馈</h1>
+</header>
+			<div class="content znTop">
+				<!--标签页-->
+				
+				<div class="list-default fb-default">
+					反馈类型
+					<input id="fk-fklx" class="fb-input" readonly="readonly" value="请选择" type="text">
+					<span class="icon icon-right" id="fkSelect"></span>
+				</div>
+				<div class="fenge"></div>
+				<textarea class="yijian-text" placeholder="请输入产品意见，我们将不断优化体验"></textarea>
+				<div class="fenge margintop-02"></div>
+				<div class="list-default fb-default">
+					<input placeholder="留下您的手机/QQ/邮箱，方便我们与您联系(选填)" class="liuyan-input" type="text">
+				</div>
+				<a class="button mybutton-1 button-big" id="tjfk">提交</a>
+			</div>
+		</div>
+		<div class="popup-overlay modal-overlay-visible modal-bg"></div>
+		<script src="lib/hprose.js"></script>
+		<script type="text/javascript" src="assets/js/other.js" charset="utf-8"></script>
+		<script type="text/javascript" src="assets/js/feedback.js" charset="utf-8"></script>
+	</body>
+
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=no">
+    <title>支付</title>
+    <script src="http://cdn.bootcss.com/zepto/1.1.6/zepto.min.js"></script>
+    <script src="http://m.fuqian.la/jssdk/h5jssdk.3.0.js"></script>
+
+    <style>
+        button {
+            width: 100%;
+            height: 35px;
+            border-radius: 5px;
+            font-size: 14px;
+            color: #fff;
+            background-color: #000;
+            border: 0;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<button id="wx">微信支付</button>
+
+<script src="http://v.7cai.tv/js/other.js"></script>
+<script>
+    function Is_weixn() {
+        var ua = navigator.userAgent.toLowerCase();
+        return (ua.match(/MicroMessenger/i) == "micromessenger");
+    }
+    //获取分享码
+    var getUrlVars = function () {
+        var vars = [],
+            hash;
+        var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+        for (var i = 0; i < hashes.length; i++) {
+            hash = hashes[i].split('=');
+            vars.push(hash[0]);
+            vars[hash[0]] = hash[1];
+        }
+        return vars;
+    }
+    var isWenxin = Is_weixn();
+    //       isWenxin=55;
+    if (isWenxin) {
+        var openid = Cache.get("openid") || null;
+        openid = null;
+        if (!openid) {
+            var code = getUrlVars()["code"] || null;
+//            code=55;
+
+            if (code) {
+
+                $.ajax({
+                    type: "post",
+                    url: "http://my.shop.7cai.tv/pay.php?r=index&m=getWxOendId",
+                    data: "code=" + code,
+                    dataType: "json",
+                    success: function (result) {
+                        if (result.res == 1) {
+                            openid = result.data.openid;
+                            Cache.set("openid", result.data.openid);
+                        } else {
+                            alert(result.msg);
+                        }
+
+                    },
+                    error: function () {
+                        alert('错误');
+                    }
+                });
+
+            } else {
+//                window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx880f0e36a4befaf8&redirect_uri="+encodeURIComponent("http://v.7cai.tv/getcode.html?")+"&response_type=code&scope=snsapi_base&state=1#wechat_redirect";
+                window.location.href = "http://v.7cai.tv/getcode.html?backurl=" + encodeURIComponent("http://shop.7cai.tv/src/html/pay.html") + "&snsapi=snsapi_userinfo";
+//                window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxc458fc12abd5b852&redirect_uri="+encodeURIComponent("http://shop.7cai.tv/")+"&response_type=code&scope=snsapi_base&state=1#wechat_redirect";
+            }
+        }
+    }
+
+
+    $('#wx').on('click', function (e) {
+        FUQIANLA.init({
+            'appId': 'VWT0GaNzbX3Dqesop5zrOg', //应用ID号
+            'merchId': 'm1610030006', //商户号
+            'orderId': Date.now(), //订单号，此处为模拟订单号。具体以接入为准
+            'channel': 'wx_pay_pub', //开通的通道简称
+            'amount': '0.01', //支付金额
+            'subject': 'h5测试数据', //商品标题
+            'notifyUrl': 'http://shop.7cai.tv/wx/index.php', //异步支付结果通知地址
+            'extra': {
+                'openid': openid,
+                'cb': function () {
+                    window.location.href = "http://shop.7cai.tv/src/html";
+                }
+            }
+        });
+    });
+
+</script>
+</body>
+</html>

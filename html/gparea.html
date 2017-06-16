@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html class="pixel-ratio-1">
+
+	<head>
+		<meta charset="utf-8">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="yes" name="apple-touch-fullscreen">
+<meta content="telephone=no,email=no" name="format-detection">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<title>在线选座影院</title>
+<link rel="stylesheet" href="assets/css/light7.min.css">
+<link rel="stylesheet" href="assets/css/common.css">
+	
+<script type="text/javascript" src="lib/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="lib/vue.min.js"></script>
+<script type="text/javascript" src="lib/axios.min.js"></script>
+<script type="text/javascript" src="lib/api.js"></script>
+<script type='text/javascript' src='lib/layer-mobile/layer.js' charset='utf-8'></script>
+<script type="text/javascript">
+	$.config = {
+		router: false,
+	}
+	//公用url
+	function baseUrl() {
+		return 'http://my.shop.7cai.tv/';
+	//	return 'http://www.movie.com/';	
+	}
+</script>
+<script type="text/javascript" src="assets/js/iscroll.js"></script>
+<script type="text/javascript" src="assets/js/date.js"></script>
+<script type="text/javascript" src="lib/imgload.js"></script>
+<script  type="text/javascript" charset="utf-8" src="assets/js/common.js" ></script>
+<script type="text/javascript" src="lib/light7/js/light7.min.js"></script>
+
+		<link rel="stylesheet" href="lib/wj/css/wj.css">
+		<style type="text/css">
+			.gp_box_title div{
+				width: 50%;
+				margin-left: 0;
+			}
+			.gparea-page .yyjs_yyname{
+				width: 100%;
+				overflow: hidden;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<div class="page scroll page-current page-inited gparea-page" id="gparea">
+			<!--标签页-->
+			<header class="bar bar-nav bdbt-none ad-bar" style="z-index: 1000;">
+  <a class="icon icon-left pull-left" href="javascript:history.go(-1)"></a>
+  <!--<a class="icon icon-refresh pull-right"></a>-->
+  <h1 class="title">在线选座影院</h1>
+</header>
+			<div class="content znTop">
+			<div class="dysuo dy-sousuo gpa-dy-sousuo gparea-sousuo">
+				<div class="dysu_left">
+					<span class="gparea_city">上海</span><span class="iconfont icon-down gp_openAddress"></span>
+				</div>
+				<div class="dysu_right">
+					<i class="iconfont icon-sousuo" id="lb-sousuo"></i>
+					<i class="wj_gpshanchu iconfont icon-shanchuzifu" id="ss-shanchu"></i>
+					<input placeholder="搜索" id="sousuo-input" type="text">
+				</div>
+				<div class="gp_box_title gpa_box_title">
+					<div class="gp_box_title_left">区域</div>
+					<div class="gp_box_title_right">筛选</div>
+				</div>
+				<div class="yyjs_Time">
+					<ul>
+						<li class="yy_time_on">今天5-25</li>
+						<li>明天5-26</li>
+						<li>后天5-27</li>
+						<li>周日5-28</li>
+					</ul>
+				</div>
+			</div>
+			<div class="tab_box content infinite-scroll" data-distance="100" style="margin-bottom: 0;">
+				<div class="yyjs_xx yyjs_xy gp_yyjs_xy list-block">
+					<ul class="list-container">
+					</ul>
+				</div>
+				<div class="yyjs_xx yyjs_xy gp_yyjs_xy list-block" style="display:block;">
+					<ul class="list-container">
+					</ul>
+				</div>
+				<div class="yyjs_xx yyjs_xy gp_yyjs_xy list-block">
+					<ul class="list-container">
+					</ul>
+				</div>
+				<div class="yyjs_xx yyjs_xy gp_yyjs_xy list-block">
+					<ul class="list-container">
+					</ul>
+				</div>
+			</div>
+			<div class="gpa_ppsx" style="display:none;">
+				<div class="gpa_ppsx_title">
+					<div class="gpa_ppsx_title_left">品牌</div>
+					<div class="gpa_ppsx_title_right">全部品牌</div>
+				</div>
+				<div class="gpa_ppsx_txyy">
+					<div class="gpa_ppsx_txyy_left">
+					</div>
+					<div class="gpa_ppsx_txyy_right">
+						<ul>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="yyjs_dypTime" style="display:none;">
+				<ul>
+					<li>
+						<div class="yyjs_dypTime_li_left">
+							<div>
+								<p>11:59</p>
+								<p style="font-size:0.65rem;">14:35jie</p>
+							</div>
+							<div>
+								<p>guoyu</p>
+								<p style="font-size:0.65rem;">2hao</p>
+							</div>
+						</div>
+						<div class="yyjs_dypTime_li_right">
+							<span>$8</span>
+							<span style="color:red;font-size:.8rem;">28.9</span>
+						</div>
+					</li>
+					<li></li>
+					<li></li>
+				</ul>
+			</div>
+			<div class="gp_citypicker" style="display:none;">
+				<div class="content city_area_content">
+					<div class="city_area_title">
+						<span>更换城市</span><span class="iconfont icon-guanbi1 cta_close"></span>
+					</div>
+					<div class="city_area_selectd">
+						<span>北京</span>
+						<span>当前定位城市</span>
+					</div>
+					<div class="city_area_hot">
+						<p class="city_area_hot_title">热门</p>
+						<div class="city_area_hot_list">
+							<ul>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+		</div>
+		<!--footer bar-->
+<nav class="bar bar-tab pub-bar">
+    <a class="tab-item  @@video" href="movie-index.html" data-class="icon-video">
+      <span class="icon icon-video @@videoc video"></span>
+      <span class="tab-label">首页</span>
+    </a>
+    
+    <a class="tab-item @@mall"  href="index.html" data-class="icon-mall">
+      <span class="icon icon-mall @@mallc"></span>
+      <span class="tab-label">商城</span>
+    </a>
+    <a class="tab-item active" href="buy-ticket.html" data-class="icon-ticket">
+      <span class="icon icon-ticket icon-ticket-active"></span>
+      <span class="tab-label">购票</span>
+    </a>
+    <a class="tab-item @@find" href="discover.html" data-class="icon-find">
+      <span class="icon icon-find @@findc"></span>
+      <span class="tab-label">发现</span>
+    </a>
+    <a class="tab-item @@center"  href="user-center.html" id="me" data-class="icon-user">
+      <span class="icon icon-user @@centerc"></span>
+      <span class="tab-label">我的</span>
+    </a>
+  </nav>
+		<div class="bottom_line gpa_bottom_line"></div>
+		<script type="text/javascript" src="lib/hprose.js" charset="utf-8"></script>
+		<script type="text/javascript" src="assets/js/other.js" charset="utf-8"></script>
+		<script type="text/javascript" src="assets/js/gparea.js" charset="utf-8"></script>
+	</body>
+</html>

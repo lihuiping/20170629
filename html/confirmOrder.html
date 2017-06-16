@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="yes" name="apple-touch-fullscreen">
+<meta content="telephone=no,email=no" name="format-detection">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<title>确认订单</title>
+<link rel="stylesheet" href="assets/css/light7.min.css">
+<link rel="stylesheet" href="assets/css/common.css">
+	
+<script type="text/javascript" src="lib/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="lib/vue.min.js"></script>
+<script type="text/javascript" src="lib/axios.min.js"></script>
+<script type="text/javascript" src="lib/api.js"></script>
+<script type='text/javascript' src='lib/layer-mobile/layer.js' charset='utf-8'></script>
+<script type="text/javascript">
+	$.config = {
+		router: false,
+	}
+	//公用url
+	function baseUrl() {
+		return 'http://my.shop.7cai.tv/';
+	//	return 'http://www.movie.com/';	
+	}
+</script>
+<script type="text/javascript" src="assets/js/iscroll.js"></script>
+<script type="text/javascript" src="assets/js/date.js"></script>
+<script type="text/javascript" src="lib/imgload.js"></script>
+<script  type="text/javascript" charset="utf-8" src="assets/js/common.js" ></script>
+<script type="text/javascript" src="lib/light7/js/light7.min.js"></script>
+
+</head>
+
+<body>
+<!--page容器-->
+<div class="page page-current">
+    <!--标签页-->
+    <header class="bar bar-nav bdbt-none ad-bar" style="z-index: 1000;">
+  <a class="icon icon-left pull-left" href="javascript:history.go(-1)"></a>
+  <!--<a class="icon icon-refresh pull-right"></a>-->
+  <h1 class="title">确认订单</h1>
+</header>
+    <!--内容页面-->
+    <div class="content padding-btn znTop" id="apps">
+        <form id="submit_order" method="post">
+            <div class="content-block co-cont">
+                <!--李小璐收货地址  start  待移走-->
+                <div class="receiver-addr" id="address">
+                    <div class="list-block co-block">
+                        <!-- {{addList.data.name}} -->
+                        <ul>
+                            <li v-cloak v-if="addList.res == 1">
+                                <div>
+                                    <a :href="'my-address.html?attr='+attrList" class="item-content">
+                                        <div class="item-inner">
+                                            <div class="addr-left">
+                                                <div class="item-subtitle">
+                                                    <input type="hidden" name="addressId" class="address-send"
+                                                           :value="addList.data.id"/>
+                                                    <span>{{addList.data.name}}</span><span class="phoneNum">{{addList.data.phone}}</span>
+                                                </div>
+                                                <div class="item-text">
+                                                    <i class="icon icon-dizhi"></i>{{addList.data.detail}}
+                                                </div>
+                                            </div>
+                                            <div class="addr-right">
+                                                <i class="icon icon-right"></i>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <img src="assets/images/line.png"/>
+                            </li>
+
+                            <li v-else v-cloak>
+                                <a class="item-content"
+                                   href="http://v.7cai.tv/templets/gerenzhongxin/personMessage/AddAddress.html">
+                                    <!--<input type="hidden" name="addressId" class="address-send" :value="addList.data.id" />-->
+                                    <div class="item-inner">
+                                        <div class="addr-left">
+                                            <div class="item-text">
+                                                <i class="icon icon-dizhi"></i> 添加收货地址
+                                            </div>
+                                        </div>
+                                        <div class="addr-right">
+                                            <i class="icon icon-right"></i>
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <img src="assets/images/line.png"/>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!--添加过的商品内容-->
+                <div class="order-sub-box" id="order_list">
+                    <img src="assets/images/loading.gif" v-if="loadingFlag" class="loading-img"/>
+                    <div class="list-block media-list ccart-list co-sporder" v-cloak
+                         v-for="(shop,index) in orderList.able">
+                        <input type="hidden" name="businessId" class="shopid" :val="shop.shopid" :value="shop.shopid"/>
+                        <!--商店名称-->
+                        <div class="ccart-title" v-cloak :val="index">
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title-row">
+                                        <div class="item-title">
+                                            <a href="#">{{shop.shop_name}}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="ccart-content">
+                            <!--商品列表-->
+                            <li v-cloak v-for="(goodsItem,index) in shop.cartlist.list">
+
+                                <input type="hidden" name="cartIds[]" :value="goodsItem.goods_id"/>
+
+                                <div class="ccart-con swipeout-content" data-hand="list">
+                                    <div class="item-content">
+
+                                        <div class="item-media" v-cloak>
+                                            <a href="javascript:;"><img :src="goodsItem.goods_thumb"></a>
+                                        </div>
+                                        <div class="item-inner" v-cloak>
+                                            <div class="item-title-row">
+                                                <div class="item-title">
+                                                    <a href="javascript:;">{{goodsItem.goods_name}}</a>
+                                                </div>
+                                            </div>
+                                            <div class="item-subtitle">{{goodsItem.goods_name}}</div>
+                                            <div class="item-text item-rule">规格:{{goodsItem.attrstr}}</div>
+                                            <div class="ccart-price" :data-nums="goodsItem.number"
+                                                 :data-pro="goodsItem.id" :data-qcb="goodsItem.sell_price"
+                                                 :data-sub="goodsItem.shopid" :data-price="goodsItem.price">七彩币<span>{{goodsItem.sell_price | formatQcb(goodsItem.number)}}</span><em>{{goodsItem.price
+                                                | formatMoney(goodsItem.number)}}</em>
+                                                <i>数量:<span>{{goodsItem.number}}</span></i></div>
+
+                                        </div>
+                                    </div>
+                                    <div class="ccart-zeng" v-if="donation" v-cloak>
+                                        <span>赠品</span>
+                                        <p class="ccart-gift">啥也没有</p>
+                                    </div>
+
+                                </div>
+
+                            </li>
+
+                        </ul>
+                        <div class="list-block co-list">
+                            <ul>
+                                <!--配送方式-->
+                                <li class="item-content item-link" v-if="shop.shiplist != ''">
+                                    <a href="javascript:;" data-popup=".popup-delivery" class="open-popup"
+                                       @click="selectAdd(shop,shop.shopid)">
+
+                                        <div class="item-inner" :val='shop.shiplist[0].id'>
+                                            <div class="co-tit">配送方式</div>
+                                            <input type="hidden" name="shippingId" :val="shop.shopid" class="order-pei"
+                                                   :value="shop.shiplist[0].id"/>
+                                            <div class="item-media"><i class="icon icon-right"></i></div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <!---商店优惠券-->
+                                <!--<li class="item-content item-link" v-if="type == 1" :data-ss="couponList">
+                                    <a href="javascript:;" v-cloak>
+                                        <div class="item-inner">
+                                            <div class="co-tit">商店优惠券</div>
+                                            <input type="hidden" name="user_discount_coupon" class="user-coupon" :val="shop.shopid" :value="01" />
+                                            <div class="item-media co-price"><em><b>￥</b>10</em>
+                                                </div>
+                                        </div>
+                                    </a>
+                                </li>-->
+                                <li class="item-content item-link item-coupon"
+                                    v-if="index == shop.shopid && payType == 1 && qicai.length != 0 "
+                                    v-for="(item,index) in qicai">
+                                    <a href="javascript:;" v-cloak v-if="item.adminCoupon != null">
+                                        <div class="item-inner">
+                                            <div class="co-tit">平台优惠券</div>
+                                            <input type="hidden" name="user_discount_coupon" class="user-coupon"
+                                                   :val="shop.shopid" :value="item.adminCoupon.id"/>
+                                            <div class="item-media co-price">
+                                                <em><b>七彩币</b>{{item.adminCoupon.price}}</em>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a href="javascript:;" v-cloak v-if="item.shopCoupon != null">
+                                        <div class="item-inner">
+                                            <div class="co-tit">商店优惠券</div>
+                                            <input type="hidden" name="user_discount_coupon" class="user-coupon"
+                                                   :val="shop.shopid" :value="item.shopCoupon.id"/>
+                                            <div class="item-media co-price">
+                                                <em><b>七彩币</b>{{item.shopCoupon.price}}</em>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li class="item-content item-link item-coupon"
+                                    v-if="index == shop.shopid && payType == 2 && xianjin.length != 0 "
+                                    v-for="(item,index) in xianjin">
+                                    <a href="javascript:;" v-cloak v-if="item.adminCoupon != null">
+                                        <div class="item-inner">
+                                            <div class="co-tit">平台优惠券</div>
+                                            <input type="hidden" name="user_discount_coupon" class="pt-coupon"
+                                                   :val="shop.shopid" :value="item.adminCoupon.id"/>
+                                            <div class="item-media co-price"><em><b>￥</b>{{item.adminCoupon.price}}</em>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a href="javascript:;" v-cloak v-if="item.shopCoupon != null">
+                                        <div class="item-inner">
+                                            <div class="co-tit">商店优惠券</div>
+                                            <input type="hidden" name="user_discount_coupon" class="pt-coupon"
+                                                   :val="shop.shopid" :value="item.shopCoupon.id"/>
+                                            <div class="item-media co-price"><em><b>￥</b>{{item.shopCoupon.price}}</em>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <!--买家留言-->
+                                <li class="item-content co-message">
+                                    <div class="item-inner">
+                                        <div class="co-tit">买家留言：</div>
+
+                                        <textarea name="message" :val="shop.shopid" class="order-massage"
+                                                  placeholder="选填:对本次交易的说明"></textarea>
+                                        <input type="hidden" name="goods_amount" :value="shop.cartlist.num">
+                                        <input type="hidden" name="goods_amount" :value="shop.cartlist.price">
+                                    </div>
+                                </li>
+                                <li class="item-content">
+                                    <!-- <div class="ccart-price"><i>共计:<span>{{shop.cartlist.num}}</span></i> <span class="shop-total-qcb" :val="shopTotalQCB(shop,index)">{{shopTotalQCB(shop,index)}}</span><em class="shop-total-cny" :val="shopTotalCNY(shop,index)">￥{{shopTotalCNY(shop,index)}}</em> </div> -->
+                                    <div class="ccart-status">
+                                        共计:<em>{{shop.cartlist.num}}</em>
+                                        <!-- <span :val="shopTotalQCB(shop,index)">花费人民币 <em class="c-ec4619">￥{{shopTotalCNY(shop,index)}}</em></span> -->
+                                        <span v-if="payType == 1">花费七彩币 <em
+                                                class="c-ec4619">{{shop.cartlist.score}}</em></span>
+                                        <span v-if="payType == 2">花费电子货币 <em
+                                                class="c-ec4619">{{shop.cartlist.price}}</em></span>
+                                    </div>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                    <div id="cfmOrder1">
+                        <div class="list-block co-list">
+                            <ul>
+                                <li class="item-content">
+                                    <a href="#">
+                                        <div class="item-inner">
+                                            <div class="co-tit">兑换支付方式：</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <!--七彩币兑换--->
+                                <li class="item-content co-convert">
+                                    <label for="qcb">
+                                        <div class="item-inner">
+                                            <div class="item-title">七彩币兑换</div>
+                                            <div class="item-media">
+                                                <label class="label-checkbox">
+                                                    <input type="radio" name="exchange_type" id="qcb" class="payfor"
+                                                           value="1" checked="true" @click="payMethod(1)">
+                                                    <div class="ccart_checkbox item-media co-medio"><i
+                                                            class="icon icon-form-checkbox"></i></div>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </li>
+                                <!---电子货币兑换-->
+                                <li class="item-content co-convert">
+                                    <label for="cny">
+                                        <div class="item-inner">
+                                            <div class="item-title">电子货币兑换</div>
+                                            <div class="item-media">
+                                                <label class="label-checkbox">
+                                                    <input type="radio" name="exchange_type" class="payfor" value="0"
+                                                           id="cny" @click="payMethod(2)">
+                                                    <div class="ccart_checkbox item-media co-medio"><i
+                                                            class="icon icon-form-checkbox"></i></div>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+                <!---兑换支付方式 start-->
+            </div>
+        </form>
+    </div>
+    <!--底部/提交订单-->
+    <div class="ccart-jiesuan">
+        <div class="sum-box">
+            <input type="hidden" name="goods_amount"/> 合计: <span class="c-ec4619 pay-qc">七彩币<span
+                id="count_qcb">0</span></span> <span class="c-ff8c24 pay-cny">￥<span id="count_price">0.00</span></span>
+        </div>
+
+        <a href="javascript:;" id="sub_order">提交订单</a>
+    </div>
+</div>
+
+<!--配送方式popup-->
+<div class="popup popup-delivery">
+    <div class="method" id="shipping-method">
+        <!--标题-->
+        <div class="ticket-title">配送方式</div>
+        <input type="hidden"/>
+        <!--领券列表-->
+        <div class="list-block">
+            <ul class="list-box" v-cloak>
+                <li class="item-content co-dist" v-for="(item,index) in expressList"
+                    @click="selectExpress(item,item.id,shopId)">
+                    <div class="item-inner">
+                        <div class="item-title" v-cloak>
+                            <span class="method">{{item.shipping_name}}</span>
+                            <span class="money">{{item.shipping_free}}</span>
+                        </div>
+                        <div class="item-after" v-cloak>
+
+                            <i class="icon"
+                               :class="{'icon-xuanze':(isCheck == item.id ), 'icon-weixuanze':(isCheck != item.id) }"></i>
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+            <!--关闭按钮-->
+            <div class="closeButton close-popup">
+                关闭
+            </div>
+        </div>
+    </div>
+
+</div>
+<!--领取优惠券弹窗-->
+<div class="getTicket popup popup-stageticket">
+    <!--标题-->
+    <div class="ticket-title">{{couponList.shopName}}</div>
+    <!--领券列表-->
+    <div class="list-block">
+        <ul class="list-box sp-box">
+
+            <li class="item-content" v-for="item in couponList.data">
+                <div class="item-inner">
+                    <div class="item-title">
+                        <div class="price">
+                            <!--<span class="qcai">七彩币</span>&nbsp;-->
+                            <span class="qcaiNum">{{item.price | couponsMoney(item.status)}}</span>
+
+                        </div>
+                        <div class="mesg">
+                            {{item.title}}
+                        </div>
+                        <div class="effectTime">
+                            <span class="words">有效期至：</span>
+                            <span>{{item.time}}</span>
+                        </div>
+                    </div>
+                    <div class="item-after" v-bind:id="item.id" @click="receiveCoupons(item.id)">{{item.is_get |
+                        receiveStatus(item.is_get)}}
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+    </div>
+    <!--关闭按钮-->
+    <div class="closeButton close-popup">关闭</div>
+</div>
+<script src="http://cdn.bootcss.com/zepto/1.1.6/zepto.min.js"></script>
+<script src="lib/h5jssdk.3.0.js"></script>
+<script type='text/javascript' src='assets/js/confirm-order.js' charset='utf-8'></script>
+
+</body>
+
+</html>

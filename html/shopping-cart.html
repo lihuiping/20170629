@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="yes" name="apple-touch-fullscreen">
+<meta content="telephone=no,email=no" name="format-detection">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<title>购物车</title>
+<link rel="stylesheet" href="assets/css/light7.min.css">
+<link rel="stylesheet" href="assets/css/common.css">
+	
+<script type="text/javascript" src="lib/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="lib/vue.min.js"></script>
+<script type="text/javascript" src="lib/axios.min.js"></script>
+<script type="text/javascript" src="lib/api.js"></script>
+<script type='text/javascript' src='lib/layer-mobile/layer.js' charset='utf-8'></script>
+<script type="text/javascript">
+	$.config = {
+		router: false,
+	}
+	//公用url
+	function baseUrl() {
+		return 'http://my.shop.7cai.tv/';
+	//	return 'http://www.movie.com/';	
+	}
+</script>
+<script type="text/javascript" src="assets/js/iscroll.js"></script>
+<script type="text/javascript" src="assets/js/date.js"></script>
+<script type="text/javascript" src="lib/imgload.js"></script>
+<script  type="text/javascript" charset="utf-8" src="assets/js/common.js" ></script>
+<script type="text/javascript" src="lib/light7/js/light7.min.js"></script>
+
+
+	</head>
+
+	<body>
+		<div class="page-group">
+			<div class="page page-current" id="shopping_cart" v-cloak>
+				<header class="bar bar-nav bdbt-none ad-bar" style="z-index: 1000;">
+  <a class="icon icon-left pull-left" href="javascript:history.go(-1)"></a>
+  <!--<a class="icon icon-refresh pull-right"></a>-->
+  <h1 class="title">购物车</h1>
+</header>
+				<div class="content padding-btn znTop">
+					<!--购物车-->
+					<img src="assets/images/loading.gif" v-if="loadingFlag" class="loading-img" />
+					<form id="cart_submit">
+						<div class="list-block media-list ccart-list" v-for="item in shoppingList.able" v-if="shoppingList.able != ''" v-cloak :key="item.shopid" :data-delp="item.shopid">
+							<div class="ccart-title">
+								<div class="item-content">
+									<label class="label-checkbox " :for="item.shopid">
+                                <input type="checkbox" name="checkbox" :id="item.shopid" class="shop-all-checked"
+                                       @click="shopAllGoods(item)" status="0" :data-pro="item.shopid"
+                                       :data-top="item.shopid">
+                                <div class="item-media ccart_checkbox"><i class="icon icon-form-checkbox"></i></div>
+                            </label>
+									<div class="item-inner">
+										<div class="item-title-row">
+											<div class="item-title">
+												<a href="#">{{item.shop_name}}</a>
+											</div>
+											<div class="item-after" @click="getCoupon(item)">优惠券</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<ul class="ccart-content">
+								<li v-for="goods in item.cartlist.list" class="list-li swipeout" :key="goods.id" v-cloak :data-shop="item.shopid">
+									<div class="ccart-con swipeout-content" data-hand="list">
+										<div class="item-content">
+											<label class="label-checkbox " :for="goods.id">
+                                        <input type="checkbox" name="checkbox" :id="goods.id" :key="goods.id"
+                                               @click="checkedGood(goods.shopid)" class="count-price" status="0"
+                                               :data-delcc="goods.id" :input="goods.goods_id" :data-nums="goods.number"
+                                               :data-pro="goods.shopid" :data-qcb="goods.sell_price"
+                                               :data-sub="goods.shopid" :data-price="goods.price">
+                                        <div class="item-media ccart_checkbox"><i class="icon icon-form-checkbox"></i>
+                                        </div>
+                                    </label>
+											<div class="item-media">
+												<a :href="getTitleHref(goods.goods_id)"><img :src="goods.goods_thumb"></a>
+											</div>
+											<div class="item-inner">
+												<div class="item-title-row">
+													<div class="item-title">
+														<a :href="getTitleHref(goods.goods_id)">{{goods.goods_name}}</a>
+													</div>
+												</div>
+												<div class="item-subtitle">{{goods.goods_name}}</div>
+												<div class="item-text" @click="showEdit(goods)" :data-attrId="goods.id">规格: {{goods.attrstr}}
+													<i class="icon icon-down"></i></div>
+												<div class="ccart-price">
+													七彩币<span>{{goods.sell_price |formatQcb(goods.number)}}</span><em>{{goods.price
+                                            | formatMoney(goods.number)}}</em></div>
+												<div class="ccart-num">兑换数量
+													<div class="input-number"><span @click="changeMoney(goods,-1)" :class="{disabled:goods.number == 1}"><i
+                                                    class="icon icon-jian"></i></span>
+														<input type="text" v-model="goods.number" disabled class="input-num">
+														<span @click="changeMoney(goods,1)" :class="{disabled:goods.number == goods.kucun}"><i
+                                                        class="icon icon-jia"></i></span></div>
+												</div>
+											</div>
+										</div>
+										<div class="ccart-zeng" v-if="donation">
+											<span>赠品</span>
+											<p class="ccart-gift">啥也没有</p>
+										</div>
+
+									</div>
+									<div class="ccart-delete swipeout-actions-right " @click="delGoods(goods)">
+										<a href="#">删除</a>
+									</div>
+								</li>
+
+							</ul>
+						</div>
+
+						<!--失效商品-->
+						<div class="list-block media-list ccart-list ccart-shixiao" v-if="shoppingList.disabled != ''&& shopflag != true">
+							<ul class="ccart-content">
+								<li v-for="item in shoppingList.disabled" class="swipeout" :id="item.id" v-cloak>
+									<div class="ccart-con swipeout-content">
+										<div class="item-content">
+											<label class="label-checkbox ">
+                                        <span>失效</span>
+                                    </label>
+											<div class="item-media">
+												<img :src="item.goods_thumb"></div>
+											<div class="item-inner">
+												<div class="item-title-row">
+													<div class="item-title">{{item.shop_name}}</div>
+												</div>
+												<div class="item-subtitle">{{item.goods_name}}</div>
+												<div class="ccart-nobuy">商品已不能购买</div>
+											</div>
+										</div>
+									</div>
+									<div class="ccart-delete swipeout-actions-right " @click="delGoods(item)">
+										<a href="#">删除</a>
+									</div>
+
+								</li>
+
+							</ul>
+						</div>
+						<div class="no-good fn-tyga" v-if='shopflag'>
+							<img src="assets/images/shop.png" class="fn-pic">
+							<p class="fn-tac">购物车为空</p>
+						</div>
+				</div>
+				<!--购物车列表底部开始-->
+				<div class="ccart-jiesuan">
+					<label class="label-checkbox ">
+                <input type="checkbox" name="checkbox" id="check_all">
+                <div class="ccart_checkbox item-media"><i class="icon icon-form-checkbox"></i><span>全选</span></div>
+            </label>
+					<span class="jiesuan-con"> 合计: <span class="c-ec4619">七彩币<span id="count_qcb">0</span></span> <span class="c-ff8c24">￥<span id="count_price">0.00</span></span>
+					</span>
+					<a href="javascript:;" id="sub_shopping">结算(<span id="ck_lenght">{{checkedCount}}</span>)</a>
+
+				</div>
+				<!--购物车列表底部结束-->
+				</form>
+			</div>
+		</div>
+		<!--属性编辑弹窗-->
+		<div class="popup popup-about popup-services" id="goods_edit_attr">
+			<div class="coupon rule-coupon">
+				<div class="close-popup">
+					<i class="icon icon-guanbi"></i>
+				</div>
+				<div class="c-con">
+					<img :src="parameter.goods_thumb">
+					<div class="rule-price">
+						<!-- |formatMoney(quantity) | formatQcb(quantity)-->
+						<span class="r-qicai c-ec4619">七彩币<em>{{parameter.price}}</em></span>
+						<span class="r-rmb">￥<em>{{parameter.price}}</em></span>
+					</div>
+					<p class="r-kc">库存: <span>{{parameter.kucun}}</span></p>
+					<p class="r-rule"><span>已选: </span><span class="ruleClass" v-for="item in parameter.selected_attr"><b
+                    :class="item.attr_id" :data-val="item.attr_name" :attrId="item.id">{{item.value}}</b></span><span> {{parameter.cart_number}}个</span>
+					</p>
+				</div>
+				<div class="c-overflow">
+					<div class="c-mean" v-for="(item,index) in parameter.all_attr">
+						<p>{{item.attr_name}}</p>
+						<ul>
+							<li v-for="(sine,index) in item.valuelist" :class="{'active':(sine.select == 1)}" :data-pro="sine.attr_value_id" :data-pub="item.attr_id" @click="selectRule(sine.value,index,sine.attr_value_id,item.attr_id,sine.id)">{{sine.value}}
+							</li>
+
+						</ul>
+					</div>
+
+					<div class="c-mean c-number">
+						数量
+						<div class="input-number">
+							<span @click="changeNum(parameter,-1)" :class="{disabled:parameter.cart_number == 1}"><i
+                            class="icon icon-jian"></i></span>
+							<input type="hidden" name="goods_number" id="goods_number" :value="parameter.cart_number" />
+							<input type="text" :value="parameter.cart_number" disabled v-model="parameter.cart_number" />
+							<span @click="changeNum(parameter,1)" :class="{disabled:parameter.cart_number == parameter.kucun}"><i
+                            class="icon icon-jia"></i></span></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="c-btn" @click="selectFinish(parameter)">
+				确定
+			</div>
+		</div>
+
+		<!--领取优惠券弹窗-->
+		<div class="getTicket popup popup-stageticket">
+			<!--标题-->
+			<div class="ticket-title">{{couponList.shopName}}</div>
+			<!--领券列表-->
+			<div class="list-block">
+				<ul class="list-box sp-box">
+
+					<li class="item-content" v-for="item in couponList.data">
+						<div class="item-inner">
+							<div class="item-title">
+								<div class="price">
+									<!--<span class="qcai">七彩币</span>&nbsp;-->
+									<span class="qcaiNum">{{item.price | couponsMoney(item.status)}}</span>
+
+								</div>
+								<div class="mesg">
+									{{item.title}}
+								</div>
+								<div class="effectTime">
+									<span class="words">有效期至：</span>
+									<span>{{item.time}}</span>
+								</div>
+							</div>
+							<div class="item-after" v-bind:id="item.id" @click="receiveCoupons(item.id)">{{item.is_get | receiveStatus(item.is_get)}}
+							</div>
+						</div>
+					</li>
+				</ul>
+				<div v-if="couponList.res == 0" class="no-ticket"><span class="icon-wodekaquan"></span>
+					<p>暂无优惠券</p>
+				</div>
+			</div>
+			<!--关闭按钮-->
+			<div class="closeButton close-popup">关闭</div>
+		</div>
+		<script type="text/javascript" src="lib/light7/js/light7-swipeout.js"></script>
+		<script src="assets/js/shopping-cart.js"></script>
+
+	</body>
+
+</html>

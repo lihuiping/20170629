@@ -1,0 +1,87 @@
+{
+	"res": 1,
+	"msg": "ok",
+	"data": {
+		"goods_id": 1,
+		"cart_id": 19,
+		"cart_number": "26",
+		"goods_name": "澳洲进口学生冲饮牛奶粉澳洲进口德运全脂高钙青少年成人牛奶冲饮粉1kg新鲜",
+		"goods_thumb": "uploads\/cate\/276.jpg",
+		"attr": "1,2",
+		"price": "365.00",
+		"attrstr": "尺寸:30寸&nbsp;材质:铁质&nbsp;",
+		"kucun": 86,
+		"all_attr": [
+			{
+				"attr_name": "尺寸",
+				"attr_id": "1",
+				"valuelist": [
+					{
+						"attr_name": "尺寸",
+						"attr_value_id": "1",
+						"value": "30寸",
+						"id": "1",
+						"attribute_img": "uploads\/lunbo\/1490167971245.jpg",
+						"add_price": "3.00",
+						"select": 1
+					}
+				]
+			}, {
+				"attr_name": "重量",
+				"attr_id": "10",
+				"valuelist": [
+					{
+						"attr_name": "重量",
+						"attr_value_id": "43",
+						"value": "500G",
+						"id": "2",
+						"attribute_img": null,
+						"add_price": "2.00",
+						"select": 1
+					}, {
+						"attr_name": "重量",
+						"attr_value_id": "41",
+						"value": "1KG",
+						"id": "6",
+						"attribute_img": null,
+						"add_price": "0.00",
+						"select": 0
+					}, {
+						"attr_name": "重量",
+						"attr_value_id": "42",
+						"value": "2KG",
+						"id": "7",
+						"attribute_img": "uploads\/lunbo\/1490167971245.jpg",
+						"add_price": "6.00",
+						"select": 0
+					}
+				]
+			}, {
+				"attr_name": "颜色分类",
+				"attr_id": "17",
+				"valuelist": [
+					{
+						"attr_name": "颜色分类",
+						"attr_value_id": "7",
+						"value": "白色",
+						"id": "3",
+						"attribute_img": "uploads\/lunbo\/1490167971245.jpg",
+						"add_price": "2.00",
+						"select": 0
+					}
+				]
+			}
+		],
+		"selected_attr": [
+			{
+				"name": "尺寸",
+				"value": "30寸",
+				"id": "1"
+			}, {
+				"name": "重量",
+				"value": "500G",
+				"id": "2"
+			}
+		]
+	}
+}
