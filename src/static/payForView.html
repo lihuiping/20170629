@@ -40,15 +40,12 @@
 				fuqianla = api.require('moduleFuQianLa');
 			};
 
-			//				$("#submitButton").click(function() {
-			//					fuqianlaPay();
-			//				});
 			function fuqianlaPay() {
 				var payParam = {
 					partner: "m1610030006",
 					subject: "七彩视频",
 					amount: 0.01,
-					orderID: "1564657864394",
+					orderID: "20170615191022",
 					notifyUrl: "http://shop.7cai.tv/wx/index.php",
 					alipay: true,
 					wxpay: true,
@@ -59,7 +56,14 @@
 
 				fuqianla.fuqianlaPay(payParam, function(ret, err) {
 
-					alert(JSON.stringify(ret) + JSON.stringify(err));
+//					alert(JSON.stringify(ret) + JSON.stringify(err));
+					if(ret.payCode == 9000){
+						$.toast("订单支付成功");
+					}else if(ret.payCode == 6001){
+						$.toast("订单已取消");
+					}else{
+						$.toast("订单支付失败");
+					}
 
 				});
 			};
