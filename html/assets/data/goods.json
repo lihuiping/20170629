@@ -1,0 +1,70 @@
+{
+	"data": [
+		{
+			"goods_name": "iphone7",
+			"goods_thumb": "http:\/\/my.shop.7cai.tv\/uploads\/business1\/image\/201704\/1492081252272242.jpg",
+			"sell_price": "388",
+			"market_price": "388.00",
+			"keys": "iPhone7Plus 苹果 手机",
+			"id": "1"
+		}, {
+			"goods_name": "Nike 耐克官方 NIKE ROSHE ONE 男子运动休闲鞋 ",
+			"goods_thumb": "http:\/\/my.shop.7cai.tv\/uploads\/business4\/image\/201704\/1493197672841109.png",
+			"sell_price": "688",
+			"market_price": "688.00",
+			"keys": "Nike 跑鞋",
+			"id": "16"
+		}, {
+			"goods_name": "只有商家优惠卷1",
+			"goods_thumb": "http:\/\/my.shop.7cai.tv\/uploads\/business1\/image\/201704\/1492137153970913.jpg",
+			"sell_price": "388",
+			"market_price": "388.00",
+			"keys": "Hisense 海信平板液晶电视机",
+			"id": "3"
+		}, {
+			"goods_name": "只有平台优惠卷2",
+			"goods_thumb": "http:\/\/my.shop.7cai.tv\/uploads\/business1\/image\/201704\/1492082034516601.jpg",
+			"sell_price": "1",
+			"market_price": "1.00",
+			"keys": "连帽 套头 男卫衣",
+			"id": "2"
+		}, {
+			"goods_name": "只有商家优惠卷2",
+			"goods_thumb": "http:\/\/my.shop.7cai.tv\/uploads\/business1\/image\/201704\/1492137738506192.jpg",
+			"sell_price": "388",
+			"market_price": "388.00",
+			"keys": "4K 超高清 曲面 LED液晶曲屏电视机",
+			"id": "4"
+		}, {
+			"goods_name": "平台与商家优惠卷都有",
+			"goods_thumb": "http:\/\/my.shop.7cai.tv\/uploads\/business1\/image\/201704\/1492139170276277.jpg",
+			"sell_price": "1",
+			"market_price": "1.00",
+			"keys": " 4G Xiaomi\/小米MIX全面屏智能手机",
+			"id": "5"
+		}, {
+			"goods_name": "没有属性的商品",
+			"goods_thumb": "http:\/\/my.shop.7cai.tv\/uploads\/business4\/image\/201704\/1493110591983874.jpg",
+			"sell_price": "388",
+			"market_price": "388.00",
+			"keys": "短袖",
+			"id": "7"
+		}, {
+			"goods_name": "第七公社 棒球服开衫卫衣男生韩版宽松外套春秋季蜡笔小新情侣装",
+			"goods_thumb": "http:\/\/my.shop.7cai.tv\/uploads\/business4\/image\/201704\/1493111955727541.jpg",
+			"sell_price": "1",
+			"market_price": "388.00",
+			"keys": "棒球服",
+			"id": "8"
+		}, {
+			"goods_name": "2017新款春季春装短款修身薄款韩版青年休闲棒球服男士夹克衫外套",
+			"goods_thumb": "http:\/\/my.shop.7cai.tv\/uploads\/business4\/image\/201704\/1493113175167694.jpg",
+			"sell_price": "1",
+			"market_price": "388.00",
+			"keys": "男士夹克衫",
+			"id": "15"
+		}
+	],
+	"res": 1,
+	"msg": "成功"
+}

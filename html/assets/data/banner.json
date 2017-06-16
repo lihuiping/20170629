@@ -1,0 +1,47 @@
+{
+	"res": 1,
+	"msg": "成功",
+	"data": [
+		{
+			"id": "1",
+			"mid": "9",
+			"title": "院线热映2",
+			"url": "#",
+			"img": "http:\/\/www.movie.com\/Public\/attached\/2017\/05\/18\/591d5b02cfe91.jpg",
+			"sort": "0",
+			"add_time": "1495175789",
+			"update_time": null,
+			"status": "1"
+		}, {
+			"id": "2",
+			"mid": "10",
+			"title": "热映大片1",
+			"url": "#",
+			"img": "http:\/\/www.movie.com\/Public\/attached\/2017\/05\/18\/591d5b02cfe91.jpg",
+			"sort": "0",
+			"add_time": "1495175852",
+			"update_time": null,
+			"status": "1"
+		}, {
+			"id": "3",
+			"mid": "1",
+			"title": "爆笑虫子1",
+			"url": "#",
+			"img": "http:\/\/www.movie.com\/Public\/attached\/2017\/05\/18\/591d5b02cfe91.jpg",
+			"sort": "0",
+			"add_time": "1495176074",
+			"update_time": null,
+			"status": "1"
+		}, {
+			"id": "4",
+			"mid": "3",
+			"title": "爆笑虫子3",
+			"url": "#",
+			"img": "http:\/\/www.movie.com\/Public\/attached\/2017\/05\/18\/591d5b02cfe91.jpg",
+			"sort": "0",
+			"add_time": "1495176231",
+			"update_time": null,
+			"status": "1"
+		}
+	]
+}

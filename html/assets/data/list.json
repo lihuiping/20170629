@@ -1,0 +1,25 @@
+{
+	"res": 1,
+	"msg": "成功",
+	"data": {
+		"list": [
+			{
+				"id": "10",
+				"name": "热映大片1",
+				"title": "爆笑虫子",
+				"cover": "http:\/\/www.movie.com\/Public\/attached\/2017\/05\/18\/591d5b02cfe91.jpg",
+				"ticket_price": "0.00",
+				"vip": "0"
+			}, {
+				"id": "3",
+				"name": "爆笑虫子3",
+				"title": "爆笑虫子",
+				"cover": "http:\/\/www.movie.com\/Public\/attached\/2017\/05\/18\/591d5b02cfe91.jpg",
+				"ticket_price": "0.00",
+				"vip": "0"
+			}
+		],
+		"next_url": "\/index.php\/Api\/Movie\/list?type=1&isNewHotClassic=&size=2&p=2",
+		"pindao_name": "热映大片"
+	}
+}

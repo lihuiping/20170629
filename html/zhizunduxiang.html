@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="yes" name="apple-touch-fullscreen">
+<meta content="telephone=no,email=no" name="format-detection">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<title>中益七彩</title>
+<link rel="stylesheet" href="assets/css/light7.min.css">
+<link rel="stylesheet" href="assets/css/common.css">
+	
+<script type="text/javascript" src="lib/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="lib/vue.min.js"></script>
+<script type="text/javascript" src="lib/axios.min.js"></script>
+<script type="text/javascript" src="lib/api.js"></script>
+<script type='text/javascript' src='lib/layer-mobile/layer.js' charset='utf-8'></script>
+<script type="text/javascript">
+	$.config = {
+		router: false,
+	}
+	//公用url
+	function baseUrl() {
+		return 'http://my.shop.7cai.tv/';
+	//	return 'http://www.movie.com/';	
+	}
+</script>
+<script type="text/javascript" src="assets/js/iscroll.js"></script>
+<script type="text/javascript" src="assets/js/date.js"></script>
+<script type="text/javascript" src="lib/imgload.js"></script>
+<script  type="text/javascript" charset="utf-8" src="assets/js/common.js" ></script>
+<script type="text/javascript" src="lib/light7/js/light7.min.js"></script>
+
+		<style type="text/css">
+			.content-bottom {
+				padding-bottom: 0;
+			}
+			
+			img {
+				height: 8rem;
+			}
+			.zhizun-cont{
+				position: relative;
+			}
+			.zhizun-position{
+				position: absolute;
+				left: 0.5rem;
+				bottom: 0.5rem;
+				color: #fbfbfb;
+			}
+			/*.zzdx-name{
+				float: left !important;
+			}*/
+			.zzdx-detail{
+				color: #fbfbfb !important;
+				/*float: left !important;*/
+			}
+			.bofangBLogo{
+				width: 1rem !important;
+				height: 1rem !important;
+				position: absolute;
+				bottom: 1rem;
+				right: 0.5rem;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="page page-current" id="zhizunduxiang">
+		<header class="bar bar-nav bdbt-none ad-bar" style="z-index: 1000;">
+  <a class="icon icon-left pull-left" href="javascript:history.go(-1)"></a>
+  <!--<a class="icon icon-refresh pull-right"></a>-->
+  <h1 class="title">至尊独享</h1>
+</header>
+			<div class="content znTop noBottom" id="zzdx_list">
+				<div class="zzdx sy-content zhizun-cont" v-for="item in list">		
+					<a :href="getTitleHref(item.id)" class="external">
+						<img :src="item.cover" alt=""></a>
+					<div class="content-bottom zhizun-position">
+						<h4 class="zzdx-name">{{item.name}}</h4>
+						<p class="zzdx-detail">{{item.title}}</p>
+						
+					</div>
+					<img class="bofangBLogo" src="assets/images/bofangBLogo.png"/>
+				</div>
+				<div class="noMore">
+					没有更多了
+				</div>
+			</div>
+		</div>
+  <script>
+ 
+var conf = 1;
+  	var zzdx_list=['./assets/data/goods.json', baseUrl()+'tv/index.php?s=/Api/Zhizun/get_more/p/1'];  //至尊独享列表
+  	/*至尊独享列表*/
+var zzdx_list = new Vue({
+	el: "#zzdx_list",
+	data: {
+		list: [],
+		loadingFlag:true,
+	},
+	mounted: function() {
+		//初始化加载数据
+		var _this = this;
+		_this.showGoods();
+	},
+	methods: {
+		showGoods: function() {
+			var _this = this;
+			axios.get(zzdx_list[conf]).then(function(res) {
+				var data = res.data;
+				if(data.res == 1) {
+					_this.list = data.data;
+					_this.loadingFlag = false;
+				} else {
+					$.toast("商品数据错误");
+				}
+			});
+		},
+	    getTitleHref: function(val) {
+			return 'movie-content.html?id=' + val;
+		},
+	}
+});
+  </script>
+	</body>
+
+</html>

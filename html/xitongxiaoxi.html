@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="yes" name="apple-touch-fullscreen">
+<meta content="telephone=no,email=no" name="format-detection">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<title>评论/点赞</title>
+<link rel="stylesheet" href="assets/css/light7.min.css">
+<link rel="stylesheet" href="assets/css/common.css">
+	
+<script type="text/javascript" src="lib/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="lib/vue.min.js"></script>
+<script type="text/javascript" src="lib/axios.min.js"></script>
+<script type="text/javascript" src="lib/api.js"></script>
+<script type='text/javascript' src='lib/layer-mobile/layer.js' charset='utf-8'></script>
+<script type="text/javascript">
+	$.config = {
+		router: false,
+	}
+	//公用url
+	function baseUrl() {
+		return 'http://my.shop.7cai.tv/';
+	//	return 'http://www.movie.com/';	
+	}
+</script>
+<script type="text/javascript" src="assets/js/iscroll.js"></script>
+<script type="text/javascript" src="assets/js/date.js"></script>
+<script type="text/javascript" src="lib/imgload.js"></script>
+<script  type="text/javascript" charset="utf-8" src="assets/js/common.js" ></script>
+<script type="text/javascript" src="lib/light7/js/light7.min.js"></script>
+
+		<script type="text/javascript" src="lib/hprose.js" charset="utf-8"></script>
+		<style type="text/css">
+			.icon-xiaoxi-quesheng {
+				color: #d9d9d9;
+			}
+			body {
+				background: #f5f5f5;
+			}
+			.lqnoxiaoxiicon {
+				font-size: 4.5rem;
+				color: #d9d9d9;
+			}
+			
+			.noxiaoxibox {
+				text-align: center;
+				margin-top: 6rem;
+			}
+			
+			/*.icon-xiaoxi-quesheng {
+				
+			}*/
+			
+			.noxiaoxibox p {
+				margin-top: 0.6rem;
+				font-size: 0.75rem;
+				color: #979797;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="page goodPages page-current" id="sysMessage">
+			<header class=" bar-nav wsl-header">
+				<div class="title-box">
+					<a class="icon icon-left" href="javascript:history.go(-1);"></a>
+					<div class="w-title">系统消息</div>
+				</div>
+			</header>
+			<div class="content znTop">
+				<!--没有消息-->
+				<div class="lqnoxiaoxi" v-if="allsysmessage.res == 0">
+					<div class="noxiaoxibox">
+						<i class="icon icon-xiaoxi-quesheng lqnoxiaoxiicon"></i>
+						<p>您当前没有收到的消息~</p>
+					</div>
+				</div>
+				
+				<!--有消息-->
+				<div class="message-95" v-for="item in sysmessage" v-if="allsysmessage.res == 1">
+					<div><i class="icon icon-xitongxiaoxi lqnoxiaoxi"></i></div>
+					<div class="message-text">
+						<p>{{item.content}}</p>
+						<p>{{item.add_time | moment}}</p>
+					</div>
+				</div>
+				<!--<div class="message-95">
+					<div><i class="icon icon-shangchengxiaoxi lqshangcheng"></i></div>
+					<div class="message-text">
+						<p>商城消息商城消息商城消息商城消息。</p>
+						<p>2016-12-16 16:27</p>
+					</div>
+				</div>
+				<div class="message-95">
+					<div><i class="icon icon-guanyingxiaoxi lqguanyin"></i></div>
+					<div class="message-text">
+						<p>观影消息观影消息观影消息观影消息观影消息观影消息观影消息观影消息。</p>
+						<p>2016-12-16 16:27</p>
+					</div>
+				</div>-->
+			</div>
+		</div>
+		<script type="text/javascript" src="lib/light7/js/i18n/cn.min.js" charset="utf-8"></script>
+		<script type="text/javascript" src="assets/js/message.js" charset="utf-8"></script>
+	</body>
+</html>
