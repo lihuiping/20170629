@@ -1,3 +1,6 @@
+	apiready = function() {
+
+}
 	var Cookie = {
 		Get: function(a) {
 			var d, b = document.cookie.split("; "),
@@ -101,6 +104,7 @@ var client = sclient();
 						Cache.clear("isVIP");
 						Cache.clear("uniquemark");
 						Cache.clear("tuijianma");
+						$api.clearStorage()
 						setTimeout(function() {
 							window.location.href = "./login.html";//退出后跳转到的页面
 						}, 1500)
