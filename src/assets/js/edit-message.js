@@ -78,7 +78,7 @@ var isVIP = '';
 var token = token();
 //获取token
 function sclient() {
-//	var token = Cache.get("flag") || "";
+	//	var token = Cache.get("flag") || "";
 	return hprose.Client.create("http://test.7cai.tv/index.php/api/api/user?t=" + token, ["login", "register", "isLogin", "logout", "findPwd", "sendCode", "getUserInfo", "isSafe", "modifyInfo", "isRegister", "modifyMobile", "modifyHeadImg", "certif ication", "modifyPwd", "modifySafePwd", "getAddressList", "getAddress", "addOrEditAddress", "setDefaultAddress", "delAddress", "getPayOrderInfo", "getOpenId ", "getUploadParams", "getFriends", "getPoints", "getTicketUrl", "getFkTypeLists", "addFkMsg", "getWxSdkSignInfo"]);
 	//http://test.7cai.tv/index.php
 }
@@ -92,7 +92,6 @@ function GetQueryString(name) {
 	return null;
 }
 var editId = GetQueryString('id');
-
 
 //发送验证码
 function myCode() {
@@ -220,7 +219,7 @@ $.ajax({
 		$("#adperson").val(result.data.name);
 		$("#ed-mobile").val(result.data.phone);
 		$("#ed-address").val(result.data.detail);
-		$(".ed-chosearea").val(result.data.area);		
+		$(".ed-chosearea").val(result.data.area);
 		$("#item-input input").attr(result.data.isdef ? "checked" : "none");
 		//选择地区-编辑地址
 		$("#ed-chosearea").on("click", function(e) {
@@ -234,7 +233,6 @@ $.ajax({
 		});
 	}
 });
-
 
 //编辑地址完成
 
@@ -278,27 +276,31 @@ $("#editAddressCommit").on('click', function() {
 	}
 });
 
-// 编辑页面的删除地址
-//$(document).on("pageInit", "#deadd", function(e, id, page) {
-//	$("#deadd").on("click", function() {
-//		$.confirm('您确定要删除该地址吗？',
-//			function() {
-//				client.invoke("delAddress", [{
-//					"id": parseInt(Cache.get("editAddressId"))
-//				}], function(result) {
-//					var result = $.parseJSON(result);
-//					if(result.res == 1) {
-//						$.toast("已删除当前地址！")
-//						setTimeout(function() {
-//							window.location.href = "/templets/gerenzhongxin/personMessage/MyAddress.html";
-//						}, 1500)
-//					}
-//				});
-//			},
-//			function() {}
-//		)
-//	});
-//});
+//编辑页面的点击删除地址
+var delUrl = baseUrl() + 'member.php?r=address&m=delAddress';
+$("#editAdd-del").on("click",function(e) {
+	var id = $(e.currentTarget).attr('id');
+	$.confirm('您确定要删除该地址吗？', function() {
+
+		$.ajax({
+			type: "post",
+			url: delUrl,
+			async: false,
+			data: {
+				id: editId,
+				token: token
+			},
+			success: function(result) {
+				var result = $.parseJSON(result);
+				if(result.res == 1) {
+					window.location.href = "my-address.html";
+				} else {
+					$.toast(result.data.msg);
+				}
+			}
+		});
+	});
+});
 
 // 修改基础资料
 $(document).on("pageInit", "#editmessage", function(e, id, page) {
@@ -472,7 +474,7 @@ $(document).on("pageInit", "#editmessage", function(e, id, page) {
 				$.toast("修改完成！");
 				setTimeout(function() {
 					window.location.href = "user-center.html";
-					}, 1500)
+				}, 1500)
 			} else {
 				$.toast(result.msg);
 			}
