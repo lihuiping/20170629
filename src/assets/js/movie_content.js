@@ -307,3 +307,66 @@ $(".vpl_VideoDetail_des_title").on("click", '.vpl_introduction', function() {
 });
 
 })
+
+
+
+//分享
+
+
+
+var qq;
+var wx;
+apiready = function() {
+	qq = api.require('qq');
+	wx = api.require('wx');
+
+};
+
+function qqshareNews_QFriend() { //分享新闻qq给好友
+	qq.shareNews({
+		url: 'http://www.apicloud.com',
+		title: '新闻分享',
+		description: '新闻描述',
+		imgUrl: 'widget://res/news.png',
+		type: "QFriend"
+	}, function(ret, err) {
+		if(ret.status) {
+			alert(JSON.stringify(ret))
+		} else {
+			alert(JSON.stringify(err));
+		}
+	});
+}
+
+function qqshareNews_QZone() { //分享新闻到QQ空间
+	qq.shareNews({
+		url: 'http://www.apicloud.com',
+		title: '新闻分享',
+		description: '新闻描述',
+		imgUrl: 'http://7xq864.com1.z0.glb.clouddn.com/apicloud/9ddf7d56095abd26f2c7ef72bb142563.jpg',
+		type: "QZone"
+	}, function(ret, err) {
+		if(ret.status) {
+			$.toast("分享成功");
+		} else {
+			$.toast("分享失败");
+		}
+	});
+}
+
+function shareWebpage(Vscene) { //分享微信好友,朋友圈 . 参数: session（会话） timeline（朋友圈）favorite（收藏）
+	wx.shareWebpage({
+		apiKey: 'wx64c1ec0115c22f7f',
+		scene: Vscene,
+		title: '分享网页的标题',
+		description: '分享网页的描述',
+		thumb: 'widget://res/iconfont-touxiang.png',
+		contentUrl: 'http://www.apicloud.com'
+	}, function(ret, err) {
+		if(ret.status) {
+			$.toast("分享成功");
+		} else {
+			$.toast("分享失败");
+		}
+	});
+}
