@@ -767,7 +767,12 @@ $(".fixed-wrap").on('click', ".buttons-tab", function(e) {
 
 })
 
+
+
 //分享
+
+
+
 var qq;
 var wx;
 apiready = function() {
@@ -793,42 +798,54 @@ function qqshareNews_QFriend() { //分享新闻qq给好友
 }
 
 function qqshareNews_QZone() { //分享新闻到QQ空间
-	qq.shareNews({
-		url: 'http://www.apicloud.com',
-		title: '新闻分享',
-		description: '新闻描述',
-		imgUrl: 'http://7xq864.com1.z0.glb.clouddn.com/apicloud/9ddf7d56095abd26f2c7ef72bb142563.jpg',
-		type: "QZone"
-	}, function(ret, err) {
-		if(ret.status) {
-			if(ret. status: true){
-				$.toast("分享成功");
-			}else{
-				$.toast("分享失败");
-			}
-		} else {
-			alert(JSON.stringify(err));
-		}
-	});
-}
-
-function shareWebpage(Vscene) {//分享微信好友,朋友圈 . 参数: session（会话） timeline（朋友圈）favorite（收藏）
-			wx.shareWebpage({
-				apiKey : 'wx6daf700946d02b81',
-				scene : Vscene,
-				title : '分享网页的标题',
-				description : '分享网页的描述',
-				thumb : 'widget://res/iconfont-touxiang.png',
-				contentUrl : 'http://www.apicloud.com'
+	$.ajax({
+		type:"get",
+		url:"",
+		data:{},
+		async:true,
+		success: function(res){
+			console.log(res);
+			qq.shareNews({
+				url: 'http://www.apicloud.com',
+				title: '新闻分享',
+				description: '新闻描述',
+				imgUrl: 'http://7xq864.com1.z0.glb.clouddn.com/apicloud/9ddf7d56095abd26f2c7ef72bb142563.jpg',
+				type: "QZone"
 			}, function(ret, err) {
-				if (ret.status) {
-					alert(JSON.stringify(ret))
+				if(ret.status) {
+					$.toast("分享成功");
 				} else {
-					alert(JSON.stringify(err))
+					$.toast("分享失败");
 				}
 			});
 		}
+	});
+	
+}
 
-
+function shareWebpage(Vscene) { //分享微信好友,朋友圈 . 参数: session（会话） timeline（朋友圈）favorite（收藏）
+	$.ajax({
+		type:"get",
+		url:"",
+		async:true,
+		success: function(response){
+			wx.shareWebpage({
+				apiKey: 'wx64c1ec0115c22f7f',
+				scene: Vscene,
+				title: '分享网页的标题',
+				description: '分享网页的描述',
+				thumb: 'widget://res/iconfont-touxiang.png',
+				contentUrl: 'http://www.apicloud.com'
+			}, function(ret, err) {
+				if(ret.status) {
+					$.toast("分享成功");
+				} else {
+					$.toast("分享失败");
+				}
+			});
+		}
+	});
+	
+}
 
 $.init();
