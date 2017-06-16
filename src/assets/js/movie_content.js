@@ -246,7 +246,8 @@ function video(movie, movieTitle, movieCover,istrytime,start_time) {
         }
     });
     player.onTime(function(event) {
-        if (istrytime ==0 && event.position > 10) {
+//      if (istrytime ==0 && event.position > 10) {
+	 if (event.position > 10) {
             player.pause();
             $(".bg_video").addClass('bg_video_show')
 
