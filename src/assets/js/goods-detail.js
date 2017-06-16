@@ -776,7 +776,7 @@ apiready = function() {
 
 };
 
-function qqshareNews_QFriend() { //分享新闻给好友
+function qqshareNews_QFriend() { //分享新闻qq给好友
 	qq.shareNews({
 		url: 'http://www.apicloud.com',
 		title: '新闻分享',
@@ -811,6 +811,24 @@ function qqshareNews_QZone() { //分享新闻到QQ空间
 		}
 	});
 }
+
+function shareWebpage(Vscene) {//分享微信好友,朋友圈 . 参数: session（会话） timeline（朋友圈）favorite（收藏）
+			wx.shareWebpage({
+				apiKey : 'wx6daf700946d02b81',
+				scene : Vscene,
+				title : '分享网页的标题',
+				description : '分享网页的描述',
+				thumb : 'widget://res/iconfont-touxiang.png',
+				contentUrl : 'http://www.apicloud.com'
+			}, function(ret, err) {
+				if (ret.status) {
+					alert(JSON.stringify(ret))
+				} else {
+					alert(JSON.stringify(err))
+				}
+			});
+		}
+
 
 
 $.init();
