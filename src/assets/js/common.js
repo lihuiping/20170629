@@ -76,8 +76,17 @@ var Cookie = {
 	}();
 //获取token
 var token = function() {
-	return 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhZG1pbiI6ZmFsc2UsImNsYWltcyI6bnVsbCwidWlkIjoiODg4IiwidiI6MSwiaWF0IjoxNDk2OTEzOTU1fQ.47xETg6GOcUcGegHQXn7xX1mf3OECo5NrOLEzXl7M68';
-//	return Cache.get('token')
+//	return 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhZG1pbiI6ZmFsc2UsImNsYWltcyI6bnVsbCwidWlkIjoiMTI5NCIsInYiOjEsImlhdCI6MTQ5NTc5MDA1OH0.T8cESgLZa9eX5TcErXNgMHb93xuHs9IGVsqubfpoJK4';
+     var key="";
+       user = $api.getStorage('user');
+      // alert(user.flag);
+      if(user==undefined|| user==""){
+      }else{
+       return  user.flag;
+       }
+	//return Cache.get('token')
+
+
 };
 
 function Is_weixn() {
