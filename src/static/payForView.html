@@ -3,7 +3,6 @@
 
 	<head>
 		@@include('../tpl/header.tpl',{ "title":"付费点播" })
-		<!--<script src="http://cdn.bootcss.com/zepto/1.1.6/zepto.min.js"></script>-->
 		<script src="http://m.fuqian.la/jssdk/h5jssdk.3.0.js"></script>
 		<!--<script src="./assets/js/payForView.js" type="text/javascript" charset="utf-8"></script>-->
 	</head>
@@ -11,12 +10,17 @@
 	<body style="background-color: #F5F5F5;">
 
 		<div class="page page-current">
-			@@include('../tpl/bar-nav.tpl',{ "title":"付费点播" })
+			<!--@@include('../tpl/bar-nav.tpl',{ "title":"付费点播" })-->
+			<header class="bar bar-nav bdbt-none ad-bar" style="z-index: 1000;padding-top: 1.2rem;">
+				<a class="icon icon-left pull-left" href="javascript:history.go(-1)"></a>
+				<!--<a class="icon icon-refresh pull-right"></a>-->
+				<h1 class="title">付费点播</h1>
+			</header>
 			<div class="content znTop" style="bottom: 0;">
-				
+
 				<div class="filmInfo">
 					<div class="filmName">
-						神偷奶爸3
+						爆笑虫子
 					</div>
 					<div class="filmPrice">
 						￥<span>5.</span>00
@@ -24,44 +28,41 @@
 					<div class="userNumb">下单用户账号：<span>13598078099</span></div>
 					<div class="orderNumb">订单编号：<span>156465786439458</span></div>
 				</div>
-				<div id="submitButton">
+				<div id="submitButton" onclick="fuqianlaPay()">
 					确认支付
 				</div>
 			</div>
 		</div>
 
 		<script>
-			$(function() {
-				var fuqianla;
-				apiready = function() {
-					fuqianla = api.require('moduleFuQianLa');
-				};
+			var fuqianla;
+			apiready = function() {
+				fuqianla = api.require('moduleFuQianLa');
+			};
 
-				$("#submitButton").click(function() {
-					console.log(0);
-					fuqianlaPay();
+			//				$("#submitButton").click(function() {
+			//					fuqianlaPay();
+			//				});
+			function fuqianlaPay() {
+				var payParam = {
+					partner: "m1610030006",
+					subject: "七彩视频",
+					amount: 0.01,
+					orderID: "1564657864394",
+					notifyUrl: "http://shop.7cai.tv/wx/index.php",
+					alipay: true,
+					wxpay: true,
+					baidupay: false,
+					unionpay: false,
+					jdpay: false,
+				}
+
+				fuqianla.fuqianlaPay(payParam, function(ret, err) {
+
+					alert(JSON.stringify(ret) + JSON.stringify(err));
+
 				});
-				function fuqianlaPay() {
-						var payParam = {
-							partner: "m1610030006",
-							subject: "七彩视频",
-							amount: 0.01,
-							orderID: "201706151910lc",
-							notifyUrl: "http://shop.7cai.tv/wx/index.php",
-							alipay: true,
-							wxpay: true,
-							baidupay: false,
-							unionpay: false,
-							jdpay: false,
-						}
-
-						fuqianla.fuqianlaPay(payParam, function(ret, err) {
-
-							alert(JSON.stringify(ret) + JSON.stringify(err));
-
-						});
-				};
-			});
+			};
 		</script>
 	</body>
 
