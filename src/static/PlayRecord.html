@@ -193,7 +193,6 @@
 		<div class="page wj_page page-current page-inited" id="lqShowList">
 			@@include('../tpl/bar-nav.tpl',{ "title":"播放记录" })
 			<div class="content pr_content znTop lqrecordcont">
-				
 				<ul class="lqMovierecord" v-cloak v-show="res == 1">
 					<li v-for="movierecord in data">
 						<label class="label-checkbox item-content clearfix" :for="movierecord.id">
@@ -284,13 +283,8 @@
 			</div>
 		</div>
 		<div class="page bg-f5 page-current page-inited" id="bfjl-qs">
-			<div class="content Lqnorecord">
-				<header class=" bar-nav wsl-header">
-					<div class="title-box">
-						<a class="icon icon-left" href="javascript:history.go(-1);"></a>
-						<div class="w-title">播放记录</div>
-					</div>
-				</header>
+			@@include('../tpl/bar-nav.tpl',{ "title":"播放记录" })
+			<div class="content znTop Lqnorecord">
 				<div class="lqicon icon icon-zanwubofangjilu-quesheng" id="bfjlc-page"><i></i></div>
 				<div class="lqnojl">您暂无视频播放记录</div>
 			</div>
