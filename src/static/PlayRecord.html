@@ -210,11 +210,11 @@
 							<a :href="getTitleHref(movierecord.id)">
 								<div class='pr_li_left'>
 									<img class='bf-img' :src="movierecord.cover" />
-									<span class="lqmovietime">00:00:00</span>
+									<span class="lqmovietime">{{movierecord.duration}}</span>
 								</div>
 								<div class='pr_li_right' >
 									<p class='pr_li_right_top'>{{movierecord.name}}</p>
-									<p class='pr_li_right_down'>观看到</p>
+									<p class='pr_li_right_down'>观看到{{movierecord.start_time}}</p>
 								</div>
 								<!--<div class='pr_li_right' v-if="movierecord.start_time == 0">
 									<p class='pr_li_right_top'>{{movierecord.name}}</p>

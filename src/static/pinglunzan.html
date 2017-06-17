@@ -4,38 +4,158 @@
 	<head>
 		@@include('../tpl/header.tpl',{ "title":"评论/点赞" })
 		<script type="text/javascript" src="lib/hprose.js" charset="utf-8"></script>
-		
+		<style type="text/css">
+			.icon-xiaoxi-quesheng {
+				color: #d9d9d9;
+			}
+			
+			body {
+				background: #f5f5f5;
+			}
+			
+			.lqnoxiaoxiicon {
+				font-size: 4.5rem;
+				color: #d9d9d9;
+			}
+			
+			.noxiaoxibox {
+				text-align: center;
+				margin-top: 6rem;
+			}
+			/*.icon-xiaoxi-quesheng {
+				
+			}*/
+			
+			.noxiaoxibox p {
+				margin-top: 0.6rem;
+				font-size: 0.75rem;
+				color: #979797;
+			}
+			
+			.message-95 {
+				width: 95%;
+				border-bottom: 1px solid #f5f5f5;
+				padding-top: 1rem;
+				padding-bottom: .3rem;
+				display: flex;
+				padding-right: .5rem;
+				margin: 0 auto;
+			}
+			
+			.message-95 .replycom {
+				margin-left: .3rem;
+			}
+			
+			.message-95 div:nth-child(1) i {
+				font-size: 1.5rem;
+			}
+			
+			.message-text {
+				//  margin-top: .4rem;
+				margin-left: .7rem;
+			}
+			
+			.message-text p:nth-child(2) {
+				font-size: .5rem;
+				color: gray;
+				margin-top: .4rem;
+				margin-bottom: .4rem;
+			}
+			
+			.icon-guanyingxiaoxi1 {
+				color: #57aaff;
+			}
+			
+			.padding-1 {
+				padding-left: .3rem;
+			}
+			
+			.message-95 .fontsize-1 {
+				font-size: .7rem;
+			}
+			
+			.no-paddingtop {
+				//  padding-top: 0;
+			}
+			
+			#aa {
+				position: fixed;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+				border-radius: 0;
+				margin-left: 0;
+			}
+			
+			.time-text {
+				font-size: 0.65rem;
+				color: gray;
+				margin-top: .3rem;
+			}
+			
+			.no-flex {
+				display: block;
+			}
+			
+			.pinglun-foot {
+				margin-top: .5rem;
+				margin-bottom: .4rem;
+				display: flex;
+				padding-left: .3rem;
+				padding-right: .4rem;
+				height: 2.7rem;
+			}
+			
+			.pinglun-foot img {
+				width: 4.5rem;
+			}
+			
+			.pinglun-foot p {
+				margin-left: .5rem;
+				margin-top: .1rem;
+			}
+			
+			.message-95 .fontsize-07 {
+				font-size: 0.75rem;
+			}
+			
+			.margintop-01 {
+				margin-top: .3rem;
+			}
+		</style>
 	</head>
 
-	<body>
-		<div class="page goodPages page-current" id="pinglunzan">
-			<header class=" bar-nav wsl-header">
-					<div class="title-box">
-						<a class="icon icon-left" href="javascript:history.go(-1);"></a>
-						<div class="w-title">评论/点赞</div>
-					</div>
-				</header>
+	<body v-on:unload="hasreadMessage()">
+		<div class="page goodPages page-current" id="comMessage" v-clock>
+			@@include('../tpl/bar-nav.tpl',{ "title":"评论/赞" })
 			<div class="content znTop">
-				<div class="message-95 no-paddingtop no-flex  padding-1">
-					<p class="fontsize-1"><span class="color-gray">5人</span> 赞了我</p>
-					<p class="time-text">2016-12-19 09:51:55</p>
-					<div class="pinglun-foot"><img src="assets/images/banner1.png" />
-						<p class="fontsize-1">ok...</p>
+				<!--没有消息-->
+				<div class="lqnoxiaoxi" v-if="commessages.res == 0">
+					<div class="noxiaoxibox">
+						<i class="icon icon-xiaoxi-quesheng lqnoxiaoxiicon"></i>
+						<p>您当前没有收到的消息~</p>
 					</div>
 				</div>
-				<div class="message-95 no-paddingtop no-flex padding-1">
-					<p class="color-gray fontsize-07">余白</p>
-					<p class="fontsize-1 margintop-01">这都能红..现在的社会也是醉了..</p>
-					<p class="time-text">2016-12-19 09:51:55</p>
-					<div class="pinglun-foot"><img src="assets/images/banner1.png" />
-						<p class="fontsize-1">蓝瘦香菇..蓝瘦香菇..蓝瘦香菇..蓝瘦香菇..蓝瘦香菇..</p>
+				<!--有消息-->
+				<div v-if="commessages.res == 1">
+					<div class="message-95 no-paddingtop no-flex padding-1" v-clock v-for="list in commessage">
+						<!--<p class="fontsize-1"><span class="color-gray">5人</span> 赞了我</p>-->
+						<div class="replycom" v-for = "item in list.reply">
+							<p class="color-gray fontsize-07">{{item.user_name}}</p>
+							<p class="fontsize-1 margintop-01">{{item.content}}</p>
+							<p class="time-text">{{item.add_time}}</p>
+						</div>
+						<div class="pinglun-foot">
+							<img :src="list.cover"/>
+							<p class="fontsize-1">{{list.content}}</p>
+						</div>
 					</div>
 				</div>
 			</div>
-
 		</div>
 		<script type="text/javascript" src="lib/light7/js/i18n/cn.min.js" charset="utf-8"></script>
-		<script type="text/javascript" src="assets/js/jiaohu.js" charset="utf-8"></script>
+		<!--<script type="text/javascript" src="assets/js/jiaohu.js" charset="utf-8"></script>-->
+		<script type="text/javascript" src="assets/js/message.js" charset="utf-8"></script>
 	</body>
-	</body>
+
 </html>
