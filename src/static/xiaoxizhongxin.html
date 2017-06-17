@@ -16,7 +16,8 @@
 							<div class="xx-tb xitongicon"><i class="icon icon-xitongxiaoxi"></i></div>
 							<div>
 								<p>系统消息</p>
-								<p>点击查看</p>
+								<p v-if ="sysmessages.noRead == 0" >您暂未有新的消息</p>
+								<p v-if ="sysmessages.noRead != 0" >点击查看</p>
 							</div>
 							<span class="icon icon-right2 j-right"></span>
 						</a>
@@ -28,7 +29,8 @@
 							<div class="xx-tb pinlunzan"><i class="icon icon-xiaoxi-quesheng"></i></div>
 							<div>
 								<p>评论/赞 我的</p>
-								<p>点击查看</p>
+								<p v-if ="pmessages.res == 0" >您暂未有新的消息</p>
+								<p v-if ="pmessages.data != 0" >点击查看</p>
 							</div>
 							<span class="iconfont icon-right2 j-right"></span>
 						</a>
@@ -39,8 +41,5 @@
 		<script type="text/javascript" src="lib/light7/js/i18n/cn.min.js" charset="utf-8"></script>
 		<!--<script type="text/javascript" src="assets/js/other.js" charset="utf-8"></script>-->
 		<script type="text/javascript" src="assets/js/message.js" charset="utf-8"></script>
-		<script type="text/javascript">
-			$.ajax()
-		</script>
 	</body>
 </html>
