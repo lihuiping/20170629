@@ -25,8 +25,8 @@
     input {
         display: inline-block;
         width: 88%;
-        height: 1.2rem;
-        line-height: 1.2rem;
+        height: 1.5rem;
+        line-height: 1.5rem;
         border-radius: 0.75rem;
         border: 1px solid #fff;
 //      background-color: #fe7b0b;
@@ -37,7 +37,7 @@
         position: relative;
         color: #fff;
         -webkit-appearance: none;
-        top: 0.8rem;
+        top: 0.6rem;
     }
     input::-webkit-input-placeholder {
         color: #d9d9d9;
@@ -52,7 +52,7 @@
     #searchDel {
         position: absolute;
         color: #fff;
-        top: 0.85rem;
+        top: 1.9rem;
         font-size: 0.9rem;
         left: 78%;
         display: none;
