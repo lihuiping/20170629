@@ -145,7 +145,7 @@ function recorddel() {
 	var p_checked = $(".lqMovierecord input[name='my-radio']:checked");
 	if(p_checked.length > 0) {
 		layer.open({
-			content: '此操作将删除所有播放记录,该操作不可恢复是否继续？',
+			content: '此操作将删除播放记录,该操作不可恢复是否继续？',
 			btn: ['确定', '取消'],
 			yes: function(index) {
 
