@@ -339,19 +339,33 @@ function qqshareNews_QFriend() { //分享新闻qq给好友
 }
 
 function qqshareNews_QZone() { //分享新闻到QQ空间
-	qq.shareNews({
-		url: 'http://www.apicloud.com',
-		title: '新闻分享',
-		description: '新闻描述',
-		imgUrl: 'http://7xq864.com1.z0.glb.clouddn.com/apicloud/9ddf7d56095abd26f2c7ef72bb142563.jpg',
-		type: "QZone"
-	}, function(ret, err) {
-		if(ret.status) {
-			$.toast("分享成功");
-		} else {
-			$.toast("分享失败");
+//	var movieId = 
+	$.ajax({
+		type:"get",
+		url: baseUrl() + "tv/index.php?s=api/videoInfo/share",
+		data:{
+			"id": movieID,
+			"token":token
+		},
+		async:true,
+		success: function(res){
+			console.log(res);
+			qq.shareNews({
+				url: 'http://www.apicloud.com',
+				title: res.name,
+				description: res.content,
+				imgUrl: res.url_cover,
+				type: "QZone"
+			}, function(ret, err) {
+				if(ret.status) {
+					$.toast("分享成功");
+				} else {
+					$.toast("分享失败");
+				}
+			});
 		}
 	});
+	
 }
 
 function shareWebpage(Vscene) { //分享微信好友,朋友圈 . 参数: session（会话） timeline（朋友圈）favorite（收藏）
