@@ -3,9 +3,9 @@ var toke = token();
 //var toke = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhZG1pbiI6ZmFsc2UsImNsYWltcyI6bnVsbCwidWlkIjoiODM4IiwidiI6MSwiaWF0IjoxNDkzMDAzMjg3fQ.PpqXb_oSU8EJVLAlwdzUBXsI67a2qAp7h5VuGf5Ly68'; //获取token
 var get_sysmessage = ['', baseUrl() + 'member.php?r=Notice_log&m=readAndNoReadNum&token=' + toke];
 var show_sysmessage = ['',baseUrl() + 'member.php?r=Notice_log&m=myMessage&token=' + toke]
-var get_commessage = ['',baseUrl() + 'tv/index.php?s=/Api/Message/index.html&token=' + toke];
-var unread_commessage = ['',baseUrl() + 'tv/index.php?s=/Api/Message/count.html&token=' + toke];
-var haveread_commessage = ['',baseUrl() + 'tv/index.php?s=/Api/Message/del.html&token=' + toke];
+var get_commessage = ['',baseUrl() + 'tv/index.php?s=/api/message/index.html&token=' + toke];
+var unread_commessage = ['',baseUrl() + 'tv/index.php?s=/api/message/count.html&token=' + toke];
+var haveread_commessage = ['',baseUrl() + 'tv/index.php?s=/api/message/del.html&token=' + toke];
 //获取地址参数
 function GetQueryString(name) {
 	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
