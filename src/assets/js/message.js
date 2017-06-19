@@ -28,36 +28,6 @@ function transformRequest(data) {
 	return ret;
 };
 
-//系统消息页面数据
-var sysMessage = new Vue({
-	el:"#sysMessage",
-	data: {
-		sysmessage: [],
-		allsysmessage: []
-	},
-	filters:{
-		moment: function(value){
-			return new Date(parseInt(value) * 1000).toLocaleString().replace(/年|月/g, "-").replace(/日/g, " ");
-		}
-	},
-
-	mounted: function() {
-		//初始化加载数据
-		this.showMessage();
-	},
-	methods: {
-		showMessage: function(){
-			var _this = this;
-			axios.get(show_sysmessage[conf]).then(function(response) {
-				var dataMessage = response.data;
-				var data = response.data.data;
-				sysMessage.sysmessage = data;
-				sysMessage.allsysmessage = dataMessage;
-//				console.log(data);
-			});
-		},
-	}
-});
 //系统消息显示有无
 var xiaoxi = new Vue({
 	el:"#xitxx-page",
@@ -84,14 +54,6 @@ var xiaoxi = new Vue({
 		},
 	}
 });
-/*window.onbeforeunload=function (){
-	alert("123");
-	if(event.clientX>document.body.clientWidth && event.clientY < 0 || event.altKey){
-	     alert("你关闭了浏览器");
-	}else{
-	     alert("你正在刷新页面");
-	}
-}*/
 
 //评论点赞页面数据
 var comMessage = new Vue({

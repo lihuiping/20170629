@@ -1,3 +1,6 @@
+var conf = 1;
+var toke = token();	
+var get_sysmessage = ['', baseUrl() + 'member.php?r=Notice_log&m=readAndNoReadNum&token=' + toke];
 var Cookie = {
 		Get: function(a) {
 			var d, b = document.cookie.split("; "),
@@ -176,5 +179,30 @@ $(function(){
 //		window.location.href = "./login.html";
 //	}
 });
-
+//系统消息显示有无
+var xiaoxinum = new Vue({
+	el:"#xxzx-page",
+	data: {
+		sysmessages: []
+	},
+	mounted: function() {
+		var _this = this;
+		_this.showXiaoxinum();
+		//初始化加载数据
+		setInterval(function(){
+			_this.showXiaoxinum();
+		},3000);
+	},
+	methods: {
+		showXiaoxinum: function(){
+			var _this = this;
+			axios.get(get_sysmessage[conf]).then(function(response) {
+				var dataMessages = response.data.data;
+				xiaoxinum.sysmessages = dataMessages;
+//				console.log(dataMessages.noRead);
+			});
+			
+		},
+	}
+});
 
