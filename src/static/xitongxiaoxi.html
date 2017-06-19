@@ -2,7 +2,7 @@
 <html>
 
 	<head>
-		@@include('../tpl/header.tpl',{ "title":"评论/点赞" })
+		@@include('../tpl/header.tpl',{ "title":"系统消息" })
 		<script type="text/javascript" src="lib/hprose.js" charset="utf-8"></script>
 		<style type="text/css">
 			.icon-xiaoxi-quesheng {
@@ -72,5 +72,39 @@
 		</div>
 		<script type="text/javascript" src="lib/light7/js/i18n/cn.min.js" charset="utf-8"></script>
 		<script type="text/javascript" src="assets/js/message.js" charset="utf-8"></script>
+		<script type="text/javascript">
+			//系统消息页面数据
+			var sysMessage = new Vue({
+				el:"#sysMessage",
+				data: {
+					sysmessage: [],
+					allsysmessage: []
+				},
+				filters:{
+					moment: function(value){
+						return new Date(parseInt(value) * 1000).toLocaleString().replace(/年|月/g, "-").replace(/日/g, " ");
+					}
+				},
+			
+				mounted: function() {
+					//初始化加载数据
+					var _this = this;
+					this.showMessage();
+				},
+				methods: {
+					showMessage: function(){
+						var _this = this;
+						axios.get(show_sysmessage[conf]).then(function(response) {
+							var dataMessage = response.data;
+			//				console.log(dataMessage);
+							var data = response.data.data;
+							sysMessage.sysmessage = data;
+							sysMessage.allsysmessage = dataMessage;
+			//				console.log(data);
+						});
+					},
+				}
+			});
+		</script>
 	</body>
 </html>
