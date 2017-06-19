@@ -223,7 +223,7 @@ function video(movie, movieTitle, movieCover,istrytime,start_time) {
         autostart: false, // 是否自动播放
         stretching: "uniform", // 拉伸设置
         repeat: false, // 是否重复播放
-        volume: 80, // 音量
+        volume: 100, // 音量
         controls: true, // controlbar是否显示
         starttime: start_time,
         playRate: false,
@@ -264,7 +264,10 @@ function video(movie, movieTitle, movieCover,istrytime,start_time) {
                 var data = res.data;
             });
 
-    })
+    });
+    player.onComplete(function(event){ 
+       alert("onComplete");
+});
 }
 /*滑动的效果*/
 function scrollComment() {

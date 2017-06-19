@@ -308,12 +308,12 @@ $(document).on("pageInit", "#editmessage", function(e, id, page) {
 		var result = $.parseJSON(result);
 		console.log(result);
 		Cache.set("issafe", result.data.isSafe);
-		var touxiang = result.data.imgurl ? result.data.imgurl : "assets/images/tx-120.png";
-		$("#mytouxiang-div").append("<img style='width: 3rem; height:3rem;border-radius:50%;' id='my-touxiang' src=" + touxiang + ">");
+		var touxiang = result.data.headimg ? result.data.headimg : "assets/images/tx-120.png";
+		$("#mytouxiang-div").append("<img style='width: 3rem; height:3rem;border-radius:50%;' id='my-touxiang' src='http://img.7cai.tv/" + touxiang + "''>");
 		$("#mename").html(result.data.username ? result.data.username : result.data.mobile);
 		$("#megenger").val(parseInt(result.data.sex) ? "女" : "男");
 		$("#isAuth").html(parseInt(result.data.isAuth) ? "已认证" : "未认证");
-		$("#brdate").val(result.data.birth != '' ? result.data.birth : "");
+		$("#brdate").val(result.data.birthday != '' ? result.data.birthday : "");
 		$("#anquanmima").html(result.data.isSafe == 1 ? "去修改" : "去设置");
 		var phone = result.data.mobile.substr(0, 3) + "****" + result.data.mobile.substr(7);
 		$("#mobilephone").html(phone);
