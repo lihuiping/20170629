@@ -140,8 +140,8 @@ function recorddel() {
 		} else {
 			checkList += ',' + $(v).attr('id');
 		}
-		console.log(checkList);
 	});
+	console.log(checkList);
 	var p_checked = $(".lqMovierecord input[name='my-radio']:checked");
 	if(p_checked.length > 0) {
 		layer.open({
