@@ -1,11 +1,12 @@
 var conf = 1;
-var tuijian_list = ['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/Recommend/index&token=' + token()]; //banner
-var content_movie = ['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/videoInfo/index&token=' + token()];
+var tokens=token();
+var tuijian_list = ['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/Recommend/index&token=' + tokens]; //banner
+var content_movie = ['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/videoInfo/index&token=' + tokens];
 var add_collection = ['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/Favor/change.html'];
 var get_collection = ['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/Favor/check.html'];
-var add_comment = ['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/Comment/add.html&token=' + token()];
+var add_comment = ['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/Comment/add.html&token=' + tokens];
 var get_comment = ['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/Comment/index.html'];
-var playRecord=['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/Movie/playRecord&token='+ token()];
+var playRecord=['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/Movie/playRecord&token='+ tokens];
 //获取地址参数
 function GetQueryString(name) {
     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
@@ -40,6 +41,7 @@ var movieDatail = new Vue({
         nowPage: 1,
         comCount: "",
         is_read:"",
+        start_time:'',
         switchShow: false
     },
     mounted: function() {
@@ -64,6 +66,8 @@ var movieDatail = new Vue({
                 var movieCover = data.cover;
                 var istrytime=data.is_try_time;
                 var start_time=data.start_time;
+                movieDatail.start_time=start_time;
+                console.log(data.start_time);
                 video(movie, movieTitle, movieCover,istrytime,start_time);
             });
             //获取评价
@@ -205,6 +209,14 @@ var movieDatail = new Vue({
             $(".bg_zhezhao").hide();
            $(".comment_bar").hide();
         },
+        getTitleHref:function(start_time){
+            if(tokens==""||tokens==undefined){
+                window.location.href='login.html';
+            }else{
+                console.log(movieDatail.start_time);
+               window.location.href='payForView.html?id='+movieID+'&currentTime='+movieDatail.start_time;
+            }
+        },
         init: function() {
             this.moreFn(this.nowPage);
         }
@@ -222,7 +234,7 @@ function video(movie, movieTitle, movieCover,istrytime,start_time) {
         image: movieCover, // 预览图
         autostart: false, // 是否自动播放
         stretching: "uniform", // 拉伸设置
-        repeat: false, // 是否重复播放
+        repeat: true, // 是否重复播放
         volume: 100, // 音量
         controls: true, // controlbar是否显示
         starttime: start_time,
@@ -250,7 +262,6 @@ function video(movie, movieTitle, movieCover,istrytime,start_time) {
 	 if (event.position > 10) {
             player.pause();
             $(".bg_video").addClass('bg_video_show')
-
         }
     });
     player.onPause(function(event){

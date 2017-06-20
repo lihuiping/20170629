@@ -186,7 +186,7 @@
                     <div class="vip_tips">
                         <p>试看结束,继续播放需要付费5元或开通会员终身免费本平台所有影视资源~</p>
                         <ul>
-                            <li><a :href="'payForView.html?id='+movieContent.id">付费点播</a></li>
+                            <li @click="getTitleHref()">付费点播</li>
                             <li><a href="become-member.html">开通会员</a></li>
                         </ul>
                     </div>
