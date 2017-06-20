@@ -1,12 +1,12 @@
 var conf = 1;
 var tokens=token();
-var tuijian_list = ['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/Recommend/index&token=' + tokens]; //banner
-var content_movie = ['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/videoInfo/index&token=' + tokens];
+var tuijian_list = ['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/Recommend/index&token=' + token()]; //banner
+var content_movie = ['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/videoInfo/index&token=' + token()];
 var add_collection = ['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/Favor/change.html'];
 var get_collection = ['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/Favor/check.html'];
-var add_comment = ['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/Comment/add.html&token=' + tokens];
+var add_comment = ['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/Comment/add.html&token=' + token()];
 var get_comment = ['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/Comment/index.html'];
-var playRecord=['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/Movie/playRecord&token='+ tokens];
+var playRecord=['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/Movie/playRecord&token='+ token()];
 //获取地址参数
 function GetQueryString(name) {
     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
@@ -41,13 +41,22 @@ var movieDatail = new Vue({
         nowPage: 1,
         comCount: "",
         is_read:"",
-        start_time:'',
         switchShow: false
     },
     mounted: function() {
         //初始化加载数据
-        this.showMovie();
-        this.init();
+        if(tokens==""||tokens==undefined){
+            $.toast("您还未登录，请登录");
+            setTimeout(function(){
+                window.location.href="login.html";
+            },500)
+
+          
+        }else{
+             this.showMovie();
+             this.init();
+        }
+       
     },
     methods: {
         showMovie: function() {
@@ -61,13 +70,11 @@ var movieDatail = new Vue({
                 var data = response.data.data;
                 movieDatail.movieContent = data;
                 var movie = data.url;
-             //   var movie="http://my.shop.7cai.tv/tv/f000000";
+               // var movie="http://or9d4l0f7.bkt.clouddn.com/360-跑酷大神炫逆天特技.mp4";
                 var movieTitle = data.name;
                 var movieCover = data.cover;
                 var istrytime=data.is_try_time;
                 var start_time=data.start_time;
-                movieDatail.start_time=start_time;
-                console.log(data.start_time);
                 video(movie, movieTitle, movieCover,istrytime,start_time);
             });
             //获取评价
@@ -209,20 +216,11 @@ var movieDatail = new Vue({
             $(".bg_zhezhao").hide();
            $(".comment_bar").hide();
         },
-        getTitleHref:function(start_time){
+         getTitleHref:function(start_time){
             if(tokens==""||tokens==undefined){
                 window.location.href='login.html';
             }else{
                 console.log(movieDatail.start_time);
-                  var playTime= 10;
-              axios.get(playRecord[conf], {
-                params: {
-                    movieId: movieID,
-                    startTime: playTime
-                }
-            }).then(function(res) {
-                var data = res.data;
-            });
                window.location.href='payForView.html?id='+movieID;               
             }
         },
@@ -232,18 +230,19 @@ var movieDatail = new Vue({
     }
 });
 
-function video(movie, movieTitle, movieCover,istrytime,start_time) {
+function video(movieurl, movieTitle, movieCover,istrytime,start_time) {
+   // console.log(movieurl, movieTitle, movieCover,istrytime,start_time)
       //var play_status=0;
     var player = cyberplayer("video").setup({
         width: '100%', // 宽度，也可以支持百分比(不过父元素宽度要有)
         height: '100%', // 高度，也可以支持百分比
         backcolor: "#000",
         title: movieTitle, // 标题
-        file: movie, // 播放地址
+        file: movieurl, // 播放地址
         image: movieCover, // 预览图
         autostart: false, // 是否自动播放
         stretching: "uniform", // 拉伸设置
-        repeat: true, // 是否重复播放
+        repeat: false, // 是否重复播放
         volume: 100, // 音量
         controls: true, // controlbar是否显示
         starttime: start_time,
@@ -268,9 +267,9 @@ function video(movie, movieTitle, movieCover,istrytime,start_time) {
     });
     player.onTime(function(event) {
 //      if (istrytime ==0 && event.position > 10) {
-	 if (event.position > 10) {
+     if (event.position > 10) {
             player.pause();
-            $(".bg_video").addClass('bg_video_show')
+            $(".bg_video").addClass('bg_video_show');
         }
     });
     player.onPause(function(event){
@@ -330,96 +329,87 @@ $(".vpl_VideoDetail_des_title").on("click", '.vpl_introduction', function() {
 });
 
 })
-
-
-
 //分享
-
-
-
 var qq;
 var wx;
 apiready = function() {
-	qq = api.require('qq');
-	wx = api.require('wx');
+    qq = api.require('qq');
+    wx = api.require('wx');
 
 };
 
 function qqshareNews_QFriend() { //分享新闻qq给好友
-	qq.shareNews({
-		url: 'http://www.apicloud.com',
-		title: '新闻分享',
-		description: '新闻描述',
-		imgUrl: 'widget://res/news.png',
-		type: "QFriend"
-	}, function(ret, err) {
-		if(ret.status) {
-			alert(JSON.stringify(ret))
-		} else {
-			alert(JSON.stringify(err));
-		}
-	});
+    qq.shareNews({
+        url: 'http://www.apicloud.com',
+        title: '新闻分享',
+        description: '新闻描述',
+        imgUrl: 'widget://res/news.png',
+        type: "QFriend"
+    }, function(ret, err) {
+        if(ret.status) {
+            alert(JSON.stringify(ret))
+        } else {
+            alert(JSON.stringify(err));
+        }
+    });
 }
 
 function qqshareNews_QZone() { //分享新闻到QQ空间
-//	var movieId = 
-	$.ajax({
-		type:"get",
-		url: baseUrl() + "tv/index.php?s=api/videoInfo/share",
-		data:{
-			"id": movieID,
-			"token":token
-		},
-		async:true,
-		success: function(res){
-//			console.log(res.data);
-//			return false;
-			qq.shareNews({
-				url: 'http://www.apicloud.com',
-				title: res.data.name,
-				description: res.data.content,
-				imgUrl: res.data.url_cover,
-				type: "QZone"
-			}, function(ret, err) {
-				if(ret.status) {
-					$.toast("分享成功");
-				} else {
-					$.toast("分享失败");
-				}
-			});
-		}
-	});
-	
+//  var movieId = 
+    $.ajax({
+        type:"get",
+        url: baseUrl() + "tv/index.php?s=api/videoInfo/share",
+        data:{
+            "id": movieID,
+            "token":tokens
+        },
+        async:true,
+        success: function(res){
+//          console.log(res.data);
+//          return false;
+            qq.shareNews({
+                url: 'http://www.apicloud.com',
+                title: res.data.name,
+                description: res.data.content,
+                imgUrl: res.data.url_cover,
+                type: "QZone"
+            }, function(ret, err) {
+                if(ret.status) {
+                    $.toast("分享成功");
+                } else {
+                    $.toast("分享失败");
+                }
+            });
+        }
+    });
+    
 }
-
 function shareWebpage(Vscene) { //分享微信好友,朋友圈 . 参数: session（会话） timeline（朋友圈）favorite（收藏）
-	$.ajax({
-		type:"get",
-		url:baseUrl() + "tv/index.php?s=api/videoInfo/share",
-		data:{
-			"id": movieID,
-			"token":token
-		},
-		async:true,
-		success:function(res){
-//			console.log(res.data.cover);
-//			return false;
-				wx.shareWebpage({
-				apiKey: 'wx64c1ec0115c22f7f',
-				scene: Vscene,
-				title: res.data.name,
-				description:  res.data.content,
-				thumb: res.data.cover,
-				contentUrl: 'http://www.apicloud.com'
-			}, function(ret, err) {
-				if(ret.status) {
-					$.toast("分享成功");
-				} else {
-					$.toast("分享失败");
-				}
-			});
-		}
-	});
-	
-	
+    $.ajax({
+        type:"get",
+        url:baseUrl() + "tv/index.php?s=api/videoInfo/share",
+        data:{
+            "id": movieID,
+            "token":tokens
+        },
+        async:true,
+        success:function(res){
+//          console.log(res.data.cover);
+//          return false;
+                wx.shareWebpage({
+                apiKey: 'wx64c1ec0115c22f7f',
+                scene: Vscene,
+                title: res.data.name,
+                description:  res.data.content,
+                thumb: res.data.cover,
+                contentUrl: 'http://www.apicloud.com'
+            }, function(ret, err) {
+                if(ret.status) {
+                    $.toast("分享成功");
+                } else {
+                    $.toast("分享失败");
+                }
+            });
+        }
+    });
 }
