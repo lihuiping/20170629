@@ -9,7 +9,12 @@
 <!--page容器-->
 <div class="page page-current">
     <!--标签页-->
-    @@include('../tpl/bar-nav.tpl',{ "title":"确认订单" })
+    <!--@@include('../tpl/bar-nav.tpl',{ "title":"确认订单" })-->
+    <header class="bar bar-nav bdbt-none ad-bar" style="z-index: 1000;padding-top: 1.2rem;">
+				<a class="icon icon-left pull-left" href="javascript:history.go(-1)"></a>
+				<!--<a class="icon icon-refresh pull-right"></a>-->
+				<h1 class="title">确认订单</h1>
+			</header>
     <!--内容页面-->
     <div class="content padding-btn znTop" id="apps">
         <form id="submit_order" method="post">
