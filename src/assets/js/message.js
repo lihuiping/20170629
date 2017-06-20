@@ -40,7 +40,7 @@ var xiaoxi = new Vue({
 		//初始化加载数据
 		setInterval(function(){
 			_this.showXiaoxi();
-		},3000);
+		},6000);
 	},
 	methods: {
 		showXiaoxi: function(){
@@ -102,7 +102,7 @@ var pinglunxiaoxi = new Vue({
 		//初始化加载数据
 		setInterval(function(){
 			_this.showXiaoxi();
-		},3000);
+		},6000);
 	},
 	methods: {
 		showXiaoxi: function(){
