@@ -472,7 +472,7 @@ $("#sub_order").on('click', function() {
 										subject: subject,
 										amount: 0.01,
 										orderID: orderId,
-										notifyUrl: "http://shop.7cai.tv/tv/index.php?s=api/pay/paynotice",
+										notifyUrl: "http://my.shop.7cai.tv/pay.php",
 										alipay: true,
 										wxpay: false,
 										baidupay: false,
