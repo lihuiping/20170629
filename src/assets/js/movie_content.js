@@ -352,12 +352,13 @@ function qqshareNews_QZone() { //分享新闻到QQ空间
 		},
 		async:true,
 		success: function(res){
-			console.log(res);
+//			console.log(res.data);
+//			return false;
 			qq.shareNews({
 				url: 'http://www.apicloud.com',
-				title: res.name,
-				description: res.content,
-				imgUrl: res.url_cover,
+				title: res.data.name,
+				description: res.data.content,
+				imgUrl: res.data.url_cover,
 				type: "QZone"
 			}, function(ret, err) {
 				if(ret.status) {
@@ -372,18 +373,33 @@ function qqshareNews_QZone() { //分享新闻到QQ空间
 }
 
 function shareWebpage(Vscene) { //分享微信好友,朋友圈 . 参数: session（会话） timeline（朋友圈）favorite（收藏）
-	wx.shareWebpage({
-		apiKey: 'wx64c1ec0115c22f7f',
-		scene: Vscene,
-		title: '分享网页的标题',
-		description: '分享网页的描述',
-		thumb: 'widget://res/iconfont-touxiang.png',
-		contentUrl: 'http://www.apicloud.com'
-	}, function(ret, err) {
-		if(ret.status) {
-			$.toast("分享成功");
-		} else {
-			$.toast("分享失败");
+	$.ajax({
+		type:"get",
+		url:baseUrl() + "tv/index.php?s=api/videoInfo/share",
+		data:{
+			"id": movieID,
+			"token":token
+		},
+		async:true,
+		success:function(res){
+//			console.log(res.data.cover);
+//			return false;
+				wx.shareWebpage({
+				apiKey: 'wx64c1ec0115c22f7f',
+				scene: Vscene,
+				title: res.data.name,
+				description:  res.data.content,
+				thumb: res.data.cover,
+				contentUrl: 'http://www.apicloud.com'
+			}, function(ret, err) {
+				if(ret.status) {
+					$.toast("分享成功");
+				} else {
+					$.toast("分享失败");
+				}
+			});
 		}
 	});
+	
+	
 }

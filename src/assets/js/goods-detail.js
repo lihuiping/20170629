@@ -770,7 +770,14 @@ $(".fixed-wrap").on('click', ".buttons-tab", function(e) {
 
 
 //分享
-
+//获取地址参数
+function GetQueryString(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) return unescape(r[2]);
+    return null;
+}
+var goodsShareID = GetQueryString('id');
 
 
 var qq;
@@ -800,16 +807,18 @@ function qqshareNews_QFriend() { //分享新闻qq给好友
 function qqshareNews_QZone() { //分享新闻到QQ空间
 	$.ajax({
 		type:"get",
-		url:"",
-		data:{},
+		url:"http://shop.7cai.tv/index.php?r=goods&m=share",
+		data:{
+			goods_id:goodsShareID,
+			token : tokens
+		},
 		async:true,
 		success: function(res){
-			console.log(res);
 			qq.shareNews({
 				url: 'http://www.apicloud.com',
-				title: '新闻分享',
-				description: '新闻描述',
-				imgUrl: 'http://7xq864.com1.z0.glb.clouddn.com/apicloud/9ddf7d56095abd26f2c7ef72bb142563.jpg',
+				title: res.data.title,
+				description: res.data.content,
+				imgUrl:res.data.img_url,
 				type: "QZone"
 			}, function(ret, err) {
 				if(ret.status) {
@@ -820,21 +829,24 @@ function qqshareNews_QZone() { //分享新闻到QQ空间
 			});
 		}
 	});
-	
 }
 
 function shareWebpage(Vscene) { //分享微信好友,朋友圈 . 参数: session（会话） timeline（朋友圈）favorite（收藏）
 	$.ajax({
 		type:"get",
-		url:"",
+		url:"http://shop.7cai.tv/index.php?r=goods&m=share",
+		data:{
+			"goods_id":goodsShareID,
+			"token" : tokens
+		},
 		async:true,
-		success: function(response){
+		success: function(res){
 			wx.shareWebpage({
 				apiKey: 'wx64c1ec0115c22f7f',
 				scene: Vscene,
-				title: '分享网页的标题',
-				description: '分享网页的描述',
-				thumb: 'widget://res/iconfont-touxiang.png',
+				title:res.data.title,
+				description: res.data.content,
+				thumb:res.data.img,
 				contentUrl: 'http://www.apicloud.com'
 			}, function(ret, err) {
 				if(ret.status) {
