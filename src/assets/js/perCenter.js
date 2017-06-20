@@ -191,7 +191,7 @@ var xiaoxinum = new Vue({
 		//初始化加载数据
 		setInterval(function(){
 			_this.showXiaoxinum();
-		},3000);
+		},6000);
 	},
 	methods: {
 		showXiaoxinum: function(){
