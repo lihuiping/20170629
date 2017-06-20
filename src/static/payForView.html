@@ -50,6 +50,8 @@
 				return null;
 			}
 			var payId = GetQueryString('id'); //获取需要付费的电影的id
+			//var currentTime = GetQueryString('currentTime'); //获取需要付费的电影播放到哪里
+
 			var PayForView = baseUrl() + 'tv/index.php?s=api/pay/dianbo'; //点播
 			/*点播页面*/
 			var PayForView = new Vue({
@@ -125,6 +127,10 @@
 
 												if(ret.payCode == 9000) {
 													$.toast("订单支付成功");
+													setTimeout(function(){
+														window.location.href = "movie-content.html";
+													},1000);
+													
 												} else if(ret.payCode == 6001) {
 													$.toast("订单已取消");
 												} else {
