@@ -173,7 +173,7 @@ var goodsDatail = new Vue({
 								skin: 'msg',
 								time: 2, //2秒后自动关闭
 							});
-							window.location.href = 'http://v.7cai.tv/templets/gerenzhongxin/login/login.html';
+							window.location.href = 'login.html';
 						}
 					}
 				});
@@ -265,7 +265,7 @@ var goodsDatail = new Vue({
 									time: 2, //2秒后自动关闭
 								});
 								setTimeout(function() {
-									window.location.href = 'http://v.7cai.tv/templets/gerenzhongxin/login/login.html';
+									window.location.href = 'login.html';
 								}, 1000);
 							} else {
 								if(msg == "属性选择错误") {
@@ -333,7 +333,7 @@ var goodsDatail = new Vue({
 									time: 2, //2秒后自动关闭
 								});
 								setTimeout(function() {
-									window.location.href = 'http://v.7cai.tv/templets/gerenzhongxin/login/login.html';
+									window.location.href = 'login.html';
 								}, 1000);
 							} else {
 								layer.open({
@@ -480,7 +480,7 @@ var goodRule = new Vue({
 								time: 2, //2秒后自动关闭
 							});
 							setTimeout(function() {
-								window.location.href = 'http://v.7cai.tv/templets/gerenzhongxin/login/login.html';
+								window.location.href = 'login.html';
 							}, 1000);
 
 						} else {
@@ -542,7 +542,7 @@ var goodRule = new Vue({
 								time: 2, //2秒后自动关闭
 							});
 							setTimeout(function() {
-								window.location.href = 'http://v.7cai.tv/templets/gerenzhongxin/login/login.html';
+								window.location.href = 'login.html';
 							}, 1000);
 						} else {
 							layer.open({
