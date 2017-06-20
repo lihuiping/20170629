@@ -214,7 +214,16 @@ var movieDatail = new Vue({
                 window.location.href='login.html';
             }else{
                 console.log(movieDatail.start_time);
-               window.location.href='payForView.html?id='+movieID+'&currentTime='+movieDatail.start_time;
+                  var playTime= 10;
+              axios.get(playRecord[conf], {
+                params: {
+                    movieId: movieID,
+                    startTime: playTime
+                }
+            }).then(function(res) {
+                var data = res.data;
+            });
+               window.location.href='payForView.html?id='+movieID;               
             }
         },
         init: function() {
