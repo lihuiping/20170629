@@ -16,57 +16,183 @@
 				<!--<a class="icon icon-refresh pull-right"></a>-->
 				<h1 class="title">付费点播</h1>
 			</header>
-			<div class="content znTop" style="bottom: 0;">
+			<div class="content znTop" style="bottom: 0;" id="PayForView">
 
-				<div class="filmInfo">
+				<div class="filmInfo" :orderId="list.order_id">
 					<div class="filmName">
-						爆笑虫子
+						{{list.name}}
 					</div>
 					<div class="filmPrice">
-						￥<span>5.</span>00
+						￥<span>{{list.price}}</span>
 					</div>
-					<div class="userNumb">下单用户账号：<span>13598078099</span></div>
-					<div class="orderNumb">订单编号：<span>156465786439458</span></div>
+					<div class="userNumb">下单用户账号：<span>{{list.tel}}</span></div>
+					<div class="orderNumb">订单编号：<span>{{list.order_sn}}</span></div>
 				</div>
-				<div id="submitButton" onclick="fuqianlaPay()">
+				<div class="payBtn" id="submitButton" @click="fuqianlaPay()">
 					确认支付
 				</div>
 			</div>
 		</div>
 
 		<script>
+			var token = token();
 			var fuqianla;
 			apiready = function() {
 				fuqianla = api.require('moduleFuQianLa');
 			};
+			
+			
+			//获取地址参数
+			function GetQueryString(name) {
+				var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+				var r = window.location.search.substr(1).match(reg);
+				if(r != null) return unescape(r[2]);
+				return null;
+			}
+			var payId = GetQueryString('id'); //获取需要付费的电影的id
+			var PayForView = baseUrl() + 'tv/index.php?s=api/pay/dianbo'; //点播
+			/*点播页面*/
+			var PayForView = new Vue({
+				el: "#PayForView",
+				data: {
+					list: [],
+					loadingFlag: true,
+				},
+				mounted: function() {
+					//初始化加载数据
+					var _this = this;
+					_this.showGoods();
+				},
+				methods: {
+					showGoods: function() {
+						var _this = this;
+						axios.get(PayForView, {
+							params: {
+								id: payId,
+								token: token
+							}
+						}).then(function(res) {
+							var dataRes = res.data;
+							var data = res.data.data;
+							//							console.log(dataRes.name)
 
-			function fuqianlaPay() {
-				var payParam = {
-					partner: "m1610030006",
-					subject: "七彩视频",
-					amount: 0.01,
-					orderID: "20170615191022",
-					notifyUrl: "http://shop.7cai.tv/wx/index.php",
-					alipay: true,
-					wxpay: true,
-					baidupay: false,
-					unionpay: false,
-					jdpay: false,
-				}
+							order_id = data.order_id;
 
-				fuqianla.fuqianlaPay(payParam, function(ret, err) {
+							//							console.log(dataRes.res);
+							if(dataRes.res == 1) {
+								_this.list = data;
+								//								console.log(data.price)
+							} else {
+								$.toast("商品数据错误");
+							}
+						});
+					},
+					
+					
+					fuqianlaPay:function(){
+									var listId = $(".filmInfo").attr("orderId");
+									var _this = this;
+									axios.get("http://shop.7cai.tv/tv/index.php?s=api/pay/pay", {
+										params: {
+											order_id:listId,
+											type:1,
+											token:token
+										}
+									}).then(function(res) {
+										console.log(res);
+										var dataRes  = res.data;
+										var subject = dataRes.data.name;
+										var amount = dataRes.data.price;
+										var orderID = dataRes.data.pay_sn;
+//										var orderID = "201706"+Date.now();
+										console.log(orderID);
+										if(dataRes.res == 1) {
+											var payParam = {
+												partner: "m1610030006",
+												amount: 0.01,
+												subject:subject,
+												orderID:orderID,
+												notifyUrl:"http://shop.7cai.tv/tv/index.php?s=api/pay/paynotice",
+												alipay: true,
+												wxpay: false,
+												baidupay: false,
+												unionpay: false,
+												jdpay: false,
+											}				
+											fuqianla.fuqianlaPay(payParam, function(ret, err) {
+			//				
+//												alert(JSON.stringify(ret) + JSON.stringify(err));
 
-//					alert(JSON.stringify(ret) + JSON.stringify(err));
-					if(ret.payCode == 9000){
-						$.toast("订单支付成功");
-					}else if(ret.payCode == 6001){
-						$.toast("订单已取消");
-					}else{
-						$.toast("订单支付失败");
-					}
+												if(ret.payCode == 9000) {
+													$.toast("订单支付成功");
+												} else if(ret.payCode == 6001) {
+													$.toast("订单已取消");
+												} else {
+													$.toast("订单支付失败");
+												}
 
-				});
-			};
+											});
+										} else {
+											$.toast("支付失败");
+										}
+									});
+								}
+
+				} //
+			});
+
+//			function fuqianlaPay() {
+//
+//				var listId = $(".filmInfo").attr("orderId");
+//				//				console.log(listId);
+//				$.ajax({
+//					type: "get",
+//					url: "http://shop.7cai.tv/tv/index.php?s=api/pay/pay",
+//					data: {
+//						"order_id": listId,
+//						"token": token
+//					},
+//					async: true,
+//					success: function(res) {
+//						console.log(res.res);
+//						var orderId = res.data.pay_sn;
+//						var subject = res.data.name;
+//						var amount = res.data.price;
+//						alert(orderId);
+//						alert(subject);
+//						alert(amount);
+//						
+//						if(res.res == 1) {
+//							var payParam = {
+//								partner: "m1610030006",
+//								subject: subject,
+//								amount: 0.01,
+//								orderID: orderId,
+//								notifyUrl: "http://shop.7cai.tv/tv/index.php?s=api/pay/paynotice",
+//								alipay: true,
+//								wxpay: false,
+//								baidupay: false,
+//								unionpay: false,
+//								jdpay: false,
+//							}
+//
+//							fuqianla.fuqianlaPay(payParam, function(ret, err) {
+//
+//								alert(JSON.stringify(ret) + JSON.stringify(err));
+//
+//							});
+//						} else {
+//							alert("支付失败了");
+//						}
+//
+//					}
+//
+//				});
+//
+//			}
+
+			
+			//					
 		</script>
 	</body>
 
