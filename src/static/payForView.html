@@ -40,8 +40,7 @@
 			apiready = function() {
 				fuqianla = api.require('moduleFuQianLa');
 			};
-			
-			
+
 			//获取地址参数
 			function GetQueryString(name) {
 				var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
@@ -122,13 +121,11 @@
 												jdpay: false,
 											}				
 											fuqianla.fuqianlaPay(payParam, function(ret, err) {
-			//				
 //												alert(JSON.stringify(ret) + JSON.stringify(err));
-
 												if(ret.payCode == 9000) {
 													$.toast("订单支付成功");
 													setTimeout(function(){
-														window.location.href = "movie-content.html";
+														window.location.href = "movie-content.html?id="+payId + "&isPay=" + 1;
 													},1000);
 													
 												} else if(ret.payCode == 6001) {
