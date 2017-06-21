@@ -204,7 +204,7 @@
                                 <i class="icon icon-form-checkbox"></i>
                             </div>
                         </label>
-                        <div class="item-inner movie-inner">
+                        <div class="item-inner movie-inner" v-cloak>
 							<a :href="getTitleHref(movie.mid)">
 								<div class='pr_li_left'>
 									<img class='bf-img' :src="movie.cover" />
@@ -213,11 +213,11 @@
 								<div class='pr_li_right'>
 									<p class='pr_li_right_top'>{{movie.name}}</p>
 								</div>
-								<a class='external' :href="getTitleHref(movie.mid)">
+								<!--<a class='external' :href="getTitleHref(movie.mid)">
 									<div class='pr_li_play'><i class='icon icon-jixubofang'></i>
 										<p style='color:#ccc;'>重新播放</p>
 									</div>
-								</a>
+								</a>-->
 							</a>
                         </div>
 					</li>
