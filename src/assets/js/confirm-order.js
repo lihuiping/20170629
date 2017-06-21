@@ -483,15 +483,21 @@ $("#sub_order").on('click', function() {
 									fuqianla.fuqianlaPay(payParam, function(ret, err) {
 
 										//alert(JSON.stringify(ret) + JSON.stringify(err));
-										$.toast('支付成功')
+//										$.toast('支付成功')
+												if(ret.payCode == 9000) {
+													$.toast("订单支付成功");
+													
+												} else if(ret.payCode == 6001) {
+													$.toast("订单已取消");
+												} else {
+													$.toast("订单支付失败");
+												}
 
 									});
 								} else {
 									alert("支付失败了");
 								}
-
 							}
-
 						});
 
 					} else {
