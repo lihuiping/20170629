@@ -118,6 +118,7 @@ $(function() {
 	//编辑
 	$(".pr_edit").on("click", function() {
 		$(".pr_edit").hide();
+		$('.pr_li_play').hide();
 		$(".complete").show();
 		$(".foot-all").show();
 		$(".media").show();
