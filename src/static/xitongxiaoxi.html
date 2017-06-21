@@ -45,7 +45,7 @@
 					</div>
 				</div>
 				<!--有消息-->
-				<div class="message-95" v-for="item in sysmessage" v-if="allsysmessage.res == 1">
+				<div class="message-95" v-for="item in sysmessage" v-if="allsysmessage.res == 1" v-cloak>
 					<div v-if="item.type == 1"><i class="icon icon-xitongxiaoxi lqnoxiaoxi"></i></div>
 					<div v-if="item.type == 2"><i class="icon icon-shangchengxiaoxi lqshangcheng"></i></div>
 					<div v-if="item.type == 3"><i class="icon icon-guanyingxiaoxi lqguanyin"></i></div>
