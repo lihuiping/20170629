@@ -421,34 +421,12 @@ $("#sub_order").on('click', function() {
 							timeout: 1500,
 							data: parms,
 							success: function(datas) {
-								if(datas.res == '1' && datas.data.amount > 0) {
-									if(openid == '') {
-										return false;
-									} else {
-										FUQIANLA.init({
-											'appId': 'VWT0GaNzbX3Dqesop5zrOg', //应用ID号  VWTOGaNzbX3Dqesop5zrOg
-											'merchId': 'm1610030006', //商户号   m1610030006
-											'orderId': datas.data.orderIds, //订单号，此处为模拟订单号。具体以接入为准
-											'channel': 'wx_pay_pub', //开通的通道简称
-											'amount': '0.01', //支付金额
-											'subject': datas.data.subject, //商品标题
-											'notifyUrl': 'http://my.shop.7cai.tv/pay.php', //异步支付结果通知地址 http://my.shop.7cai.tv/index.php?r=pay&m=tur
-											'extra': {
-												'openid': openid,
-												'cb': function() {
+								if(datas.res == '1') {
+									$.toast(datas.msg);
+									setTimeout(function(){
+										window.location.href = 'myOrder-table.html';
+									},1000);
 
-													window.location.href = "./myOrder-table.html";
-												}
-											}
-										});
-									}
-
-								} else if(datas.res == '1' && datas.data.amount == 0) {
-									$.toast('支付成功');
-									setTimeout(function() {
-										window.location.href = "./myOrder-table.html";
-
-									}, 1000);
 								} else {
 									$.toast(datas.msg);
 								}
@@ -481,9 +459,7 @@ $("#sub_order").on('click', function() {
 									}
 
 									fuqianla.fuqianlaPay(payParam, function(ret, err) {
-
 										//alert(JSON.stringify(ret) + JSON.stringify(err));
-//										$.toast('支付成功')
 												if(ret.payCode == 9000) {
 													$.toast("订单支付成功");
 													
@@ -495,7 +471,7 @@ $("#sub_order").on('click', function() {
 
 									});
 								} else {
-									alert("支付失败了");
+									alert("支付失败");
 								}
 							}
 						});
