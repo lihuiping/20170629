@@ -75,17 +75,17 @@ var Cookie = {
 		}), api
 	}();
 var isVIP = '';
+
+var token = token();
 //获取token
 function sclient() {
-	var token = Cache.get("flag") || "";
+//	var token = Cache.get("flag") || "";
 	return hprose.Client.create("http://test.7cai.tv/index.php/api/api/user?t=" + token, ["login", "register", "isLogin", "logout", "findPwd", "sendCode", "getUserInfo", "isSafe", "modifyInfo", "isRegister", "modifyMobile", "modifyHeadImg", "certif ication", "modifyPwd", "modifySafePwd", "getAddressList", "getAddress", "addOrEditAddress", "setDefaultAddress", "delAddress", "getPayOrderInfo", "getOpenId ", "getUploadParams", "getFriends", "getPoints", "getTicketUrl", "getFkTypeLists", "addFkMsg", "getWxSdkSignInfo"]);
 	//http://test.7cai.tv/index.php
 }
 
 var client = sclient();
-//  获取推荐码
-var uniquemark = Cache.get("uniquemark") || null;
-var link = !uniquemark ? "http://v.7cai.tv" : "http://v.7cai.tv" + "?unique=" + uniquemark;
+
 //购票页面
 //	$(document).on("pageInit", "#goupiao", function(e, id, page) {
 var client1 = hprose.Client.create("http://test.7cai.tv/index.php/api/api/ticket", ['getOrderLists', 'login', 'getCityMoviesLists2', 'getCityWillMoviesLists2', 'getCinemaSchedInfo', 'getTicketCinemaUrl', 'register', 'getTicketCinemaUrl', 'getCityCinemasLists', 'isLogin', 'logout', 'getCityMoviesLists', 'getCinemaInfo', 'getCinemaSchedInfo', 'getCityWillMoviesLists', 'findPwd', 'getMoviesInfo', 'sendCode', 'getUserInfo', 'getMoviesInfo', 'getAddressList', 'getUploadParams', 'getPayOrderInfo', 'getOpenId', 'getCityLists', 'getCityCinemasLists']);
@@ -308,7 +308,7 @@ setTimeout(function() {
 //滚动加载
 function gundongloading() {
 	var loading = false;
-//	$(document).on('infinite', '.infinite-scroll', function() {
+	$(document).on('infinite', '.infinite-scroll', function() {
 		// 如果正在加载，则退出
 		if(loading) return;
 		// 设置flag
@@ -339,7 +339,7 @@ function gundongloading() {
 				getmovieList1(currentpage2);
 			}
 		}, 500);
-//	});
+	});
 };
 gundongloading();
 
