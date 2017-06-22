@@ -448,7 +448,7 @@ $("#sub_order").on('click', function() {
 									var payParam = {
 										partner: "m1610030006",
 										subject: subject,
-										amount: 0.01,
+										amount: 0.01,//amount,
 										orderID: orderId,
 										notifyUrl: "http://my.shop.7cai.tv/pay.php",
 										alipay: true,

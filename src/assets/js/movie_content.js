@@ -266,8 +266,7 @@ function video(movieurl, movieTitle, movieCover,istrytime,start_time) {
         }
     });
     player.onTime(function(event) {
-//      if (istrytime ==0 && event.position > 10) {
-     if (event.position > 10) {
+      if (istrytime !=0 && event.position > 10) {
             player.pause();
             $(".bg_video").addClass('bg_video_show');
         }
@@ -368,7 +367,7 @@ function qqshareNews_QZone() { //分享新闻到QQ空间
 //          console.log(res.data);
 //          return false;
             qq.shareNews({
-                url: 'http://www.apicloud.com',
+                url: 'http://www.apicloud.com', //'movie-content.html?'+ movieId
                 title: res.data.name,
                 description: res.data.content,
                 imgUrl: res.data.url_cover,
@@ -394,15 +393,13 @@ function shareWebpage(Vscene) { //分享微信好友,朋友圈 . 参数: session
         },
         async:true,
         success:function(res){
-//          console.log(res.data.cover);
-//          return false;
                 wx.shareWebpage({
                 apiKey: 'wx64c1ec0115c22f7f',
                 scene: Vscene,
                 title: res.data.name,
                 description:  res.data.content,
                 thumb: res.data.cover,
-                contentUrl: 'http://www.apicloud.com'
+                contentUrl: 'http://www.apicloud.com'  //'movie-content.html?'+ movieId
             }, function(ret, err) {
                 if(ret.status) {
                     $.toast("分享成功");
