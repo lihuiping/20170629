@@ -56,11 +56,13 @@ function getrecordList(){
 			dataList = json;
 			console.log(dataList);
 			var len_movierecord = $(".lqMovierecord li").length;
-			if(len_movierecord > "1" || dataList.res == "1") {
+			if(len_movierecord > "1"|| dataList.res == "1") {
+				
 				$("#bfjl-qs").hide();
 			} else if(dataList.res == "0" || len_movierecord == "0") {
-				$('.pr_edit').hide();
+				$('#lqShowList').hide();
 				$("#bfjl-qs").show();
+//				console.log('sss');
 			}
 			var app = new Vue({
 				el: '#lqShowList',
@@ -77,6 +79,14 @@ function getrecordList(){
 }
 $(function() {
 	/*绑定数据*/
+	//加载时显示有无视频记录
+	if($(".pr_content li").length == 0) {
+		$("#bfjl-qs").show();
+		$(".pr_edit").hide();
+		$(".no-shop").hide();
+		$(".foot-all").hide();
+		$(".complete").hide();
+	}
 	//播放记录
 	getrecordList();
 	//单选
@@ -106,15 +116,6 @@ $(function() {
 			$(".del_num").text($("input[name='my-radio']:checked").length);
 		}
 	});
-	//加载时显示有无视频记录
-	if($(".pr_content li").length == 0) {
-		$("#bfjl-qs").show();
-		$(".pr_edit").hide();
-		$(".no-shop").hide();
-		$(".foot-all").hide();
-		$(".complete").hide();
-	}
-
 	//编辑
 	$(".pr_edit").on("click", function() {
 		$(".pr_edit").hide();
