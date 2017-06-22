@@ -176,3 +176,10 @@ var apiready = function() {
 };
 apiready();
 
+
+function openNewPage(name,uri){
+	api.openWin({
+		name:name,
+		url: uri
+	});
+}
