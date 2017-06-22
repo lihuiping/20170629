@@ -79,8 +79,9 @@ var token = function() {
 //	return 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhZG1pbiI6ZmFsc2UsImNsYWltcyI6bnVsbCwidWlkIjoiMTI5NCIsInYiOjEsImlhdCI6MTQ5NTc5MDA1OH0.T8cESgLZa9eX5TcErXNgMHb93xuHs9IGVsqubfpoJK4';
      var key="";
        user = $api.getStorage('user');
-      // alert(user.flag);
+       //alert(user.flag);
       if(user==undefined|| user==""){
+
       }else{
        return  user.flag;
        }
@@ -177,9 +178,9 @@ var apiready = function() {
 apiready();
 
 
-function openNewPage(name,uri){
-	api.openWin({
-		name:name,
-		url: uri
-	});
-}
+//function openNewPage(name,uri){
+//	api.openWin({
+//		name:name,
+//		url: uri
+//	});
+//}
