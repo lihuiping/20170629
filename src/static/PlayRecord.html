@@ -219,10 +219,6 @@
 									<p class='pr_li_right_top'>{{movierecord.name}}</p>
 									<p class='pr_li_right_down'>观看到{{movierecord.start_time}}</p>
 								</div>
-								<!--<div class='pr_li_right' v-if="movierecord.start_time == 0">
-									<p class='pr_li_right_top'>{{movierecord.name}}</p>
-									<p class='pr_li_right_down'>{{movierecord.start_time}}</p>
-								</div>-->
 								<a class='external' :href="getTitleHref(movierecord.movie_id)" v-if="movierecord.start_time != 0">
 									<div class='pr_li_play'>
 										<i class='icon icon-jixubofang'></i>
@@ -236,38 +232,6 @@
 									</div>
 								</a>
 							</a>
-							<!--<a :href="getTitleHref(movierecord.movie_id)" v-if="movierecord.type == 2">
-								<div class='pr_li_left'>
-									<img class='bf-img' :src="movierecord.cover" />
-									<span class="lqmovietime">00:00:00</span>
-								</div>
-								<div class='pr_li_right'>
-									<p class='pr_li_right_top'>{{movierecord.name}}</p>
-									<p class='pr_li_right_down'>观看结束</p>
-								</div>
-								<a class='external' :href="getTitleHref(movierecord.movie_id)">
-									<div class='pr_li_play'>
-										<i class='icon icon-chongxinbofang'></i>
-										<p style='color:#ccc;'>重新播放</p>
-									</div>
-								</a>
-							</a>
-							<a :href="getTitleHref(movierecord.movie_id)" v-if="movierecord.type == 0">
-								<div class='pr_li_left'>
-									<img class='bf-img' :src="movierecord.cover" />
-									<span class="lqmovietime">00:00:00</span>
-								</div>
-								<div class='pr_li_right'>
-									<p class='pr_li_right_top'>{{movierecord.name}}</p>
-									<p class='pr_li_right_down'>观看时长</p>
-								</div>
-								<a class='external' :href="getTitleHref(movierecord.movie_id)">
-									<div class='pr_li_play'>
-										<i class='icon '></i>
-										<p style='color:#ccc;'></p>
-									</div>
-								</a>
-							</a>-->
                         </div>
 					</li>
 				</ul>
