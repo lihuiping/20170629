@@ -341,7 +341,7 @@ function gundongloading() {
 		}, 500);
 	});
 };
-gundongloading();
+//gundongloading();
 
 //阻止IOS底部拖动
 function noscroll() {
