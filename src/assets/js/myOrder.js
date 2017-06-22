@@ -84,6 +84,8 @@ var orderList = new Vue({
 				orderList.orderList = datas;
 				if(datas.res == '1') {
 					_this.loadingFlag = false;
+				}else{
+					_this.loadingFlag = false;
 				}
 
 			});
