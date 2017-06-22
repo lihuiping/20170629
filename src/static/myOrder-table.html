@@ -10,7 +10,12 @@
 	<body>
 		<div class="page page-current">
 		
-			 @@include('../tpl/bar-nav.tpl',{ "title":"我的订单" }) 
+			 <!--@@include('../tpl/bar-nav.tpl',{ "title":"我的订单" })--> 
+			 <header class="bar bar-nav bdbt-none ad-bar" style="z-index: 1000;padding-top: 1.2rem;">
+				<a class="icon icon-left pull-left" href="javascript:history.go(-1)"></a>
+				<!--<a class="icon icon-refresh pull-right"></a>-->
+				<h1 class="title">我的订单</h1>
+			</header>
 			<div class="content myOrder znTop" style="bottom: 0;">
 				<div class="buttons-tab myOrder-tab">
 					<a href="#AllOrder" class="tabButton tab-link active button"><span>全部</span></a>
