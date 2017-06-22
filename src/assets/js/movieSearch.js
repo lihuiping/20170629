@@ -62,9 +62,9 @@ $("#sousuo-input").on('input', function() {
 		$("#ss-shanchu").show();
 		$("#ss-shanchu").click(function() {
 			$("#sousuo-input").val("");
-			$(".sousuo-list ul").empty();
+			$(".search-list a").remove();
 			$(".not-found-video").hide();
-			$(".clear-record").hide();
+			$(".search-record").show();
 		})
 		$.ajax({
 			type: "GET",
@@ -122,7 +122,7 @@ $("#sousuo-input").on('input', function() {
 					hisRecord();
 					$(".search-record").show();
 					$(".not-found-video").hide();
-//					$(".search-list").empty();
+					$(".search-list").empty();
 					if($("#listRecord a").html() == ""){
 						$("#listRecord a").css('border-top','none');
 					}
@@ -146,10 +146,9 @@ $("#sousuo-input").on('input', function() {
 	} else {
 		$(".not-found-video").hide();
 		$(".search-record").show();
-		$(".sousuo-list ul").html('');
+		$(".search-list").empty();
 	}
 });
-
 //!*封装添加搜索记录功能  (newRecord:str,当参数为空时为获取历史记录; num:记录数，默认为10条;)
 function addHisRecord(newRecord, num) {
 	var id = window.localStorage.getItem('id');
