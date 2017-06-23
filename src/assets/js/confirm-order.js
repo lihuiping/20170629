@@ -18,6 +18,7 @@ function getQueryString(name) {
 }
 var attrList = getQueryString('attr');
 
+var defId = getQueryString('id');
 //axios请求跨域  公用
 var header = {
 	'content-type': 'application/x-www-form-urlencoded'
@@ -50,9 +51,12 @@ var addressModel = new Vue({
 	methods: {
 		showMode: function() {
 			var _this = this;
-			axios.post(address_info[conf], transformRequest({
-				token: toke
-			})).then(function(response) {
+			axios.get(address_info[conf], {
+                params: {
+                	token:toke,
+                    id: defId
+                }
+            }).then(function(response) {
 				var datas = response.data;
 				_this.addList = datas;
 				if(datas.res == 0) {
