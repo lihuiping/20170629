@@ -156,6 +156,7 @@ var movieDatail = new Vue({
         },
         btn_comment: function(replyId,is_read) {
             var comment = $("#f_comment").val();
+            if(comment!= ""||comment==null){
             axios.get(add_comment[conf], {
                 params: {
                     program_id: movieID,
@@ -176,6 +177,9 @@ var movieDatail = new Vue({
                     $.toast("评论有问题了哦~");
                 }
             });
+        }else{
+             $.toast("请输入评论信息~");
+        }
         },
         moreFn: function(itemIndex,fabiao) {
             axios.get(get_comment[conf], {

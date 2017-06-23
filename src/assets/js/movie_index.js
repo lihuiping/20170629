@@ -25,6 +25,72 @@ $(".content").on("scroll", function() {
 });
 $(".content").trigger("scroll");
 
+
+
+var movieDatail = new Vue({
+	el: "#sy-movie-list",
+    data: {
+        hotList: [],
+        yxList:[],
+        wlList:[],
+        jdList:[],
+        loadingFlag: true,
+    },
+    mounted: function() {
+    	 this.showList();
+     },
+    methods: {
+         showList:function(){
+         	/*热映大片*/
+         	var _this = this;
+			axios.get(hotdata[conf]).then(function(res) {
+				var data = res.data;
+				if(data.res == 1) {
+					_this.hotList = data.data;
+					_this.loadingFlag = false;
+				} else {
+					$.toast("电影数据错误");
+					
+				}
+			});
+			/*院线热映*/
+			axios.get(yuxian_ry[conf]).then(function(res) {
+				var data = res.data;
+				if(data.res == 1) {
+					_this.yxList = data.data;
+					_this.loadingFlag = false;
+				} else {
+					$.toast("电影数据错误");
+				}
+			});
+           /*网络电影*/
+           axios.get(yuxian_ry[conf]).then(function(res) {
+				var data = res.data;
+				if(data.res == 1) {
+					_this.wlList = data.data;
+					_this.loadingFlag = false;
+				} else {
+					$.toast("电影数据错误");
+				}
+			});
+           /*经典影院*/
+           axios.get(jd_movie[conf]).then(function(res) {
+				var data = res.data;
+				if(data.res == 1) {
+					_this.jdList = data.data;
+					_this.loadingFlag = false;
+				} else {
+					$.toast("电影数据错误");
+				}
+			});
+         },
+         getTitleHref:function(val){
+         	return 'movie-content.html?id=' + val
+         }
+     },
+})
+
+
 // banner图
 $.ajax({       
 	type: "GET",
@@ -46,130 +112,7 @@ $.ajax({       
 		});     
 	} 
 });
-/*热线大片*/
-var goods = new Vue({
-	el: "#hot-list",
-	data: {
-		goodslist: [],
-		loadingFlag: true,
-	},
-	mounted: function() {
-		//初始化加载数据
-		var _this = this;
-		_this.showGoods();
-	},
-	methods: {
-		showGoods: function() {
-			var _this = this;
-			axios.get(hotdata[conf]).then(function(res) {
-				var data = res.data;
-				if(data.res == 1) {
-					_this.goodslist = data.data;
-					_this.loadingFlag = false;
-				} else {
-					$.toast("商品数据错误");
-				}
-			});
-		},
-		getTitleHref: function(val) {
-//  		return 'goods-detail.html?id=' + val
-			return 'movie-content.html?id='+val
-		},
-	}
-});
-/*院线热映*/
-var yx_ry = new Vue({
-	el: "#yx-list",
-	data: {
-		goodslist: [],
-		loadingFlag: true,
-	},
-	mounted: function() {
-		//初始化加载数据
-		var _this = this;
-		_this.showGoods();
-	},
-	methods: {
-		showGoods: function() {
-			var _this = this;
-			axios.get(yuxian_ry[conf]).then(function(res) {
-				var data = res.data;
-				if(data.res == 1) {
-					_this.goodslist = data.data;
-					_this.loadingFlag = false;
-				} else {
-					$.toast("商品数据错误");
-				}
-			});
-		},
-		getTitleHref: function(val) {
-			//return 'goods-detail.html?id=' + val
-			return 'movie-content.html?id='+val
-		},
-	}
-});
-/*网络电影*/
-var wl_movie = new Vue({
-	el: "#wl_movie",
-	data: {
-		goodslist: [],
-		loadingFlag: true,
-	},
-	mounted: function() {
-		//初始化加载数据
-		var _this = this;
-		_this.showGoods();
-	},
-	methods: {
-		showGoods: function() {
-			var _this = this;
-			axios.get(yuxian_ry[conf]).then(function(res) {
-				var data = res.data;
-				if(data.res == 1) {
-					_this.goodslist = data.data;
-					_this.loadingFlag = false;
-				} else {
-					$.toast("商品数据错误");
-				}
-			});
-		},
-		getTitleHref: function(val) {
-			//return 'goods-detail.html?id=' + val
-			return 'movie-content.html?id='+val
-		},
-	}
-});
-/*经典影院*/
-var jd_movie = new Vue({
-	el: "#jd_movie",
-	data: {
-		goodslist: [],
-		loadingFlag: true,
-	},
-	mounted: function() {
-		//初始化加载数据
-		var _this = this;
-		_this.showGoods();
-	},
-	methods: {
-		showGoods: function() {
-			var _this = this;
-			axios.get(jd_movie[conf]).then(function(res) {
-				var data = res.data;
-				if(data.res == 1) {
-					_this.goodslist = data.data;
-					_this.loadingFlag = false;
-				} else {
-					$.toast("商品数据错误");
-				}
-			});
-		},
-		getTitleHref: function(val) {
-		//	return 'goods-detail.html?id=' + val
-		return 'movie-content.html?id='+val
-		},
-	}
-}); /*至尊独享*/
+/*至尊独享*/
 /*首页至尊独享*/
 var zzdx_movie = new Vue({
 	el: "#zzdx_movie",
