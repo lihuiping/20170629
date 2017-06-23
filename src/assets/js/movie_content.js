@@ -371,7 +371,7 @@ function qqshareNews_QZone() { //分享新闻到QQ空间
 //          console.log(res.data);
 //          return false;
             qq.shareNews({
-                url: 'movie-content.html?'+ movieID, //'movie-content.html?'+ movieId
+                url: 'https://www.baidu.com', //baseUrl()+'/html/movie-content.html?id='+ movieID
                 title: res.data.name,
                 description: res.data.content,
                 imgUrl: res.data.url_cover,
