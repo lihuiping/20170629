@@ -3,6 +3,11 @@
 
 	<head>
 		@@include('../tpl/header.tpl',{ "title":"购票" })
+		<style type="text/css">
+			.butTic-page .city_area_title span:nth-child(2){
+				margin-top: 0.6rem;
+			}
+		</style>
 	</head>
 	<body>
 		<div class="page scroll page-current page-inited butTic-page" id="goupiao">
@@ -45,7 +50,7 @@
 					<div class="gp_citypicker gp_citypicker_fix" style="display:none;">
 						<div class="content city_area_content">
 							<div class="city_area_title">
-								<span>更换城市</span><span class="iconfont icon-guanbi1 cta_close"></span>
+								<span>更换城市</span><span class="icon icon-guanbi cta_close"></span>
 							</div>
 							<div class="city_area_selectd">
 								<span></span>

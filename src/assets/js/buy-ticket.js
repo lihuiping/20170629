@@ -228,7 +228,7 @@ if(sessionStorage.getItem('getCityLists') == null) {
 //滚动加载
 function gundongloading() {
 	var loading = false;
-	$(document).on('infinite', '.infinite-scroll', function() {
+//	$(document).on('infinite', '.infinite-scroll', function() {
 		// 如果正在加载，则退出
 		if(loading) return;
 		// 设置flag
@@ -258,7 +258,7 @@ function gundongloading() {
 				getmovieList1(currentpage2);
 			}
 		}, 500);
-	});
+//	});
 };
 
 gundongloading();
