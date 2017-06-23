@@ -317,10 +317,7 @@ $(document).on("pageInit", "#editmessage", function(e, id, page) {
 		$("#anquanmima").html(result.data.isSafe == 1 ? "去修改" : "去设置");
 		var phone = result.data.mobile.substr(0, 3) + "****" + result.data.mobile.substr(7);
 		$("#mobilephone").html(phone);
-		$('#brdate').date();
-		$('#brdate').on("click", function(e) {
-			e.preventDefault();
-		})
+		
 
 	});
 	$("#megenger").val("女");
