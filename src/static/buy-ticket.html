@@ -1,78 +1,72 @@
 <!DOCTYPE html>
-<html>
+<html class="pixel-ratio-1">
+
 	<head>
 		@@include('../tpl/header.tpl',{ "title":"购票" })
-		<style>
-			.OrderDetailLeft_des_fix {
-				width: 54%;
-			}
-		</style>
 	</head>
 	<body>
 		<div class="page scroll page-current page-inited butTic-page" id="goupiao">
-			@@include('../tpl/bar-nav.tpl',{ "title":"购票" })
+			@@include('../tpl/bar-navIndex.tpl',{ "title":"购票" })
 			<div class="content znTop">
-			<div class="ip-scroll">
-				<div class="dysuo dy-sousuo gp_dy_sousuo">
-					
-					<div class="dysu_left">
-						<span class="gp_changeaddress">上海</span><span class="iconfont icon-down gp_openAddress"></span>
-					</div>
-					<div class="dysu_right">
-						<i class="iconfont icon-sousuo" id="lb-sousuo"></i>
-						<input placeholder="搜索" id="goupiao-input" type="text">
-					</div>
-				</div>
-				<div class="gp_box_title gp_box_title_fix">
-					<div class="gp_box_title_left gp_box_title_right_on">正在上映</div>
-					<div class="gp_box_title_right">即将上映</div>
-				</div>
-				<div class="gp_box gp_box_fix">
-					<!--即将上映-->
-					<div class="content infinite-scroll infinite-scroll_2" data-distance="100" style="display: none;">
-						<div class="gp_box_list gp_box_list_fix gp_box_list1 list-block" style="display: none;">
-							<ul class="list-container">
-							</ul>
-							<!--<div class="infinite-scroll-preloader">
-								<div class="preloader"></div>
-							</div>-->
+				<div class="ip-scroll">
+					<div class="dysuo dy-sousuo gp_dy_sousuo">
+						<div class="dysu_left">
+							<span class="gp_changeaddress"></span><span class="iconfont icon-down gp_openAddress"></span>
+						</div>
+						<div class="dysu_right">
+							<i class="iconfont icon-sousuo" id="lb-sousuo"></i>
+							<input placeholder="搜索" id="goupiao-input" type="text">
 						</div>
 					</div>
-					<!--正在上映-->
-					<div class="content infinite-scroll infinite-scroll_1" data-distance="100" style="display: block;">
-						<div class="gp_box_list gp_box_list_fix gp_box_list2 list-block" style="display: block;">
-							<ul class="list-container">
-							</ul>
-							<!--<div class="infinite-scroll-preloader">
-								<div class="preloader"></div>
-							</div>-->
-						</div>
+					<div class="gp_box_title gp_box_title_fix">
+						<div class="gp_box_title_left gp_box_title_right_on">正在上映</div>
+						<div class="gp_box_title_right">即将上映</div>
 					</div>
-				</div>
-				<div class="gp_citypicker gp_citypicker_fix" style="display:none;">
-					<div class="content city_area_content">
-						<div class="city_area_title">
-							<span>更换城市</span><span class="iconfont icon-guanbi1 cta_close"></span>
-						</div>
-						<div class="city_area_selectd">
-							<span>上海</span>
-							<span>当前定位城市</span>
-						</div>
-						<div class="city_area_hot">
-							<p class="city_area_hot_title">热门</p>
-							<div class="city_area_hot_list">
-								<ul>
+					<div class="gp_box gp_box_fix">
+						<div class="content infinite-scroll infinite-scroll_2" data-distance="100" style="display: none;">
+							<div class="gp_box_list gp_box_list_fix gp_box_list1 list-block" style="display: none;">
+								<ul class="list-container">
 								</ul>
+								<!--<div class="infinite-scroll-preloader">
+								<div class="preloader"></div>
+							</div>-->
+							</div>
+						</div>
+						<div class="content infinite-scroll infinite-scroll_1" data-distance="100" style="display: block;">
+							<div class="gp_box_list gp_box_list_fix gp_box_list2 list-block" style="display: block;">
+								<ul class="list-container">
+								</ul>
+								<!--<div class="infinite-scroll-preloader">
+								<div class="preloader"></div>
+							</div>-->
+							</div>
+						</div>
+					</div>
+					<div class="gp_citypicker gp_citypicker_fix" style="display:none;">
+						<div class="content city_area_content">
+							<div class="city_area_title">
+								<span>更换城市</span><span class="iconfont icon-guanbi1 cta_close"></span>
+							</div>
+							<div class="city_area_selectd">
+								<span>上海</span>
+								<span>当前定位城市</span>
+							</div>
+							<div class="city_area_hot">
+								<p class="city_area_hot_title">热门</p>
+								<div class="city_area_hot_list">
+									<ul>
+									</ul>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			</div>
 		</div>
-		@@include('../tpl/footer.tpl',{"ticket":"active","ticketc":"icon-ticket-active"})
+		@@include('../tpl/footer.tpl',{"video":"active","videoc":"icon-video-active"})
 		<script type="text/javascript" src="lib/hprose.js" charset="utf-8"></script>
 		<script type="text/javascript" src="lib/imgload.js" charset="utf-8"></script>
 		<script type="text/javascript" src="assets/js/buy-ticket.js" charset="utf-8"></script>
 	</body>
+
 </html>
