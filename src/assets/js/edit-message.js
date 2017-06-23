@@ -320,7 +320,7 @@ $(document).on("pageInit", "#editmessage", function(e, id, page) {
 		
 
 	});
-	$("#megenger").val("女");
+//	$("#megenger").val("女");
 	//选择性别
 	$("#megenger").on("click", function(e) {
 
