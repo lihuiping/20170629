@@ -162,7 +162,6 @@ function recorddel() {
 					cache: false, //默认值true
 					data: {
 						ids: checkList,
-//						token: token()
 					},
 					cache: false, //默认值true
 					        //dataType :   'jsonp',
