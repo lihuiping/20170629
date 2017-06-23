@@ -384,7 +384,6 @@ $("#sub_order").on('click', function() {
 		return false;
 
 	} else {
-		vm.loadingFlag = true;
 		//提交订单处理
 		$.ajax({
 			type: "post",
@@ -410,8 +409,6 @@ $("#sub_order").on('click', function() {
 				};
 
 				if(datas.res == 1) {
-					vm.loadingFlag = false;
-
 					//七彩币支付跳转
 					if(datas.data.trade_type == 1) {
 						$.ajax({
@@ -430,6 +427,7 @@ $("#sub_order").on('click', function() {
 								} else {
 									$.toast(datas.msg);
 								}
+								
 							}
 						});
 
