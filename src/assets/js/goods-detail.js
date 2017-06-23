@@ -767,18 +767,15 @@ $(".fixed-wrap").on('click', ".buttons-tab", function(e) {
 
 })
 
-
-
-//分享
+//分享功能
 //获取地址参数
 function GetQueryString(name) {
-    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-    var r = window.location.search.substr(1).match(reg);
-    if (r != null) return unescape(r[2]);
-    return null;
+	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+	var r = window.location.search.substr(1).match(reg);
+	if(r != null) return unescape(r[2]);
+	return null;
 }
 var goodsShareID = GetQueryString('id');
-
 
 var qq;
 var wx;
@@ -806,19 +803,19 @@ function qqshareNews_QFriend() { //分享新闻qq给好友
 
 function qqshareNews_QZone() { //分享新闻到QQ空间
 	$.ajax({
-		type:"get",
-		url:"http://shop.7cai.tv/index.php?r=goods&m=share",
-		data:{
-			goods_id:goodsShareID,
-			token : tokens
+		type: "get",
+		url: "http://shop.7cai.tv/index.php?r=goods&m=share",
+		data: {
+			goods_id: goodsShareID,
+			token: tokens
 		},
-		async:true,
-		success: function(res){
+		async: true,
+		success: function(res) {
 			qq.shareNews({
 				url: 'http://www.apicloud.com',
 				title: res.data.title,
 				description: res.data.content,
-				imgUrl:res.data.img_url,
+				imgUrl: res.data.img_url,
 				type: "QZone"
 			}, function(ret, err) {
 				if(ret.status) {
@@ -833,20 +830,20 @@ function qqshareNews_QZone() { //分享新闻到QQ空间
 
 function shareWebpage(Vscene) { //分享微信好友,朋友圈 . 参数: session（会话） timeline（朋友圈）favorite（收藏）
 	$.ajax({
-		type:"get",
-		url:"http://shop.7cai.tv/index.php?r=goods&m=share",
-		data:{
-			"goods_id":goodsShareID,
-			"token" : tokens
+		type: "get",
+		url: "http://shop.7cai.tv/index.php?r=goods&m=share",
+		data: {
+			"goods_id": goodsShareID,
+			"token": tokens
 		},
-		async:true,
-		success: function(res){
+		async: true,
+		success: function(res) {
 			wx.shareWebpage({
 				apiKey: 'wx64c1ec0115c22f7f',
 				scene: Vscene,
-				title:res.data.title,
+				title: res.data.title,
 				description: res.data.content,
-				thumb:res.data.img,
+				thumb: res.data.img,
 				contentUrl: 'http://www.apicloud.com'
 			}, function(ret, err) {
 				if(ret.status) {
@@ -857,7 +854,15 @@ function shareWebpage(Vscene) { //分享微信好友,朋友圈 . 参数: session
 			});
 		}
 	});
-	
 }
+
+//进店按钮
+function goInShop() {
+	layer.open({
+		content: '暂未开放,敬请期待',
+		skin: 'msg',
+		time: 2, //2秒后自动关闭
+	});
+};
 
 $.init();
