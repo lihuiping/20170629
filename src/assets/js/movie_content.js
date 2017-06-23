@@ -28,6 +28,7 @@ function transformRequest(data) {
     return ret;
 };
 /*获取电影详情页的数据*/
+
 var movieDatail = new Vue({
     el: "#VideoPlay",
     data: {
@@ -55,6 +56,7 @@ var movieDatail = new Vue({
         }else{
              this.showMovie();
              this.init();
+        
         }
        
     },
@@ -270,6 +272,7 @@ function video(movieurl, movieTitle, movieCover,istrytime,start_time) {
         }
     });
     player.onTime(function(event) {
+        $(".jw-preview").hide();
       if (istrytime !=0 && event.position > 10) {
             player.pause();
             $(".bg_video").addClass('bg_video_show');
@@ -287,8 +290,11 @@ function video(movieurl, movieTitle, movieCover,istrytime,start_time) {
             });
 
     });
+    player.onBuffer(function(event){ 
+         $(".jw-preview").hide();
+});
     player.onComplete(function(event){ 
-       alert("onComplete");
+       //alert("onComplete");
 });
 }
 /*滑动的效果*/
