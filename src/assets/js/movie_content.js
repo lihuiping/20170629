@@ -371,7 +371,7 @@ function qqshareNews_QZone() { //分享新闻到QQ空间
 //          console.log(res.data);
 //          return false;
             qq.shareNews({
-                url: 'http://www.apicloud.com', //'movie-content.html?'+ movieId
+                url: 'movie-content.html?'+ movieID, //'movie-content.html?'+ movieId
                 title: res.data.name,
                 description: res.data.content,
                 imgUrl: res.data.url_cover,
