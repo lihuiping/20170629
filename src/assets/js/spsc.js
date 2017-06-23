@@ -182,7 +182,13 @@ function moviedel() {
 					        //dataType :   'jsonp',
 					          // jsonp: "jsoncallback",
 					success: function(data) {
-						window.location.reload(); 
+//						console.log(data)
+						if(data.res == "1" || data.msg == "取消收藏成功") {
+							$('#getpwd').hide();
+//							$('#getpwd').show();
+							$("#bfjl-qs").show();
+						}
+//						window.location.reload(); 
 					},
 					error: function(data) {
 						layer.open({
