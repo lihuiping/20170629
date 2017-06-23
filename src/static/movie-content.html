@@ -120,7 +120,7 @@
                     <i class="iconfont icon-guanbi vpl_remonForyou_close" @click="close_tj()"></i> </div>
                 <div class="vpl_remonForyou_list vpl_remonForyou_list2">
                     <ul>
-                       <li v-for="(item, index) in movielist.data" :id="index" v-if="index < 5" v-cloak>
+                       <li v-for="(item, index) in movielist.data" :id="index"  v-cloak>
                                 <a :href="'movie-content.html?id='+item.id" class="external color-default mytouch">
                                 <div class="vpl_remonForyou_list_left"> <img :src="item.cover" class="tuijian-pic" style="width: 100%;height: 100%;" /> </div>
                                 <div class="vpl_remonForyou_list_right">

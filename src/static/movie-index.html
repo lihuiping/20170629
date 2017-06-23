@@ -1,165 +1,146 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		@@include('../tpl/header.tpl',{ "title":"中益七彩" })
-		<link rel="stylesheet" href="assets/css/swiper.min.css" />
-	</head>
 
-	<body>
-		<div class="page-group">
-			<div class="page page-current moveIndex" id="router">
-				<!--头部logo和搜索框 start-->
-				
-				<div class="content pdbt">
-					<div class="shouye-head movieindex">
-					<div class="shouyelogo">
-						<img src="assets/images/l-logo.png" alt="" />
-						<a href="movie-search.html" class="external shouye-a4" id="shouye-ss">
-							<div class="shouye-sousuo">
-								<i class="iconfont icon-sousuo"></i> 全网搜
-							</div>
-						</a>
-						<!--<div class="shouye-fenye syhead-fy">
+<head>
+    @@include('../tpl/header.tpl',{ "title":"中益七彩" })
+    <link rel="stylesheet" href="assets/css/swiper.min.css" />
+</head>
+
+<body>
+    <div class="page-group">
+        <div class="page page-current moveIndex" id="router">
+            <!--头部logo和搜索框 start-->
+            <div class="content pdbt">
+                <div class="shouye-head movieindex">
+                    <div class="shouyelogo">
+                        <img src="assets/images/l-logo.png" alt="" />
+                        <a href="movie-search.html" class="external shouye-a4" id="shouye-ss">
+                            <div class="shouye-sousuo">
+                                <i class="iconfont icon-sousuo"></i> 全网搜
+                            </div>
+                        </a>
+                        <!--<div class="shouye-fenye syhead-fy">
 							<div class="shouye-active">
 								<i class="iconfont icon-jingxuan"></i>
 								<span>精选</span>
 							</div>							
 						</div>-->
-						<span class="r_header">
+                        <span class="r_header">
 <!--<a class="external shouye-a4" href="/plus/list.php?tid=9" id="ss-tubiao"><i class="iconfont icon-sousuo"></i></a>-->
 <a class="shouye-a4" href="PlayRecord.html"><i class="iconfont icon-bofangjilu2"></i></a>
 </span>
-					</div>
-				</div>
-					<!-- banner 添加-->
-					<div class="swiper-container movie-banner" id="index-banner" style="padding-top: 1rem;">
-						
-						<div class="swiper-wrapper">
-							
-							<div class="swiper-slide" v-for="item in data"  v-cloak>
-								
-								<a href="javascript:;"><img :src="item.img">
-								</a>
-							</div>
-						</div>
-						<div class="swiper-pagination"></div>
-					</div>
-					<!--至尊独享start-->
-					<div class="sy-content" id="zzdx_movie"  >
-						  <!--<img src="assets/images/loading.gif" v-if="loadingFlag" class="loading-img"/>-->
-					  <div  v-for="(item, index) in goodslist"  v-if="index < 2" v-cloak>
-						<div class="content-top">
-							<!--<i class="iconfont icon-huangguan"></i>--><img class="xiaoLogo" src="./assets/images/xaioLogo.png"/><span>至尊独享 </span>
-							<a class="external" :href="'zhizunduxiang.html?id='+item.id"><span> 查看更多&nbsp;<i class="iconfont icon-right go-right"></i></span></a>
-						</div>
-						<a :href="'movie-content.html?id='+item.id" class="external">
-							<img class="zzdx-coverPic"  :src="item.cover" alt="">
-						</a>
-						<div class="content-bottom" style="padding-bottom: .2rem;">
-							<h4>{{item.name}}</h4>
-							<p>{{item.title}}</p>
-						</div>
-						</div>
-					
-					</div>
-					<!--至尊独享end-->
-					<!-- 列表 -->
-					<div class="sy-content">
-						<div class="content-top">
-							<img class="xiaoLogo" src="./assets/images/xaioLogo.png"/>
-							<span>热映大片</span><!--<span></span>-->
-							<a class="external color-gengduo" href="movie-list.html"> <span>查看更多&nbsp; <i class="iconfont  icon-right go-right"></i></span></a>
-						</div>
-						<div class="content-body" id="hot-list">
-							<div class="item" v-for="(item, index) in goodslist.list" :id="index" v-if="index < 6"  v-cloak>
-								<a :href="getTitleHref(item.id)" :data-id="item.id" class="external">
-									<img  class="lazy"  :data-src="item.cover" src="assets/images/sp-jiazai.jpg" alt=""></a>
-								<div class="content-bottom">
-									<h4>{{item.name}}</h4>
-									<p>{{item.title}}</p>
-								</div>
-							</div>
-							
-						</div>
-						<!--<div class="lookmore2">
-							<a class="external color-gengduo" href="movie-list.html"> 查看更多 <i class="iconfont icon-yingdaicon10"></i></a>
-						</div>-->
-					</div>
-					<div class="sy-content">
-						<div class="content-top">
-							<img class="xiaoLogo" src="./assets/images/xaioLogo.png"/>
-							<span>院线热映</span>
-							<a class="external color-gengduo" href="movie-list.html"> <span>查看更多&nbsp; <i class="iconfont  icon-right go-right"></i></span></a>
-						</div>
-						<div class="content-body" id="yx-list">
-							<div class="item" v-for="(item, index) in goodslist.list" :id="index" v-if="index < 6"  v-cloak>
-								<a :href="getTitleHref(item.id)" :data-id="item.id" class="external">
-									<img  class="lazy"  :data-src="item.cover" src="assets/images/sp-jiazai.jpg" alt=""></a>
-								<div class="content-bottom">
-									<h4>{{item.name}}</h4>
-									<p>{{item.name}}</p>
-								</div>
-							</div>
-						
-						</div>
-						<!--<div class="lookmore2">
-							<a class="external color-gengduo" href="movie-list.html"> 查看更多 <i class="iconfont icon-yingdaicon10"></i></a>
-						</div>-->
-					</div>
-							<div class="sy-content">
-						<div class="content-top">
-							<img class="xiaoLogo" src="./assets/images/xaioLogo.png"/>
-							<span>网络电影</span>
-							<a class="external color-gengduo" href="movie-list.html"> <span>查看更多&nbsp; <i class="iconfont  icon-right go-right"></i></span></a>
-						</div>
-						<div class="content-body" id="wl_movie">
-							<div class="item" v-for="(item, index) in goodslist.list" :id="index" v-if="index < 6"  v-cloak>
-								<a :href="getTitleHref(item.id)" :data-id="item.id" class="external">
-									<img  class="lazy"  :data-src="item.cover" src="assets/images/sp-jiazai.jpg" alt=""></a>
-								<div class="content-bottom">
-									<h4>{{item.name}}</h4>
-									<p>{{item.name}}</p>
-								</div>
-							</div>
-						
-						</div>
-						<!--<div class="lookmore2">
-							<a class="external color-gengduo" href="movie-list.html"> 查看更多 <i class="iconfont icon-yingdaicon10"></i></a>
-						</div>-->
-					</div>
-							<div class="sy-content">
-						<div class="content-top">
-							<img class="xiaoLogo" src="./assets/images/xaioLogo.png"/>
-							<span>经典影院</span>
-							<a class="external color-gengduo" href="movie-list.html"> <span>查看更多&nbsp; <i class="iconfont  icon-right go-right"></i></span></a>
-						</div>
-						<div class="content-body" id="jd_movie">
-							<div class="item" v-for="(item, index) in goodslist.list" :id="index" v-if="index < 6"  v-cloak>
-								<a :href="getTitleHref(item.id)" :data-id="item.id" class="external">
-									<img  class="lazy"  :data-src="item.cover" src="assets/images/sp-jiazai.jpg" alt=""></a>
-								<div class="content-bottom">
-									<h4>{{item.name}}</h4>
-									<p>{{item.name}}</p>
-								</div>
-							</div>
-						
-						</div>
-						<!--<div class="lookmore2">
-							<a class="external color-gengduo" href="movie-list.html"> 查看更多 <i class="iconfont icon-yingdaicon10"></i></a>
-						</div>-->
-					</div>
-					
-					<div class="buttom-logo">
-						<img src="assets/images/dibulogo.png" alt="" />
-					</div>
-				</div>
-			</div>
-		</div>
-		
-		@@include('../tpl/footer.tpl',{"video":"active","videoc":"icon-video-active"})
-		<script src="lib/swiper/js/swiper.min.js"></script>
-		<script src="assets/js/movie_index.js"></script>
-		<script src="assets/js/ifLogin.js" type="text/javascript" charset="utf-8"></script>
-	</body>
+                    </div>
+                </div>
+                <!-- banner 添加-->
+                <div class="swiper-container movie-banner" id="index-banner" style="padding-top: 1rem;">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide" v-for="item in data" v-cloak>
+                            <a href="javascript:;"><img :src="item.img">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+                <!--至尊独享start-->
+                <div class="sy-content" id="zzdx_movie">
+                    <!--<img src="assets/images/loading.gif" v-if="loadingFlag" class="loading-img"/>-->
+                    <div v-for="(item, index) in goodslist" v-if="index < 2" v-cloak>
+                        <div class="content-top">
+                            <!--<i class="iconfont icon-huangguan"></i>--><img class="xiaoLogo" src="./assets/images/xaioLogo.png" /><span>至尊独享 </span>
+                            <a class="external" :href="'zhizunduxiang.html?id='+item.id"><span> 查看更多&nbsp;<i class="iconfont icon-right go-right"></i></span></a>
+                        </div>
+                        <a :href="'movie-content.html?id='+item.id" class="external">
+                            <img class="zzdx-coverPic" :src="item.cover" alt="">
+                        </a>
+                        <div class="content-bottom" style="padding-bottom: .2rem;">
+                            <h4>{{item.name}}</h4>
+                            <p>{{item.title}}</p>
+                        </div>
+                    </div>
+                </div>
+                <!--至尊独享end-->
+                <!-- 列表 -->
+                <div id="sy-movie-list">   
+                <img src="assets/images/shipin-bg.gif" v-if="loadingFlag" class="loading-img"/>
+                <div class="sy-content" v-if="!loadingFlag">
+                    <div class="content-top">
+                        <img class="xiaoLogo" src="./assets/images/xaioLogo.png" />
+                        <span>热映大片</span>   
+                        <a class="external color-gengduo" href="movie-list.html?type=1"> <span>查看更多&nbsp; <i class="iconfont  icon-right go-right"></i></span></a>
+                    </div>
+                    <div class="content-body">
+                        <div class="item" v-for="(item, index) in hotList.list" :id="index" v-if="index < 6" v-cloak>
+                            <a :href="getTitleHref(item.id)" :data-id="item.id" class="external">
+                                <img class="lazy" :data-src="item.cover" src="assets/images/sp-jiazai.jpg" alt=""></a>
+                            <div class="content-bottom">
+                                <h4>{{item.name}}</h4>
+                                <p>{{item.title}}</p>
+                            </div>
+                        </div>
+                    </div>    
+                </div>
+                <div class="sy-content" v-if="!loadingFlag">
+                    <div class="content-top">
+                        <img class="xiaoLogo" src="./assets/images/xaioLogo.png" />
+                        <span>院线热映</span>
+                        <a class="external color-gengduo" href="movie-list.html?type=2"> <span>查看更多&nbsp; <i class="iconfont  icon-right go-right"></i></span></a>
+                    </div>
+                    <div class="content-body">
+                        <div class="item" v-for="(item, index) in yxList.list" :id="index" v-if="index < 6" v-cloak>
+                            <a :href="getTitleHref(item.id)" :data-id="item.id" class="external">
+                                <img class="lazy" :data-src="item.cover" src="assets/images/sp-jiazai.jpg" alt=""></a>
+                            <div class="content-bottom">
+                                <h4>{{item.name}}</h4>
+                                <p>{{item.name}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sy-content" v-if="!loadingFlag">
+                    <div class="content-top">
+                        <img class="xiaoLogo" src="./assets/images/xaioLogo.png" />
+                        <span>网络电影</span>
+                        <a class="external color-gengduo" href="movie-list.html?type=3"> <span>查看更多&nbsp; <i class="iconfont  icon-right go-right"></i></span></a>
+                    </div>
+                    <div class="content-body">
+                        <div class="item" v-for="(item, index) in wlList.list" :id="index" v-if="index < 6" v-cloak>
+                            <a :href="getTitleHref(item.id)" :data-id="item.id" class="external">
+                                <img class="lazy" :data-src="item.cover" src="assets/images/sp-jiazai.jpg" alt=""></a>
+                            <div class="content-bottom">
+                                <h4>{{item.name}}</h4>
+                                <p>{{item.name}}</p>
+                            </div>
+                        </div>
+                    </div>            
+                </div>
+                <div class="sy-content" v-if="!loadingFlag">
+                    <div class="content-top">
+                        <img class="xiaoLogo" src="./assets/images/xaioLogo.png" />
+                        <span>经典影院</span>
+                        <a class="external color-gengduo" href="movie-list.html?type=4"> <span>查看更多&nbsp; <i class="iconfont  icon-right go-right"></i></span></a>
+                    </div>
+                    <div class="content-body" id="jd_movie">
+                        <div class="item" v-for="(item, index) in jdList.list" :id="index" v-if="index < 6" v-cloak>
+                            <a :href="getTitleHref(item.id)" :data-id="item.id" class="external">
+                                <img class="lazy" :data-src="item.cover" src="assets/images/sp-jiazai.jpg" alt=""></a>
+                            <div class="content-bottom">
+                                <h4>{{item.name}}</h4>
+                                <p>{{item.name}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <div class="buttom-logo">
+                    <img src="assets/images/dibulogo.png" alt="" />
+                </div>
+            </div>
+        </div>
+    </div>
+    @@include('../tpl/footer.tpl',{"video":"active","videoc":"icon-video-active"})
+    <script src="lib/swiper/js/swiper.min.js"></script>
+    <script src="assets/js/movie_index.js"></script>
+    <script src="assets/js/ifLogin.js" type="text/javascript" charset="utf-8"></script>
+</body>
 
 </html>
