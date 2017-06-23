@@ -11,6 +11,7 @@
     }
 }
 
+//公共头部
 .bar {
     &.ad-bar {
         background: #f6530b;
@@ -26,6 +27,30 @@
         }
     }
 }
+//主页面的公共头部
+.bar {
+    &.barIndex {
+        background: #f6530b;
+        background-image: $ln-bg;
+        color: #fff;
+        height: 3.5rem;
+        padding-top: 1rem;
+        h1 {
+            color: #fff;
+            position: absolute;
+            display: block;
+            width: 100%;
+            padding: 0;
+            margin: 0 -.5rem;
+            font-size: .85rem;
+            font-weight: 500;
+            line-height: 2.5rem;
+            text-align: center;
+            white-space: nowrap;
+            }
+        }
+    }
+
 
 //首页头部logo和搜索框
 .shouye-head {

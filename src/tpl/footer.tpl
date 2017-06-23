@@ -1,5 +1,5 @@
 <!--footer bar-->
-<!--<nav class="bar bar-tab pub-bar">
+<nav class="bar bar-tab pub-bar">
     <a class="tab-item  @@video" onclick="openNewPage('shouye','movie-index.html')" data-class="icon-video">
       <span class="icon icon-video @@videoc video"></span>
       <span class="tab-label">首页</span>
@@ -21,9 +21,9 @@
       <span class="icon icon-user @@centerc"></span>
       <span class="tab-label">我的</span>
     </a>
-  </nav>-->
+  </nav>
   	
-  	<nav class="bar bar-tab pub-bar">
+  	<!--<nav class="bar bar-tab pub-bar">
     <a class="tab-item  @@video" href="movie-index.html" data-class="icon-video">
       <span class="icon icon-video @@videoc video"></span>
       <span class="tab-label">首页</span>
@@ -46,4 +46,4 @@
       <span class="tab-label">我的</span>
     </a>
   </nav>
-  
+  -->
