@@ -54,16 +54,21 @@ function getrecordList(){
 		       dataType :   'json',
 		success: function(json) {           
 			dataList = json;
-//			console.log(dataList);
+			console.log(dataList.data.length);
 			var len_movierecord = $(".lqMovierecord li").length;
 //			$("#bfjl-qs").show();
-			if(len_movierecord > "1" || dataList.data.length != "0") {
-				$('#lqShowList').show();
-				$("#bfjl-qs").hide();
-			} else if(dataList.res == "1" || dataList.data.length == "0") {
-				$('#lqShowList').hide();
+			if(dataList.res == "1" || dataList.data.length == "0") {
 				$("#bfjl-qs").show();
+				$('.pr_edit').hide();
+				$('#lqShowList').hide();
 //				console.log('sss');
+			} else if (len_movierecord > "1" || dataList.data.length > "0"){
+				$('#lqShowList').show();
+				$('.pr_edit').show();
+				$("#bfjl-qs").hide();
+			}else if(dataList.res == "0" || dataList.msg == '无权限'){
+				$("#bfjl-qs").show();
+				$('#lqShowList').hide();
 			}
 			var app = new Vue({
 				el: '#lqShowList',
