@@ -35,7 +35,7 @@
                 <div class="swiper-container movie-banner" id="index-banner" style="padding-top: 1rem;">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide" v-for="item in data" v-cloak>
-                            <a href="javascript:;"><img :src="item.img">
+                            <a :href="'movie-content.html?id='+item.mid"><img :src="item.img">
                             </a>
                         </div>
                     </div>
