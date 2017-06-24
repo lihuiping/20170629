@@ -312,7 +312,7 @@ $(document).on("pageInit", "#editmessage", function(e, id, page) {
 		var time = getLocalTime(result.data.birthday);
 		Cache.set("issafe", result.data.isSafe);
 		var touxiang = result.data.headimg ? result.data.headimg : "assets/images/tx-120.png";
-		$("#mytouxiang-div").append("<img style='width: 3rem; height:3rem;border-radius:50%;' id='my-touxiang' src='http://img.7cai.tv/" + touxiang + "''>");
+		$("#mytouxiang-div").append("<img style='width: 3rem; height:3rem;border-radius:50%;' id='my-touxiang' src="+touxiang+">");
 		$("#mename").html(result.data.username ? result.data.username : result.data.mobile);
 		$("#megenger").val(parseInt(result.data.sex) ? "女" : "男");
 		$("#isAuth").html(parseInt(result.data.isAuth) ? "已认证" : "未认证");
@@ -403,12 +403,24 @@ $(document).on("pageInit", "#editmessage", function(e, id, page) {
 					targetHeight: 100,
 					saveToPhotoAlbum: false
 				}, function(ret, err) {
+					alert(ret.data);
 					if(ret) {
 						var imgSrc = ret.data;
+						alert(imgSrc);
 						if(imgSrc != "") {
 							var ele = $api.dom('#my-touxiang');
 							var ss = $api.append(ele, '<img style="width: 3rem; height:3rem;border-radius:50%;"></img>');
 							$api.attr(ss, 'src', imgSrc);
+							client.modifyInfo({"imgurl":'http://img.7cai.tv'+imgSrc},function(result){
+								alert(result);
+								var result = $.parseJSON(result);
+								if(result.res == 1){
+									$.toast("修改完成!");
+								}else{
+									$.toast(result.msg)
+								}
+							})
+							
 						}
 					} else {
 						alert(JSON.stringify(err));
