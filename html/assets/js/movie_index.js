@@ -64,7 +64,7 @@ var movieDatail = new Vue({
 				}
 			});
            /*网络电影*/
-           axios.get(yuxian_ry[conf]).then(function(res) {
+           axios.get(wl_movie[conf]).then(function(res) {
 				var data = res.data;
 				if(data.res == 1) {
 					_this.wlList = data.data;
