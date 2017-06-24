@@ -27,7 +27,7 @@
 						</div>-->
                         <span class="r_header">
 <!--<a class="external shouye-a4" href="/plus/list.php?tid=9" id="ss-tubiao"><i class="iconfont icon-sousuo"></i></a>-->
-<a class="shouye-a4" href="PlayRecord.html"><i class="iconfont icon-bofangjilu2"></i></a>
+<a class="shouye-a4" href="playrecord.html"><i class="iconfont icon-bofangjilu2"></i></a>
 </span>
                     </div>
                 </div>
@@ -35,7 +35,7 @@
                 <div class="swiper-container movie-banner" id="index-banner" style="padding-top: 1rem;">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide" v-for="item in data" v-cloak>
-                            <a :href="'movie-content.html?id='+item.mid"><img :src="item.img">
+                            <a href="'movie'"><img :src="item.img">
                             </a>
                         </div>
                     </div>
@@ -137,7 +137,7 @@
             </div>
         </div>
     </div>
-@@include('../tpl/footer.tpl',{"movieact":"active","mallact":"","buyact":"","findact":"","myact":"","movie":"icon-video-active","mall":"icon-mall","buy":"icon-ticket","find":"icon-find","my":"icon-user"})
+    @@include('../tpl/footer.tpl',{"video":"active","videoc":"icon-video-active"})
     <script src="lib/swiper/js/swiper.min.js"></script>
     <script src="assets/js/movie_index.js"></script>
     <script src="assets/js/ifLogin.js" type="text/javascript" charset="utf-8"></script>
