@@ -18,6 +18,7 @@ function getQueryString(name) {
 }
 var attrList = getQueryString('attr');
 
+var defId = getQueryString('id');
 //axios请求跨域  公用
 var header = {
 	'content-type': 'application/x-www-form-urlencoded'
@@ -50,9 +51,12 @@ var addressModel = new Vue({
 	methods: {
 		showMode: function() {
 			var _this = this;
-			axios.post(address_info[conf], transformRequest({
-				token: toke
-			})).then(function(response) {
+			axios.get(address_info[conf], {
+                params: {
+                	token:toke,
+                    id: defId
+                }
+            }).then(function(response) {
 				var datas = response.data;
 				_this.addList = datas;
 				if(datas.res == 0) {
@@ -321,6 +325,12 @@ var shippingMethod = new Vue({
 });
 
 //提交商品订单
+
+var fuqianla;
+//加载付钱拉组件
+apiready = function() {
+	fuqianla = api.require('moduleFuQianLa');
+};
 //var payType = [baseUrl() + 'index.php?r=pay&m=vxpay', baseUrl() + 'index.php?r=pay&m=moneyPay'];
 var qcPay = baseUrl() + 'index.php?r=pay&m=moneyPay'; //七彩币支付
 var cnyPay = baseUrl() + 'index.php?r=pay&m=vxpay'; //人民币支付
@@ -378,21 +388,22 @@ $("#sub_order").on('click', function() {
 		return false;
 
 	} else {
-		vm.loadingFlag = true;
 		//提交订单处理
 		$.ajax({
 			type: "post",
 			url: subOrder[conf],
 			async: true,
-			timeout: 2000,
 			data: pram,
 			success: function(data) {
 				var datas = JSON.parse(data)
+				//				console.log(datas.res);
 				var orderId = datas.data.orderIds; //订单ID
 				var trade = datas.data.trade_sn; //流水号
 				var payMoney = datas.data.pay_money; //支付金额
 				var spfree = datas.data.shipping_fee; //运费
 				//type = 1 七彩币   type = 0 人民币
+				//				return false;
+
 				var parms = {
 					orderIds: orderId,
 					trade_sn: trade,
@@ -401,12 +412,7 @@ $("#sub_order").on('click', function() {
 					token: toke
 				};
 
-				if(datas.res == 0) {
-					$.toast(datas.msg);
-					return false;
-				} else if(isWenxin && openid != '') {
-					vm.loadingFlag = false;
-
+				if(datas.res == 1) {
 					//七彩币支付跳转
 					if(datas.data.trade_type == 1) {
 						$.ajax({
@@ -416,70 +422,58 @@ $("#sub_order").on('click', function() {
 							timeout: 1500,
 							data: parms,
 							success: function(datas) {
-								if(datas.res == '1' && datas.data.amount > 0) {
-									if(openid == '') {
-										return false;
-									} else {
-										FUQIANLA.init({
-											'appId': 'VWT0GaNzbX3Dqesop5zrOg', //应用ID号  VWTOGaNzbX3Dqesop5zrOg
-											'merchId': 'm1610030006', //商户号   m1610030006
-											'orderId': datas.data.orderIds, //订单号，此处为模拟订单号。具体以接入为准
-											'channel': 'wx_pay_pub', //开通的通道简称
-											'amount': '0.01', //支付金额
-											'subject': datas.data.subject, //商品标题
-											'notifyUrl': 'http://my.shop.7cai.tv/pay.php', //异步支付结果通知地址 http://my.shop.7cai.tv/index.php?r=pay&m=tur
-											'extra': {
-												'openid': openid,
-												'cb': function() {
+								if(datas.res == '1') {
+									$.toast(datas.msg);
+									setTimeout(function(){
+										window.location.href = 'myOrder-table.html';
+									},1000);
 
-													window.location.href = "./myOrder-table.html";
-												}
-											}
-										});
-									}
-
-								} else if(datas.res == '1' && datas.data.amount == 0) {
-									$.toast('支付成功');
-									setTimeout(function() {
-										window.location.href = "./myOrder-table.html";
-
-									}, 1000);
 								} else {
 									$.toast(datas.msg);
 								}
+								
 							}
 						});
 
 					} else if(datas.data.trade_type == 0) {
-						//人民币支付跳转
+						//人民币支付
 						$.ajax({
 							type: "post",
 							url: cnyPay,
-							async: true,
 							timeout: 1500,
 							data: parms,
-							success: function(datas) {
-								if(datas.res == '1') {
-									FUQIANLA.init({
-										'appId': 'VWT0GaNzbX3Dqesop5zrOg', //应用ID号  VWTOGaNzbX3Dqesop5zrOg
-										'merchId': 'm1610030006', //商户号   m1610030006
-										'orderId': datas.data.orderId, //订单号，此处为模拟订单号。具体以接入为准
-										'channel': 'wx_pay_pub', //开通的通道简称
-										'amount': '0.01', //支付金额
-										'subject': datas.data.subject, //商品标题
-										'notifyUrl': 'http://my.shop.7cai.tv/pay.php', //异步支付结果通知地址 http://my.shop.7cai.tv/index.php?r=pay&m=tur
+							success: function(res) {
+								var orderId = res.data.orderId;
+								var subject = res.data.subject;
+								var amount = res.data.amount;
+								if(res.res == 1) {
+									var payParam = {
+										partner: "m1610030006",
+										subject: subject,
+										amount: 0.01,//amount,
+										orderID: orderId,
+										notifyUrl: "http://my.shop.7cai.tv/pay.php",
+										alipay: true,
+										wxpay: false,
+										baidupay: false,
+										unionpay: false,
+										jdpay: false,
+									}
 
-										'extra': {
-											'openid': openid,
-											'cb': function() {
+									fuqianla.fuqianlaPay(payParam, function(ret, err) {
+										//alert(JSON.stringify(ret) + JSON.stringify(err));
+												if(ret.payCode == 9000) {
+													$.toast("订单支付成功");
+													
+												} else if(ret.payCode == 6001) {
+													$.toast("订单已取消");
+												} else {
+													$.toast("订单支付失败");
+												}
 
-												window.location.href = "./myOrder-table.html";
-											}
-										}
 									});
-
 								} else {
-									$.toast(datas.msg);
+									alert("支付失败");
 								}
 							}
 						});
@@ -489,43 +483,9 @@ $("#sub_order").on('click', function() {
 						return false;
 					}
 
-				} else if(isWenxin && !openid) {
-					$.toast('没有获取到用户ID!');
-
 				} else {
-					//如果不是在微信端打开
-					$.ajax({
-						type: "post",
-						url: cnyPay,
-						async: true,
-						timeout: 1500,
-						data: parms,
-						success: function(datas) {
-
-							if(datas.res == '1') {
-								FUQIANLA.init({
-									'appId': 'VWT0GaNzbX3Dqesop5zrOg', //应用ID号  VWTOGaNzbX3Dqesop5zrOg
-									'merchId': 'm1610030006', //商户号   m1610030006
-									'orderId': datas.data.orderId, //订单号，此处为模拟订单号。具体以接入为准
-									'channel': 'ali_pay_wap', //开通的通道简称
-									'amount': '0.01', //支付金额
-									'subject': datas.data.subject, //商品标题
-									'notifyUrl': 'http://my.shop.7cai.tv/pay.php', //异步支付结果通知地址 http://my.shop.7cai.tv/index.php?r=pay&m=tur
-									'extra': {
-										'return_url': './myOrder-table.html',
-									}
-								});
-
-							} else {
-								$.toast(datas.msg);
-							}
-						}
-					});
-
-					//					setTimeout(function() {
-					//						window.location.href = "./myOrder-table.html";
-					//
-					//					}, 1000);
+					$.toast(datas.msg);
+					return false;
 				}
 
 			},

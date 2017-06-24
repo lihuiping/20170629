@@ -45,6 +45,9 @@
 				overflow: hidden;
 				
 			}
+			.city_area_title span:nth-child(2){
+				margin: 0.7rem 0.4rem 0 0;
+			}
 		</style>
 	</head>
 	<body>
@@ -135,10 +138,10 @@
 			<div class="gp_citypicker" style="display:none;">
 				<div class="content city_area_content">
 					<div class="city_area_title">
-						<span>更换城市</span><span class="iconfont icon-guanbi1 cta_close"></span>
+						<span>更换城市</span><span class="icon icon-guanbi cta_close"></span>
 					</div>
 					<div class="city_area_selectd">
-						<span>北京</span>
+						<span></span>
 						<span>当前定位城市</span>
 					</div>
 					<div class="city_area_hot">
@@ -154,28 +157,53 @@
 		</div>
 		<!--footer bar-->
 <nav class="bar bar-tab pub-bar">
+    <a class="tab-item  @@video" onclick="openNewPage('shouye','movie-index.html')" data-class="icon-video">
+      <span class="icon icon-video @@videoc video"></span>
+      <span class="tab-label">首页</span>
+    </a>
+    
+    <a class="tab-item @@mall"  onclick="openNewPage('shangcheng','index.html')" data-class="icon-mall">
+      <span class="icon icon-mall @@mallc"></span>
+      <span class="tab-label">商城</span>
+    </a>
+    <a class="tab-item active" onclick="openNewPage('goupiao','buy-ticket.html')" data-class="icon-ticket">
+      <span class="icon icon-ticket icon-ticket-active"></span>
+      <span class="tab-label">购票</span>
+    </a>
+    <a class="tab-item @@find" onclick="openNewPage('faxain','discover.html')" data-class="icon-find">
+      <span class="icon icon-find @@findc"></span>
+      <span class="tab-label">发现</span>
+    </a>
+    <a class="tab-item @@center" onclick="openNewPage('userCenter','user-center.html')" id="me" data-class="icon-user">
+      <span class="icon icon-user @@centerc"></span>
+      <span class="tab-label">我的</span>
+    </a>
+  </nav>
+  	
+  	<!--<nav class="bar bar-tab pub-bar">
     <a class="tab-item  @@video" href="movie-index.html" data-class="icon-video">
       <span class="icon icon-video @@videoc video"></span>
       <span class="tab-label">首页</span>
     </a>
     
-    <a class="tab-item @@mall"  href="index.html" data-class="icon-mall">
+    <a class="tab-item @@mall"   href="index.html" data-class="icon-mall">
       <span class="icon icon-mall @@mallc"></span>
       <span class="tab-label">商城</span>
     </a>
-    <a class="tab-item active" href="buy-ticket.html" data-class="icon-ticket">
+    <a class="tab-item active"  href="buy-ticket.html" data-class="icon-ticket">
       <span class="icon icon-ticket icon-ticket-active"></span>
       <span class="tab-label">购票</span>
     </a>
-    <a class="tab-item @@find" href="discover.html" data-class="icon-find">
+    <a class="tab-item @@find"  href="discover.html" data-class="icon-find">
       <span class="icon icon-find @@findc"></span>
       <span class="tab-label">发现</span>
     </a>
-    <a class="tab-item @@center"  href="user-center.html" id="me" data-class="icon-user">
+    <a class="tab-item @@center" href="user-center.html" id="me" data-class="icon-user">
       <span class="icon icon-user @@centerc"></span>
       <span class="tab-label">我的</span>
     </a>
   </nav>
+  -->
 		<div class="bottom_line gpa_bottom_line"></div>
 		<script type="text/javascript" src="lib/hprose.js" charset="utf-8"></script>
 		<script type="text/javascript" src="assets/js/other.js" charset="utf-8"></script>

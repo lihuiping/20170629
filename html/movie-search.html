@@ -33,14 +33,15 @@
 			display: block;
 			position: absolute;
 			color: #fff;
-			top: .5rem;
-			right: 3.3rem;
+			right: 3rem;
 			display: none;
 		}
 		
 		#sousuo-input {
-			width: 84%;
+			width: 88%;
 			-webkit-appearance: none;
+			font-size: 0.75rem;
+			height: 1.55rem;
 		}
 		
 		strong {
@@ -63,10 +64,10 @@
 		
 		.dy-sousuo i {
 			color: #fff;
-			font-size: .8rem;
+			font-size: .85rem;
 			position: absolute;
 			/*margin-top: .2rem;*/
-			padding: .2rem .4rem .2rem .6rem;
+			padding: .9rem .4rem .2rem .6rem;
 		}
 		
 		.dy-sousuo input {
@@ -119,34 +120,37 @@
 		    margin-top: -0.1rem;
 		}
 		/*  没有找到视频*/
-		
 		.not-found-video {
-			width: 100%;
-			text-align: center;
-			position: fixed;
-			top: 50%;
-			margin-top: -5rem;
+		    width: 100%;
+		    text-align: center;
+		    position: static;
+		    height: 100%;
+		    display: none;
+		    background-color: #f5f5f5;
 		}
-		
-		.not-found-video p {
-			font-size: .8rem;
-			margin-top: .7rem;
-			color: #a0a0a0;
-		}
-		
 		.not-found-video i {
-			font-size: 5rem;
-			opacity: .2;
-		}
-		
+	        width: 4.6rem;
+	        height: 4.6rem;
+	        font-size: 5rem;
+	        margin-top: 7.4rem;
+	    }
+		.not-found-video p{
+	        font-size: 0.8rem;
+	        margin-top: 0.3rem;
+	        color: #a1a1a1;
+	    }
 		#sousuo-quxiao {
 			color: #fff;
+			position: absolute;
+    		top: 1.9rem;
+    		right: 12px;
+    		font-size: 0.75rem;
 		}
 	</style>
 
 	<body>
-		<div class="page page-current page-inited" id="page-1496732055239">
-			<form class="dy-sousuo search-fm" style="padding-top: 1rem;">
+		<div class="page page-current page-inited" id="movie-search">
+			<form class="dy-sousuo search-fm" style="height: 3.7rem;padding-top: 1rem;">
 					<i class="icon icon-sousuo" id="lb-sousuo"></i>
 					<input placeholder="请输入影片名" id="sousuo-input" name="search" />
 					<i class="icon icon-shanchuzifu" id="ss-shanchu"></i> &nbsp;
@@ -155,158 +159,30 @@
 			<div class="content znTop">
 				<div class="not-found-video">
 					<i class="icon icon-shipinqueshen"></i>
-					<p>没有找到相关视频</p>
+					<p style='margin-top: 1rem;'>没有找到相关视频</p>
 				</div>
-				<div class="sousuo-list">
+				<!--<div class="sousuo-list">
 					<ul>
 					</ul>
 					<div class="clear-record" id="qingkongjilu" style="display: none;">
 						<i class="icon icon-shanchu"></i>清空历史记录
 					</div>
+				</div>-->
+				<div class="search-record">
+					<div class="recordnav">
+						<h5>最近搜索</h5>
+						<span><p href="javascript:;" class="clear-records confirm-ok" id="clearRcord">清空历史</p></span>
+					</div>
+					<ul id="listRecord">
+					</ul>
+				</div>
+				<div class="search-list">
+				
 				</div>
 			</div>
 		</div>
 		<script type="text/javascript" src="lib/hprose.js" charset="utf-8"></script>
-		<!--<script type="text/javascript" src="assets/js/other.js" charset="utf-8"></script>-->
-		<script type="text/javascript">
-			function baseUrl() {
-				return 'http://my.shop.7cai.tv/';
-			}
-			//进入页面刷新
-			var Cookie = {
-				setCookie: function(name, value, option) {
-					var str = name + "=" + escape(value);
-					if(option) {
-						if(option.expireDays) {
-							var date = new Date();
-							var ms = option.expireDays * 24 * 3600 * 1000;
-							date.setTime(date.getTime() + ms);
-							str += "; expires=" + date.toGMTString();
-						}
-						if(option.path) str += ";path=" + option.path;
-						if(option.domain) str += ";domain=" + option.domain;
-						if(option.secure) str += ";true";
-					}
-					document.cookie = str;
-				},
-				getCookie: function(name) {
-					var cookies = document.cookie.split(";");
-					for(var i = 0; i < cookies.length; i++) {
-						var arr = cookies[i].split("=");
-						if(arr[0] == name) {
-							return unescape(arr[1]);
-						}
-					}
-					return "";
-				},
-				delCookie: function(name) {
-					this.setCookie(name, "", {
-						expireDays: -1
-					});
-				}
-			}
-			window.onload = function() {
-				if("1" == Cookie.getCookie("diffmaker")) {
-					$("#sousuo-input").val("");
-					//alert("找到Cookie，我将不再刷新页面，并删除Cookie");  
-					Cookie.delCookie("diffmaker");
-				} else {
-					$("#sousuo-input").val("");
-					//alert("没有找到Cookie，我将刷新页面!");  
-					Cookie.setCookie("diffmaker", "1", null);
-					window.location.reload(true);
-				}
-			}
-			
-			$(".not-found-video").show();
-			$("#sousuo-quxiao").on("click", function() {
-				window.history.go(-1);
-			});
-			var u = navigator.userAgent;
-			var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
-			
-			//搜索框输入时状态 
-			$("#sousuo-input").on('input', function() {
-				//接受后台数据  
-				var inVal = $("#sousuo-input").val();
-				if(inVal != ''){
-					$("#ss-shanchu").show();
-					$("#ss-shanchu").click(function() {
-						$("#sousuo-input").val("");
-						$(".sousuo-list ul").empty();
-						$(".not-found-video").hide();
-						$(".clear-record").hide();
-					})
-					$.ajax({
-						type: "GET",
-//						async: false,
-						url: baseUrl() + 'tv/?s=/Api/movie/search/name/<![CDATA[all]>/size/10000', //实际上访问时产生的地址为: ajax.ashx?callbackfun=jsonpCallback&id=10
-//						cache: false, //默认值true
-						dataType: 'json',
-						data: {name:$('input[name=search]').val()},
-						success: function(db) {
-							if(db.res ==1){
-	                            $('.sousuo-list ul').html('');
-	                            console.log(db.data.id);
-	                            $.each( db.data, function(i, n){
-	                                $('.sousuo-list ul').append('<li><a href="movie-content.html?id='+n['id']+'">'+ n['videoname']+'--'+n['id']+'</a></li>');
-	                            });
-	                            
-	                            $(".clear-record").show();
-								$(".not-found-video").hide();
-	                            $("#qingkongjilu").on("click", function() {
-									$(".sousuo-list ul li").remove();
-								});
-								
-                        	}
-                        	
-                        	
-                        	
-							/*var json = db;
-							var leg = db.data.length;
-							console.log(db.data);
-							var dataMsg = db.msg;
-							
-							//console.log(dataMsg);
-							if(leg !== 0 && inVal !== "") {
-								$.each( db.data, function(i, n){
-//	                                $('ul[id=content]').append('<li>'+ n['videoname']+'</li>');
-	                                $(".sousuo-list ul").html('<li class="movieSearchList"><a v-for="ls in data" :data-id="ls.id" :href="getTitleHref(ls.id)"  v-cloak>{{ls.videoname}}</a></div>');
-	                            });
-								var apps = new Vue({
-									el: ".sousuo-list",
-									data: json,
-									methods: {
-										getTitleHref: function(val) {
-											return 'movie-content.html?id=' + val;
-										}
-									}
-								});
-								$(".not-found-video").hide();
-								$("#ss-shanchu").show();
-							}
-	
-							if(dataMsg == '失败') {
-								$(".not-found-video").show();
-							}*/
-	
-						},
-	
-						error: function(status) {
-							layer.open({
-								content: '数据错误',
-								skin: 'msg',
-								time: 1 //1秒后自动关闭
-							});
-						}
-	
-					})
-				}else{
-					$(".not-found-video").show();
-					$(".sousuo-list ul").html('');
-				}
-			});
-		</script>
+		<script type="text/javascript" src="assets/js/movieSearch.js"></script>
 	</body>
 
 </html>

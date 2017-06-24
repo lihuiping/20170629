@@ -63,6 +63,12 @@ function transformRequest(data) {
 	return ret;
 };
 
+var fuqianla;
+//加载付钱拉组件
+apiready = function() {
+	fuqianla = api.require('moduleFuQianLa');
+};
+
 var orderList = new Vue({
 	el: "#orderTable",
 	data: {
@@ -83,6 +89,8 @@ var orderList = new Vue({
 				var datas = response.data;
 				orderList.orderList = datas;
 				if(datas.res == '1') {
+					_this.loadingFlag = false;
+				}else{
 					_this.loadingFlag = false;
 				}
 
@@ -175,48 +183,92 @@ var orderList = new Vue({
 			});
 		},
 		coventOrder: function(orderId) {
-			//var totalPrice = $(".od-totalPrice").text();//获取的总价钱
-			//          var orderTitle = $(".od-payTit").text();
-			//          var order_id = $(".od-ban").attr("odOId");
-			if(openid && isWenxin) {
-				axios.post(cnyPay, transformRequest({
-					token: token(),
-					orderIds: orderId
-				}), {
-					headers: header
-				}).then(function(response) {
-					var res = response.data.res;
-					var orderId = response.data.data.orderId; //获取订单号
-					var amount = response.data.data.amount; //获取的总价钱
-					var sub_ject = response.data.data.subject; //获取商品标题
+			//人民币支付
+						$.ajax({
+							type: "post",
+							url: cnyPay,
+							timeout: 1500,
+							data: {
+								token: token(),
+								orderIds: orderId
+							},
+							success: function(res) {
+								var orderId = res.data.orderId;
+								var subject = res.data.subject;
+								var amount = res.data.amount;
+								if(res.res == 1) {
+									var payParam = {
+										partner: "m1610030006",
+										subject: subject,
+										amount: 0.01,//amount,
+										orderID: orderId,
+										notifyUrl: "http://my.shop.7cai.tv/pay.php",
+										alipay: true,
+										wxpay: false,
+										baidupay: false,
+										unionpay: false,
+										jdpay: false,
+									}
 
-					if(res == 1) {
-						//支付宝
-						FUQIANLA.init({
-							'appId': 'VWT0GaNzbX3Dqesop5zrOg', //应用ID号  VWTOGaNzbX3Dqesop5zrOg
-							'merchId': 'm1610030006', //商户号   m1610030006
-							'orderId': orderId, //订单号，此处为模拟订单号。具体以接入为准
-							'channel': 'wx_pay_pub', //开通的通道简称
-							'amount': '0.01', //支付金额
-							'subject': sub_ject, //商品标题
-							'notifyUrl': 'http://my.shop.7cai.tv/pay.php', //异步支付结果通知地址 http://my.shop.7cai.tv/index.php?r=pay&m=tur
-							'extra': {
-								'openid': openid,
-								'cb': function() {
-									window.location.href = "./myOrder-table.html";
+									fuqianla.fuqianlaPay(payParam, function(ret, err) {
+										//alert(JSON.stringify(ret) + JSON.stringify(err));
+												if(ret.payCode == 9000) {
+													$.toast("订单支付成功");
+													
+												} else if(ret.payCode == 6001) {
+													$.toast("订单已取消");
+												} else {
+													$.toast("订单支付失败");
+												}
+
+									});
+								} else {
+									alert("支付失败");
 								}
 							}
 						});
-					} else {
-						$.toast("暂无法支付!");
-					}
-				});
-			} else if(isWenxin && !openid) {
-				$.toast('没有获取到用户ID!');
-
-			} else {
-				$.toast('请在微信中支付！');
-			}
+			//var totalPrice = $(".od-totalPrice").text();//获取的总价钱
+			//          var orderTitle = $(".od-payTit").text();
+			//          var order_id = $(".od-ban").attr("odOId");
+//			if(openid && isWenxin) {
+//				axios.post(cnyPay, transformRequest({
+//					token: token(),
+//					orderIds: orderId
+//				}), {
+//					headers: header
+//				}).then(function(response) {
+//					var res = response.data.res;
+//					var orderId = response.data.data.orderId; //获取订单号
+//					var amount = response.data.data.amount; //获取的总价钱
+//					var sub_ject = response.data.data.subject; //获取商品标题
+//
+//					if(res == 1) {
+//						//支付宝
+//						FUQIANLA.init({
+//							'appId': 'VWT0GaNzbX3Dqesop5zrOg', //应用ID号  VWTOGaNzbX3Dqesop5zrOg
+//							'merchId': 'm1610030006', //商户号   m1610030006
+//							'orderId': orderId, //订单号，此处为模拟订单号。具体以接入为准
+//							'channel': 'wx_pay_pub', //开通的通道简称
+//							'amount': '0.01', //支付金额
+//							'subject': sub_ject, //商品标题
+//							'notifyUrl': 'http://my.shop.7cai.tv/pay.php', //异步支付结果通知地址 http://my.shop.7cai.tv/index.php?r=pay&m=tur
+//							'extra': {
+//								'openid': openid,
+//								'cb': function() {
+//									window.location.href = "./myOrder-table.html";
+//								}
+//							}
+//						});
+//					} else {
+//						$.toast("暂无法支付!");
+//					}
+//				});
+//			} else if(isWenxin && !openid) {
+//				$.toast('没有获取到用户ID!');
+//
+//			} else {
+//				$.toast('请在微信中支付！');
+//			}
 
 		}
 	}

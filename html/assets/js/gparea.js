@@ -85,6 +85,7 @@ $(document).ready(function() {
 		};
 	});
 });
+$('.gp_changeaddress,.city_area_selectd span:eq(0)').text(localStorage.getItem('city_selected'));
 
 function getCitylists() {
 	client1.getCityLists(function(result) {

@@ -76,8 +76,18 @@ var Cookie = {
 	}();
 //获取token
 var token = function() {
-	return 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhZG1pbiI6ZmFsc2UsImNsYWltcyI6bnVsbCwidWlkIjoiODg4IiwidiI6MSwiaWF0IjoxNDk2OTEzOTU1fQ.47xETg6GOcUcGegHQXn7xX1mf3OECo5NrOLEzXl7M68';
-//	return Cache.get('token')
+//	return 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhZG1pbiI6ZmFsc2UsImNsYWltcyI6bnVsbCwidWlkIjoiMTI5NCIsInYiOjEsImlhdCI6MTQ5NTc5MDA1OH0.T8cESgLZa9eX5TcErXNgMHb93xuHs9IGVsqubfpoJK4';
+     var key="";
+       user = $api.getStorage('user');
+       //alert(user.flag);
+      if(user==undefined|| user==""){
+
+      }else{
+       return  user.flag;
+       }
+	//return Cache.get('token')
+
+
 };
 
 function Is_weixn() {
@@ -133,30 +143,30 @@ $(function() {
 		Cache.set('token', tokEn);
 	};
 
-	$(".bar-tab").on('click', ".tab-item", function(event) {
-		var th = $(this);
-		var ss = $(this).siblings('.tab-item');
-		var dtClass = th.data('class');
-		$(this).find(".icon").prop('className', 'icon ' + dtClass + '-active');
-		$.each(ss, function(index, val) {
-			var pard = $(this).data('class');
-			$(this).find('.icon').removeClass().addClass('icon ' + pard);
-
-		});
-	});
+//	$(".bar-tab").on('click', ".tab-item", function(event) {
+//		var th = $(this);
+//		var ss = $(this).siblings('.tab-item');
+//		var dtClass = th.data('class');
+//		$(this).find(".icon").prop('className', 'icon ' + dtClass + '-active');
+//		$.each(ss, function(index, val) {
+//			var pard = $(this).data('class');
+//			$(this).find('.icon').removeClass().addClass('icon ' + pard);
+//
+//		});
+//	});
 
 });
-$(".bar-tab").on('click', ".tab-item", function(event) {
-	var th = $(this);
-	var ss = $(this).siblings('.tab-item');
-	var dtClass = th.data('class');
-	$(this).find(".icon").prop('className', 'icon ' + dtClass + '-active');
-	$.each(ss, function(index, val) {
-		var pard = $(this).data('class');
-		$(this).find('.icon').removeClass().addClass('icon ' + pard);
-
-	});
-});
+//$(".bar-tab").on('click', ".tab-item", function(event) {
+//	var th = $(this);
+//	var ss = $(this).siblings('.tab-item');
+//	var dtClass = th.data('class');
+//	$(this).find(".icon").prop('className', 'icon ' + dtClass + '-active');
+//	$.each(ss, function(index, val) {
+//		var pard = $(this).data('class');
+//		$(this).find('.icon').removeClass().addClass('icon ' + pard);
+//
+//	});
+//});
 
 var apiready = function() {
 	$api.fixStatusBar($api.dom('.shouye-head'));
@@ -167,3 +177,11 @@ var apiready = function() {
 };
 apiready();
 
+
+function openNewPage(name,uri){
+	api.openWin({
+		name:name,
+		url: uri,
+		animation:{type:"none"}
+	});
+}

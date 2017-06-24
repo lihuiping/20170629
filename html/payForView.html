@@ -6,9 +6,9 @@
 <meta content="yes" name="apple-mobile-web-app-capable">
 <meta content="yes" name="apple-touch-fullscreen">
 <meta content="telephone=no,email=no" name="format-detection">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="renderer" content="webkit">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <title>付费点播</title>
 <link rel="stylesheet" href="assets/css/light7.min.css">
 <link rel="stylesheet" href="assets/css/common.css">
@@ -17,7 +17,7 @@
 <script type="text/javascript" src="lib/vue.min.js"></script>
 <script type="text/javascript" src="lib/axios.min.js"></script>
 <script type="text/javascript" src="lib/api.js"></script>
-<script type="text/javascript" src="lib/layer-mobile/layer.js" charset="utf-8"></script>
+<script type='text/javascript' src='lib/layer-mobile/layer.js' charset='utf-8'></script>
 <script type="text/javascript">
 	$.config = {
 		router: false,
@@ -31,75 +31,199 @@
 <script type="text/javascript" src="assets/js/iscroll.js"></script>
 <script type="text/javascript" src="assets/js/date.js"></script>
 <script type="text/javascript" src="lib/imgload.js"></script>
-<script type="text/javascript" charset="utf-8" src="assets/js/common.js"></script>
+<script  type="text/javascript" charset="utf-8" src="assets/js/common.js" ></script>
 <script type="text/javascript" src="lib/light7/js/light7.min.js"></script>
 
-		
 		<script src="http://m.fuqian.la/jssdk/h5jssdk.3.0.js"></script>
-		
+		<!--<script src="./assets/js/payForView.js" type="text/javascript" charset="utf-8"></script>-->
 	</head>
 
-	<body style="background-color:#f5f5f5">
+	<body style="background-color: #F5F5F5;">
 
 		<div class="page page-current">
-			<div class="content">
-				<header class="bar-nav wsl-header">
-					<div class="title-box">
-						<a class="icon icon-left" href="#" onclick="history.go(-1)"></a>
+			
+			<header class="bar bar-nav bdbt-none ad-bar" style="z-index: 1000;padding-top: 1.2rem;">
+				<a class="icon icon-left pull-left" href="javascript:history.go(-1)"></a>
+				<!--<a class="icon icon-refresh pull-right"></a>-->
+				<h1 class="title">付费点播</h1>
+			</header>
+			<div class="content znTop" style="bottom: 0;" id="PayForView">
 
-						<div class="w-title">付费点播</div>
-					</div>
-
-				</header>
-
-				<div class="filmInfo">
+				<div class="filmInfo" :orderId="list.order_id">
 					<div class="filmName">
-						神偷奶爸3
+						{{list.name}}
 					</div>
 					<div class="filmPrice">
-						￥<span>5.</span>00
+						￥<span>{{list.price}}</span>
 					</div>
-					<div class="userNumb">下单用户账号：<span>13598078099</span></div>
-					<div class="orderNumb">订单编号：<span>156465786439458</span></div>
+					<div class="userNumb">下单用户账号：<span>{{list.tel}}</span></div>
+					<div class="orderNumb">订单编号：<span>{{list.order_sn}}</span></div>
 				</div>
-				<div id="submitButton">
+				<div class="payBtn" id="submitButton" @click="fuqianlaPay()">
 					确认支付
 				</div>
 			</div>
 		</div>
 
 		<script>
-			$(function() {
-				var fuqianla;
-				apiready = function() {
-					fuqianla = api.require('moduleFuQianLa');
-				};
+			var conf = 1;
+			var content_movie = ['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/videoInfo/index&token=' + token()];
+			var token = token();
+			var fuqianla;
+			apiready = function() {
+				fuqianla = api.require('moduleFuQianLa');
+			};
 
-				$("#submitButton").click(function() {
-					console.log(0);
-					fuqianlaPay();
-				});
-				function fuqianlaPay() {
-						var payParam = {
-							partner: "m1610030006",
-							subject: "七彩视频",
-							amount: 0.01,
-							orderID: "201706151910lc",
-							notifyUrl: "http://shop.7cai.tv/wx/index.php",
-							alipay: true,
-							wxpay: true,
-							baidupay: false,
-							unionpay: false,
-							jdpay: false,
-						}
+			//获取地址参数
+			function GetQueryString(name) {
+				var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+				var r = window.location.search.substr(1).match(reg);
+				if(r != null) return unescape(r[2]);
+				return null;
+			}
+			var payId = GetQueryString('id'); //获取需要付费的电影的id
+			//var currentTime = GetQueryString('currentTime'); //获取需要付费的电影播放到哪里
 
-						fuqianla.fuqianlaPay(payParam, function(ret, err) {
-
-							alert(JSON.stringify(ret) + JSON.stringify(err));
-
+			var PayForView = baseUrl() + 'tv/index.php?s=api/pay/dianbo'; //点播页面数据接口
+			/*点播页面渲染*/
+			var PayForView = new Vue({
+				el: "#PayForView",
+				data: {
+					list: [],
+					loadingFlag: true,
+				},
+				mounted: function() {
+					//初始化加载数据
+					var _this = this;
+					_this.showGoods();
+				},
+				methods: {
+					showGoods: function() {
+						var _this = this;
+						axios.get(PayForView, {
+							params: {
+								//电影id
+								id: payId,
+								token: token
+							}
+						}).then(function(res) {
+							var dataRes = res.data;
+							var data = res.data.data;
+							order_id = data.order_id;
+							if(dataRes.res == 1) {
+								_this.list = data;
+							} else {
+								$.toast("商品数据错误");
+							}
 						});
-				};
+					},
+
+					fuqianlaPay: function() {
+						//获取页面数据接口中的order_id并传回后台，请求付款接口数据
+						var listId = $(".filmInfo").attr("orderId");
+						var _this = this;
+						axios.get("http://shop.7cai.tv/tv/index.php?s=api/pay/pay", {
+							params: {
+								order_id: listId,
+								type: 1,
+								token: token
+							}
+						}).then(function(res) {
+//							console.log(res);
+							var dataRes = res.data;
+							var subject = dataRes.data.name;
+							var amount = dataRes.data.price;
+							var orderID = dataRes.data.pay_sn;
+							//										var orderID = "201706"+Date.now();
+//							console.log(orderID);
+							if(dataRes.res == 1) {
+								var payParam = {
+									partner: "m1610030006",
+									amount: 0.01,//amount,
+									subject: subject,
+									orderID: orderID,
+									notifyUrl: "http://shop.7cai.tv/tv/api.php",
+									alipay: true,
+									wxpay: false,
+									baidupay: false,
+									unionpay: false,
+									jdpay: false,
+								}
+								fuqianla.fuqianlaPay(payParam, function(ret, err) {
+									//alert(JSON.stringify(ret) + JSON.stringify(err));
+									if(ret.payCode == 9000) {
+										$.toast("订单支付成功");
+										setTimeout(function() {
+												window.location.href = "movie-content.html?id=" + payId;
+											}, 500);
+
+									} else if(ret.payCode == 6001) {
+										$.toast("订单已取消");
+									} else {
+										$.toast("订单支付失败");
+									}
+
+								});
+							} else {
+								$.toast("支付失败");
+							}
+						});
+					}
+
+				}
 			});
+
+			//			function fuqianlaPay() {
+			//
+			//				var listId = $(".filmInfo").attr("orderId");
+			//				//				console.log(listId);
+			//				$.ajax({
+			//					type: "get",
+			//					url: "http://shop.7cai.tv/tv/index.php?s=api/pay/pay",
+			//					data: {
+			//						"order_id": listId,
+			//						"token": token
+			//					},
+			//					async: true,
+			//					success: function(res) {
+			//						console.log(res.res);
+			//						var orderId = res.data.pay_sn;
+			//						var subject = res.data.name;
+			//						var amount = res.data.price;
+			//						alert(orderId);
+			//						alert(subject);
+			//						alert(amount);
+			//						
+			//						if(res.res == 1) {
+			//							var payParam = {
+			//								partner: "m1610030006",
+			//								subject: subject,
+			//								amount: 0.01,
+			//								orderID: orderId,
+			//								notifyUrl: "http://shop.7cai.tv/tv/index.php?s=api/pay/paynotice",
+			//								alipay: true,
+			//								wxpay: false,
+			//								baidupay: false,
+			//								unionpay: false,
+			//								jdpay: false,
+			//							}
+			//
+			//							fuqianla.fuqianlaPay(payParam, function(ret, err) {
+			//
+			//								alert(JSON.stringify(ret) + JSON.stringify(err));
+			//
+			//							});
+			//						} else {
+			//							alert("支付失败了");
+			//						}
+			//
+			//					}
+			//
+			//				});
+			//
+			//			}
+
+			//
 		</script>
 	</body>
 

@@ -1,4 +1,5 @@
 var conf = 1;
+var tokens=token();
 var tuijian_list = ['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/Recommend/index&token=' + token()]; //banner
 var content_movie = ['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/videoInfo/index&token=' + token()];
 var add_collection = ['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/Favor/change.html'];
@@ -27,6 +28,7 @@ function transformRequest(data) {
     return ret;
 };
 /*获取电影详情页的数据*/
+
 var movieDatail = new Vue({
     el: "#VideoPlay",
     data: {
@@ -44,8 +46,19 @@ var movieDatail = new Vue({
     },
     mounted: function() {
         //初始化加载数据
-        this.showMovie();
-        this.init();
+        if(tokens==""||tokens==undefined){
+            $.toast("您还未登录，请登录");
+            setTimeout(function(){
+                window.location.href="login.html";
+            },500)
+
+          
+        }else{
+             this.showMovie();
+             this.init();
+        
+        }
+       
     },
     methods: {
         showMovie: function() {
@@ -59,7 +72,7 @@ var movieDatail = new Vue({
                 var data = response.data.data;
                 movieDatail.movieContent = data;
                 var movie = data.url;
-             //   var movie="http://my.shop.7cai.tv/tv/f000000";
+               // var movie="http://or9d4l0f7.bkt.clouddn.com/360-跑酷大神炫逆天特技.mp4";
                 var movieTitle = data.name;
                 var movieCover = data.cover;
                 var istrytime=data.is_try_time;
@@ -145,6 +158,7 @@ var movieDatail = new Vue({
         },
         btn_comment: function(replyId,is_read) {
             var comment = $("#f_comment").val();
+            if(comment!= ""||comment==null){
             axios.get(add_comment[conf], {
                 params: {
                     program_id: movieID,
@@ -165,6 +179,9 @@ var movieDatail = new Vue({
                     $.toast("评论有问题了哦~");
                 }
             });
+        }else{
+             $.toast("请输入评论信息~");
+        }
         },
         moreFn: function(itemIndex,fabiao) {
             axios.get(get_comment[conf], {
@@ -205,25 +222,34 @@ var movieDatail = new Vue({
             $(".bg_zhezhao").hide();
            $(".comment_bar").hide();
         },
+         getTitleHref:function(start_time){
+            if(tokens==""||tokens==undefined){
+                window.location.href='login.html';
+            }else{
+                console.log(movieDatail.start_time);
+               window.location.href='payForView.html?id='+movieID;               
+            }
+        },
         init: function() {
             this.moreFn(this.nowPage);
         }
     }
 });
 
-function video(movie, movieTitle, movieCover,istrytime,start_time) {
+function video(movieurl, movieTitle, movieCover,istrytime,start_time) {
+   // console.log(movieurl, movieTitle, movieCover,istrytime,start_time)
       //var play_status=0;
     var player = cyberplayer("video").setup({
         width: '100%', // 宽度，也可以支持百分比(不过父元素宽度要有)
         height: '100%', // 高度，也可以支持百分比
         backcolor: "#000",
         title: movieTitle, // 标题
-        file: movie, // 播放地址
+        file: movieurl, // 播放地址
         image: movieCover, // 预览图
         autostart: false, // 是否自动播放
         stretching: "uniform", // 拉伸设置
         repeat: false, // 是否重复播放
-        volume: 80, // 音量
+        volume: 100, // 音量
         controls: true, // controlbar是否显示
         starttime: start_time,
         playRate: false,
@@ -246,11 +272,10 @@ function video(movie, movieTitle, movieCover,istrytime,start_time) {
         }
     });
     player.onTime(function(event) {
-//      if (istrytime ==0 && event.position > 10) {
-	 if (event.position > 10) {
+        $(".jw-preview").hide();
+      if (istrytime !=0 && event.position > 10) {
             player.pause();
-            $(".bg_video").addClass('bg_video_show')
-
+            $(".bg_video").addClass('bg_video_show');
         }
     });
     player.onPause(function(event){
@@ -264,7 +289,13 @@ function video(movie, movieTitle, movieCover,istrytime,start_time) {
                 var data = res.data;
             });
 
-    })
+    });
+    player.onBuffer(function(event){ 
+         $(".jw-preview").hide();
+});
+    player.onComplete(function(event){ 
+       //alert("onComplete");
+});
 }
 /*滑动的效果*/
 function scrollComment() {
@@ -307,3 +338,85 @@ $(".vpl_VideoDetail_des_title").on("click", '.vpl_introduction', function() {
 });
 
 })
+//分享
+var qq;
+var wx;
+apiready = function() {
+    qq = api.require('qq');
+    wx = api.require('wx');
+
+};
+
+function qqshareNews_QFriend() { //分享新闻qq给好友
+    qq.shareNews({
+        url: 'http://www.apicloud.com',
+        title: '新闻分享',
+        description: '新闻描述',
+        imgUrl: 'widget://res/news.png',
+        type: "QFriend"
+    }, function(ret, err) {
+        if(ret.status) {
+            alert(JSON.stringify(ret))
+        } else {
+            alert(JSON.stringify(err));
+        }
+    });
+}
+
+function qqshareNews_QZone() { //分享新闻到QQ空间
+//  var movieId = 
+    $.ajax({
+        type:"get",
+        url: baseUrl() + "tv/index.php?s=api/videoInfo/share",
+        data:{
+            "id": movieID,
+            "token":tokens
+        },
+        async:true,
+        success: function(res){
+//          console.log(res.data);
+//          return false;
+            qq.shareNews({
+                url: 'https://www.baidu.com', //baseUrl()+'/html/movie-content.html?id='+ movieID
+                title: res.data.name,
+                description: res.data.content,
+                imgUrl: res.data.url_cover,
+                type: "QZone"
+            }, function(ret, err) {
+                if(ret.status) {
+                    $.toast("分享成功");
+                } else {
+                    $.toast("分享失败");
+                }
+            });
+        }
+    });
+    
+}
+function shareWebpage(Vscene) { //分享微信好友,朋友圈 . 参数: session（会话） timeline（朋友圈）favorite（收藏）
+    $.ajax({
+        type:"get",
+        url:baseUrl() + "tv/index.php?s=api/videoInfo/share",
+        data:{
+            "id": movieID,
+            "token":tokens
+        },
+        async:true,
+        success:function(res){
+                wx.shareWebpage({
+                apiKey: 'wx64c1ec0115c22f7f',
+                scene: Vscene,
+                title: res.data.name,
+                description:  res.data.content,
+                thumb: res.data.cover,
+                contentUrl: 'http://www.apicloud.com'  //'movie-content.html?'+ movieId
+            }, function(ret, err) {
+                if(ret.status) {
+                    $.toast("分享成功");
+                } else {
+                    $.toast("分享失败");
+                }
+            });
+        }
+    });
+}

@@ -38,75 +38,71 @@
 
 	<body>
 		<div class="page scroll bg-white page-current page-inited wsl-discover" id="faxian">
-			
-			<header class="bar bar-nav bdbt-none ad-bar" style="z-index: 1000;">
-  <a class="icon icon-left pull-left" href="javascript:history.go(-1)"></a>
-  <!--<a class="icon icon-refresh pull-right"></a>-->
+			<header class="bar bar-nav bdbt-none barIndex" style="z-index: 1000;">
   <h1 class="title">发现</h1>
 </header>
 			<div class="content pdbt znTop" id="faxian">
 				<table class="my-found" id="my-found" border="0" style="background-color: #FFFFFF;">
 					<tbody>
 						<tr>
-							
-								<td class="mytouch">
-									<a href="http://dynamic.m.tuniu.com/m2015/flight/index">
-										<img src="assets/images/1.png" alt="">
-										<p> 机票</p>
-									</a>
-								</td>
-							
-							
+
+							<td class="mytouch">
+								<a href="http://dynamic.m.tuniu.com/m2015/flight/index">
+									<img src="assets/images/1.png" alt="">
+									<p> 机票</p>
+								</a>
+							</td>
+
 							<td class="mytouch">
 								<a href="http://dynamic.m.tuniu.com/train">
-								<img src="assets/images/2.png" alt="">
-								<p> 火车票</p>
+									<img src="assets/images/2.png" alt="">
+									<p> 火车票</p>
 								</a>
 							</td>
 							<td class="mytouch">
 								<a href="http://alifuwu.hezuo.changtu.com/">
-								<img src="assets/images/3.png" alt="">
-								<p> 汽车票</p>
+									<img src="assets/images/3.png" alt="">
+									<p> 汽车票</p>
 								</a>
 							</td>
 						</tr>
 						<tr>
 							<td class="mytouch">
 								<a href="http://m.tuniu.com/m2015/mpChannel/index">
-								<img src="assets/images/4.png" alt="">
-								<p> 景点门票</p>
+									<img src="assets/images/4.png" alt="">
+									<p> 景点门票</p>
 								</a>
 							</td>
 							<td class="mytouch">
 								<a href="http://m.tuniu.com/hotel">
-								<img src="assets/images/5.png" alt="">
-								<p> 订酒店</p>
+									<img src="assets/images/5.png" alt="">
+									<p> 订酒店</p>
 								</a>
 							</td>
 							<td class="mytouch">
 								<a href="http://weather.html5.qq.com/">
-								<img src="assets/images/6.png" alt="">
-								<p> 查天气</p>
+									<img src="assets/images/6.png" alt="">
+									<p> 查天气</p>
 								</a>
 							</td>
 						</tr>
 						<tr>
 							<td class="mytouch">
 								<a href="http://webmetro.itouchchina.com/citylist.php">
-								<img src="assets/images/7.png" alt="">
-								<p> 地铁</p>
+									<img src="assets/images/7.png" alt="">
+									<p> 地铁</p>
 								</a>
 							</td>
 							<td class="mytouch">
 								<a href="http://taxi.map.baidu.com/">
-								<img src="assets/images/8.png" alt="">
-								<p> 打车</p>
+									<img src="assets/images/8.png" alt="">
+									<p> 打车</p>
 								</a>
 							</td>
 							<td class="mytouch">
 								<a href="moviePhoto.html">
-								<img src="assets/images/9.png" alt="">
-								<p> 电影婚纱</p>
+									<img src="assets/images/9.png" alt="">
+									<p> 电影婚纱</p>
 								</a>
 							</td>
 						</tr>
@@ -115,31 +111,56 @@
 			</div>
 		</div>
 
-<!--footer bar-->
+		<!--footer bar-->
 <nav class="bar bar-tab pub-bar">
+    <a class="tab-item  @@video" onclick="openNewPage('shouye','movie-index.html')" data-class="icon-video">
+      <span class="icon icon-video @@videoc video"></span>
+      <span class="tab-label">首页</span>
+    </a>
+    
+    <a class="tab-item @@mall"  onclick="openNewPage('shangcheng','index.html')" data-class="icon-mall">
+      <span class="icon icon-mall @@mallc"></span>
+      <span class="tab-label">商城</span>
+    </a>
+    <a class="tab-item @@ticket" onclick="openNewPage('goupiao','buy-ticket.html')" data-class="icon-ticket">
+      <span class="icon icon-ticket @@ticketc"></span>
+      <span class="tab-label">购票</span>
+    </a>
+    <a class="tab-item active" onclick="openNewPage('faxain','discover.html')" data-class="icon-find">
+      <span class="icon icon-find icon-find-active"></span>
+      <span class="tab-label">发现</span>
+    </a>
+    <a class="tab-item @@center" onclick="openNewPage('userCenter','user-center.html')" id="me" data-class="icon-user">
+      <span class="icon icon-user @@centerc"></span>
+      <span class="tab-label">我的</span>
+    </a>
+  </nav>
+  	
+  	<!--<nav class="bar bar-tab pub-bar">
     <a class="tab-item  @@video" href="movie-index.html" data-class="icon-video">
       <span class="icon icon-video @@videoc video"></span>
       <span class="tab-label">首页</span>
     </a>
     
-    <a class="tab-item @@mall"  href="index.html" data-class="icon-mall">
+    <a class="tab-item @@mall"   href="index.html" data-class="icon-mall">
       <span class="icon icon-mall @@mallc"></span>
       <span class="tab-label">商城</span>
     </a>
-    <a class="tab-item @@ticket" href="buy-ticket.html" data-class="icon-ticket">
+    <a class="tab-item @@ticket"  href="buy-ticket.html" data-class="icon-ticket">
       <span class="icon icon-ticket @@ticketc"></span>
       <span class="tab-label">购票</span>
     </a>
-    <a class="tab-item active" href="discover.html" data-class="icon-find">
+    <a class="tab-item active"  href="discover.html" data-class="icon-find">
       <span class="icon icon-find icon-find-active"></span>
       <span class="tab-label">发现</span>
     </a>
-    <a class="tab-item @@center"  href="user-center.html" id="me" data-class="icon-user">
+    <a class="tab-item @@center" href="user-center.html" id="me" data-class="icon-user">
       <span class="icon icon-user @@centerc"></span>
       <span class="tab-label">我的</span>
     </a>
   </nav>
-<script src="assets/js/discover.js" type="text/javascript" charset="utf-8"></script>
+  -->
+		<script src="assets/js/discover.js" type="text/javascript" charset="utf-8"></script>
 	</body>
 
 </html>
