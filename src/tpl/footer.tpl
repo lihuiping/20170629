@@ -1,25 +1,25 @@
 <!--footer bar-->
 <nav class="bar bar-tab pub-bar">
-    <a class="tab-item  @@video" onclick="openNewPage('shouye','movie-index.html')" data-class="icon-video">
-      <span class="icon icon-video @@videoc video"></span>
+    <a class="tab-item @@movieact" onclick="openNewPage('shouye','movie-index.html')">
+      <span class="icon @@movie"></span>
       <span class="tab-label">首页</span>
     </a>
     
-    <a class="tab-item @@mall"  onclick="openNewPage('shangcheng','index.html')" data-class="icon-mall">
-      <span class="icon icon-mall @@mallc"></span>
-      <span class="tab-label">商城</span>
+    <a class="tab-item @@mallact"  onclick="openNewPage('shangcheng','index.html')">
+      <span class="icon"></span>
+      <span class="tab-label @@mall">商城</span>
     </a>
-    <a class="tab-item @@ticket" onclick="openNewPage('goupiao','buy-ticket.html')" data-class="icon-ticket">
-      <span class="icon icon-ticket @@ticketc"></span>
-      <span class="tab-label">购票</span>
+    <a class="tab-item @@buyact" onclick="openNewPage('goupiao','buy-ticket.html')">
+      <span class="icon"></span>
+      <span class="tab-label @buy">购票</span>
     </a>
-    <a class="tab-item @@find" onclick="openNewPage('faxain','discover.html')" data-class="icon-find">
-      <span class="icon icon-find @@findc"></span>
-      <span class="tab-label">发现</span>
+    <a class="tab-item @@findact" onclick="openNewPage('faxain','discover.html')">
+      <span class="icon"></span>
+      <span class="tab-label @@find">发现</span>
     </a>
-    <a class="tab-item @@center" onclick="openNewPage('userCenter','user-center.html')" id="me" data-class="icon-user">
-      <span class="icon icon-user @@centerc"></span>
-      <span class="tab-label">我的</span>
+    <a class="tab-item @@myact" onclick="openNewPage('userCenter','user-center.html')" id="me">
+      <span class="icon"></span>
+      <span class="tab-label  @my">我的</span>
     </a>
   </nav>
   	
