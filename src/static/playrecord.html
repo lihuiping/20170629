@@ -193,19 +193,8 @@
 	</head>
 
 	<body>
-		<div class="page bg-f5 page-current page-inited" id="bfjl-qs">
-			<!--@@include('../tpl/bar-nav.tpl',{ "title":"播放记录" })-->
-			<header class="bar bar-nav bdbt-none ad-bar" style="z-index: 1000;padding-top: 1.2rem;">
-				<a class="icon icon-left pull-left" href="javascript:history.go(-1)"></a>
-				<!--<a class="icon icon-refresh pull-right"></a>-->
-				<h1 class="title">播放记录</h1>
-			</header>
-			<div class="content znTop Lqnorecord">
-				<div class="lqicon icon icon-zanwubofangjilu-quesheng" id="bfjlc-page"><i></i></div>
-				<div class="lqnojl">您暂无视频播放记录</div>
-			</div>
-		</div>
-		<div class="page wj_page page-current page-inited" id="lqShowList">
+		
+		<div class="page wj_page page-current page-inited" id="lqShowList" style="display:none;">
 			<!--@@include('../tpl/bar-nav.tpl',{ "title":"播放记录" })-->
 			<header class="bar bar-nav bdbt-none ad-bar" style="z-index: 1000;padding-top: 1.2rem;">
 				<a class="icon icon-left pull-left" href="javascript:history.go(-1)"></a>
@@ -266,7 +255,18 @@
 				</ul>
 			</div>
 		</div>
-		
+		<div class="page bg-f5 page-current page-inited" id="bfjl-qs">
+			<!--@@include('../tpl/bar-nav.tpl',{ "title":"播放记录" })-->
+			<header class="bar bar-nav bdbt-none ad-bar" style="z-index: 1000;padding-top: 1.2rem;">
+				<a class="icon icon-left pull-left" href="javascript:history.go(-1)"></a>
+				<!--<a class="icon icon-refresh pull-right"></a>-->
+				<h1 class="title">播放记录</h1>
+			</header>
+			<div class="content znTop Lqnorecord">
+				<div class="lqicon icon icon-zanwubofangjilu-quesheng" id="bfjlc-page"><i></i></div>
+				<div class="lqnojl">您暂无视频播放记录</div>
+			</div>
+		</div>
 		<!--<script type="text/javascript" src="assets/js/jiaohu.js" charset="utf-8"></script>-->
 		<script type="text/javascript" src="assets/js/playrecord.js"></script>
 	</body>
