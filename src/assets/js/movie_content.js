@@ -7,6 +7,7 @@ var get_collection = ['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/
 var add_comment = ['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/Comment/add.html&token=' + token()];
 var get_comment = ['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/Comment/index.html'];
 var playRecord = ['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/Movie/playRecord&token=' + token()];
+var mr_image=['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/Comment/head.html&token=' + token()];
 //获取地址参数
 function GetQueryString(name) {
     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
@@ -42,6 +43,7 @@ var movieDatail = new Vue({
         nowPage: 1,
         comCount: "",
         is_read: "",
+        delImg:"",
         loadingFlag: true,
         switchShow: false
     },
@@ -105,6 +107,18 @@ var movieDatail = new Vue({
                 var data = res.data;
                 if (data.res == 1) {
                     _this.movielist = data;
+
+                    // _this.loadingFlag = false;
+                } else {
+                    $.toast("商品数据错误");
+                }
+            });
+            /*获取默认头像*/
+             axios.get(mr_image[conf]).then(function(res) {
+                var data = res.data;
+                if (data.res == 1) {
+                    movieDatail.delImg = data.data;
+                     console.log(movieDatail.delImg);
                     // _this.loadingFlag = false;
                 } else {
                     $.toast("商品数据错误");
