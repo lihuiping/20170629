@@ -312,6 +312,7 @@ $(document).on("pageInit", "#editmessage", function(e, id, page) {
 		var time = getLocalTime(result.data.birthday);
 		Cache.set("issafe", result.data.isSafe);
 		var touxiang = result.data.headimg ? result.data.headimg : "assets/images/tx-120.png";
+		alert(touxiang);
 		$("#mytouxiang-div").append("<img style='width: 3rem; height:3rem;border-radius:50%;' id='my-touxiang' src="+touxiang+">");
 		$("#mename").html(result.data.username ? result.data.username : result.data.mobile);
 		$("#megenger").val(parseInt(result.data.sex) ? "女" : "男");
@@ -403,7 +404,6 @@ $(document).on("pageInit", "#editmessage", function(e, id, page) {
 					targetHeight: 100,
 					saveToPhotoAlbum: false
 				}, function(ret, err) {
-					alert(ret.data);
 					if(ret) {
 						var imgSrc = ret.data;
 //						var str = "/asdasf/asfaewf/agaegr/trer/rhh";
@@ -418,6 +418,7 @@ $(document).on("pageInit", "#editmessage", function(e, id, page) {
 								alert(result);
 								var result = $.parseJSON(result);
 								if(result.res == 1){
+									alert(result.msg);
 									$.toast("修改完成!");
 								}else{
 									
