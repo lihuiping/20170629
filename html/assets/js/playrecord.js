@@ -54,22 +54,44 @@ function getrecordList(){
 		       dataType :   'json',
 		success: function(json) {           
 			dataList = json;
+			console.log(dataList);
 			console.log(dataList.data.length);
 			var len_movierecord = $(".lqMovierecord li").length;
-//			$("#bfjl-qs").show();
-			if(dataList.res == "1" || dataList.data.length == "0") {
-				$("#bfjl-qs").show();
+			/*if(len_movierecord == '0' && dataList.data.length == "0" && dataList.res == "1") {
+				console.log(len_movierecord);
+				console.log('aaa');
 				$('.pr_edit').hide();
 				$('#lqShowList').hide();
-//				console.log('sss');
-			} else if (len_movierecord > "1" || dataList.data.length > "0"){
+				$("#bfjl-qs").show();
+			}  
+			else if(len_movierecord != '0' && dataList.data.length != "0" && dataList.res == "1" ) {
+				console.log('sss');
 				$('#lqShowList').show();
+				$('#lqShowList').css('display','block');
 				$('.pr_edit').show();
 				$("#bfjl-qs").hide();
-			}else if(dataList.res == "0" || dataList.msg == '无权限'){
+			}
+			else if(dataList.res == "0" || dataList.msg == '无权限'){
+				$("#bfjl-qs").show();
+				$('#lqShowList').hide();
+			}*/
+			
+			if(dataList.res == "1"){
+				if(dataList.data.length == "0"){
+					$('.pr_edit').hide();
+					$('#lqShowList').hide();
+					$("#bfjl-qs").show();
+				}else{
+					$('#lqShowList').show();
+					$('#lqShowList').css('display','block');
+					$('.pr_edit').show();
+					$("#bfjl-qs").hide();
+				}
+			}else{
 				$("#bfjl-qs").show();
 				$('#lqShowList').hide();
 			}
+			
 			var app = new Vue({
 				el: '#lqShowList',
 				data: dataList,
