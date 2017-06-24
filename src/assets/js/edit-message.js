@@ -407,25 +407,23 @@ $(document).on("pageInit", "#editmessage", function(e, id, page) {
 					if(ret) {
 						var imgSrc = ret.data;
 //						var str = "/asdasf/asfaewf/agaegr/trer/rhh";
-						var index = imgSrc .lastIndexOf("\/");
-						imgSrc  = imgSrc .substring(index + 1, imgSrc.length);
-						alert(imgSrc);
+//						var index = imgSrc .lastIndexOf("\/");
+//						imgSrc  = imgSrc .substring(index + 1, imgSrc.length);
+//						alert(imgSrc);
 						if(imgSrc != "") {
 							var ele = $api.dom('#my-touxiang');
 							var ss = $api.append(ele, '<img style="width: 3rem; height:3rem;border-radius:50%;"></img>');
 							$api.attr(ss, 'src', imgSrc);
-							client.modifyInfo({"imgurl":'http://img.7cai.tv/tx/'+imgSrc},function(result){
-								alert(result);
-								var result = $.parseJSON(result);
-								if(result.res == 1){
-									alert(result.msg);
-									$.toast("修改完成!");
-								}else{
-									
-									$.toast(result.msg)
-								}
-							})
-							
+//							client.modifyInfo({"imgurl":'http://img.7cai.tv/tx/'+imgSrc},function(result){
+//								alert(result);
+//								var result = $.parseJSON(result);
+//								if(result.res == 1){
+//									$.toast("修改完成!");
+//								}else{
+//									
+//									$.toast(result.msg)
+//								}
+//							})
 						}
 					} else {
 						alert(JSON.stringify(err));
