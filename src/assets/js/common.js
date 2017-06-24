@@ -178,7 +178,8 @@ var apiready = function() {
 apiready();
 
 
-function openNewPage(name,uri){
+function openNewPage(name,uri,abcv){
+	alert(abcv)
 	api.openWin({
 		name:name,
 		url: uri,
