@@ -409,7 +409,7 @@ $(document).on("pageInit", "#editmessage", function(e, id, page) {
 //						var str = "/asdasf/asfaewf/agaegr/trer/rhh";
 						var index = imgSrc .lastIndexOf("\/");
 						imgSrc  = imgSrc .substring(index + 1, imgSrc.length);
-						alert(imgSrc );
+						alert(imgSrc);
 						if(imgSrc != "") {
 							var ele = $api.dom('#my-touxiang');
 							var ss = $api.append(ele, '<img style="width: 3rem; height:3rem;border-radius:50%;"></img>');
