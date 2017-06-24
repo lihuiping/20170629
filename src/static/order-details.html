@@ -168,14 +168,14 @@
 										</div>
 									</li>
 									<!--总计-->
-									<div class="ccart-status od-status" v-cloak>
+									<div class="ccart-status od-status" v-if="orderDetailsList.order_state==10" v-cloak>
 										共计:{{orderDetailsList.total}}
 										<span>
 	                            			{{orderDetailsList.exchange_type | odMoneyTit1(orderDetailsList.exchange_type)}}
 	                        				<em class="c-ec4619 od-totalPrice" v-if="orderDetailsList.exchange_type == 1">{{orderDetailsList.order_sell_price}}</em>
 	                        				<em class="c-ec4619 od-totalPrice" v-if="orderDetailsList.exchange_type == 0">{{orderDetailsList.order_money}}</em>
 	                            		</span>
-	                            		<div class="od-right" v-if="orderDetailsList.order_state==10">
+	                            		<div class="od-right">
 											<span class="btn-order btn-cancelOrder" @click="delOrder()">取消订单</span>
 											<span class="btn-order btn-duihuan" @click="coventOrder()">立即兑换</span>
 										</div>
