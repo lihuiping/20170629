@@ -112,7 +112,12 @@ var client = sclient();
 						$.toast(result.msg);
 					}
 				})
-			},
-			function() {}
-		)
+			}
+		);
+		$('.modal-inner').addClass("shopcartAera");
+		$('.modal-button').addClass("shopcartConfirm");
+		$('.modal-button:first-child').addClass("shopcartCancel");
+		$('.modal-button-bold').addClass("shopcartSure");
+		
 	});
+	
