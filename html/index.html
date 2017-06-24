@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <meta charset="utf-8">
+	<head>
+		<meta charset="utf-8">
 <meta content="yes" name="apple-mobile-web-app-capable">
 <meta content="yes" name="apple-touch-fullscreen">
 <meta content="telephone=no,email=no" name="format-detection">
@@ -34,80 +34,78 @@
 <script  type="text/javascript" charset="utf-8" src="assets/js/common.js" ></script>
 <script type="text/javascript" src="lib/light7/js/light7.min.js"></script>
 
-    <link rel="stylesheet" href="assets/css/swiper.min.css"/>
-</head>
+		<link rel="stylesheet" href="assets/css/swiper.min.css" />
+	</head>
 
-<body>
+	<body>
+		<div class="page-group">
+			<div class="page page-current" id="router">
+				<div class="content pdbt">
+					<!--头部logo和搜索框 start-->
+					<div class="shouye-head">
+						<div class="shouyelogo">
+							<img src="assets/images/l-logo.png">
+							<a href="search.html" class="external shouye-a4" id="shouye-ss">
+								<div class="shouye-sousuo ">
+									<i class="iconfont icon-sousuo"></i> 商品名称
+								</div>
+							</a>
+						</div>
+					</div>
+					<!-- banner 黄正添加-->
+					<div class="swiper-container" id="index-banner" style="padding-top: 1rem;">
+						<div class="swiper-wrapper" id="banner">
+							<div class="swiper-slide" v-for="item in data" v-cloak>
+								<a href="javascript:;"><img :src="item.img">
+								</a>
+							</div>
+						</div>
+						<div class="swiper-pagination"></div>
+					</div>
+					<!--wsl 选项卡按钮start-->
+					<div class="tab-wrap bg-color">
+						<a id="ifLogin" class="tab-list ifLogin" href="shopCollect.html">
+							<img class="collect" src="assets/images/collect.png" />
+							<span class="tab-label">我的收藏</span>
+						</a>
+						<a class="tab-list ifLogin" href="shopping-cart.html">
+							<img class="cart" src="assets/images/cart.png" />
+							<span class="tab-label">购物车</span>
+						</a>
+						<a class="tab-list" href="myOrder-table.html">
+							<img class="help" src="assets/images/help.png" />
+							<span class="tab-label">我的订单</span>
+						</a>
+					</div>
+					<!--选项卡按钮end-->
+					<!-- 列表 黄正添加 -->
+					<div class="content-row" id="goods-list">
+						<img src="assets/images/loading.gif" v-if="loadingFlag" class="loading-img" />
+						<div class="content-half" v-for="item in goodslist.data" v-cloak>
+							<a class="card demo-card-header-pic" :href="getTitleHref(item.id)" :data-id="item.goodsId">
+								<div valign="bottom" class="card-header color-white no-border no-padding card-img-box">
+									<img class='card-cover' :src="item.goods_thumb" alt="">
+								</div>
+								<div class="typg-box">
+									<div class="item-title-row">
 
-<div class="page-group">
-    <div class="page page-current" id="router">
-        <div class="content pdbt">
-                 <!--头部logo和搜索框 start-->
-         <div class="shouye-head">
-            <div class="shouyelogo">
-                <img src="assets/images/l-logo.png">
-                <a href="search.html" class="external shouye-a4" id="shouye-ss">
-                    <div class="shouye-sousuo ">
-                        <i class="iconfont icon-sousuo"></i> 商品名称
-                    </div>
-                </a>
-            </div>
-        </div>
-            <!-- banner 黄正添加-->
-            <div class="swiper-container" id="index-banner" style="padding-top: 1rem;">
-                <div class="swiper-wrapper" id="banner">
-                    <div class="swiper-slide" v-for="item in data" v-cloak>
-                        <a href="javascript:;"><img :src="item.img">
-                        </a>
-                    </div>
-                </div>
-                <div class="swiper-pagination"></div>
-            </div>
-            <!--wsl 选项卡按钮start-->
-            <div class="tab-wrap bg-color">
-                <a id="ifLogin" class="tab-list ifLogin" href="shopCollect.html">
-                    <img class="collect" src="assets/images/collect.png"/>
-                    <span class="tab-label">我的收藏</span>
-                </a>
-                <a class="tab-list ifLogin" href="shopping-cart.html">
-                    <img class="cart" src="assets/images/cart.png"/>
-                    <span class="tab-label">购物车</span>
-                </a>
-                <a class="tab-list" href="myOrder-table.html">
-                    <img class="help" src="assets/images/help.png"/>
-                    <span class="tab-label">我的订单</span>
-                </a>
-            </div>
-            <!--选项卡按钮end-->
-            <!-- 列表 黄正添加 -->
-            <div class="content-row" id="goods-list">
-                <img src="assets/images/loading.gif" v-if="loadingFlag" class="loading-img"/>
-                <div class="content-half" v-for="item in goodslist.data" v-cloak>
-                    <a class="card demo-card-header-pic" :href="getTitleHref(item.id)" :data-id="item.goodsId">
-                        <div valign="bottom" class="card-header color-white no-border no-padding card-img-box">
-                            <img class='card-cover' :src="item.goods_thumb" alt="">
-                        </div>
-                        <div class="typg-box">
-                            <div class="item-title-row">
+										<div class="item-title">{{item.goods_name}}</div>
+									</div>
+									<div class="item-subtitle"><span class="qc-color">七彩币<em>{{item.sell_price}}</em></span> <span class="cny-color"><em>￥{{item.market_price}}</em></span>
+									</div>
+								</div>
+							</a>
+						</div>
 
-                                <div class="item-title">{{item.goods_name}}</div>
-                            </div>
-                            <div class="item-subtitle"><span class="qc-color">七彩币<em>{{item.sell_price}}</em></span> <span class="cny-color"><em>￥{{item.market_price}}</em></span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+					</div>
+					<div class="footer-hint">
+						<p>没有更多了</p>
+					</div>
+				</div>
 
-            </div>
-            <div class="footer-hint">
-                <p>没有更多了</p>
-            </div>
-        </div>
-
-    </div>
-</div>
-</div>
-<!--footer bar-->
+			</div>
+		</div>
+		<!--footer bar-->
 <nav class="bar bar-tab pub-bar">
     <a class="tab-item " onclick="openNewPage('shouye','movie-index.html')">
       <span class="icon icon-video"></span>
@@ -156,9 +154,10 @@
     </a>
   </nav>
   -->
-<script src="lib/swiper/js/swiper.min.js"></script>
-<script src="assets/js/index.js"></script>
-<script type="text/javascript" src="assets/js/public.js"></script>
-<script src="assets/js/ifLogin.js" type="text/javascript" charset="utf-8"></script>
-</body>
+		<script src="lib/swiper/js/swiper.min.js"></script>
+		<script src="assets/js/index.js"></script>
+		<script type="text/javascript" src="assets/js/public.js"></script>
+		<script src="assets/js/ifLogin.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+
 </html>
