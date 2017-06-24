@@ -6,20 +6,20 @@
     </a>
     
     <a class="tab-item @@mallact"  onclick="openNewPage('shangcheng','index.html')">
-      <span class="icon"></span>
-      <span class="tab-label @@mall">商城</span>
+      <span class="icon @@mall"></span>
+      <span class="tab-label">商城</span>
     </a>
     <a class="tab-item @@buyact" onclick="openNewPage('goupiao','buy-ticket.html')">
-      <span class="icon"></span>
-      <span class="tab-label @buy">购票</span>
+      <span class="icon @@buy"></span>
+      <span class="tab-label">购票</span>
     </a>
     <a class="tab-item @@findact" onclick="openNewPage('faxain','discover.html')">
-      <span class="icon"></span>
-      <span class="tab-label @@find">发现</span>
+      <span class="icon @@find"></span>
+      <span class="tab-label">发现</span>
     </a>
     <a class="tab-item @@myact" onclick="openNewPage('userCenter','user-center.html')" id="me">
-      <span class="icon"></span>
-      <span class="tab-label  @my">我的</span>
+      <span class="icon @@my"></span>
+      <span class="tab-label">我的</span>
     </a>
   </nav>
   	
