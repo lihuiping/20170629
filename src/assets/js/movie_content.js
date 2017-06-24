@@ -386,7 +386,13 @@ function qqshareNews_QZone() { //分享新闻到QQ空间
                 if(ret.status) {
                     $.toast("分享成功");
                 } else {
-                    $.toast("分享失败");
+                   if(err.code == -4){
+						$.toast("取消分享");
+					}else if(err.code == 10009){
+						$.toast("当前设备未安装qq客户端 ");
+					}else{
+						$.toast("分享失败");
+					}
                 }
             });
         }
@@ -414,7 +420,13 @@ function shareWebpage(Vscene) { //分享微信好友,朋友圈 . 参数: session
                 if(ret.status) {
                     $.toast("分享成功");
                 } else {
-                    $.toast("分享失败");
+                    if(err.code == 2){
+						$.toast("取消分享");
+					}else if(err.code == 3){
+						$.toast("发送失败");
+					}else{
+						$.toast("分享失败");
+					}
                 }
             });
         }
