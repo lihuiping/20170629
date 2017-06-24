@@ -1,6 +1,6 @@
 var conf = 1;
-//var toke = token();
-var toke = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhZG1pbiI6ZmFsc2UsImNsYWltcyI6bnVsbCwidWlkIjoiMTI5NCIsInYiOjEsImlhdCI6MTQ5NTc5MDA1OH0.T8cESgLZa9eX5TcErXNgMHb93xuHs9IGVsqubfpoJK4'; //获取token
+var toke = token();
+//var toke = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhZG1pbiI6ZmFsc2UsImNsYWltcyI6bnVsbCwidWlkIjoiMTI5NCIsInYiOjEsImlhdCI6MTQ5NTc5MDA1OH0.T8cESgLZa9eX5TcErXNgMHb93xuHs9IGVsqubfpoJK4'; //获取token
 var movie_record = ['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/Movie/playRecordList&token=' + toke];
 var del_movierecord = ['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/Movie/playRecorddestroy&token=' + toke];
 var change_movierecord =  ['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/Movie/playRecord&token=' + toke];
@@ -54,13 +54,21 @@ function getrecordList(){
 		       dataType :   'json',
 		success: function(json) {           
 			dataList = json;
-			console.log(dataList);
+			console.log(dataList.data.length);
 			var len_movierecord = $(".lqMovierecord li").length;
-			if(len_movierecord > "1" || dataList.res == "1") {
-				$("#bfjl-qs").hide();
-			} else if(dataList.res == "0" || len_movierecord == "0") {
-				$('.pr_edit').hide();
+//			$("#bfjl-qs").show();
+			if(dataList.res == "1" || dataList.data.length == "0") {
 				$("#bfjl-qs").show();
+				$('.pr_edit').hide();
+				$('#lqShowList').hide();
+//				console.log('sss');
+			} else if (len_movierecord > "1" || dataList.data.length > "0"){
+				$('#lqShowList').show();
+				$('.pr_edit').show();
+				$("#bfjl-qs").hide();
+			}else if(dataList.res == "0" || dataList.msg == '无权限'){
+				$("#bfjl-qs").show();
+				$('#lqShowList').hide();
 			}
 			var app = new Vue({
 				el: '#lqShowList',
@@ -77,6 +85,14 @@ function getrecordList(){
 }
 $(function() {
 	/*绑定数据*/
+	//加载时显示有无视频记录
+	if($(".pr_content li").length == 0) {
+		$("#bfjl-qs").show();
+		$(".pr_edit").hide();
+		$(".no-shop").hide();
+		$(".foot-all").hide();
+		$(".complete").hide();
+	}
 	//播放记录
 	getrecordList();
 	//单选
@@ -106,19 +122,10 @@ $(function() {
 			$(".del_num").text($("input[name='my-radio']:checked").length);
 		}
 	});
-	//加载时显示有无视频记录
-	if($(".pr_content li").length == 0) {
-		$("#bfjl-qs").show();
-		$(".pr_edit").hide();
-		$(".no-shop").hide();
-		$(".foot-all").hide();
-		$(".complete").hide();
-	}
-
 	//编辑
 	$(".pr_edit").on("click", function() {
 		$(".pr_edit").hide();
-		$(".complete").show();
+		$('.pr_li_play').hide();
 		$(".foot-all").show();
 		$(".media").show();
 		$(".del_num").text("0");
@@ -140,17 +147,14 @@ function recorddel() {
 		} else {
 			checkList += ',' + $(v).attr('id');
 		}
-		console.log(checkList);
 	});
+//	console.log(checkList);
 	var p_checked = $(".lqMovierecord input[name='my-radio']:checked");
 	if(p_checked.length > 0) {
 		layer.open({
-			content: '此操作将删除所有播放记录,该操作不可恢复是否继续？',
+			content: '此操作将删除播放记录,该操作不可恢复是否继续？',
 			btn: ['确定', '取消'],
 			yes: function(index) {
-
-				console.log(p_checked.length);
-
 				p_checked.parent().parent().remove();
 				var del_num = $(".lqMovierecord input[name='my-radio']:checked").length;
 				$(".del_num").text(del_num);
@@ -163,14 +167,17 @@ function recorddel() {
 					cache: false, //默认值true
 					data: {
 						ids: checkList,
-//						token: token()
 					},
 					cache: false, //默认值true
 					        //dataType :   'jsonp',
 					          // jsonp: "jsoncallback",
 					success: function(data) {
-//						console.log(data);
-						window.location.reload(); 
+//						console.log(data.res);
+						if(data.res == "1" || data.msg == "删除成功") {
+							$('#lqShowList').hide();
+							$("#bfjl-qs").show();
+						}
+//						window.location.reload(); 
 					},
 					error: function(data) {
 						layer.open({
@@ -200,3 +207,5 @@ function recorddel() {
 	}
 
 }
+
+$.init();

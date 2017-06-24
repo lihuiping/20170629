@@ -43,10 +43,13 @@
         <div class="page page-current movie-content" id="VideoPlay">
             <div class="content" v-cloak>
                 <div class="fenge-10"></div>
+                
+                
                 <div class="vpl_VideoDetail_num padding-lr clearfix">
-                    <div class="vpl_VideoDetail_num_left"> <span class="iconfont icon-xiaoxizhongxin" style="font-size: 1rem;"></span> <span> 热评<span>{{comCount}}</span>次</span>
+                    <div class="vpl_VideoDetail_num_left"> <span class="iconfont icon-xiaoxizhongxin" style="font-size: 1rem;"></span> 
+                    <span > 热评<span>{{comCount}}</span>次</span>
                     </div>
-                    <div class="vpl_VideoDetail_num_right"> <span class="iconfont icon-weishoucang vpl_Collection" index="1" @click="clickKeep(keepId)"></span> <span class="iconfont icon-fenxiang vpl_share" id="button-fenxiang"></span> </div>
+                    <div class="vpl_VideoDetail_num_right"> <span class="iconfont icon-weishoucang vpl_Collection" index="1" @click="clickKeep(keepId)"></span> <span class="iconfont icon-fenxiang vpl_share open-popup open-shares" id="button-fenxiang"></span> </div>
                     <div class="vpl_share_pingtai"> </div>
                 </div>
                 <section class="vpl_VideoDetail">
@@ -149,7 +152,7 @@
                     <i class="iconfont icon-guanbi vpl_remonForyou_close" @click="close_tj()"></i> </div>
                 <div class="vpl_remonForyou_list vpl_remonForyou_list2">
                     <ul>
-                       <li v-for="(item, index) in movielist.data" :id="index" v-if="index < 5" v-cloak>
+                       <li v-for="(item, index) in movielist.data" :id="index"  v-cloak>
                                 <a :href="'movie-content.html?id='+item.id" class="external color-default mytouch">
                                 <div class="vpl_remonForyou_list_left"> <img :src="item.cover" class="tuijian-pic" style="width: 100%;height: 100%;" /> </div>
                                 <div class="vpl_remonForyou_list_right">
@@ -217,7 +220,7 @@
                     <div class="vip_tips">
                         <p>试看结束,继续播放需要付费5元或开通会员终身免费本平台所有影视资源~</p>
                         <ul>
-                            <li><a href="payForView.html">付费点播</a></li>
+                            <li @click="getTitleHref()">付费点播</li>
                             <li><a href="become-member.html">开通会员</a></li>
                         </ul>
                     </div>
@@ -230,6 +233,29 @@
             <div class="bg_zhezhao" @click="close_fabiao"></div>
         </div>
     </div>
+    
+    <!--分享弹窗-->
+		<div class="getTicketShare popup popup-shares" id="popup-shares">
+			<div class="gd-share">
+				<div class="allShare">
+					<span onclick="shareWebpage('timeline')"  class="share-icon">
+						<img src="assets/images/pengyou.png" />
+						<span>朋友圈</span>
+					</span>
+					<span onclick="shareWebpage('session')" class="share-icon">
+						<img src="assets/images/wechati.png" />
+						<span>微信</span>
+					</span>
+					<span  onclick="qqshareNews_QZone()" class="share-icon">
+						<img src="assets/images/QQzone.png" />
+						<span>QQ空间</span>
+					</span>
+				</div>
+				<div class="close-popup closeShare">取消</div>
+			</div>
+		</div>
+		<!--分享弹窗结束-->
+    
     <!-- <script src="assets/js/hprose.js"></script> -->
     <script src="lib/cyberplayer.js"></script>
     <script src="assets/js/fx.js"></script>

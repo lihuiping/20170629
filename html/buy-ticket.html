@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html>
+<html class="pixel-ratio-1">
+
 	<head>
 		<meta charset="utf-8">
 <meta content="yes" name="apple-mobile-web-app-capable">
@@ -33,104 +34,125 @@
 <script  type="text/javascript" charset="utf-8" src="assets/js/common.js" ></script>
 <script type="text/javascript" src="lib/light7/js/light7.min.js"></script>
 
-		<style>
-			.OrderDetailLeft_des_fix {
-				width: 54%;
+		<style type="text/css">
+			.butTic-page .city_area_title span:nth-child(2){
+				margin-top: 0.6rem;
 			}
 		</style>
 	</head>
 	<body>
 		<div class="page scroll page-current page-inited butTic-page" id="goupiao">
-			<header class="bar bar-nav bdbt-none ad-bar" style="z-index: 1000;">
-  <a class="icon icon-left pull-left" href="javascript:history.go(-1)"></a>
-  <!--<a class="icon icon-refresh pull-right"></a>-->
+			<header class="bar bar-nav bdbt-none barIndex" style="z-index: 1000;">
   <h1 class="title">购票</h1>
 </header>
 			<div class="content znTop">
-			<div class="ip-scroll">
-				<div class="dysuo dy-sousuo gp_dy_sousuo">
-					
-					<div class="dysu_left">
-						<span class="gp_changeaddress">上海</span><span class="iconfont icon-down gp_openAddress"></span>
-					</div>
-					<div class="dysu_right">
-						<i class="iconfont icon-sousuo" id="lb-sousuo"></i>
-						<input placeholder="搜索" id="goupiao-input" type="text">
-					</div>
-				</div>
-				<div class="gp_box_title gp_box_title_fix">
-					<div class="gp_box_title_left gp_box_title_right_on">正在上映</div>
-					<div class="gp_box_title_right">即将上映</div>
-				</div>
-				<div class="gp_box gp_box_fix">
-					<!--即将上映-->
-					<div class="content infinite-scroll infinite-scroll_2" data-distance="100" style="display: none;">
-						<div class="gp_box_list gp_box_list_fix gp_box_list1 list-block" style="display: none;">
-							<ul class="list-container">
-							</ul>
-							<!--<div class="infinite-scroll-preloader">
-								<div class="preloader"></div>
-							</div>-->
+				<div class="ip-scroll">
+					<div class="dysuo dy-sousuo gp_dy_sousuo">
+						<div class="dysu_left">
+							<span class="gp_changeaddress"></span><span class="iconfont icon-down gp_openAddress"></span>
+						</div>
+						<div class="dysu_right">
+							<i class="iconfont icon-sousuo" id="lb-sousuo"></i>
+							<input placeholder="搜索" id="goupiao-input" type="text">
 						</div>
 					</div>
-					<!--正在上映-->
-					<div class="content infinite-scroll infinite-scroll_1" data-distance="100" style="display: block;">
-						<div class="gp_box_list gp_box_list_fix gp_box_list2 list-block" style="display: block;">
-							<ul class="list-container">
-							</ul>
-							<!--<div class="infinite-scroll-preloader">
-								<div class="preloader"></div>
-							</div>-->
-						</div>
+					<div class="gp_box_title gp_box_title_fix">
+						<div class="gp_box_title_left gp_box_title_right_on">正在上映</div>
+						<div class="gp_box_title_right">即将上映</div>
 					</div>
-				</div>
-				<div class="gp_citypicker gp_citypicker_fix" style="display:none;">
-					<div class="content city_area_content">
-						<div class="city_area_title">
-							<span>更换城市</span><span class="iconfont icon-guanbi1 cta_close"></span>
-						</div>
-						<div class="city_area_selectd">
-							<span>上海</span>
-							<span>当前定位城市</span>
-						</div>
-						<div class="city_area_hot">
-							<p class="city_area_hot_title">热门</p>
-							<div class="city_area_hot_list">
-								<ul>
+					<div class="gp_box gp_box_fix">
+						<div class="content infinite-scroll infinite-scroll_2" data-distance="100" style="display: none;">
+							<div class="gp_box_list gp_box_list_fix gp_box_list1 list-block" style="display: none;">
+								<ul class="list-container" style="overflow-y: scroll;">
 								</ul>
+								<!--<div class="infinite-scroll-preloader">
+								<div class="preloader"></div>
+							</div>-->
+							</div>
+						</div>
+						<div class="content infinite-scroll infinite-scroll_1" data-distance="100" style="display: block;">
+							<div class="gp_box_list gp_box_list_fix gp_box_list2 list-block" style="display: block;">
+								<ul class="list-container" style="overflow-y: scroll;">
+								</ul>
+								<!--<div class="infinite-scroll-preloader">
+								<div class="preloader"></div>
+							</div>-->
+							</div>
+						</div>
+					</div>
+					<div class="gp_citypicker gp_citypicker_fix" style="display:none;">
+						<div class="content city_area_content">
+							<div class="city_area_title">
+								<span>更换城市</span><span class="icon icon-guanbi cta_close"></span>
+							</div>
+							<div class="city_area_selectd">
+								<span></span>
+								<span>当前定位城市</span>
+							</div>
+							<div class="city_area_hot">
+								<p class="city_area_hot_title">热门</p>
+								<div class="city_area_hot_list">
+									<ul style="overflow-y: scroll;">
+									</ul>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			</div>
 		</div>
 		<!--footer bar-->
 <nav class="bar bar-tab pub-bar">
-    <a class="tab-item  @@video" href="movie-index.html" data-class="icon-video">
-      <span class="icon icon-video @@videoc video"></span>
+    <a class="tab-item  active" onclick="openNewPage('shouye','movie-index.html')" data-class="icon-video">
+      <span class="icon icon-video icon-video-active video"></span>
       <span class="tab-label">首页</span>
     </a>
     
-    <a class="tab-item @@mall"  href="index.html" data-class="icon-mall">
+    <a class="tab-item @@mall"  onclick="openNewPage('shangcheng','index.html')" data-class="icon-mall">
       <span class="icon icon-mall @@mallc"></span>
       <span class="tab-label">商城</span>
     </a>
-    <a class="tab-item active" href="buy-ticket.html" data-class="icon-ticket">
-      <span class="icon icon-ticket icon-ticket-active"></span>
+    <a class="tab-item @@ticket" onclick="openNewPage('goupiao','buy-ticket.html')" data-class="icon-ticket">
+      <span class="icon icon-ticket @@ticketc"></span>
       <span class="tab-label">购票</span>
     </a>
-    <a class="tab-item @@find" href="discover.html" data-class="icon-find">
+    <a class="tab-item @@find" onclick="openNewPage('faxain','discover.html')" data-class="icon-find">
       <span class="icon icon-find @@findc"></span>
       <span class="tab-label">发现</span>
     </a>
-    <a class="tab-item @@center"  href="user-center.html" id="me" data-class="icon-user">
+    <a class="tab-item @@center" onclick="openNewPage('userCenter','user-center.html')" id="me" data-class="icon-user">
       <span class="icon icon-user @@centerc"></span>
       <span class="tab-label">我的</span>
     </a>
   </nav>
+  	
+  	<!--<nav class="bar bar-tab pub-bar">
+    <a class="tab-item  active" href="movie-index.html" data-class="icon-video">
+      <span class="icon icon-video icon-video-active video"></span>
+      <span class="tab-label">首页</span>
+    </a>
+    
+    <a class="tab-item @@mall"   href="index.html" data-class="icon-mall">
+      <span class="icon icon-mall @@mallc"></span>
+      <span class="tab-label">商城</span>
+    </a>
+    <a class="tab-item @@ticket"  href="buy-ticket.html" data-class="icon-ticket">
+      <span class="icon icon-ticket @@ticketc"></span>
+      <span class="tab-label">购票</span>
+    </a>
+    <a class="tab-item @@find"  href="discover.html" data-class="icon-find">
+      <span class="icon icon-find @@findc"></span>
+      <span class="tab-label">发现</span>
+    </a>
+    <a class="tab-item @@center" href="user-center.html" id="me" data-class="icon-user">
+      <span class="icon icon-user @@centerc"></span>
+      <span class="tab-label">我的</span>
+    </a>
+  </nav>
+  -->
 		<script type="text/javascript" src="lib/hprose.js" charset="utf-8"></script>
 		<script type="text/javascript" src="lib/imgload.js" charset="utf-8"></script>
 		<script type="text/javascript" src="assets/js/buy-ticket.js" charset="utf-8"></script>
 	</body>
+
 </html>

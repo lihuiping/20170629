@@ -239,20 +239,20 @@
                                 <i class="icon icon-form-checkbox"></i>
                             </div>
                         </label>
-                        <div class="item-inner movie-inner">
+                        <div class="item-inner movie-inner" v-cloak>
 							<a :href="getTitleHref(movie.mid)">
 								<div class='pr_li_left'>
 									<img class='bf-img' :src="movie.cover" />
-									<span class="lqmovietime">00:00:00</span>
+									<span class="lqmovietime">{{movie.duration}}</span>
 								</div>
 								<div class='pr_li_right'>
 									<p class='pr_li_right_top'>{{movie.name}}</p>
 								</div>
-								<a class='external' :href="getTitleHref(movie.mid)">
+								<!--<a class='external' :href="getTitleHref(movie.mid)">
 									<div class='pr_li_play'><i class='icon icon-jixubofang'></i>
 										<p style='color:#ccc;'>重新播放</p>
 									</div>
-								</a>
+								</a>-->
 							</a>
                         </div>
 					</li>
@@ -277,13 +277,12 @@
 			</div>
 		</div>
 		<div class="page bg-f5 page-current page-inited" id="bfjl-qs">
-			<header class=" bar-nav wsl-header">
-				<div class="title-box">
-					<a class="icon icon-left" href="javascript:history.go(-1);"></a>
-					<div class="w-title">视频收藏</div>
-				</div>
+			<header class="bar bar-nav bdbt-none ad-bar" style="z-index: 1000;padding-top: 1.2rem;">
+				<a class="icon icon-left pull-left" href="javascript:history.go(-1)"></a>
+				<!--<a class="icon icon-refresh pull-right"></a>-->
+				<h1 class="title">视频收藏</h1>
 			</header>
-			<div class="content LqnoCollection">
+			<div class="content znTop LqnoCollection">
 				<div class="icon icon-shipinshoucang" id="bfjlc-page"><i></i></div>
 				<div>您暂无收藏的视频</div>
 			</div>
@@ -292,32 +291,6 @@
 		<!--<script type="text/javascript" src="assets/js/jiaohu.js" charset="utf-8"></script>-->
 		<script type="text/javascript" src="lib/light7/js/i18n/cn.min.js"></script>
 		<script type="text/javascript" src="assets/js/spsc.js"></script>
-		<!--<script type="text/javascript">
-			var conf = 1;
-var toke = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhZG1pbiI6ZmFsc2UsImNsYWltcyI6bnVsbCwidWlkIjoiODM4IiwidiI6MSwiaWF0IjoxNDkzMDAzMjg3fQ.PpqXb_oSU8EJVLAlwdzUBXsI67a2qAp7h5VuGf5Ly68'; //获取token
-			$("#edit-jilu").on("click", function() {
-				window.location.href = "./scbj.html";
-			})
-			var token = Cache.get("flag") || "";
-			var client1 = hprose.Client.create("http://my.shop.7cai.tv/tv/index.php?s=/Api/Favor/index.html&token=" + token, ["getCollectLists"]);
-			$.showIndicator();
-			client1.getCollectLists(function(result) {
-				$.hideIndicator();
-				var result = $.parseJSON(result);
-				if(result.res == 1) {
-					if(result.data.length > 0) {
-						result.data.forEach(function(data) {
-							$(".pr_content ul").append("<li><div class='pr_li_left'><img class='bf-img' src='" + data.videoimg + "'/></div><div class='pr_li_right'><p class='pr_li_right_top'>" + data.videoname + "</p></div><a class='external' href='http://my.shop.7cai.tv/tv/index.php?s=/Api/Favor/index.html&token=" + data.videoid + "'><div class='pr_li_play'><i class='icon icon-jixubofang'></i><p style='color:#ccc;'>重新播放</p></div></a></li>")
-						})
-					} else {
-						$("#getpwd").fadeOut();
-						$("#bfjl-qs").fadeIn();
-					}
-				} else {
-					$.toast(result.msg);
-				}
-			})
-		</script>-->
 	</body>
 
 </html>

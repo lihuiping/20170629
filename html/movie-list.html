@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
+
+<head>
+    <meta charset="utf-8">
 <meta content="yes" name="apple-mobile-web-app-capable">
 <meta content="yes" name="apple-touch-fullscreen">
 <meta content="telephone=no,email=no" name="format-detection">
@@ -33,90 +34,106 @@
 <script  type="text/javascript" charset="utf-8" src="assets/js/common.js" ></script>
 <script type="text/javascript" src="lib/light7/js/light7.min.js"></script>
 
-	</head>
+</head>
 
-	<body>
-		<div class="page page-current">
-			<header class="bar bar-nav bdbt-none ad-bar" style="z-index: 1000;">
+<body>
+    <div class="page page-current">
+        <header class="bar bar-nav bdbt-none ad-bar" style="z-index: 1000;">
   <a class="icon icon-left pull-left" href="javascript:history.go(-1)"></a>
   <!--<a class="icon icon-refresh pull-right"></a>-->
   <h1 class="title">电影列表</h1>
 </header>
-			<div class="content znTop noBottom">
-				<div class="sy-content" id="movie_list">
-					<div class="content-body reying-page">
-						<div class="item"  v-for="item in list.list">
-							<a :href="getTitleHref(item.id)" class="external">
-								<img  class="lazy"  :data-src="item.cover" src="assets/images/sp-jiazai.jpg" alt=""></a>
-							<div class="content-bottom">
-								<h4>{{item.name}}</h4>
-						<p>{{item.title}}</p>
-							</div>
-						</div>
-						
-					</div>
-				</div>
-				<div class="noMore">
-					没有更多了
-				</div>
-			</div>
-		</div>
-		<script type="text/javascript">
-			var conf = 1;
-  	 var movie_list=['./assets/data/goods.json', baseUrl()+'tv/index.php?s=/Api/Movie/lists'];  //至尊独享列表
-  	/*至尊独享列表*/
-var zzdx_list = new Vue({
-	el: "#movie_list",
-	data: {
-		list: [],
-		loadingFlag:true,
-	},
-	mounted: function() {
-		//初始化加载数据
-		var _this = this;
-		_this.showGoods();
-	},
-	methods: {
-		showGoods: function() {
-			var _this = this;
-			axios.get(movie_list[conf]).then(function(res) {
-				var data = res.data;
-				if(data.res == 1) {
-					_this.list = data.data;
-					_this.loadingFlag = false;
-				} else {
-					$.toast("商品数据错误");
-				}
-			});
-		},
-	    getTitleHref: function(val) {
-			return 'goods-detail.html?id=' + val
-		},
-	}
-});
-			
-			
-			function imgload() {
-				$("img.lazy").scrollLoading({
-					attr: "data-src",
-					callback: function() {
-						console.log(222);
-						var $this = $(this);
-						$this.removeClass("lazy").removeAttr("data-src");
-						var src = $this.attr("src");
-						if(src.toLowerCase().indexOf("uploadfile") >= 0 || src.toLowerCase().indexOf("myupload") >= 0 || src.toLowerCase().indexOf("http") == -1) {}
-					}
-				});
-			}
-			window.setTimeout(function() { imgload(); }, 200);
-			var timer = null;
-			$(".content").on("scroll", function() {
-				if(timer) { clearTimeout(timer); }
-				timer = setTimeout(function() { imgload(); }, 200);
-			});
-			$(".content").trigger("scroll");
-			
-		</script>
-	</body>
+        <div class="content znTop noBottom">
+            <div class="sy-content" id="movie_list">
+                <div class="content-body reying-page">
+                    <div class="item" v-for="item in list.list">
+                        <a :href="getTitleHref(item.id)" class="external">
+                            <img class="lazy" :data-src="item.cover" src="assets/images/sp-jiazai.jpg" alt=""></a>
+                        <div class="content-bottom">
+                            <h4>{{item.name}}</h4>
+                            <p>{{item.title}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="noMore">
+                没有更多了
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+    var conf = 1;
+    var movie_list = ['./assets/data/goods.json', baseUrl() + 'tv/index.php?s=/Api/Movie/lists']; //至尊独享列表
+//获取地址参数
+function GetQueryString(name) {
+	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+	var r = window.location.search.substr(1).match(reg);
+	if(r != null) return unescape(r[2]);
+	return null;
+}
+   var typeId = GetQueryString('type');
+    /*至尊独享列表*/
+    var zzdx_list = new Vue({
+        el: "#movie_list",
+        data: {
+            list: [],
+            loadingFlag: true,
+        },
+        mounted: function() {
+            //初始化加载数据
+            var _this = this;
+            _this.showGoods();
+        },
+        methods: {
+            showGoods: function() {
+                var _this = this;
+                axios.get(movie_list[conf], {
+                params: {
+                    type: typeId
+                }
+            }).then(function(res) {
+                    var data = res.data;
+                    if (data.res == 1) {
+                        _this.list = data.data;
+                        _this.loadingFlag = false;
+                    } else {
+                        $.toast("商品数据错误");
+                    }
+                });
+            },
+            getTitleHref: function(val) {
+                return 'goods-detail.html?id=' + val
+            },
+        }
+    });
+
+
+    function imgload() {
+        $("img.lazy").scrollLoading({
+            attr: "data-src",
+            callback: function() {
+                console.log(222);
+                var $this = $(this);
+                $this.removeClass("lazy").removeAttr("data-src");
+                var src = $this.attr("src");
+                if (src.toLowerCase().indexOf("uploadfile") >= 0 || src.toLowerCase().indexOf("myupload") >= 0 || src.toLowerCase().indexOf("http") == -1) {}
+            }
+        });
+    }
+    window.setTimeout(function() {
+        imgload();
+    }, 200);
+    var timer = null;
+    $(".content").on("scroll", function() {
+        if (timer) {
+            clearTimeout(timer);
+        }
+        timer = setTimeout(function() {
+            imgload();
+        }, 200);
+    });
+    $(".content").trigger("scroll");
+    </script>
+</body>
 
 </html>

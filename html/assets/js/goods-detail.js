@@ -113,7 +113,7 @@ var goodsDatail = new Vue({
 			axios.get(goodShopList[conf] + orderID).then(function(response) {
 				var data = response.data.data;
 				goodsDatail.shop = data;
-				
+
 			});
 			//获取评价
 			axios.get(evaluateList[conf] + orderID).then(function(response) {
@@ -173,7 +173,7 @@ var goodsDatail = new Vue({
 								skin: 'msg',
 								time: 2, //2秒后自动关闭
 							});
-							window.location.href = 'http://v.7cai.tv/templets/gerenzhongxin/login/login.html';
+							window.location.href = 'login.html';
 						}
 					}
 				});
@@ -265,23 +265,23 @@ var goodsDatail = new Vue({
 									time: 2, //2秒后自动关闭
 								});
 								setTimeout(function() {
-									window.location.href = 'http://v.7cai.tv/templets/gerenzhongxin/login/login.html';
+									window.location.href = 'login.html';
 								}, 1000);
 							} else {
-								if(msg == "属性选择错误"){
+								if(msg == "属性选择错误") {
 									layer.open({
 										content: '请选择样式!',
 										skin: 'msg',
 										time: 2, //2秒后自动关闭
 									});
-								}else{
+								} else {
 									layer.open({
 										content: msg,
 										skin: 'msg',
 										time: 2, //2秒后自动关闭
 									});
 								}
-								
+
 							}
 						}
 					});
@@ -333,7 +333,7 @@ var goodsDatail = new Vue({
 									time: 2, //2秒后自动关闭
 								});
 								setTimeout(function() {
-									window.location.href = 'http://v.7cai.tv/templets/gerenzhongxin/login/login.html';
+									window.location.href = 'login.html';
 								}, 1000);
 							} else {
 								layer.open({
@@ -461,106 +461,106 @@ var goodRule = new Vue({
 				}), {
 					headers: header
 				}).then(function(response) {
-						var res = response.data.res;
-						var msg = response.data.msg;
-						if(res == 1) {
-							$.closeModal('.popup-about');
+					var res = response.data.res;
+					var msg = response.data.msg;
+					if(res == 1) {
+						$.closeModal('.popup-about');
+						layer.open({
+							content: '商品已加入购物车, </br> 赶紧把它抱回家吧~',
+							skin: 'msg',
+							time: 2, //2秒后自动关闭
+						});
+						var goodsDetails = $(".ruleClass").text();
+						$(".item-size").text(goodsDetails);
+					} else {
+						if(msg == "请先登录！") {
 							layer.open({
-								content: '商品已加入购物车, </br> 赶紧把它抱回家吧~',
+								content: '您还没有登录,请登录!',
 								skin: 'msg',
 								time: 2, //2秒后自动关闭
 							});
-							var goodsDetails = $(".ruleClass").text();
-							$(".item-size").text(goodsDetails);
-						} else {
-							if(msg == "请先登录！") {
-								layer.open({
-									content: '您还没有登录,请登录!',
-									skin: 'msg',
-									time: 2, //2秒后自动关闭
-								});
-								setTimeout(function() {
-									window.location.href = 'http://v.7cai.tv/templets/gerenzhongxin/login/login.html';
-								}, 1000);
-								
-							} else {
-								layer.open({
-									content: msg,
-									skin: 'msg',
-									time: 2, //2秒后自动关闭
-								});
-							}
-						}
-				});
-		}
-	},
-	//点击立即兑换触发事件
-	selectConvert: function() {
-		var flag = true;
-		var ids = "";
-		$(".ruleClass b").each(function(i, v) {
-			if($(v).text() == "") {
-				layer.open({
-					content: '请选择' + $(v).attr('data-val'),
-					skin: 'msg',
-					time: 2, //2秒后自动关闭
-				});
-				flag = false;
-				return false;
-			} else {
-				if(ids == "") {
-					ids = $(v).attr("attrId");
-				} else {
-					ids += "," + $(v).attr("attrId");
-				}
-			}
+							setTimeout(function() {
+								window.location.href = 'login.html';
+							}, 1000);
 
-		});
-		if(flag) {
-			var goods_id = $("#goods_id").val();
-			var goods_number = $("#goods_number").val();
-			//				var tokens = token();
-			axios.post(addCartList[conf], transformRequest({
-				token: tokens,
-				goods_id: goods_id,
-				attr: ids,
-				number: goods_number,
-				fast: 1
-			}), {
-				headers: header
-			}).then(function(response) {
-				var res = response.data.res;
-				var msg = response.data.msg;
-				var carId = response.data.data;
-				if(res == 1) {
-					window.location.href = "./confirmOrder.html?attr=" + carId;
+						} else {
+							layer.open({
+								content: msg,
+								skin: 'msg',
+								time: 2, //2秒后自动关闭
+							});
+						}
+					}
+				});
+			}
+		},
+		//点击立即兑换触发事件
+		selectConvert: function() {
+			var flag = true;
+			var ids = "";
+			$(".ruleClass b").each(function(i, v) {
+				if($(v).text() == "") {
+					layer.open({
+						content: '请选择' + $(v).attr('data-val'),
+						skin: 'msg',
+						time: 2, //2秒后自动关闭
+					});
+					flag = false;
+					return false;
 				} else {
-					if(msg == "请先登录！") {
-						layer.open({
-							content: '您还没有登录,请登录!',
-							skin: 'msg',
-							time: 2, //2秒后自动关闭
-						});
-						setTimeout(function() {
-							window.location.href = 'http://v.7cai.tv/templets/gerenzhongxin/login/login.html';
-						}, 1000);
+					if(ids == "") {
+						ids = $(v).attr("attrId");
 					} else {
-						layer.open({
-							content: msg,
-							skin: 'msg',
-							time: 2, //2秒后自动关闭
-						});
+						ids += "," + $(v).attr("attrId");
 					}
 				}
+
 			});
+			if(flag) {
+				var goods_id = $("#goods_id").val();
+				var goods_number = $("#goods_number").val();
+				//				var tokens = token();
+				axios.post(addCartList[conf], transformRequest({
+					token: tokens,
+					goods_id: goods_id,
+					attr: ids,
+					number: goods_number,
+					fast: 1
+				}), {
+					headers: header
+				}).then(function(response) {
+					var res = response.data.res;
+					var msg = response.data.msg;
+					var carId = response.data.data;
+					if(res == 1) {
+						window.location.href = "./confirmOrder.html?attr=" + carId;
+					} else {
+						if(msg == "请先登录！") {
+							layer.open({
+								content: '您还没有登录,请登录!',
+								skin: 'msg',
+								time: 2, //2秒后自动关闭
+							});
+							setTimeout(function() {
+								window.location.href = 'login.html';
+							}, 1000);
+						} else {
+							layer.open({
+								content: msg,
+								skin: 'msg',
+								time: 2, //2秒后自动关闭
+							});
+						}
+					}
+				});
+			}
+		},
+		//点击叉号时
+		finishClose: function() {
+			var goodsDetails = $(".ruleClass").text();
+			$(".item-size").text(goodsDetails);
 		}
-	},
-	//点击叉号时
-	finishClose: function() {
-		var goodsDetails = $(".ruleClass").text();
-		$(".item-size").text(goodsDetails);
 	}
-}
 });
 
 //添加平台优惠券POPUP
@@ -733,12 +733,11 @@ var shopCoupon = new Vue({
 	}
 });
 
-
 //分享
 var allShare = new Vue({
 	el: '.popup-share',
 	data: {
-		
+
 	},
 	mounted: function() {
 		var _this = this;
@@ -746,11 +745,12 @@ var allShare = new Vue({
 			$.popup('#popup-share');
 		});
 	},
-	methods: {
-	}
+	methods: {}
 });
 
- $('.buttons-tab').fixedTab({offset:70});
+$('.buttons-tab').fixedTab({
+	offset: 70
+});
 
 $(".fixed-wrap").on('click', ".buttons-tab", function(e) {
 	var $buttonsTab = $(".buttons-tab").offset().top;
@@ -766,5 +766,103 @@ $(".fixed-wrap").on('click', ".buttons-tab", function(e) {
 	}
 
 })
+
+//分享功能
+//获取地址参数
+function GetQueryString(name) {
+	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+	var r = window.location.search.substr(1).match(reg);
+	if(r != null) return unescape(r[2]);
+	return null;
+}
+var goodsShareID = GetQueryString('id');
+
+var qq;
+var wx;
+apiready = function() {
+	qq = api.require('qq');
+	wx = api.require('wx');
+
+};
+
+function qqshareNews_QFriend() { //分享新闻qq给好友
+	qq.shareNews({
+		url: 'http://www.apicloud.com',
+		title: '新闻分享',
+		description: '新闻描述',
+		imgUrl: 'widget://res/news.png',
+		type: "QFriend"
+	}, function(ret, err) {
+		if(ret.status) {
+			alert(JSON.stringify(ret))
+		} else {
+			alert(JSON.stringify(err));
+		}
+	});
+}
+
+function qqshareNews_QZone() { //分享新闻到QQ空间
+	$.ajax({
+		type: "get",
+		url: "http://shop.7cai.tv/index.php?r=goods&m=share",
+		data: {
+			goods_id: goodsShareID,
+			token: tokens
+		},
+		async: true,
+		success: function(res) {
+			qq.shareNews({
+				url: 'http://www.apicloud.com',
+				title: res.data.title,
+				description: res.data.content,
+				imgUrl: res.data.img_url,
+				type: "QZone"
+			}, function(ret, err) {
+				if(ret.status) {
+					$.toast("分享成功");
+				} else {
+					$.toast("分享失败");
+				}
+			});
+		}
+	});
+}
+
+function shareWebpage(Vscene) { //分享微信好友,朋友圈 . 参数: session（会话） timeline（朋友圈）favorite（收藏）
+	$.ajax({
+		type: "get",
+		url: "http://shop.7cai.tv/index.php?r=goods&m=share",
+		data: {
+			"goods_id": goodsShareID,
+			"token": tokens
+		},
+		async: true,
+		success: function(res) {
+			wx.shareWebpage({
+				apiKey: 'wx64c1ec0115c22f7f',
+				scene: Vscene,
+				title: res.data.title,
+				description: res.data.content,
+				thumb: res.data.img,
+				contentUrl: 'http://www.apicloud.com'
+			}, function(ret, err) {
+				if(ret.status) {
+					$.toast("分享成功");
+				} else {
+					$.toast("分享失败");
+				}
+			});
+		}
+	});
+}
+
+//进店按钮
+function goInShop() {
+	layer.open({
+		content: '暂未开放,敬请期待',
+		skin: 'msg',
+		time: 2, //2秒后自动关闭
+	});
+};
 
 $.init();

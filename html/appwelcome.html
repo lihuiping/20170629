@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="yes" name="apple-touch-fullscreen">
+<meta content="telephone=no,email=no" name="format-detection">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<title>启动页</title>
+<link rel="stylesheet" href="assets/css/light7.min.css">
+<link rel="stylesheet" href="assets/css/common.css">
+	
+<script type="text/javascript" src="lib/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="lib/vue.min.js"></script>
+<script type="text/javascript" src="lib/axios.min.js"></script>
+<script type="text/javascript" src="lib/api.js"></script>
+<script type='text/javascript' src='lib/layer-mobile/layer.js' charset='utf-8'></script>
+<script type="text/javascript">
+	$.config = {
+		router: false,
+	}
+	//公用url
+	function baseUrl() {
+		return 'http://my.shop.7cai.tv/';
+	//	return 'http://www.movie.com/';	
+	}
+</script>
+<script type="text/javascript" src="assets/js/iscroll.js"></script>
+<script type="text/javascript" src="assets/js/date.js"></script>
+<script type="text/javascript" src="lib/imgload.js"></script>
+<script  type="text/javascript" charset="utf-8" src="assets/js/common.js" ></script>
+<script type="text/javascript" src="lib/light7/js/light7.min.js"></script>
+
+    <link rel="stylesheet" href="assets/css/swiper.min.css" />
+    <!-- Demo styles -->
+    <style>
+    .swiper-container {
+        width: 100%;
+        height: 100%;
+    }
+    
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        background-size: contain;
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+    
+    .swiper-slide1 {
+        background-image: url('assets/images/qd_01.jpg');
+    }
+    
+    .swiper-slide2 {
+        background-image: url('assets/images/qd_02.jpg');
+    }
+    
+    .swiper-slide3 {
+        background-image: url('assets/images/qd_03.jpg');
+    }
+    
+    .swiper-slide4 {
+        background-image: url('assets/images/qd_04.jpg');
+    }
+    
+    .swiper-pagination-bullet {
+        width: 16px;
+        height: 16px;
+        display: inline-block;
+        border-radius: 100%;
+        background: #fff;
+        opacity: .6;
+    }
+    
+    .swiper-container-horizontal>.swiper-pagination-bullets,
+    .swiper-pagination-custom,
+    .swiper-pagination-fraction {
+        bottom: 3.1rem;
+        left: 0;
+        width: 100%;
+    }
+    
+    .swiper-pagination .swiper-pagination-bullet-active {
+        background: #fff;
+        width: 34px;
+        border-radius: 10px;
+        opacity: 1;
+    }
+    
+    .swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet {
+        margin: 0 0px;
+    }
+    
+    .swiper-slide img {
+        width: 130px;
+        position: absolute;
+        margin: 0 auto;
+        bottom: 18%;
+        left: 32%;
+    }
+    </style>
+</head>
+
+<body>
+    <!-- Swiper -->
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide swiper-slide1"></div>
+            <div class="swiper-slide swiper-slide2"></div>
+            <div class="swiper-slide swiper-slide3"></div>
+            <div class="swiper-slide swiper-slide4">
+                <a href="movie-index.html"><img src="assets/images/qd_btn.png" alt=""> </a> 
+            </div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
+    <!-- Swiper JS -->
+    <script src="lib/swiper/js/swiper.min.js" type="text/javascript" charset="utf-8"></script>
+    <!-- Initialize Swiper -->
+    <script>
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        paginationClickable: true
+    });
+    </script>
+</body>
+
+</html>

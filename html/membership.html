@@ -84,34 +84,59 @@
 		<div class="page page-current page-inited" id="kaiHuiyuan">
 			<!--footer bar-->
 <nav class="bar bar-tab pub-bar">
+    <a class="tab-item  @@video" onclick="openNewPage('shouye','movie-index.html')" data-class="icon-video">
+      <span class="icon icon-video @@videoc video"></span>
+      <span class="tab-label">首页</span>
+    </a>
+    
+    <a class="tab-item @@mall"  onclick="openNewPage('shangcheng','index.html')" data-class="icon-mall">
+      <span class="icon icon-mall @@mallc"></span>
+      <span class="tab-label">商城</span>
+    </a>
+    <a class="tab-item @@ticket" onclick="openNewPage('goupiao','buy-ticket.html')" data-class="icon-ticket">
+      <span class="icon icon-ticket @@ticketc"></span>
+      <span class="tab-label">购票</span>
+    </a>
+    <a class="tab-item @@find" onclick="openNewPage('faxain','discover.html')" data-class="icon-find">
+      <span class="icon icon-find @@findc"></span>
+      <span class="tab-label">发现</span>
+    </a>
+    <a class="tab-item active" onclick="openNewPage('userCenter','user-center.html')" id="me" data-class="icon-user">
+      <span class="icon icon-user icon-user-active"></span>
+      <span class="tab-label">我的</span>
+    </a>
+  </nav>
+  	
+  	<!--<nav class="bar bar-tab pub-bar">
     <a class="tab-item  @@video" href="movie-index.html" data-class="icon-video">
       <span class="icon icon-video @@videoc video"></span>
       <span class="tab-label">首页</span>
     </a>
     
-    <a class="tab-item @@mall"  href="index.html" data-class="icon-mall">
+    <a class="tab-item @@mall"   href="index.html" data-class="icon-mall">
       <span class="icon icon-mall @@mallc"></span>
       <span class="tab-label">商城</span>
     </a>
-    <a class="tab-item @@ticket" href="buy-ticket.html" data-class="icon-ticket">
+    <a class="tab-item @@ticket"  href="buy-ticket.html" data-class="icon-ticket">
       <span class="icon icon-ticket @@ticketc"></span>
       <span class="tab-label">购票</span>
     </a>
-    <a class="tab-item @@find" href="discover.html" data-class="icon-find">
+    <a class="tab-item @@find"  href="discover.html" data-class="icon-find">
       <span class="icon icon-find @@findc"></span>
       <span class="tab-label">发现</span>
     </a>
-    <a class="tab-item active"  href="user-center.html" id="me" data-class="icon-user">
+    <a class="tab-item active" href="user-center.html" id="me" data-class="icon-user">
       <span class="icon icon-user icon-user-active"></span>
       <span class="tab-label">我的</span>
     </a>
   </nav>
+  -->
 			<header class="bar bar-nav bdbt-none ad-bar" style="z-index: 1000;">
   <a class="icon icon-left pull-left" href="javascript:history.go(-1)"></a>
   <!--<a class="icon icon-refresh pull-right"></a>-->
   <h1 class="title">开通会员</h1>
 </header>
-			<div class="content znTop">
+			<div class="content znTop"  style="bottom: 0;">
 				<header class="bar-nav wsl-header" style="position: fixed;top: 0;left: 0;z-index: 100;width: 100%;">
 					<div class="title-box">
 						<a class="icon icon-left" href="javascript:history.go(-1)"></a>

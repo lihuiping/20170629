@@ -75,19 +75,47 @@ var Cookie = {
 		}), api
 	}();
 var isVIP = '';
+var token = token();
 //获取token
 function sclient() {
-	var token = Cache.get("flag") || "";
+	//	var token = Cache.get("flag") || "";
 	return hprose.Client.create("http://test.7cai.tv/index.php/api/api/user?t=" + token, ["login", "register", "isLogin", "logout", "findPwd", "sendCode", "getUserInfo", "isSafe", "modifyInfo", "isRegister", "modifyMobile", "modifyHeadImg", "certif ication", "modifyPwd", "modifySafePwd", "getAddressList", "getAddress", "addOrEditAddress", "setDefaultAddress", "delAddress", "getPayOrderInfo", "getOpenId ", "getUploadParams", "getFriends", "getPoints", "getTicketUrl", "getFkTypeLists", "addFkMsg", "getWxSdkSignInfo"]);
-	//http://test.7cai.tv/index.php
 }
 
 var client = sclient();
-//  获取推荐码
-var uniquemark = Cache.get("uniquemark") || null;
-var link = !uniquemark ? "http://v.7cai.tv" : "http://v.7cai.tv" + "?unique=" + uniquemark;
+
+//提示未登录跳转
+var noLogin = function() {
+	setTimeout(function() {
+		window.location.href = "./login.html";
+	}, 1500);
+}
+var isLogin = function() {
+	if(Cache.get("flag")) {
+		if(!Cache.get("Login")) {
+			client.invoke("isLogin", [{
+				"mobile": Cache.get("whole_mobile")
+			}], function(result) {
+				var result = $.parseJSON(result);
+				if(result.res == 0) {
+					$.toast("您还未登录！");
+					return false;
+				} else {
+					Cache.set("Login", 1);
+					return true;
+				}
+			})
+		} else {
+			return true;
+		}
+
+	} else {
+		$.toast("您还未登录！");
+		return false;
+	}
+}
+
 //购票页面
-//	$(document).on("pageInit", "#goupiao", function(e, id, page) {
 var client1 = hprose.Client.create("http://test.7cai.tv/index.php/api/api/ticket", ['getOrderLists', 'login', 'getCityMoviesLists2', 'getCityWillMoviesLists2', 'getCinemaSchedInfo', 'getTicketCinemaUrl', 'register', 'getTicketCinemaUrl', 'getCityCinemasLists', 'isLogin', 'logout', 'getCityMoviesLists', 'getCinemaInfo', 'getCinemaSchedInfo', 'getCityWillMoviesLists', 'findPwd', 'getMoviesInfo', 'sendCode', 'getUserInfo', 'getMoviesInfo', 'getAddressList', 'getUploadParams', 'getPayOrderInfo', 'getOpenId', 'getCityLists', 'getCityCinemasLists']);
 var Areaid;
 var Areatext;
@@ -157,13 +185,13 @@ function getmovieList1() {
 };
 getmovieList2();
 getmovieList1();
+
 //城市列表函数
 function getCitylists() {
 	client1.getCityLists(function(result) {
 		var result = $.parseJSON(result);
 		if(result.res == 1) {
 			var rdhl = result.data.hot.length;
-			console.log(result.data.hot);
 			for(i = 0; i < rdhl; i++) {
 				$('.city_area_hot_list ul').append('<li index=' + result.data.hot[i].id + '>' + result.data.hot[i].name + '</li>');
 			}
@@ -197,114 +225,6 @@ if(sessionStorage.getItem('getCityLists') == null) {
 		}
 	};
 };
-
-//购票
-setTimeout(function() {
-	//热门
-	$(".city_area_hot_list ul li").on("click",
-		function() {
-			currentpage = 1;
-			currentpage2 = 1;
-			$('.gp_box_title').show();
-			Areaid = $(this).attr("index");
-			Areatext = $(this).text();
-			$('.city_area_selectd span:eq(0)').text(Areatext);
-			window.localStorage.setItem('city_select1', Areaid);
-			window.localStorage.setItem('city_selected', Areatext);
-			cityidSure = window.localStorage.getItem('city_select1');
-			$('.list-container').empty();
-			$('.gp_citypicker').hide();
-			$('.gp_box_list2').show();
-			$('.gp_changeaddress').text(Areatext);
-			Areaid = parseInt(Areaid);
-			window.location.href = window.location.href + '?timestamp=' + Date.parse(new Date());
-		});
-	//选择城市
-	$(".city_area_hot_listA ul li").on("click",
-		function() {
-			currentpage = 1;
-			currentpage2 = 1;
-			$('.gp_box_title').show();
-			Areaid = $(this).attr("index");
-			Areatext = $(this).text();
-			$('.city_area_selectd span:eq(0)').text(Areatext);
-			window.localStorage.setItem('city_select1', Areaid);
-			window.localStorage.setItem('city_selected', Areatext);
-			cityidSure = window.localStorage.getItem('city_select1');
-			$('.list-container').empty();
-			$('.gp_citypicker').hide();
-			$('.gp_box_list2').show();
-			$('.gp_changeaddress').text(Areatext);
-			Areaid = parseInt(Areaid);
-
-			window.location.href = window.location.href + '?timestamp=' + Date.parse(new Date());
-		});
-	//点击影票ul
-	$(".gp_OrderDetailLeft").on("click",
-		function() {
-			var thismoves_id = $(this).attr('index');
-			window.location.href = "./dyxiangqing.html?id=" + thismoves_id;
-		});
-
-	$(".gphref_button").on("click",
-		function() {
-			var thismoves_id = $(this).attr('index');
-			window.location.href = "./gparea.html?id=" + thismoves_id;
-		});
-
-	//搜索
-	$("#goupiao-input").on('click',
-		function() {
-			window.location.href = "./sousuoliebiao.html";
-		});
-	//预售 
-	$(".gp_OrderDetailRight").on("click",
-		function() {
-			var thismoves_id = $(this).attr('index');
-			window.location.href = "./gparea.html?id=" + thismoves_id;
-		});
-	//更换城市
-	$('.cta_close').on('click', function() {
-		if($('.gp_box_title_right').hasClass('gp_box_title_right_on')) {
-			$('.gp_citypicker').hide();
-			$('.gp_box_title').show();
-			$('.gp_box_list1').show();
-		} else if($('.gp_box_title_left').hasClass('gp_box_title_right_on')) {
-			$('.gp_citypicker').hide();
-			$('.gp_box_title').show();
-			$('.gp_box_list2').show();
-		}
-	});
-	//正在上映
-	$(".gp_box_title_left").on('click', function() {
-		$('.infinite-scroll_1').show();
-		$('.infinite-scroll_2').hide();
-		$(".gp_box_title_left").removeClass('gp_box_title_right_on');
-		$(".gp_box_title_right").removeClass('gp_box_title_right_on');
-		$(".gp_box_title_left").addClass('gp_box_title_right_on');
-		$(".gp_box_list1").hide();
-		$(".gp_box_list2").show();
-	});
-	//即将上映
-	$(".gp_box_title_right").on('click', function() {
-		$('.infinite-scroll_2').show();
-		$('.infinite-scroll_1').hide();
-		$(".gp_box_title_left").removeClass('gp_box_title_right_on');
-		$(".gp_box_title_right").removeClass('gp_box_title_right_on');
-		$(".gp_box_title_right").addClass('gp_box_title_right_on');
-		$(".gp_box_list2").hide();
-		$(".gp_box_list1").show();
-	});
-	//改变城市
-	$('.gp_openAddress,.gp_changeaddress').on('click', function() {
-		$('.gp_citypicker').show();
-		$('.gp_box_title').hide();
-		$('.gp_box_list').hide();
-	});
-}, 500);
-
-//	});
-
 //滚动加载
 function gundongloading() {
 	var loading = false;
@@ -323,7 +243,6 @@ function gundongloading() {
 			if(currentpage >= totalpage) {
 				$.detachInfiniteScroll($('.infinite-scroll_1'));
 				$('.gp_box_list2 .infinite-scroll-preloader').remove();
-				return;
 			}
 			if($('.gp_box_list2').css("display") === 'block') {
 				currentpage++;
@@ -341,44 +260,98 @@ function gundongloading() {
 		}, 500);
 //	});
 };
+
 gundongloading();
 
-//阻止IOS底部拖动
-function noscroll() {
-	var content = document.querySelector('.content') || null;
-	var startY;
+$(document).on("click", ".city_area_hot_list ul li",
+	function() {
+		currentpage = 1;
+		currentpage2 = 1;
+		$('.gp_box_title').show();
+		Areaid = $(this).attr("index");
+		Areatext = $(this).text();
+		$('.city_area_selectd span:eq(0)').text(Areatext);
+		window.localStorage.setItem('city_select1', Areaid);
+		window.localStorage.setItem('city_selected', Areatext);
+		cityidSure = window.localStorage.getItem('city_select1');
+		$('.list-container').empty();
+		$('.gp_citypicker').hide();
+		$('.gp_box_list2').show();
+		$('.gp_changeaddress').text(Areatext);
+		Areaid = parseInt(Areaid);
+		window.location.href = window.location.href + '?timestamp=' + Date.parse(new Date());
+	});
+$(document).on("click", ".city_area_hot_listA ul li",
+	function() {
+		currentpage = 1;
+		currentpage2 = 1;
+		$('.gp_box_title').show();
+		Areaid = $(this).attr("index");
+		Areatext = $(this).text();
+		$('.city_area_selectd span:eq(0)').text(Areatext);
+		window.localStorage.setItem('city_select1', Areaid);
+		window.localStorage.setItem('city_selected', Areatext);
+		cityidSure = window.localStorage.getItem('city_select1');
+		$('.list-container').empty();
+		$('.gp_citypicker').hide();
+		$('.gp_box_list2').show();
+		$('.gp_changeaddress').text(Areatext);
+		Areaid = parseInt(Areaid);
 
-	if(content) {
-		content.addEventListener('touchstart', function(e) {
-			startY = e.touches[0].clientY;
-		});
-
-		content.addEventListener('touchmove', function(e) {
-			// 底位表示向下滚动
-			// 1容许 0禁止
-			var status = '11';
-			var ele = this;
-
-			var currentY = e.touches[0].clientY;
-
-			if(ele.scrollTop === 0) {
-				// 如果内容小于容器则同时禁止上下滚动
-				status = ele.offsetHeight >= ele.scrollHeight ? '00' : '01';
-			} else if(ele.scrollTop + ele.offsetHeight >= ele.scrollHeight) {
-				// 已经滚到底部了只能向上滚动
-				status = '10';
-			}
-
-			if(status != '11') {
-				// 判断当前的滚动方向
-				var direction = currentY - startY > 0 ? '10' : '01';
-				// 操作方向和当前允许状态求与运算，运算结果为0，就说明不允许该方向滚动，则禁止默认事件，阻止滚动
-				if(!(parseInt(status, 2) & parseInt(direction, 2))) {
-					e.preventDefault();
-				}
-			}
-		});
+		window.location.href = window.location.href + '?timestamp=' + Date.parse(new Date());
+	});
+$(document).on("click", ".gp_OrderDetailLeft",
+	function() {
+		var thismoves_id = $(this).attr('index');
+		window.location.href = "./dyxiangqing.html?id=" + thismoves_id;
+	});
+$(document).on("click", ".gphref_button",
+	function() {
+		var thismoves_id = $(this).attr('index');
+		window.location.href = "./gparea.html?id=" + thismoves_id;
+	});
+$("#goupiao-input").on('click',
+	function() {
+		window.location.href = "./sousuoliebiao.html";
+	});
+$(document).on("click", ".gp_OrderDetailRight",
+	function() {
+		var thismoves_id = $(this).attr('index');
+		window.location.href = "./gparea.html?id=" + thismoves_id;
+	});
+$('.cta_close').click(function() {
+	if($('.gp_box_title_right').hasClass('gp_box_title_right_on')) {
+		$('.gp_citypicker').hide();
+		$('.gp_box_title').show();
+		$('.gp_box_list1').show();
+	} else if($('.gp_box_title_left').hasClass('gp_box_title_right_on')) {
+		$('.gp_citypicker').hide();
+		$('.gp_box_title').show();
+		$('.gp_box_list2').show();
 	}
-}
-noscroll();
+});
+$(".gp_box_title_left").click(function() {
+	$('.infinite-scroll_1').show();
+	$('.infinite-scroll_2').hide();
+	$(".gp_box_title_left").removeClass('gp_box_title_right_on');
+	$(".gp_box_title_right").removeClass('gp_box_title_right_on');
+	$(".gp_box_title_left").addClass('gp_box_title_right_on');
+	$(".gp_box_list1").hide();
+	$(".gp_box_list2").show();
+});
+$(".gp_box_title_right").click(function() {
+	$('.infinite-scroll_2').show();
+	$('.infinite-scroll_1').hide();
+	$(".gp_box_title_left").removeClass('gp_box_title_right_on');
+	$(".gp_box_title_right").removeClass('gp_box_title_right_on');
+	$(".gp_box_title_right").addClass('gp_box_title_right_on');
+	$(".gp_box_list2").hide();
+	$(".gp_box_list1").show();
+});
+$('.gp_openAddress,.gp_changeaddress').click(function() {
+	$('.gp_citypicker').show();
+	$('.gp_box_title').hide();
+	$('.gp_box_list').hide();
+});
+
 $.init();

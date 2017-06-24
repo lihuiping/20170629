@@ -1,7 +1,7 @@
 
 var conf = 1;
 var bann = ['../assets/data/index.json', 'http://v.zy7c.com/index.php?r=lunbo']; //banner
-var goodsdata = ['../assets/data/goods.json', baseUrl()]; //商品列表
+var goodsdata = ['../assets/data/goods.json', baseUrl()+'index.php']; //商品列表
 
 // banner图
 $.ajax({       
@@ -48,6 +48,7 @@ var goods = new Vue({
 					_this.goodslist = data;
 					_this.loadingFlag = false;
 				} else {
+					_this.loadingFlag = false;
 					$.toast("商品数据错误");
 				}
 			});
