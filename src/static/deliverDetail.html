@@ -5,10 +5,11 @@
 </head>
 <body>
 <div id="deliverDetail">
-    <div class="page page-current">
-
-        <div class="list-block media-list ccart-list deliver-info">
-            <ul class="ccart-content deliver-content" v-cloak>
+    <div class="page  page-current">
+    	@@include('../tpl/bar-nav.tpl',{ "title":"查看物流" })
+		
+        <div class="list-block znTop media-list ccart-list deliver-info">
+            <ul class="ccart-content znTop deliver-content" v-cloak>
                 <li class="deliver-list">
                     <div class="ccart-con" v-for="odGood in orderDetailsList.goodsList" :godId="odGood.id">
                         <div class="item-content">
@@ -46,8 +47,8 @@
                 </li>
             </ul>
         </div>
-        <div class="list-block deliver-mes">
-            <ul class="deliver-details" v-cloak>
+        <div class="list-block znTop deliver-mes">
+            <ul class="deliver-details znTop" v-cloak>
                 <li class="item-content deliver-item">
                     <div class="item-inner deliver-order">
                         <div class="item-title">承运来源：</div>
