@@ -312,7 +312,7 @@ $(document).on("pageInit", "#editmessage", function(e, id, page) {
 		var time = getLocalTime(result.data.birthday);
 		Cache.set("issafe", result.data.isSafe);
 		var touxiang = result.data.headimg ? result.data.headimg : "assets/images/tx-120.png";
-		alert(touxiang);
+//		alert(touxiang);
 		$("#mytouxiang-div").append("<img style='width: 3rem; height:3rem;border-radius:50%;' id='my-touxiang' src="+touxiang+">");
 		$("#mename").html(result.data.username ? result.data.username : result.data.mobile);
 		$("#megenger").val(parseInt(result.data.sex) ? "女" : "男");
@@ -406,24 +406,28 @@ $(document).on("pageInit", "#editmessage", function(e, id, page) {
 				}, function(ret, err) {
 					if(ret) {
 						var imgSrc = ret.data;
-//						var str = "/asdasf/asfaewf/agaegr/trer/rhh";
-//						var index = imgSrc .lastIndexOf("\/");
-//						imgSrc  = imgSrc .substring(index + 1, imgSrc.length);
 //						alert(imgSrc);
+//						var str = "/asdasf/asfaewf/agaegr/trer/rhh";
+						var index = imgSrc .lastIndexOf("\/");
+						var imgUrl  = imgSrc .substring(index + 1, imgSrc.length);
+						
+//						alert(imgUrl);
 						if(imgSrc != "") {
 							var ele = $api.dom('#my-touxiang');
 							var ss = $api.append(ele, '<img style="width: 3rem; height:3rem;border-radius:50%;"></img>');
 							$api.attr(ss, 'src', imgSrc);
-//							client.modifyInfo({"imgurl":'http://img.7cai.tv/tx/'+imgSrc},function(result){
+							client.modifyInfo({"imgurl":'http://img.7cai.tv/tx/'+imgUrl},function(result){
 //								alert(result);
-//								var result = $.parseJSON(result);
-//								if(result.res == 1){
-//									$.toast("修改完成!");
-//								}else{
-//									
-//									$.toast(result.msg)
-//								}
-//							})
+								var result = $.parseJSON(result);
+								if(result.res == 1){
+//									alert(result.msg);
+									$.toast("修改完成!");
+								}else{
+									
+									$.toast(result.msg)
+								}
+							})
+							
 						}
 					} else {
 						alert(JSON.stringify(err));

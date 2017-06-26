@@ -464,6 +464,11 @@ $("#sub_order").on('click', function() {
 										//alert(JSON.stringify(ret) + JSON.stringify(err));
 												if(ret.payCode == 9000) {
 													$.toast("订单支付成功");
+													setTimeout(function(){
+														window.location.href = "./myOrder-table.html";
+													},1000)
+													
+													
 													
 												} else if(ret.payCode == 6001) {
 													$.toast("订单已取消");
