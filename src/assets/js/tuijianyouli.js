@@ -1,10 +1,5 @@
 $(function(){
-	$('#tj-erwei').qrcode({
-    render: "canvas", 
-    width: 100,
-    height: 100,
-    text: "http://www.baidu.com"
-});
+	$('#tj-erwei').qrcode({"http://www.baidu.com"});
 })
 var qq,wx;
     apiready = function() {
