@@ -3,7 +3,11 @@
 
 	<head>
 		@@include('../tpl/header.tpl',{ "title":"发现" })
-		<script src="../assets/js/closeApp.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				exitApp();
+			});
+		</script>
 	</head>
 
 	<body>

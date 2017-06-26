@@ -3,7 +3,11 @@
 
 <head>
     @@include('../tpl/header.tpl',{ "title":"中益七彩" })
-    <script src="../assets/js/closeApp.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+			$(function(){
+				exitApp();
+			});
+		</script>
     <link rel="stylesheet" href="assets/css/swiper.min.css" />
 </head>
 
