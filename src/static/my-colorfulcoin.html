@@ -4,6 +4,73 @@
 	<head>
 		@@include('../tpl/header.tpl',{ "title":"我的七彩币" })
 		<link rel="stylesheet" href="lib/wj/css/wj.css">
+		<style type="text/css">
+			.mptop{
+				color: #212121;
+				font-size: 0.7rem;
+				margin-bottom: 0.3rem;
+				overflow: hidden;white-space: nowrap;text-overflow: ellipsis;
+			}
+			.mpdown{
+				color: #b0b0b0;
+				font-size: 0.55rem;
+			}
+			.mpinout_content1_liright_points{
+				color: #383838;
+				font-size: 0.6rem;
+			}
+			.mpinout_content1_liright_points .colorful-money{
+				color: #ec4619;
+				font-size: 0.9rem;
+				margin-right: 0.5rem;
+			}
+			.mpinout_content1_liright_points .colorful-money em{
+				font-style: normal;
+			}
+			.colorful-p li{
+				padding: 0.5rem 0;
+				height: inherit;
+			}
+			.tabs .item-media{position: inherit;}
+			.colorful-convert{margin: 0;}
+			.colorful-convert ul{
+				border-bottom: none;
+				border-top: none;
+				padding: 0 0.5rem;
+			}
+			.colorful-convert ul li{
+				border-bottom: solid 0.05rem #D9D9D9;
+			}
+			.colorful-convert .item-content{padding-left: 0;}
+			.colorful-convert .item-link .item-inner{padding-right: 0;width: 62%;}
+			.colorful-convert .item-link .item-inner .item-title{color: #212121;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
+			.colorful-convert .item-text{
+				height: inherit;
+			}
+			.colorful-convert .item-media{
+				padding: 0 !important;
+				width: 4rem;
+				height: 4rem;
+			}
+			.colorful-convert .item-media img{
+				width: 4rem;
+				height: 4rem;
+			}
+			.colorful-convert .ccart-price{
+				overflow: hidden;
+				margin-top: 0;
+			}
+			.colorful-convert .ccart-price .colorful-price{
+				float: right;
+				margin-right: 1rem;
+				color: #212121;
+				font-size: 0.6rem;
+			}
+			.colorful-convert .ccart-price .colorful-price em{margin-right: 0.2rem;color: #ec4619;font-size: 0.8rem;}
+			.list-block .item-link.active-state, html:not(.watch-active-state) .list-block .item-link:active{
+				background-color: #FFFFFF;
+			}
+		</style>
 	</head>
 
 	<body>
@@ -25,23 +92,58 @@
 								<p class="mpinout_left active">收入</p>
 								<p class="mpinout_right">支出</p>
 							</div>
-							<div class="mpinout_content1">
-								<div class="iconfont icon-shouru-quesheng" style="display: block;"></div>
-								<p class="iconfont_des" style="display: block;">当前暂无收入记录</p>
+							<div class="mpinout_content1 colorful-p">
+								<div>
+									<div class="iconfont icon-shouru-quesheng" style="display: block;"></div>
+									<p class="iconfont_des" style="display: block;">当前暂无收入记录</p>
+								</div>
 								<ul>
 								</ul>
 							</div>
-							<div class="mpinout_content2">
-								<div class="iconfont icon-zhichu-quesheng" style="display: inherit;"></div>
-								<p class="iconfont_des">当前暂无支出记录</p>
+							<div class="mpinout_content2 colorful-p" id="spend">
+								<div v-if="spendRes.res == 0">
+									<div class="iconfont icon-zhichu-quesheng" style="display: inherit;"></div>
+									<p class="iconfont_des">当前暂无支出记录</p>
+								</div>
+								<div v-if="spendRes.res == 1">
+								<ul v-for="item2 in spending">
+									<li v-for="spendItem in item2.order_goods">
+										<div class='mpinout_content1_liLeft' style="width: 60%;">
+											<p class='mptop' style="width: 60%;">{{spendItem.goods_name}}</p>
+											<p class='mpdown'>{{item2.add_time}}</p>
+										</div>
+										<div class='mpinout_content1_liright'>
+											<span class='mpinout_content1_liright_points'><span class="colorful-money">-<em>{{spendItem.goods_price}}</em></span>七彩币</span>
+										</div>
+									</li>
+								</ul>
+								</div>
 							</div>
 						</div>
-						<div id="tab2" class="tab">
+						<div id="tab2" class="tab convert">
 							<div id="tab1" class="tab active">
-								<div class="exchange">
+								<div class="exchange" v-if="dataRes.res == 0">
 									<div class="iconfont icon-duihuan-quesheng" style="display: inherit;"></div>
 									<p class="iconfont_des">当前暂无兑换记录</p>
 								</div>
+								<div class="list-block media-list colorful-convert" v-if="dataRes.res == 1">
+								    <ul v-for="item1 in dataSpend">
+								      <li v-for="orderItem in item1.order_goods">
+								        <a href="javascript:;" class="item-link item-content">
+								          <div class="item-media"><img :src="orderItem.goods_image"></div>
+								          <div class="item-inner">
+								            <div class="item-title-row">
+								              <div class="item-title">{{orderItem.goods_name}}</div>
+								            </div>
+								            <div class="item-subtitle">订单编号：<span>{{item1.order_sn}}</span></div>
+								            <div class="item-text">{{item1.add_time}}</div>
+								            <div class="ccart-price"><span class="colorful-price"><em>-{{orderItem.goods_price}}</em>七彩币</span>
+								            	<i>数量:<span>{{orderItem.goods_num}}</span></i></div>
+								          </div>
+								        </a>
+								      </li>
+								    </ul>
+								  </div>
 							</div>
 						</div>
 						<div id="tab3" class="tab">
@@ -67,153 +169,7 @@
 			</div>
 		</div>
 		<script type="text/javascript" src="lib/hprose.js" charset="utf-8"></script>
-		<script>
-			var Cookie = {
-					Get: function(a) {
-						var d, b = document.cookie.split("; "),
-							c = [];
-						for(i = 0; i < b.length; i++) d = b[i].split("="), c[d[0]] = unescape(d[1]);
-						return a ? c[a] : c
-					},
-					Set: function(a, b, c, d, e, f) {
-						var g, h;
-						return a && b ? "" == a || "" == b ? !1 : (c && (/^[0-9]+$/.test(c) ? (g = new Date, c = new Date(g.getTime() + 1e3 * c).toGMTString()) : /^wed, \d{2} \w{3} \d{4} \d{2}\:\d{2}\:\d{2} GMT$/.test(c) || (c = void 0)), h = a + "=" + escape(b) + ";" + (c ? " expires=" + c + ";" : "") + (d ? "path=" + d + ";" : "") + (e ? "domain=" + e + ";" : "") + (f && 0 != f ? "secure" : ""), h.length < 4096 ? (document.cookie = h, !0) : !1) : !1
-					},
-					Del: function(a, b, c) {
-						return a ? "" == a ? !1 : this.Get(a) ? (document.cookie = a + "=;" + (b ? "path=" + b + ";" : "") + (c ? "domain=" + c + ";" : "") + "expires=Thu, 01-Jan-1970 00:00:01 GMT;", !0) : !1 : !1
-					}
-				},
-				Cache = function() {
-					var storage, api = {},
-						pre = "NetCQ_",
-						win = window,
-						doc = win.document,
-						localStorageName = "localStorage",
-						globalStorageName = "globalStorage",
-						JsonToStr = function(a) {
-							var c, b = [];
-							if("string" == typeof a) return '"' + a.replace(/([\'\"\\])/g, "\\$1").replace(/(\n)/g, "\\n").replace(/(\r)/g, "\\r").replace(/(\t)/g, "\\t") + '"';
-							if("undefined" == typeof a) return "undefined";
-							if("object" == typeof a) {
-								if(null === a) return "null";
-								if(a.sort) {
-									for(c = 0; c < a.length; c++) b.push(JsonToStr(a[c]));
-									b = "[" + b.join() + "]"
-								} else {
-									for(c in a) b.push('"' + c + '":' + JsonToStr(a[c]));
-									b = "{" + b.join() + "}"
-								}
-								return b
-							}
-							return a.toString()
-						};
-					return api.set = function() {}, api.get = function() {}, api.remove = function() {}, api.clear = function() {}, localStorageName in win && win[localStorageName] ? (storage = win[localStorageName], api.set = function(a, b) {
-						"object" == typeof b ? storage.setItem(pre + a, JsonToStr(b)) : storage.setItem(pre + a, b)
-					}, api.get = function(key) {
-						var _v, _cache = storage.getItem(pre + key) || "";
-						try {
-							_v = eval("(" + _cache + ")")
-						} catch(e) {
-							_v = _cache
-						}
-						return _v
-					}, api.clear = function(a) {
-						a ? storage.removeItem(pre + a) : storage.clear()
-					}) : globalStorageName in win && win[globalStorageName] ? (storage = win[globalStorageName][win.location.hostname], api.set = function(a, b) {
-						"object" == typeof b ? storage[pre + a] = JsonToStr(b) : storage[a] = b
-					}, api.get = function(key) {
-						var _v, _cache = storage[pre + key].value || "";
-						try {
-							_v = eval("(" + _cache + ")")
-						} catch(e) {
-							_v = _cache
-						}
-						return _v
-					}, api.clear = function(a) {
-						if(a) delete storage[pre + a];
-						else
-							for(var a in storage) delete storage[a]
-					}) : (api.set = function(a, b) {
-						Cookie.Set(pre + a, b)
-					}, api.get = function(a) {
-						return Cookie.Get(pre + a)
-					}, api.clear = function(a) {
-						var b, c;
-						if(a) Cookie.Del(pre + a);
-						else if(b = document.cookie.match(/[^ =;]+(?=\=)/g))
-							for(c = b.length; c--;) document.cookie = b[c] + "=0;expires=" + new Date(0).toUTCString()
-					}), api
-				}();
-			if(Cache.get("flag")) {
-				var client1 = hprose.Client.create("http://test.7cai.tv/index.php/api/api/user?t=" + Cache.get('flag'), ['getOrderLists', 'getPoints', 'login', 'getCityMoviesLists2', 'getCityWillMoviesLists2', 'getCinemaSchedInfo', 'getTicketCinemaUrl', 'register', 'getTicketCinemaUrl', 'getCityCinemasLists', 'isLogin', 'logout', 'getCityMoviesLists', 'getCinemaInfo', 'getCinemaSchedInfo', 'getCityWillMoviesLists', 'findPwd', 'getMoviesInfo', 'sendCode', 'getUserInfo', 'getMoviesInfo', 'getAddressList', 'getUploadParams', 'getPayOrderInfo', 'getOpenId', 'getCityLists', 'getCityCinemasLists']);
-				client1.getPoints(function(result) {
-					var result = $.parseJSON(result);
-					if(result.data.length == 0) {
-						$('.mpinout_content1 .iconfont').show();
-						$('.mpinout_content1 .iconfont_des').show();
-					} else {
-						$('.mpinout_content1 .iconfont').hide();
-						$('.mpinout_content1 .iconfont_des').hide();
-						var html = "";
-						for(var i = 0; i < result.data.length; i++) {
-							html += "<li>" +
-								"<div class='mpinout_content1_liLeft'>" +
-								"<p class='mptop'>" + result.data[i].mark + "</p>" +
-								"<p class='mpdown'>" + result.data[i].time + "</p>" +
-								"</div>" +
-								"<div class='mpinout_content1_liright'>" +
-								"<span class='mpinout_content1_liright_points'>+" + result.data[i].num + "</span>" +
-								"</div>" +
-								"</li>"
-						}
-						$('.mpinout_content1 ul').append(html);
-					}
-				});
-				$(".mpinout_left").click(function() {
-					$(".mpinout_right").css({
-						'color': '#666',
-						'background': '#fff'
-					});
-					$(".mpinout_left").css({
-						'color': '#fff',
-						'background': '#DB9454'
-					});
-					$(".mpinout_content1").css('display', 'block');
-					$(".mpinout_content2").css('display', 'none');
-				})
-				$(".mpinout_right").click(function() {
-					$(".mpinout_left").css({
-						'background': '#fff',
-						'color': '#666'
-					});
-					$(".mpinout_right").css({
-						'background': '#DB9454',
-						'color': '#fff'
-					});
-					$(".mpinout_content1").css('display', 'none');
-					$(".mpinout_content2").css('display', 'block');
-				})
-				$(".IntegralRule_top_ri").click(function() {
-					if($(this).attr('index') == "1") {
-						$(this).parent().next().css("display", "none")
-						$(this).removeClass("icon-down");
-						$(this).addClass("icon-up");
-						$(this).attr("index", "2");
-					} else {
-						$(this).parent().next().css("display", "block")
-						$(this).removeClass("icon-up");
-						$(this).addClass("icon-down");
-						$(this).attr("index", "1");
-					}
-				})
-			} else {
-				$.toast("您还未登录，请登录！");
-				setTimeout(function() {
-					window.location.href = "./login.html";
-				}, 1000);
-			}
-		</script>
-
+		<script  type="text/javascript" src="assets/js/my-colorfulcoin.js" charset="utf-8"></script>
 	</body>
 
 </html>
