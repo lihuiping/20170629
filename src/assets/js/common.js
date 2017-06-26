@@ -174,6 +174,8 @@ var apiready = function() {
 	$api.fixStatusBar($api.dom('.bar-nav'));
 	$api.fixStatusBar($api.dom('.ad-bar'));
 	var offset = $api.offset('.ad-bar');
+	var test = window.location.href;
+	alert(test);
 };
 apiready();
 function openNewPage(name,uri){
@@ -197,7 +199,7 @@ function exitApp(){
                     name: 'keyback'
                 }, function(ret, err){
                     api.closeWidget({
-                            id: 'A6960480793365',     //这里改成自己的应用ID
+                            id: 'A6940555676996',     //这里改成自己的应用ID
                             retData: {name:'closeWidget'},
                             silent:true
                         });
