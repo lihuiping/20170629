@@ -165,10 +165,10 @@ function moviedel() {
 			yes: function(index) {
 
 				//console.log(p_checked.length);
-
-				p_checked.parent().parent().remove();
+				console.log(index);
+				/*p_checked.parent().parent().remove();
 				var del_num = $(".lqMovies input[name='my-radio']:checked").length;
-				$(".del_num").text(del_num);
+				$(".del_num").text(del_num);*/
 				layer.close(index);
 				$.ajax({
 					type: "GET",
@@ -182,12 +182,22 @@ function moviedel() {
 					        //dataType :   'jsonp',
 					          // jsonp: "jsoncallback",
 					success: function(data) {
-//						console.log(data)
-						if(data.res == "1" || data.msg == "取消收藏成功") {
+						p_checked.parent().parent().remove();
+						var del_num = $(".lqMovies input[name='my-radio']:checked").length;
+						$(".del_num").text(del_num);
+						layer.close(index);
+
+						var len = $(".lqMovies li").length;
+						if(len == 0) {
 							$('#getpwd').hide();
-//							$('#getpwd').show();
 							$("#bfjl-qs").show();
 						}
+//						console.log(data)
+//						if(data.res == "1" || data.msg == "取消收藏成功") {
+//							$('#getpwd').hide();
+////							$('#getpwd').show();
+//							$("#bfjl-qs").show();
+//						}
 //						window.location.reload(); 
 					},
 					error: function(data) {
