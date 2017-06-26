@@ -216,7 +216,7 @@ function moviedel() {
 		$('.layui-m-anim-scale').addClass("popupTitleBox");
 		$('.layui-m-layerbtn').addClass("popupBottom");
 		$('.layui-m-layercont').addClass("popupTitle");
-		//					$('.layui-m-layerbtn span[no]').addClass("cancel");
+		$('.layui-m-layerbtn span[no]').addClass("cancel");
 		$('.layui-m-layerbtn span[yes]').addClass("sure");
 	} else {
 		layer.open({
