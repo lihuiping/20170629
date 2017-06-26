@@ -1,3 +1,5 @@
+var conf = 1;
+var spendList=['',baseUrl()+'index.php?r=Pay_log&m=index']; //支出接口
 var Cookie = {
 		Get: function(a) {
 			var d, b = document.cookie.split("; "),
@@ -74,8 +76,9 @@ var Cookie = {
 				for(c = b.length; c--;) document.cookie = b[c] + "=0;expires=" + new Date(0).toUTCString()
 		}), api
 	}();
-if(Cache.get("flag")) {
-	var client1 = hprose.Client.create("http://test.7cai.tv/index.php/api/api/user?t=" + Cache.get('flag'), ['getOrderLists', 'getPoints', 'login', 'getCityMoviesLists2', 'getCityWillMoviesLists2', 'getCinemaSchedInfo', 'getTicketCinemaUrl', 'register', 'getTicketCinemaUrl', 'getCityCinemasLists', 'isLogin', 'logout', 'getCityMoviesLists', 'getCinemaInfo', 'getCinemaSchedInfo', 'getCityWillMoviesLists', 'findPwd', 'getMoviesInfo', 'sendCode', 'getUserInfo', 'getMoviesInfo', 'getAddressList', 'getUploadParams', 'getPayOrderInfo', 'getOpenId', 'getCityLists', 'getCityCinemasLists']);
+var token = token();
+if(token) {
+	var client1 = hprose.Client.create("http://test.7cai.tv/index.php/api/api/user?t=" + token, ['getOrderLists', 'getPoints', 'login', 'getCityMoviesLists2', 'getCityWillMoviesLists2', 'getCinemaSchedInfo', 'getTicketCinemaUrl', 'register', 'getTicketCinemaUrl', 'getCityCinemasLists', 'isLogin', 'logout', 'getCityMoviesLists', 'getCinemaInfo', 'getCinemaSchedInfo', 'getCityWillMoviesLists', 'findPwd', 'getMoviesInfo', 'sendCode', 'getUserInfo', 'getMoviesInfo', 'getAddressList', 'getUploadParams', 'getPayOrderInfo', 'getOpenId', 'getCityLists', 'getCityCinemasLists']);
 	client1.getPoints(function(result) {
 		var result = $.parseJSON(result);
 		if(result.data.length == 0) {
@@ -142,5 +145,70 @@ if(Cache.get("flag")) {
 		window.location.href = "./login.html";
 	}, 1000);
 }
+
+//兑换记录
+var spending = new Vue({
+	el: ".convert",
+	data: {
+		dataSpend: [],
+		dataRes: []
+	},
+	mounted: function() {
+		//初始化加载数据
+		this.showSpending();
+	},
+	methods: {
+		showSpending:function(){
+			//获取商品信息
+			var _this = this;
+			axios.get(spendList[conf], {
+				params: {
+					token: token
+				}
+			}).then(function(response) {
+				var res = response.data
+				var data = response.data.data;
+				if(response.data.res == 1){
+					spending.dataSpend = data;
+					spending.dataRes = res;
+				}
+			});
+		}
+	}
+});
+
+//支出
+var spends = new Vue({
+	el: "#spend",
+	data: {
+		spending: [],
+		spendRes: []
+	},
+	mounted: function() {
+		//初始化加载数据
+		this.showSpend();
+	},
+	methods: {
+		showSpend:function(){
+			//获取商品信息
+			var _this = this;
+			axios.get(spendList[conf], {
+				params: {
+					token: token
+				}
+			}).then(function(response) {
+				var spendResdata = response.data;
+				var data = response.data.data;
+				if(response.data.res == 1){
+					spends.spending = data;
+					spends.spendRes = spendResdata;
+				}else{
+					$.toast(response.data.msg);
+				}
+			});
+		}
+	}
+});
+
 
 $.init();
