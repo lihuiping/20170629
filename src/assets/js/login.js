@@ -23,7 +23,9 @@ $("#lg-denglu").on('click', function() {
                 user.whole_mobile = mobile;
                 user.passwd=passwd;
                 setTimeout(function() {
+                    $api.setStorage('firstLaunch', true);
                     window.location.href = "./movie-index.html";
+                    $api.setStorage('user', user);
                     $api.setStorage('user', user);
                 }, 1500);
             } else {
