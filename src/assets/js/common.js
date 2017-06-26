@@ -174,8 +174,11 @@ var apiready = function() {
 	$api.fixStatusBar($api.dom('.bar-nav'));
 	$api.fixStatusBar($api.dom('.ad-bar'));
 	var offset = $api.offset('.ad-bar');
-	var test = window.location.href;
-	alert(test);
+	var testUrl = window.location.href;
+	var test = 'file:///android_asset/widget/'
+	if(testUrl == test+'index.html'|| testUrl == test+'movie-index.html'||testUrl == test+'user-center.html'||testUrl== test+'discover.html'||testUrl==test+'buy-ticket.html'){
+		exitApp();
+	}
 };
 apiready();
 function openNewPage(name,uri){
