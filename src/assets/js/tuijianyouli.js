@@ -1,6 +1,9 @@
-$(function(){
-	$('#tj-erwei').qrcode({"http://www.baidu.com"});
-})
+(function() {
+  const qr = new QRious({
+    element: document.getElementById('qr'),
+    value: 'http://v.7cai.com/'
+  })
+})()
 var qq,wx;
     apiready = function() {
         qq = api.require('qq');
