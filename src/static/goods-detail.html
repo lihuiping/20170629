@@ -322,7 +322,7 @@
 			<div class="ticket-title">平台优惠券</div>
 			<!--领券列表-->
 			<div class="list-block">
-				<ul class="list-box">
+				<ul class="list-box" v-if="platformCouponList.res == 1">
 					<li class="item-content" v-for="item in platformCouponList.data" v-cloak>
 						<div class="item-inner">
 							<div class="item-title">

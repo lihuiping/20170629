@@ -608,10 +608,9 @@ var platformCoupon = new Vue({
 				var data = response.data;
 				platformCoupon.platformCouponList = data;
 				//优惠券无数据时,显示为空
-				if(data.res == 0) {
-					$(".gd-box").hide();
-					//					$(".gd-box li").text("暂无优惠券")
-				}
+//				if(data.res == 0) {
+//					$(".gd-box li").text("暂无优惠券")
+//				}
 			});
 		},
 		receiveCoupons: function(id) {
