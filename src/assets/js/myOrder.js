@@ -370,7 +370,7 @@ $(".order-sub-box").on('click', ".btn-tuikuan", function() {
 	orderId = goodId.join(',');
 	console.log(orderId);
 	var _this = this;
-//	orderList.tuikuanOrder(orderId, _this);
+	orderList.tuikuanOrder(orderId, _this);
 });
 /*评价*/
 $(".order-sub-box").on('click', ".btn-commentOrder", function() {
