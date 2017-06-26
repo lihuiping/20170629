@@ -803,7 +803,7 @@ function qqshareNews_QFriend() { //分享新闻qq给好友
 	});
 }
 
-function qqshareNews_QZone() { //分享新闻到QQ空间
+function qqshareNews_QZone() { 
 	$.ajax({
 		type: "get",
 		url: "http://shop.7cai.tv/index.php?r=goods&m=share",
@@ -813,6 +813,7 @@ function qqshareNews_QZone() { //分享新闻到QQ空间
 		},
 		async: true,
 		success: function(res) {
+//			alert(res)
 			qq.shareNews({
 				url: 'http://www.apicloud.com',
 				title: res.data.title,
@@ -836,7 +837,7 @@ function qqshareNews_QZone() { //分享新闻到QQ空间
 	});
 }
 
-function shareWebpage(Vscene) { //分享微信好友,朋友圈 . 参数: session（会话） timeline（朋友圈）favorite（收藏）
+function shareWebpage(Vscene) { 
 	$.ajax({
 		type: "get",
 		url: "http://shop.7cai.tv/index.php?r=goods&m=share",
