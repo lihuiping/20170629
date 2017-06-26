@@ -173,13 +173,6 @@ var apiready = function() {
 	$api.fixStatusBar($api.dom('.bar-nav'));
 	$api.fixStatusBar($api.dom('.ad-bar'));
 	var offset = $api.offset('.ad-bar');
-	var testUrl = window.location.href;
-	var test = 'file:///android_asset/widget/'
-	if(testUrl == test + 'index.html' || testUrl == test + 'movie-index.html' || testUrl == test + 'user-center.html' || testUrl == test + 'discover.html' || testUrl == test + 'buy-ticket.html') {
-		exitApp();
-	} else {
-		gobackpage();
-	}
 };
 apiready();
 
@@ -218,14 +211,5 @@ function exitApp() {
 		setTimeout(function() {
 			exitApp();
 		}, 3000)
-	});
-}
-
-function gobackpage() {
-	api.addEventListener({
-		name: 'keyback'
-	}, function(ret, err) {
-		window.history.go(-1);
-		});
 	});
 }
