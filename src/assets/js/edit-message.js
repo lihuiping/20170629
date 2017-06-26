@@ -278,7 +278,7 @@ $("#editAddressCommit").on('click', function() {
 
 //编辑页面的点击删除地址
 var delUrl = baseUrl() + 'member.php?r=address&m=delAddress';
-$("#editAdd-del").on("click",function(e) {
+$("#editAdd-del").on("click", function(e) {
 	var id = $(e.currentTarget).attr('id');
 	$.confirm('您确定要删除该地址吗？', function() {
 
@@ -301,19 +301,21 @@ $("#editAdd-del").on("click",function(e) {
 		});
 	});
 });
-function getLocalTime(nS) {     
-   return new Date(parseInt(nS) * 1000).toLocaleString().substr(0,8);     
-}     
- 
+
+function getLocalTime(nS) {
+	return new Date(parseInt(nS) * 1000).toLocaleString().substr(0, 8);
+}
+
 // 修改基础资料
 $(document).on("pageInit", "#editmessage", function(e, id, page) {
 	client.invoke("getUserInfo", function(result) {
 		var result = $.parseJSON(result);
 		var time = getLocalTime(result.data.birthday);
 		Cache.set("issafe", result.data.isSafe);
-		var touxiang = result.data.headimg ? result.data.headimg : "assets/images/tx-120.png";
-//		alert(touxiang);
-		$("#mytouxiang-div").append("<img style='width: 3rem; height:3rem;border-radius:50%;' id='my-touxiang' src="+touxiang+">");
+		var touxiang = result.data.imgurl ? result.data.imgurl : "assets/images/tx-120.png";
+//		var touxiang = result.data.headimg ? result.data.headimg : "assets/images/tx-120.png";
+		
+		$("#mytouxiang-div").append("<img style='width: 3rem; height:3rem;border-radius:50%;' id='my-touxiang' src=" + touxiang + ">");
 		$("#mename").html(result.data.username ? result.data.username : result.data.mobile);
 		$("#megenger").val(parseInt(result.data.sex) ? "女" : "男");
 		$("#isAuth").html(parseInt(result.data.isAuth) ? "已认证" : "未认证");
@@ -321,10 +323,9 @@ $(document).on("pageInit", "#editmessage", function(e, id, page) {
 		$("#anquanmima").html(result.data.isSafe == 1 ? "去修改" : "去设置");
 		var phone = result.data.mobile.substr(0, 3) + "****" + result.data.mobile.substr(7);
 		$("#mobilephone").html(phone);
-		
 
 	});
-//	$("#megenger").val("女");
+	//	$("#megenger").val("女");
 	//选择性别
 	$("#megenger").on("click", function(e) {
 
@@ -372,98 +373,136 @@ $(document).on("pageInit", "#editmessage", function(e, id, page) {
 	})
 
 	//头像
-	$("#changetx").on("click", function() {
-		sendImg = function(type) {
-			if(type == 1) { // 拍照
-				//获取一张图片
-				api.getPicture({
-					sourceType: 'camera',
-					encodingType: 'jpg',
-					mediaValue: 'pic',
-					allowEdit: false,
-					quality: 90,
-					saveToPhotoAlbum: true,
-					destinationType: 'url' //base64   字符流
-				}, function(ret, err) {
-					// 获取拍照数据并处理
-					var imgSrc = ret.data;
-					if(imgSrc != "") {
-						var ele = $api.dom('#my-touxiang');
-						$api.attr(ele, 'src', imgSrc);
-					}
-				});
-			} else {
-				api.getPicture({
-					sourceType: 'album',
-					encodingType: 'jpg',
-					mediaValue: 'pic',
-					destinationType: 'url',
-					allowEdit: true,
-					quality: 50,
-					targetWidth: 100,
-					targetHeight: 100,
-					saveToPhotoAlbum: false
-				}, function(ret, err) {
-					if(ret) {
-						var imgSrc = ret.data;
-//						alert(imgSrc);
-//						var str = "/asdasf/asfaewf/agaegr/trer/rhh";
-						var index = imgSrc .lastIndexOf("\/");
-						var imgUrl  = imgSrc .substring(index + 1, imgSrc.length);
-						
-//						alert(imgUrl);
-						if(imgSrc != "") {
-							var ele = $api.dom('#my-touxiang');
-							var ss = $api.append(ele, '<img style="width: 3rem; height:3rem;border-radius:50%;"></img>');
-							$api.attr(ss, 'src', imgSrc);
-							client.modifyInfo({"imgurl":'http://img.7cai.tv/tx/'+imgUrl},function(result){
-//								alert(result);
-								var result = $.parseJSON(result);
-								if(result.res == 1){
-//									alert(result.msg);
-									$.toast("修改完成!");
-								}else{
-									
-									$.toast(result.msg)
-								}
-							})
-							
-						}
-					} else {
-						alert(JSON.stringify(err));
-					}
-				});
-			}
+	//	$("#changetx").on("click", function() {
+	//		sendImg = function(type) {
+	//			if(type == 1) { // 拍照
+	//				//获取一张图片
+	//				api.getPicture({
+	//					sourceType: 'camera',
+	//					encodingType: 'jpg',
+	//					mediaValue: 'pic',
+	//					allowEdit: false,
+	//					quality: 90,
+	//					saveToPhotoAlbum: true,
+	//					destinationType: 'url' //base64   字符流
+	//				}, function(ret, err) {
+	//					// 获取拍照数据并处理
+	//					var imgSrc = ret.data;
+	//					if(imgSrc != "") {
+	//						var ele = $api.dom('#my-touxiang');
+	//						$api.attr(ele, 'src', imgSrc);
+	//					}
+	//				});
+	//			} else {
+	//				api.getPicture({
+	//					sourceType: 'album',
+	//					encodingType: 'jpg',
+	//					mediaValue: 'pic',
+	//					destinationType: 'url',
+	//					allowEdit: true,
+	//					quality: 50,
+	//					targetWidth: 100,
+	//					targetHeight: 100,
+	//					saveToPhotoAlbum: false
+	//				}, function(ret, err) {
+	//					if(ret) {
+	//						var imgSrc = ret.data;
+	//						if(imgSrc != "") {
+	//							var ele = $api.dom('#my-touxiang');
+	//							var ss = $api.append(ele, '<img style="width: 3rem; height:3rem;border-radius:50%;"></img>');
+	//							$api.attr(ss, 'src', imgSrc);
+	//						}
+	//					} else {
+	//						alert(JSON.stringify(err));
+	//					}
+	//				});
+	//			}
+	//
+	//		};
+	//		var buttons1 = [{
+	//				text: "修改头像",
+	//				label: true,
+	//				color: "gray"
+	//			},
+	//			{
+	//				text: '拍照',
+	//				bold: true,
+	//				color: 'danger',
+	//				onClick: function() {
+	//					sendImg(1);
+	//				}
+	//			},
+	//			{
+	//				text: '相册',
+	//				//bold:true,
+	//				color: 'warning',
+	//				onClick: function() {
+	//					sendImg(0);
+	//				}
+	//			}
+	//		];
+	//		var buttons2 = [{
+	//			text: '取消'
+	//		}];
+	//		var groups = [buttons1, buttons2];
+	//		$.actions(groups);
+	//	});
 
+		var timestamp = (new Date()).valueOf();
+		var savekey = "/tx/" + timestamp;
+		var options = {
+			"bucket": "qicai",
+			"expiration": Math.floor(new Date().getTime() / 1000) + 86400,
+			'save-key': savekey,
 		};
-		var buttons1 = [{
-				text: "修改头像",
-				label: true,
-				color: "gray"
-			},
-			{
-				text: '拍照',
-				bold: true,
-				color: 'danger',
-				onClick: function() {
-					sendImg(1);
+		var policy = window.btoa(JSON.stringify(options));
+		var signature = md5(policy + '&Tv+UtjmQj0nWt0mUv4Q2psJI8hY=');
+		options.policy = policy;
+		options.signature = signature;
+
+		$('#file_upload').uploadifive({
+			'auto': true,
+			'buttonClass': 'myUpload',
+			'buttonText': '',
+			'height': '', //按钮的大小
+			'width': '',
+			'formData': options,
+			'fileObjName': 'file',
+			'queueSizeLimit': 1,
+			'removeCompleted': true,
+			'multi': false,
+			'fileSizeLimit': '5MB',
+			'uploadScript': "http://v0.api.upyun.com/qicai",
+			'onProgress': function(file, e) {
+				if(e.lengthComputable) {
+					var percent = Math.round((e.loaded / e.total) * 100);
+				}
+				if(percent == 100) {
+					$.hideIndicator();
 				}
 			},
-			{
-				text: '相册',
-				//bold:true,
-				color: 'warning',
-				onClick: function() {
-					sendImg(0);
+			'onUploadComplete': function(file, data) {
+				data = $.parseJSON(data);
+				if(data.message == "ok") {
+					$("#my-touxiang").attr("src", 'http://img.7cai.tv' + data.url);
+					$.showPreloader('上传完成，正在处理中');
+					client.modifyInfo({
+						"imgurl": 'http://img.7cai.tv' + data.url
+					}, function(result) {
+						var result = $.parseJSON(result);
+						if(result.res == 1) {
+							$.hidePreloader();
+							$.toast("修改完成!");
+						} else {
+							$.toast(result.msg)
+						}
+					})
+
+				} else {
+					$.toast(data.message);
 				}
-			}
-		];
-		var buttons2 = [{
-			text: '取消'
-		}];
-		var groups = [buttons1, buttons2];
-		$.actions(groups);
-	});
+			},
+		});
 
 	//点击我的地址
 	$("#c-myaddress").on("click", function() {
@@ -478,15 +517,16 @@ $(document).on("pageInit", "#editmessage", function(e, id, page) {
 	});
 	// 修改完成
 	$("#modifymessage").on("click", function() {
+		var imgUrl = $("#my-touxiang").attr("src");
 		if($("#brdate").val() == "") {
 			$.toast("请选择生日！");
 			return
 		}
 		var gender = $("#megenger").val() == "男" ? 0 : 1;
-
 		client.invoke("modifyInfo", [{
 			"sex": gender,
-			"birth": $("#brdate").val()
+			"birth": $("#brdate").val(),
+			"imgurl": imgUrl
 		}], function(result) {
 			var result = $.parseJSON(result);
 			if(result.res == 1) {
