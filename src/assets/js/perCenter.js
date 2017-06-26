@@ -90,7 +90,7 @@ function sclient() {
 var client = sclient();
 
 //是否VIP
-var isVip = function() {
+function isVip() {
 //	var token = Cache.get("flag") || "";
 	$.ajax({
 		type:"get",
@@ -174,7 +174,6 @@ var isVip = function() {
 
 $(function(){
 	isVip();
-	var token = token();
 	if(!token){
 		window.location.href = "./login.html";
 	}
