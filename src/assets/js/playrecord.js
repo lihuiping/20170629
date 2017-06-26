@@ -3,7 +3,7 @@ var toke = token();
 //var toke = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhZG1pbiI6ZmFsc2UsImNsYWltcyI6bnVsbCwidWlkIjoiMTI5NCIsInYiOjEsImlhdCI6MTQ5NTc5MDA1OH0.T8cESgLZa9eX5TcErXNgMHb93xuHs9IGVsqubfpoJK4'; //获取token
 var movie_record = ['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/Movie/playRecordList&token=' + toke];
 var del_movierecord = ['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/Movie/playRecorddestroy&token=' + toke];
-var change_movierecord =  ['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/Movie/playRecord&token=' + toke];
+var change_movierecord = ['./assets/data/banner.json', baseUrl() + 'tv/index.php?s=/Api/Movie/playRecord&token=' + toke];
 //获取地址参数
 function GetQueryString(name) {
 	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
@@ -45,7 +45,7 @@ function clIput(id) {
 	});
 }
 
-function getrecordList(){
+function getrecordList() {
 	$.ajax({       
 		type: "GET",
 		       async: false,
@@ -54,44 +54,26 @@ function getrecordList(){
 		       dataType :   'json',
 		success: function(json) {           
 			dataList = json;
-			console.log(dataList);
-			console.log(dataList.data.length);
+//			console.log(dataList);
+			//			console.log(dataList.data.length);
 			var len_movierecord = $(".lqMovierecord li").length;
-			/*if(len_movierecord == '0' && dataList.data.length == "0" && dataList.res == "1") {
-				console.log(len_movierecord);
-				console.log('aaa');
-				$('.pr_edit').hide();
-				$('#lqShowList').hide();
-				$("#bfjl-qs").show();
-			}  
-			else if(len_movierecord != '0' && dataList.data.length != "0" && dataList.res == "1" ) {
-				console.log('sss');
-				$('#lqShowList').show();
-				$('#lqShowList').css('display','block');
-				$('.pr_edit').show();
-				$("#bfjl-qs").hide();
-			}
-			else if(dataList.res == "0" || dataList.msg == '无权限'){
-				$("#bfjl-qs").show();
-				$('#lqShowList').hide();
-			}*/
-			
-			if(dataList.res == "1"){
-				if(dataList.data.length == "0"){
+
+			if(dataList.res == "1") {
+				if(dataList.data.length == "0") {
 					$('.pr_edit').hide();
 					$('#lqShowList').hide();
 					$("#bfjl-qs").show();
-				}else{
+				} else {
 					$('#lqShowList').show();
-					$('#lqShowList').css('display','block');
+					$('#lqShowList').css('display', 'block');
 					$('.pr_edit').show();
 					$("#bfjl-qs").hide();
 				}
-			}else{
+			} else {
 				$("#bfjl-qs").show();
 				$('#lqShowList').hide();
 			}
-			
+
 			var app = new Vue({
 				el: '#lqShowList',
 				data: dataList,
@@ -130,16 +112,16 @@ $(function() {
 			$("input[type='checkbox']").each(function() {
 				this.checked = false;
 			});
-			$('.lqSelcet h6').text('全选').css('color','#ff8c24');
-			$('.moviedel a').css('color','#383838');
+			$('.lqSelcet h6').text('全选').css('color', '#ff8c24');
+			$('.moviedel a').css('color', '#383838');
 			isCheckAll = false;
 			$(".del_num").text("0");
 		} else {
 			$("input[type='checkbox']").each(function() {
 				this.checked = true;
 			});
-			$('.lqSelcet h6').text('取消全选').css('color','#383838');
-			$('.moviedel a').css('color','#ff8c24');
+			$('.lqSelcet h6').text('取消全选').css('color', '#383838');
+			$('.moviedel a').css('color', '#ff8c24');
 			isCheckAll = true;
 			$(".del_num").text($("input[name='my-radio']:checked").length);
 		}
@@ -170,17 +152,18 @@ function recorddel() {
 			checkList += ',' + $(v).attr('id');
 		}
 	});
-//	console.log(checkList);
+	//	console.log(checkList);
 	var p_checked = $(".lqMovierecord input[name='my-radio']:checked");
+	var len_movierecord = $(".lqMovierecord li").length;
 	if(p_checked.length > 0) {
 		layer.open({
 			content: '此操作将删除播放记录,该操作不可恢复是否继续？',
 			btn: ['确定', '取消'],
 			yes: function(index) {
-				p_checked.parent().parent().remove();
+				/*p_checked.parent().parent().remove();
 				var del_num = $(".lqMovierecord input[name='my-radio']:checked").length;
 				$(".del_num").text(del_num);
-				layer.close(index);
+				layer.close(index);*/
 				$.ajax({
 					type: "GET",
 					async: false,
@@ -194,13 +177,20 @@ function recorddel() {
 					        //dataType :   'jsonp',
 					          // jsonp: "jsoncallback",
 					success: function(data) {
-//						console.log(data.res);
-						if(data.res == "1" || data.msg == "删除成功") {
+						p_checked.parent().parent().remove();
+						var del_num = $(".lqMovierecord input[name='my-radio']:checked").length;
+						$(".del_num").text(del_num);
+						layer.close(index);
+
+						var len = $(".lqMovierecord li").length;
+//						console.log(len);
+						if(len == 0) {
+							$('.pr_edit').hide();
 							$('#lqShowList').hide();
 							$("#bfjl-qs").show();
 						}
-//						window.location.reload(); 
 					},
+
 					error: function(data) {
 						layer.open({
 							content: '删除失败',
@@ -217,7 +207,7 @@ function recorddel() {
 		$('.layui-m-anim-scale').addClass("popupTitleBox");
 		$('.layui-m-layerbtn').addClass("popupBottom");
 		$('.layui-m-layercont').addClass("popupTitle");
-		//					$('.layui-m-layerbtn span[no]').addClass("cancel");
+		$('.layui-m-layerbtn span[no]').addClass("cancel");
 		$('.layui-m-layerbtn span[yes]').addClass("sure");
 	} else {
 		layer.open({
