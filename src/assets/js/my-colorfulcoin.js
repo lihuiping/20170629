@@ -168,9 +168,12 @@ var spending = new Vue({
 			}).then(function(response) {
 				var res = response.data
 				var data = response.data.data;
+				spending.dataSpend = data;
+				spending.dataRes = res;
 				if(response.data.res == 1){
-					spending.dataSpend = data;
-					spending.dataRes = res;
+					
+				}else{
+					$.toast(response.data.msg);
 				}
 			});
 		}
@@ -199,9 +202,10 @@ var spends = new Vue({
 			}).then(function(response) {
 				var spendResdata = response.data;
 				var data = response.data.data;
+				spends.spending = data;
+				spends.spendRes = spendResdata;
 				if(response.data.res == 1){
-					spends.spending = data;
-					spends.spendRes = spendResdata;
+					
 				}else{
 					$.toast(response.data.msg);
 				}
