@@ -265,11 +265,15 @@
 .detail-tab {
     margin-bottom: 2.25rem;
     .swiper-slide {
-        height: 0.5rem;
-    }
-    .active {
+        height: 3rem;
+        &.active {
         height: auto;
+        }
+        &.swiper-slide-active{
+             height: auto;
+        }
     }
+    
 }
 
 //商品参数部分

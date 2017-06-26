@@ -175,10 +175,10 @@ var isVip = function() {
 
 $(function(){
 	isVip();
-//	var token = token();
-//	if(!token){
-//		window.location.href = "./login.html";
-//	}
+	var token = token();
+	if(!token){
+		window.location.href = "./login.html";
+	}
 });
 //系统消息显示有无
 var xiaoxinum = new Vue({

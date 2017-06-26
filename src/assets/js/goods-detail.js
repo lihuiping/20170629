@@ -75,6 +75,7 @@ var goodsDatail = new Vue({
 			var tabsSwiper = new Swiper('#tabs-container', {
 				speed: 100,
 				onSlideChangeStart: function(swiper) {
+					//三个tab切换时，通过增删.active名改变tab样式
 					$(".buttons-tab  .active").removeClass('active')
 					$(".buttons-tab a").eq(swiper.activeIndex).addClass('active')
 				}
