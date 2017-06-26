@@ -113,7 +113,7 @@ var isVip = function() {
 					client.invoke("getUserInfo", function(result) {
 						$.hideIndicator();
 						var result = $.parseJSON(result);
-						alert(result.data.headimg);
+//						alert(result.data.headimg);
 						if(result.data.headimg) {
 							$(".hybg-touxiang").append("<img src='http://img.7cai.tv/" + result.data.headimg + "'>");
 						} else {

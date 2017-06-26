@@ -1,23 +1,23 @@
 <!--footer bar-->
 <nav class="bar bar-tab pub-bar">
-    <a class="tab-item @@movieact" onclick="openNewPage('shouye','movie-index.html','@@mall')">
+    <a class="tab-item @@movieact" onclick="openNewPage('shouye','movie-index.html')">
       <span class="icon @@movie"></span>
       <span class="tab-label">首页</span>
     </a>
     
-    <a class="tab-item @@mallact"  onclick="openNewPage('shangcheng','index.html','@@mall')">
+    <a class="tab-item @@mallact" onclick="openNewPage('shangcheng','index.html')">
       <span class="icon @@mall"></span>
       <span class="tab-label">商城</span>
     </a>
-    <a class="tab-item @@buyact" onclick="openNewPage('goupiao','buy-ticket.html','@@mall')">
+    <a class="tab-item @@buyact" onclick="openNewPage('goupiao','buy-ticket.html')">
       <span class="icon @@buy"></span>
       <span class="tab-label">购票</span>
     </a>
-    <a class="tab-item @@findact" onclick="openNewPage('faxain','discover.html','@@mall')">
+    <a class="tab-item @@findact" onclick="openNewPage('faxain','discover.html')">
       <span class="icon @@find"></span>
       <span class="tab-label">发现</span>
     </a>
-    <a class="tab-item @@myact" onclick="openNewPage('userCenter','user-center.html','@@mall')" id="me">
+    <a class="tab-item @@myact" onclick="openNewPage('userCenter','user-center.html')" id="me">
       <span class="icon @@my"></span>
       <span class="tab-label">我的</span>
     </a>
