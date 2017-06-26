@@ -748,6 +748,8 @@ var allShare = new Vue({
 	methods: {}
 });
 
+
+//设置tab点击后向上滑动固定的高度
 $('.buttons-tab').fixedTab({
 	offset: 70
 });
