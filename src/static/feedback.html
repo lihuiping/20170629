@@ -5,20 +5,18 @@
 		@@include('../tpl/header.tpl',{ "title":"意见反馈" })
 	</head>
 
-	<body>
-		<div class="page page-current page-inited feed-back" id="yijianfankui">
+	<body style="background: #FFFFFF;">
+		<div class="page page-current page-inited feed-back" id="yijianfankui" style="background-color: #FFFFFF;">
 			@@include('../tpl/bar-nav.tpl',{ "title":"意见反馈" })
-			<div class="content znTop">
+			<div class="content znTop" style="background: #FFFFFF;">
 				<!--标签页-->
 				
 				<div class="list-default fb-default">
 					反馈类型
-					<input id="fk-fklx" class="fb-input" readonly="readonly" value="请选择" type="text">
+					<input id="fk-fklx" class="fb-input" readonly="readonly" value="" type="text">
 					<span class="icon icon-right" id="fkSelect"></span>
 				</div>
-				<div class="fenge"></div>
 				<textarea class="yijian-text" placeholder="请输入产品意见，我们将不断优化体验"></textarea>
-				<div class="fenge margintop-02"></div>
 				<div class="list-default fb-default">
 					<input placeholder="留下您的手机/QQ/邮箱，方便我们与您联系(选填)" class="liuyan-input" type="text">
 				</div>

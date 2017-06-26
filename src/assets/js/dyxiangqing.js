@@ -21,6 +21,8 @@ client.getMoviesInfo({
 }, function(result) {
 	var result = $.parseJSON(result);
 	document.title = result.data.info.name;
+	var ticketDetail = "<a class='icon icon-left pull-left' href='javascript:history.go(-1)'></a><h1 class='title'>" + result.data.info.name + "</h1>"
+	$('.ad-bar').append(ticketDetail);
 	var dyxq_jiaohu_xinxi = "<div class='OrderDetailLeft gp_OrderDetailLeft'>" +
 		"<img src='" + result.data.info.poster_url + "'>" +
 		"<div class='OrderDetailLeft_des gp_OrderDetailLeft'>" +

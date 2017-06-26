@@ -97,7 +97,6 @@ var isVip = function() {
 		url:"http://my.shop.7cai.tv/tv/index.php?s=/Api/Center/is_vip&token="+token,
 		async:true,
 		success: function(result){
-			console.log(result);
 			if(result.res == 1) {
 				Cache.set("isVIP", result.data.isvip);
 				isVIP = result.data.isvip;

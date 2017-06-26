@@ -1,18 +1,17 @@
 @charset "UTF-8";
 .feed-back {
     .fb-default {
-        width: 94%;
+        width: 100%;
         border-bottom: 1px solid #d9d9d9;
         height: 2.5rem;
         line-height: 2.5rem;
-        padding-left: .2rem;
-        padding-right: .2rem;
+        padding-left: 1rem;
         margin: 0 auto;
+        overflow-x: hidden;
         .fb-input {
             border: none!important;
             margin-left: 0.5rem;
             width: 64%;
-            background-color: #F5F5F5;
         }
     }
     .fenge {
@@ -28,6 +27,7 @@
         height: 9rem;
         font-size: .75rem;
         margin: .6rem auto;
+        color: #909090;
     }
     .margintop-02 {
         margin-top: -.6rem;
@@ -37,6 +37,7 @@
         width: 100%;
         font-size: .7rem;
         margin-left: 0.25rem;
+        color: #909090;
     }
     .marginleft-1 {
         position: absolute;
