@@ -2,7 +2,11 @@
 <html>
 	<head>
 		@@include('../tpl/header.tpl',{ "title":"个人中心" })
-		<script src="../assets/js/closeApp.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				exitApp();
+			});
+		</script>
 	</head>
 	<body>
 		<div class="page-group">
