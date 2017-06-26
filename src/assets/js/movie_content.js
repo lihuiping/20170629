@@ -321,9 +321,13 @@ function scrollComment() {
 };
 
 $(".vpl_slidemore_go").click(function() {
+    var vpl_height=$(window).height()-$(".videobox").height();
+    console.log(vpl_height);
+    $(".vpl_box").height(vpl_height);
     $(".content").hide();
     $(".vpl_box_remonforyou").show();
     $(".vpl_remonForyou_list2").scrollTop(0);
+
 })
 $(function() {
         /*点击热评的效果*/
