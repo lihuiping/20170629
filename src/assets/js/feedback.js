@@ -26,7 +26,7 @@ $("#tjfk").on("click", function() {
 			if(result.res == 1) {
 				$.toast("已收到您的反馈！");
 				setTimeout(function() {
-					window.location.href = "";
+					window.location.href = "./user-center.html";
 				}, 1500);
 			}
 		});
