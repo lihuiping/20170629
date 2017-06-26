@@ -114,10 +114,6 @@ function isVip() {
 					client.invoke("getUserInfo", function(result) {
 						$.hideIndicator();
 						var result = $.parseJSON(result);
-						if(!uniquemark){
-							Cache.set("uniquemark",result.data.uniquecode);
-        					uniquemark = result.data.unique;
-						}
 						if(result.data.headimg) {
 							$(".hybg-touxiang").append("<img src='http://img.7cai.tv/" + result.data.headimg + "'>");
 						} else {
@@ -133,7 +129,7 @@ function isVip() {
 						} else {
 							$("#vip-jifen").html("积分 : 0");
 						}
-						Cache.set("uniquemark", result.data.unique);
+						Cache.set("uniquemark", result.data.uniquecode);
 					});
 				} else {
 					$("#p-message").css("display","block");
@@ -162,7 +158,7 @@ function isVip() {
 						}else{
 							$("#p-message  .score").html("积分 : 0");
 						}
-						Cache.set("uniquemark",result.data.unique);
+						Cache.set("uniquemark",result.data.uniquecode);
 					});
 				}
 			} else {
