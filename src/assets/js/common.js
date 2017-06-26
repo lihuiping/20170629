@@ -76,17 +76,16 @@ var Cookie = {
 	}();
 //获取token
 var token = function() {
-//	return 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhZG1pbiI6ZmFsc2UsImNsYWltcyI6bnVsbCwidWlkIjoiMTI5NCIsInYiOjEsImlhdCI6MTQ5NTc5MDA1OH0.T8cESgLZa9eX5TcErXNgMHb93xuHs9IGVsqubfpoJK4';
-     var key="";
-       user = $api.getStorage('user');
-       //alert(user.flag);
-      if(user==undefined|| user==""){
+	//	return 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhZG1pbiI6ZmFsc2UsImNsYWltcyI6bnVsbCwidWlkIjoiMTI5NCIsInYiOjEsImlhdCI6MTQ5NTc5MDA1OH0.T8cESgLZa9eX5TcErXNgMHb93xuHs9IGVsqubfpoJK4';
+	var key = "";
+	user = $api.getStorage('user');
+	//alert(user.flag);
+	if(user == undefined || user == "") {
 
-      }else{
-       return  user.flag;
-       }
+	} else {
+		return user.flag;
+	}
 	//return Cache.get('token')
-
 
 };
 
@@ -138,22 +137,22 @@ if(isWenxin && tokens != '') {
 }
 $(function() {
 	var tokEn = getUrlVars()["token"];
-//	var tokEn = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhZG1pbiI6ZmFsc2UsImNsYWltcyI6bnVsbCwidWlkIjoiODM4IiwidiI6MSwiaWF0IjoxNDkzMDAzMjg3fQ.PpqXb_oSU8EJVLAlwdzUBXsI67a2qAp7h5VuGf5Ly68';
+	//	var tokEn = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhZG1pbiI6ZmFsc2UsImNsYWltcyI6bnVsbCwidWlkIjoiODM4IiwidiI6MSwiaWF0IjoxNDkzMDAzMjg3fQ.PpqXb_oSU8EJVLAlwdzUBXsI67a2qAp7h5VuGf5Ly68';
 	if(tokEn != undefined) {
 		Cache.set('token', tokEn);
 	};
 
-//	$(".bar-tab").on('click', ".tab-item", function(event) {
-//		var th = $(this);
-//		var ss = $(this).siblings('.tab-item');
-//		var dtClass = th.data('class');
-//		$(this).find(".icon").prop('className', 'icon ' + dtClass + '-active');
-//		$.each(ss, function(index, val) {
-//			var pard = $(this).data('class');
-//			$(this).find('.icon').removeClass().addClass('icon ' + pard);
-//
-//		});
-//	});
+	//	$(".bar-tab").on('click', ".tab-item", function(event) {
+	//		var th = $(this);
+	//		var ss = $(this).siblings('.tab-item');
+	//		var dtClass = th.data('class');
+	//		$(this).find(".icon").prop('className', 'icon ' + dtClass + '-active');
+	//		$.each(ss, function(index, val) {
+	//			var pard = $(this).data('class');
+	//			$(this).find('.icon').removeClass().addClass('icon ' + pard);
+	//
+	//		});
+	//	});
 
 });
 //$(".bar-tab").on('click', ".tab-item", function(event) {
@@ -176,40 +175,57 @@ var apiready = function() {
 	var offset = $api.offset('.ad-bar');
 	var testUrl = window.location.href;
 	var test = 'file:///android_asset/widget/'
-	if(testUrl == test+'index.html'|| testUrl == test+'movie-index.html'||testUrl == test+'user-center.html'||testUrl== test+'discover.html'||testUrl==test+'buy-ticket.html'){
+	if(testUrl == test + 'index.html' || testUrl == test + 'movie-index.html' || testUrl == test + 'user-center.html' || testUrl == test + 'discover.html' || testUrl == test + 'buy-ticket.html') {
 		exitApp();
+	} else {
+		gobackpage();
 	}
 };
 apiready();
-function openNewPage(name,uri){
+
+function openNewPage(name, uri) {
 	api.openWin({
-		name:name,
+		name: name,
 		url: uri,
-		animation:{type:"none"}
+		animation: {
+			type: "none"
+		}
 	});
 }
-function exitApp(){
-        api.addEventListener({
-            name: 'keyback'
-        }, function(ret, err){
-            api.toast({
-                    msg: '再按一次返回键退出'+api.appName,
-                    duration:2000,
-                    location: 'bottom'
-                });
-                
-                api.addEventListener({
-                    name: 'keyback'
-                }, function(ret, err){
-                    api.closeWidget({
-                            id: 'A6940555676996',     //这里改成自己的应用ID
-                            retData: {name:'closeWidget'},
-                            silent:true
-                        });
-                });
-                
-                setTimeout(function(){
-                        exitApp();
-                },3000)
-        });
+
+function exitApp() {
+	api.addEventListener({
+		name: 'keyback'
+	}, function(ret, err) {
+		api.toast({
+			msg: '再按一次返回键退出' + api.appName,
+			duration: 2000,
+			location: 'bottom'
+		});
+
+		api.addEventListener({
+			name: 'keyback'
+		}, function(ret, err) {
+			api.closeWidget({
+				id: 'A6940555676996', //这里改成自己的应用ID
+				retData: {
+					name: 'closeWidget'
+				},
+				silent: true
+			});
+		});
+
+		setTimeout(function() {
+			exitApp();
+		}, 3000)
+	});
+}
+
+function gobackpage() {
+	api.addEventListener({
+		name: 'keyback'
+	}, function(ret, err) {
+		window.history.go(-1);
+		});
+	});
 }
