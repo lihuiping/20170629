@@ -7,7 +7,7 @@ $(function(){
     });
     var qq;
     var wx;
-    apiready = function() {
+  var apiready = function() {
         qq = api.require('qq');
         wx = api.require('wx');
        }
