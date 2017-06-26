@@ -83,23 +83,7 @@
         left: 32%;
     }
     </style>
-    <script type="text/javascript">
-    apiready = function() {
-        // api.setPrefs({
-        //     firstLaunch: true
-        // });
-        // var userName = api.getPrefs({
-        //     key: 'firstLaunch'
-        // });
-       firstLaunch = $api.getStorage('firstLaunch');
-       if(firstLaunch==undefined|| firstLaunch==""){
-         $api.setStorage('firstLaunch', true);
-       }else{
-         location.href="movie-index.html";
-       }
-       
-    };
-    </script>
+
 </head>
 
 <body >
