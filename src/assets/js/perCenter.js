@@ -88,6 +88,8 @@ function sclient() {
 }
 
 var client = sclient();
+//获取推荐码
+var uniquemark = Cache.get("uniquemark") || null;
 
 //是否VIP
 function isVip() {
@@ -112,7 +114,10 @@ function isVip() {
 					client.invoke("getUserInfo", function(result) {
 						$.hideIndicator();
 						var result = $.parseJSON(result);
-//						alert(result.data.headimg);
+						if(!uniquemark){
+							Cache.set("uniquemark",result.data.uniquecode);
+        					uniquemark = result.data.unique;
+						}
 						if(result.data.headimg) {
 							$(".hybg-touxiang").append("<img src='http://img.7cai.tv/" + result.data.headimg + "'>");
 						} else {
