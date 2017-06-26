@@ -123,13 +123,11 @@ $("#sousuo-input").on('input', function() {
 					$(".search-record").show();
 					$(".not-found-video").hide();
 					$(".search-list").empty();
-					if($("#listRecord a").html() == ""){
-						$("#listRecord a").css('border-top','none');
+					if($("#movielistRecord a").html() == ""){
+						$("#movielistRecord a").css('border-top','none');
 					}
 				} else {
-					//$(".search-list a").remove();
 					$(".search-record").hide();
-					//$(".search-none").show();
 					$(".search-anys").hide();
 				}   
 			},
@@ -154,20 +152,20 @@ function addHisRecord(newRecord, num) {
 	var id = window.localStorage.getItem('id');
 	num = num || 10;
 	//获取本地存储的记录
-	var hisRecord_str = window.localStorage.getItem('hisRecord_str');
+	var hismovieRecord_str = window.localStorage.getItem('hismovieRecord_str');
 
 	//当获取到的值为null时，创建一个空数组存储进去
-	if(typeof hisRecord_str == 'object') {
+	if(typeof hismovieRecord_str == 'object') {
 		var hisRecord = [];
-		hisRecord_str = hisRecord.join('|');
-		window.localStorage.setItem('hisRecord_str', hisRecord_str);
+		hismovieRecord_str = hisRecord.join('|');
+		window.localStorage.setItem('hismovieRecord_str', hismovieRecord_str);
 	}
 
 	//转换为数组
-	hisRecord = hisRecord_str.split('|');
+	hisRecord = hismovieRecord_str.split('|');
 
-	//当hisRecord_str为空字符串时，清空数组
-	if(!hisRecord_str) {
+	//当hismovieRecord_str为空字符串时，清空数组
+	if(!hismovieRecord_str) {
 		hisRecord.pop();
 	}
 	//当实参不为空时，判断：
@@ -187,8 +185,8 @@ function addHisRecord(newRecord, num) {
 		}
 
 		//重新转换成string存储到本地
-		hisRecord_str = hisRecord.join('|');
-		window.localStorage.setItem('hisRecord_str', hisRecord_str);
+		hismovieRecord_str = hisRecord.join('|');
+		window.localStorage.setItem('hismovieRecord_str', hismovieRecord_str);
 
 	} else { //当实参为空时，返回获取到的历史记录，type: Array;
 		return hisRecord;
@@ -198,11 +196,11 @@ function addHisRecord(newRecord, num) {
 //!*封装删除搜索记录功能  (index: 0,1,2,...,'all';)
 function removeHisRecord(index) {
 	//获取本地存储的记录
-	var hisRecord_str = window.localStorage.getItem('hisRecord_str');
+	var hismovieRecord_str = window.localStorage.getItem('hismovieRecord_str');
 	//转换为数组
-	var hisRecord = hisRecord_str.split('|');
-	//当hisRecord_str为空字符串时，清空数组
-	if(!hisRecord_str) {
+	var hisRecord = hismovieRecord_str.split('|');
+	//当hismovieRecord_str为空字符串时，清空数组
+	if(!hismovieRecord_str) {
 		hisRecord.pop();
 	} else if(index == 'all') {
 		hisRecord.splice(0, hisRecord.length);
@@ -210,9 +208,9 @@ function removeHisRecord(index) {
 		hisRecord.splice(index, 1);
 	}
 	//将处理过的数据存储并渲染到页面
-	hisRecord_str = hisRecord.join('|');
-	window.localStorage.setItem('hisRecord_str', hisRecord_str);
-	renderData(hisRecord, '#listRecord')
+	hismovieRecord_str = hisRecord.join('|');
+	window.localStorage.setItem('hismovieRecord_str', hismovieRecord_str);
+	renderData(hisRecord, '#movielistRecord')
 }
 
 //!*封装字符串 id vue渲染数据
@@ -263,16 +261,16 @@ function renderData(datas, id) {
 function hisRecord() {
 	var hisRecord = addHisRecord(); //结果为数组字符串["第一个","第二个","第三个"]
 
-	var hisRecord_str = hisRecord.join(); //把结果转化为普通字符串 "第一个","第二个","第三个"
+	var hismovieRecord_str = hisRecord.join(); //把结果转化为普通字符串 "第一个","第二个","第三个"
 	//记录存在时渲染
-	if(hisRecord_str) {
-		renderData(hisRecord, '#listRecord');
+	if(hismovieRecord_str) {
+		renderData(hisRecord, '#movielistRecord');
 	}
 }
 
 //封装判断搜索匹配是否点击添加数据页面显示状态
 function listShow() {
-	if($("#listRecord a").length > 0) {
+	if($("#movielistRecord a").length > 0) {
 		$(".search-anys").hide();
 		$('.not-found-video').hide();
 		$(".search-record").show();
@@ -313,5 +311,4 @@ $('.clear-records').on('click', function() {
 	$('.layui-m-layercont').addClass("searchConfirm");
 	$('.layui-m-layerbtn span[no]').addClass("searchCancel");
 	$('.layui-m-layerbtn span[yes]').addClass("ok");
-
 });
