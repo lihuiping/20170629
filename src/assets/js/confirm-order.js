@@ -304,7 +304,6 @@ var shippingMethod = new Vue({
 		},
 		receiveExpres: function() {
 			//关闭
-
 		},
 		selectExpress: function(item, index, shopid) {
 			//选择配送方式
@@ -317,7 +316,6 @@ var shippingMethod = new Vue({
 				var data = response.data.data;
 				_this.isCheck = index;
 				shippingMethod.expressList = data;
-
 			});
 		},
 
@@ -428,35 +426,38 @@ $("#sub_order").on('click', function() {
 								if(datas.res == '1') {
 									if(datas.msg == "ok") {
 // 如果有邮费，需要现支付宝支付邮费{"res":1,"msg":"ok","data":{"orderId":"v0627141617544125hwo","amount":12,"subject":"商品信息"}}
-										console.log(datas.data);
-										var orderId = datas.data.orderId;
-										var subject = datas.data.subject;
-										var amount = datas.data.amount;
-										var payParam = {
-											partner: "m1610030006",
-											subject: subject,
-											amount: amount,
-											orderID: orderId,
-											notifyUrl: "http://my.shop.7cai.tv/pay.php",
-											alipay: true,
-											wxpay: false,
-											baidupay: false,
-											unionpay: false,
-											jdpay: false,
-										}
-										fuqianla.fuqianlaPay(payParam, function(ret, err) {
-											//alert(JSON.stringify(ret) + JSON.stringify(err));
-											if(ret.payCode == 9000) {
-												$.toast("支付成功");
-												setTimeout(function() {
-													window.location.href = "./myOrder-table.html";
-												}, 1000);
-											} else if(ret.payCode == 6001) {
-												$.toast("取消支付");
-											} else {
-												$.toast("支付失败");
+										$.toast("七彩币支付成功,请支付运费");
+										setTimeout(function(){
+											var orderId = datas.data.orderId;
+											var subject = datas.data.subject;
+											var amount = datas.data.amount;
+											var payParam = {
+												partner: "m1610030006",
+												subject: subject,
+												amount: 0.01,
+												orderID: orderId,
+												notifyUrl: "http://my.shop.7cai.tv/pay.php",
+												alipay: true,
+												wxpay: false,
+												baidupay: false,
+												unionpay: false,
+												jdpay: false,
 											}
-										});
+											fuqianla.fuqianlaPay(payParam, function(ret, err) {
+												//alert(JSON.stringify(ret) + JSON.stringify(err));
+												if(ret.payCode == 9000) {
+													$.toast("支付成功");
+													setTimeout(function() {
+														window.location.href = "./myOrder-table.html";
+													}, 1000);
+												} else if(ret.payCode == 6001) {
+													$.toast("取消支付");
+												} else {
+													$.toast("支付失败");
+												}
+											});
+										},3000);
+										
 										
 //										$.ajax({
 //											type: "post",
