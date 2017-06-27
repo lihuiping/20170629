@@ -44,12 +44,12 @@ $("#mr-wc").on("click", function() {
 				}], function(result) {
 					var result = $.parseJSON(result);
 					if(result.res == 1) {
-						$.toast("欢迎," + mobile);
+						$.toast("注册成功");
 						Cache.set("flag", result.data.sig);
 						Cache.set("whole_mobile", mobile);
 						Cache.set("passwd", psword);
 						setTimeout(function() {
-//							window.location.href = "";
+							window.location.href = "./login.html";
 						}, 1500);
 					} else {
 						$.toast(result.msg);

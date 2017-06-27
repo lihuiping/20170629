@@ -164,9 +164,9 @@ var orderDetails = new Vue({
 			window.location.href = 'moneyBack.html?order_goods=' + odGodId + '&status=' + odSta;
 		},
 		//评价
-		appraiseOrder: function() {
+		appraiseOrder: function(event) {
 			//获取商品单个ID
-			var odGodId = $(".od-right a:active").parents("li").attr("godid");
+			var odGodId = $(event.target).parent().attr("godid");
 			window.location.href = 'addComment.html?order_goods=' + odGodId;
 		},
 		//立即兑换
