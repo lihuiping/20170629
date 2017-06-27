@@ -644,8 +644,6 @@ var platformCoupon = new Vue({
 						});
 					};
 				});
-			}else{
-				alert(111);
 			}
 		}
 	}
