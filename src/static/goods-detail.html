@@ -301,9 +301,7 @@
 									<span>{{shopItem.time}}</span>
 								</div>
 							</div>
-							<div class="item-after" v-bind:id="shopItem.id" @click="receiveCoupons(shopItem.id)">
-								{{shopItem.is_get | receiveStatus(shopItem.is_get)}}
-							</div>
+							<div class="item-after" v-bind:id="shopItem.id" @click="receiveCoupons(shopItem.id)">{{shopItem.is_get | receiveStatus(shopItem.is_get)}}</div>
 						</div>
 					</li>
 				</ul>
@@ -338,8 +336,7 @@
 									<span>{{item.time}}</span>
 								</div>
 							</div>
-							<div class="item-after" v-bind:id="item.id" @click="receiveCoupons(item.id)">{{item.is_get | receiveStatus1(item.is_get)}}
-							</div>
+							<div class="item-after" v-bind:id="item.id" @click="receiveCoupond(item.id)">{{item.is_get | receiveStatus1(item.is_get)}}</div>
 						</div>
 					</li>
 
