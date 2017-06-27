@@ -310,7 +310,7 @@ function getLocalTime(nS) {
 $(document).on("pageInit", "#editmessage", function(e, id, page) {
 	client.invoke("getUserInfo", function(result) {
 		var result = $.parseJSON(result);
-		var time = getLocalTime(result.data.birthday);
+		var time = getLocalTime(result.data.birth);
 		Cache.set("issafe", result.data.isSafe);
 		var touxiang = result.data.imgurl ? result.data.imgurl : "assets/images/tx-120.png";
 //		var touxiang = result.data.imgurl ? result.data.imgurl : "assets/images/tx-120.png";
