@@ -114,8 +114,8 @@ function isVip() {
 					client.invoke("getUserInfo", function(result) {
 						$.hideIndicator();
 						var result = $.parseJSON(result);
-						if(result.data.headimg) {
-							$(".hybg-touxiang").append("<img src='http://img.7cai.tv/" + result.data.headimg + "'>");
+						if(result.data.imgurl) {
+							$(".hybg-touxiang").append("<img src='http://img.7cai.tv/" + result.data.imgurl + "'>");
 						} else {
 							$(".hybg-touxiang").append("<img src='assets/images/tx-160.png'>")
 						}
@@ -124,12 +124,12 @@ function isVip() {
 						} else {
 							$("#hui-mobile").html(result.data.mobile);
 						}
-						if(result.data.integral) {
-							$("#vip-jifen").html("七彩币" + result.data.integral);
+						if(result.data.score) {
+							$("#vip-jifen").html("七彩币" + result.data.score);
 						} else {
 							$("#vip-jifen").html("七彩币 : 0");
 						}
-						Cache.set("uniquemark", result.data.uniquecode);
+						Cache.set("uniquemark", result.data.unique);
 					});
 				} else {
 					$("#p-message").css("display","block");
@@ -143,8 +143,8 @@ function isVip() {
 					client.invoke("getUserInfo",function(result){
 					 	$.hideIndicator();
 						var result = $.parseJSON(result);
-						if(result.data.headimg){
-							$("#p-touxiang").append("<img id='touxiang2' src='http://img.7cai.tv/"+result.data.headimg+"'>")
+						if(result.data.imgurl){
+							$("#p-touxiang").append("<img id='touxiang2' src='http://img.7cai.tv/"+result.data.imgurl+"'>")
 						}else{
 							$("#p-touxiang").append("<img id='touxiang2'" + " src='assets/images/tx-120.png'>")
 						}
@@ -153,12 +153,12 @@ function isVip() {
 						}else{
 							$("#p-message  .username").html(result.data.mobile);
 						}
-						if(result.data.integral){
-							$("#p-message  .score").html("七彩币 : "+result.data.integral);
+						if(result.data.score){
+							$("#p-message  .score").html("七彩币 : "+result.data.score);
 						}else{
 							$("#p-message  .score").html("七彩币 : 0");
 						}
-						Cache.set("uniquemark",result.data.uniquecode);
+						Cache.set("uniquemark",result.data.unique);
 					});
 				}
 			} else {
