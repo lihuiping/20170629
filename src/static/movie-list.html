@@ -54,7 +54,8 @@ function GetQueryString(name) {
                 var _this = this;
                 axios.get(movie_list[conf], {
                 params: {
-                    type: typeId
+                    type: typeId,
+                    size:10
                 }
             }).then(function(res) {
                     var data = res.data;
