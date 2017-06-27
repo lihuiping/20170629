@@ -137,7 +137,7 @@ var zzdx_movie = new Vue({
 					_this.goodslist = data.data;
 					_this.loadingFlag = false;
 				} else {
-					$.toast("商品数据错误");
+					$.toast("至尊独享数据错误");
 				}
 			});
 		}
