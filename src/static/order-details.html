@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html>
-<<<<<<< .mine
-
 	<head>
 		@@include('../tpl/header.tpl',{ "title":"订单详情" })
 		<link rel="stylesheet" href="assets/css/swiper.min.css" />
@@ -13,7 +11,7 @@
 			<div class="page page-current">
 				@@include('../tpl/bar-nav.tpl',{ "title":"订单详情" })
 				<!--内容页面-->
-				<div class="content padding-btn znTop">
+				<div class="content padding-btn znTop" style="bottom: 0;">
 					<img src="assets/images/loading.gif" v-if="loadingFlag" class="loading-img"/>
 					<!--ban start-->
 					<div class="od-ban" v-cloak :odOId="orderDetailsList.id" :odStatus="orderDetailsList.order_state">
