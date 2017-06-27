@@ -52,11 +52,11 @@ var addressModel = new Vue({
 		showMode: function() {
 			var _this = this;
 			axios.get(address_info[conf], {
-                params: {
-                	token:toke,
-                    id: defId
-                }
-            }).then(function(response) {
+				params: {
+					token: toke,
+					id: defId
+				}
+			}).then(function(response) {
 				var datas = response.data;
 				_this.addList = datas;
 				if(datas.res == 0) {
@@ -422,16 +422,75 @@ $("#sub_order").on('click', function() {
 							timeout: 1500,
 							data: parms,
 							success: function(datas) {
+//								console.log(datas.data)
+								
+//								var orderid = datas.data.orderId;
 								if(datas.res == '1') {
-									$.toast(datas.msg);
-									setTimeout(function(){
-										window.location.href = 'myOrder-table.html';
-									},1000);
+									if(datas.msg == "ok") {
+// 如果有邮费，需要现支付宝支付邮费{"res":1,"msg":"ok","data":{"orderId":"v0627141617544125hwo","amount":12,"subject":"商品信息"}}
+										console.log(datas.data);
+										var orderId = datas.data.orderId;
+										var subject = datas.data.subject;
+										var amount = datas.data.amount;
+										var payParam = {
+											partner: "m1610030006",
+											subject: subject,
+											amount: amount,
+											orderID: orderId,
+											notifyUrl: "http://my.shop.7cai.tv/pay.php",
+											alipay: true,
+											wxpay: false,
+											baidupay: false,
+											unionpay: false,
+											jdpay: false,
+										}
+										fuqianla.fuqianlaPay(payParam, function(ret, err) {
+											//alert(JSON.stringify(ret) + JSON.stringify(err));
+											if(ret.payCode == 9000) {
+												$.toast("支付成功");
+												setTimeout(function() {
+													window.location.href = "./myOrder-table.html";
+												}, 1000);
+											} else if(ret.payCode == 6001) {
+												$.toast("取消支付");
+											} else {
+												$.toast("支付失败");
+											}
+										});
+										
+//										$.ajax({
+//											type: "post",
+//											url: cnyPay,
+//											timeout: 1500,
+//											data: {
+//												"orderIds":  orderId,
+//												"type": 1,
+//												"token": toke
+//											},
+//											success: function(res) {
+//												console.log(res);
+//												var orderId = res.data.orderId;
+//												var subject = res.data.subject;
+//												var amount = res.data.amount;
+//												if(res.res == 1) {
+//													
+//												} else {
+//													alert("支付失败");
+//												}
+//											}
+//										});
+
+									} else {
+										$.toast(datas.msg);
+										setTimeout(function() {
+											window.location.href = 'myOrder-table.html';
+										}, 1000);
+									}
 
 								} else {
 									$.toast(datas.msg);
 								}
-								
+
 							}
 						});
 
@@ -450,7 +509,7 @@ $("#sub_order").on('click', function() {
 									var payParam = {
 										partner: "m1610030006",
 										subject: subject,
-										amount: 0.01,//amount,
+										amount: 0.01, //amount,
 										orderID: orderId,
 										notifyUrl: "http://my.shop.7cai.tv/pay.php",
 										alipay: true,
@@ -462,16 +521,16 @@ $("#sub_order").on('click', function() {
 
 									fuqianla.fuqianlaPay(payParam, function(ret, err) {
 										//alert(JSON.stringify(ret) + JSON.stringify(err));
-												if(ret.payCode == 9000) {
-													$.toast("订单支付成功");
-													setTimeout(function(){
-														window.location.href = "./myOrder-table.html";
-													},1000);
-												} else if(ret.payCode == 6001) {
-													$.toast("订单已取消");
-												} else {
-													$.toast("订单支付失败");
-												}
+										if(ret.payCode == 9000) {
+											$.toast("订单支付成功");
+											setTimeout(function() {
+												window.location.href = "./myOrder-table.html";
+											}, 1000);
+										} else if(ret.payCode == 6001) {
+											$.toast("订单已取消");
+										} else {
+											$.toast("订单支付失败");
+										}
 
 									});
 								} else {
