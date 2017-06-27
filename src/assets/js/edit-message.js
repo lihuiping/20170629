@@ -312,8 +312,8 @@ $(document).on("pageInit", "#editmessage", function(e, id, page) {
 		var result = $.parseJSON(result);
 		var time = getLocalTime(result.data.birthday);
 		Cache.set("issafe", result.data.isSafe);
-		var touxiang = result.data.headimg ? result.data.headimg : "assets/images/tx-120.png";
-//		var touxiang = result.data.headimg ? result.data.headimg : "assets/images/tx-120.png";
+		var touxiang = result.data.imgurl ? result.data.imgurl : "assets/images/tx-120.png";
+//		var touxiang = result.data.imgurl ? result.data.imgurl : "assets/images/tx-120.png";
 		
 		$("#mytouxiang-div").append("<img style='width: 3rem; height:3rem;border-radius:50%;' id='my-touxiang' src='http://img.7cai.tv/"+touxiang+"'>");
 		$("#mename").html(result.data.username ? result.data.username : result.data.mobile);
