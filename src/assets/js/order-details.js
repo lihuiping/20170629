@@ -146,7 +146,7 @@ var orderDetails = new Vue({
 			$('.layui-m-layerbtn span[yes]').addClass("ok");
 		},
 		//退款
-		refundOder: function() {
+		refundOder: function(event) {
 			/*var godId = "";
 			var goodId = [];
 			$(".od-cont li").each(function(i,v){
@@ -157,8 +157,9 @@ var orderDetails = new Vue({
 			//获取商品ID
 			var odGodId = goodId.join(',');*/
 			//获取商品单个ID
-			var odGodId = $(".od-right a:active").parents("li").attr("godid");
+			var odGodId = $(event.target).parent().attr("godid");
 			//获取订单状态
+		   
 			var odSta = $(".od-ban").attr("odStatus");
 			window.location.href = 'moneyBack.html?order_goods=' + odGodId + '&status=' + odSta;
 		},
