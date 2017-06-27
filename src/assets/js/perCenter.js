@@ -125,9 +125,9 @@ function isVip() {
 							$("#hui-mobile").html(result.data.mobile);
 						}
 						if(result.data.integral) {
-							$("#vip-jifen").html("积分" + result.data.integral);
+							$("#vip-jifen").html("七彩币" + result.data.integral);
 						} else {
-							$("#vip-jifen").html("积分 : 0");
+							$("#vip-jifen").html("七彩币 : 0");
 						}
 						Cache.set("uniquemark", result.data.uniquecode);
 					});
@@ -154,9 +154,9 @@ function isVip() {
 							$("#p-message  .username").html(result.data.mobile);
 						}
 						if(result.data.integral){
-							$("#p-message  .score").html("积分 : "+result.data.integral);
+							$("#p-message  .score").html("七彩币 : "+result.data.integral);
 						}else{
-							$("#p-message  .score").html("积分 : 0");
+							$("#p-message  .score").html("七彩币 : 0");
 						}
 						Cache.set("uniquemark",result.data.uniquecode);
 					});
