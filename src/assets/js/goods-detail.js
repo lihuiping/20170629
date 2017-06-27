@@ -614,16 +614,17 @@ var platformCoupon = new Vue({
 //				}
 			});
 		},
-		receiveCoupons: function(id) {
+		receiveCoupond: function(id) {
 			//领取优惠券
-			//			platformCoupon.platform = "333";
-			if($("#" + id).html() == "领券") {
+			var texthtml = $("#" + id).html();
+			if(texthtml == "领券") {
 				axios.post(platform[conf], transformRequest({
 					token: tokens,
 					discount_coupon_id: id
 				}), {
 					headers: header
 				}).then(function(response) {
+					console.log(response);
 					var res = response.data.res;
 					var msg = response.data.msg;
 					if(res == 1) {
@@ -643,7 +644,9 @@ var platformCoupon = new Vue({
 						});
 					};
 				});
-			};
+			}else{
+				alert(111);
+			}
 		}
 	}
 });
