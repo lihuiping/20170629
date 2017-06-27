@@ -15,7 +15,7 @@ $("#bk-commit").on("click", function() {
 			if(result.res == 1) {
 				$.toast("密码找回成功");
 				setTimeout(function() {
-					window.location.href = "login.html";
+					window.location.href = "./login.html";
 				}, 1500);
 			} else {
 				$.toast("验证码不正确，请重新输入");

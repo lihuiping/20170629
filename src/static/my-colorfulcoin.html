@@ -113,7 +113,7 @@
 											<p class='mpdown'>{{item2.add_time}}</p>
 										</div>
 										<div class='mpinout_content1_liright'>
-											<span class='mpinout_content1_liright_points'><span class="colorful-money">-<em>{{spendItem.goods_price}}</em></span>七彩币</span>
+											<span class='mpinout_content1_liright_points'><span class="colorful-money">-<em>{{spendItem.sell_price}}</em></span>七彩币</span>
 										</div>
 									</li>
 								</ul>
@@ -127,7 +127,7 @@
 									<p class="iconfont_des">当前暂无兑换记录</p>
 								</div>
 								<div class="list-block media-list colorful-convert" v-if="dataRes.res == 1">
-								    <ul v-for="item1 in dataSpend">
+								    <ul v-for="item1 in dataSpend" v-cloak>
 								      <li v-for="orderItem in item1.order_goods">
 								        <a href="javascript:;" class="item-link item-content">
 								          <div class="item-media"><img :src="orderItem.goods_image"></div>
@@ -137,7 +137,7 @@
 								            </div>
 								            <div class="item-subtitle">订单编号：<span>{{item1.order_sn}}</span></div>
 								            <div class="item-text">{{item1.add_time}}</div>
-								            <div class="ccart-price"><span class="colorful-price"><em>-{{orderItem.goods_price}}</em>七彩币</span>
+								            <div class="ccart-price"><span class="colorful-price"><em>-{{orderItem.sell_price}}</em>七彩币</span>
 								            	<i>数量:<span>{{orderItem.goods_num}}</span></i></div>
 								          </div>
 								        </a>
