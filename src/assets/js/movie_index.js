@@ -59,6 +59,7 @@ var movieDatail = new Vue({
 				if(data.res == 1) {
 					_this.yxList = data.data;
 					_this.loadingFlag = false;
+
 				} else {
 					$.toast("电影数据错误");
 				}
@@ -68,6 +69,7 @@ var movieDatail = new Vue({
 				var data = res.data;
 				if(data.res == 1) {
 					_this.wlList = data.data;
+						$(".content-top").show();
 					_this.loadingFlag = false;
 				} else {
 					$.toast("电影数据错误");
@@ -78,6 +80,7 @@ var movieDatail = new Vue({
 				var data = res.data;
 				if(data.res == 1) {
 					_this.jdList = data.data;
+					$(".content-top").show();
 					_this.loadingFlag = false;
 				} else {
 					$.toast("电影数据错误");
