@@ -1,4 +1,4 @@
-$(function(){
+//$(function(){
 	var unique = Cache.get("uniquemark");
     $('#qrcode').qrcode({
 	    width: 109,
@@ -11,7 +11,7 @@ $(function(){
         qq = api.require('qq');
         wx = api.require('wx');
        }
-})
+//})
 
 function qqshareNews_QZone() { //分享新闻到QQ空间
             qq.shareNews({
