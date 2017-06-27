@@ -112,9 +112,8 @@ var moneyBack = new Vue({
 							url: baseUrl()+'member.php?r=order&m=refund&token='+token() + '&order_goods_ids='+order_gods,
 							type: 'post',
 							success: function(data) {
-								console.log(order_gods);
-								var resfs = JSON.parse(data); //json字符串转换成json数据 不然点不出来
-								if(resfs.res == 1) {
+								/*var resfs = JSON.parse(data);*/ //json字符串转换成json数据 不然点不出来
+								if(data.res == 1) {
 									layer.open({
 										content: '提交申请成功',
 										skin: 'msg',

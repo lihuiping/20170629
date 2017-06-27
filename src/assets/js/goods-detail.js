@@ -816,7 +816,6 @@ function qqshareNews_QZone() {
 		},
 		async: true,
 		success: function(res) {
-//			alert(res)
 			qq.shareNews({
 				url: 'http://www.apicloud.com',
 				title: res.data.title,
