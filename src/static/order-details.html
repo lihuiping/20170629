@@ -136,7 +136,7 @@
 			                        				<em class="c-ec4619 od-totalPrice" v-if="orderDetailsList.exchange_type == 1">{{orderDetailsList.order_sell_price}}</em>
 			                        				<em class="c-ec4619 od-totalPrice" v-if="orderDetailsList.exchange_type == 0">{{orderDetailsList.order_money}}</em>
 			                            		</span>
-												<a @click="refundOder()">
+												<a @click="refundOder($event)" :godId="odGood.id"> 
 													<span class="btn-order btn-cancelOrder" v-if="odGood.refund_reason==0">退款</span>
 												</a>
 											</div>
@@ -148,7 +148,7 @@
 			                        				<em class="c-ec4619 od-totalPrice" v-if="orderDetailsList.exchange_type == 1">{{orderDetailsList.order_sell_price}}</em>
 			                        				<em class="c-ec4619 od-totalPrice" v-if="orderDetailsList.exchange_type == 0">{{orderDetailsList.order_money}}</em>
 			                            		</span>
-												<a @click="refundOder()">
+												<a @click="refundOder($event)" :godId="odGood.id">
 													<span class="btn-order btn-cancelOrder" v-if="odGood.refund_reason==0">退款</span>
 												</a>
 											</div>
@@ -160,8 +160,8 @@
 			                        				<em class="c-ec4619 od-totalPrice" v-if="orderDetailsList.exchange_type == 1">{{orderDetailsList.order_sell_price}}</em>
 			                        				<em class="c-ec4619 od-totalPrice" v-if="orderDetailsList.exchange_type == 0">{{orderDetailsList.order_money}}</em>
 			                            		</span>
-												<a @click="refundOder()">
-													<span class="btn-order btn-cancelOrder" v-if="odGood.refund_reason==0">退款</span>
+												<a @click="refundOder($event)" :godId="odGood.id">
+													<span class="btn-order btn-cancelOrder"  v-if="odGood.refund_reason==0">退款</span>
 												</a>
 												<a @click="appraiseOrder()">
 													<span class="btn-order btn-cancelOrder" v-if="odGood.evaluation_status==0">评价</span>
