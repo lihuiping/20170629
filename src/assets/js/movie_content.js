@@ -309,7 +309,15 @@ function video(movieurl, movieTitle, movieCover, istrytime, start_time) {
         $(".jw-preview").hide();
     });
     player.onComplete(function(event) {
-        //alert("onComplete");
+       axios.get(playRecord[conf], {
+            params: {
+                movieId: movieID,
+                startTime: playTime
+            }
+        }).then(function(res) {
+            var data = res.data;
+        });
+
     });
 }
 /*滑动的效果*/
