@@ -115,7 +115,7 @@ function isVip() {
 						$.hideIndicator();
 						var result = $.parseJSON(result);
 						if(result.data.imgurl) {
-							$(".hybg-touxiang").append("<img src='http://img.7cai.tv/" + result.data.imgurl + "'>");
+							$(".hybg-touxiang").append("<img src='"+result.data.imgurl+"'>");
 						} else {
 							$(".hybg-touxiang").append("<img src='assets/images/tx-160.png'>")
 						}
@@ -144,7 +144,7 @@ function isVip() {
 					 	$.hideIndicator();
 						var result = $.parseJSON(result);
 						if(result.data.imgurl){
-							$("#p-touxiang").append("<img id='touxiang2' src='http://img.7cai.tv/"+result.data.imgurl+"'>")
+							$("#p-touxiang").append("<img id='touxiang2' src='"+result.data.imgurl+"'>")
 						}else{
 							$("#p-touxiang").append("<img id='touxiang2'" + " src='assets/images/tx-120.png'>")
 						}
