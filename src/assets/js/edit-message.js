@@ -302,19 +302,17 @@ $("#editAdd-del").on("click", function(e) {
 	});
 });
 
-function getLocalTime(nS) {
-	return new Date(parseInt(nS) * 1000).toLocaleString().substr(0, 8);
-}
+//function getLocalTime(nS) {
+//	return new Date(parseInt(nS) * 1000).toLocaleString().substr(0, 8);
+//}
 
 // 修改基础资料
 $(document).on("pageInit", "#editmessage", function(e, id, page) {
 	client.invoke("getUserInfo", function(result) {
 		var result = $.parseJSON(result);
-		var time = getLocalTime(result.data.birth);
+		var time = result.data.birth;
 		Cache.set("issafe", result.data.isSafe);
 		var touxiang = result.data.imgurl ? result.data.imgurl : "assets/images/tx-120.png";
-//		var touxiang = result.data.imgurl ? result.data.imgurl : "assets/images/tx-120.png";
-		
 		$("#mytouxiang-div").append("<img style='width: 3rem; height:3rem;border-radius:50%;' id='my-touxiang' src='"+touxiang+"'>");
 		$("#mename").html(result.data.username ? result.data.username : result.data.mobile);
 		$("#megenger").val(parseInt(result.data.sex) ? "女" : "男");
@@ -325,7 +323,6 @@ $(document).on("pageInit", "#editmessage", function(e, id, page) {
 		$("#mobilephone").html(phone);
 
 	});
-	//	$("#megenger").val("女");
 	//选择性别
 	$("#megenger").on("click", function(e) {
 
